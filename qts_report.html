@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QTS 每日報告 2026年05月18日</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 14px; padding: 20px; }
+  h1 { color: #f0f6fc; font-size: 20px; margin-bottom: 4px; }
+  .subtitle { color: #8b949e; font-size: 13px; margin-bottom: 24px; }
+  h2 { font-size: 15px; color: #58a6ff; border-left: 3px solid #58a6ff; padding-left: 10px; margin: 28px 0 12px; }
+  h3 { font-size: 13px; color: #8b949e; margin: 16px 0 8px; }
+  .summary { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 14px 20px; min-width: 140px; }
+  .card-num { font-size: 28px; font-weight: bold; }
+  .card-label { color: #8b949e; font-size: 12px; margin-top: 2px; }
+  .ep-num { color: #d2a8ff; }
+  .vcp-num { color: #58a6ff; }
+  .watch-num { color: #3fb950; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 8px; }
+  th { background: #161b22; color: #8b949e; font-size: 12px; font-weight: 500; padding: 8px 10px; text-align: left; border-bottom: 1px solid #30363d; white-space: nowrap; }
+  td { padding: 8px 10px; border-bottom: 1px solid #21262d; vertical-align: middle; white-space: nowrap; }
+  tr:hover td { background: #1c2128; }
+  tr.ep-row td { border-left: 3px solid #d2a8ff; }
+  tr.vcp-row td { border-left: 3px solid #58a6ff; }
+  .code-link { color: #58a6ff; text-decoration: none; font-weight: 600; }
+  .code-link:hover { text-decoration: underline; }
+  .name { color: #e6edf3; max-width: 100px; overflow: hidden; text-overflow: ellipsis; }
+  .mkt { color: #8b949e; font-size: 12px; }
+  .price { color: #f0f6fc; font-weight: 600; }
+  .green { color: #3fb950; }
+  .yellow { color: #d29922; }
+  .purple { color: #d2a8ff; }
+  .score-high { color: #3fb950; font-weight: bold; }
+  .score-mid { color: #d29922; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .badge.ep { background: #2d1f7a; color: #d2a8ff; border: 1px solid #6e40c9; }
+  .badge.ep-base { background: #1a1a2e; color: #c084fc; border: 1px solid #7c3aed; }
+  .badge.vcp { background: #0d2844; color: #58a6ff; border: 1px solid #1f6feb; }
+  .badge.watch { background: #0f2d1a; color: #3fb950; border: 1px solid #238636; }
+  .tv-btn { display: inline-block; background: #1e3a5f; color: #58a6ff; border: 1px solid #1f6feb; border-radius: 4px; padding: 3px 8px; font-size: 11px; text-decoration: none; }
+  .tv-btn:hover { background: #1f6feb; color: #fff; }
+  .cap-note { background: #5a1e02; color: #ffa657; font-size: 10px; padding: 1px 4px; border-radius: 3px; }
+  .risk-table { background: #0f2d1a; border: 1px solid #238636; border-radius: 8px; padding: 14px; margin-bottom: 16px; }
+  .risk-item { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #21262d; }
+  .risk-item:last-child { border: none; }
+  .risk-label { color: #8b949e; }
+  .risk-value { color: #3fb950; font-weight: 600; }
+  .desc { color: #8b949e; font-size: 12px; background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 10px 14px; margin-bottom: 12px; line-height: 1.6; }
+  .footer { color: #484f58; font-size: 11px; margin-top: 32px; text-align: center; }
+  .section { background: #0d1117; border: 1px solid #21262d; border-radius: 10px; padding: 16px; margin-bottom: 20px; overflow-x: auto; }
+  .market-warn { background: #3d1a00; border: 1px solid #d29922; border-radius: 8px; color: #ffa657; padding: 10px 16px; margin-bottom: 16px; font-size: 13px; }
+  .market-ok { background: #0f2d1a; border: 1px solid #238636; border-radius: 8px; color: #3fb950; padding: 10px 16px; margin-bottom: 16px; font-size: 13px; }
+  .market-pullback { background: #1a2d3d; border: 1px solid #388bfd; border-radius: 8px; color: #79c0ff; padding: 10px 16px; margin-bottom: 16px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>QTS 台股每日掃描報告</h1>
+<p class="subtitle">2026年05月18日（星期一）· 掃描時間 16:37 · 資料來源：Yahoo Finance / TWSE / TPEx</p>
+<div class="market-ok">✓ 大盤多頭環境（加權指數 40,892｜10MA 41,432 > 20MA 40,074｜環境：多頭）</div>
+
+<div class="summary">
+  <div class="card"><div class="card-num ep-num">0</div><div class="card-label">★ EP 今日</div></div>
+  <div class="card"><div class="card-num" style="color:#c084fc">2</div><div class="card-label">⚡ EP Base</div></div>
+  <div class="card"><div class="card-num vcp-num">0</div><div class="card-label">● VCP</div></div>
+  <div class="card"><div class="card-num watch-num">33</div><div class="card-label">↑ 強勢</div></div>
+  <div class="card"><div class="card-num" style="color:#f0f6fc">35</div><div class="card-label">合計</div></div>
+</div>
+
+<h2>一、EP 今日（當天跳空巨量）</h2>
+<p class="desc">今日開盤跳空超過前日最高 ≥4%，且成交量 ≥3 倍均量。追不到沒關係，等後續整理進 EP Base。</p>
+<div class="section"><p style='color:#8b949e'>今日無 EP 今日訊號。</p></div>
+
+<h2>二、EP Base（EP 後整理中，最佳進場機會）</h2>
+<p class="desc">過去 60 天內出現 EP 事件，目前仍守住漲幅並進入整理收縮。突破整理高點進場，停損設整理低點，風險報酬比更佳。</p>
+<div class="section"><table><tr><th>型態</th><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>ADR%</th><th>前段漲幅</th><th>日均成交</th><th>量比</th><th>跳空</th><th>RS背離</th><th>分數</th><th>看圖</th></tr>
+        <tr class="ep-row">
+          <td><span class="badge ep-base">⚡ EP Base (8天)</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6166" target="_blank" class="code-link">6166</a></td>
+          <td class="name">凌華</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">113.5</td>
+          <td class="green">6.17%</td>
+          <td class="green">+100.2%</td>
+          <td>388M</td>
+          <td class="green">1.97x</td>
+          <td class="">-0.87%</td>
+          <td class="green">+47.6%</td>
+          <td class="score-high">17</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6166" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="ep-row">
+          <td><span class="badge ep-base">⚡ EP Base (25天)</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank" class="code-link">6278</a></td>
+          <td class="name">台表科</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">210.0</td>
+          <td class="green">9.52%</td>
+          <td class="green">+126.0%</td>
+          <td>3191M</td>
+          <td class="">1.3x</td>
+          <td class="">-10.7%</td>
+          <td class="green">+16.7%</td>
+          <td class="score-high">16</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank">📈 TV</a></td>
+        </tr></table></div>
+
+<h2>三、VCP 整理完成</h2>
+<p class="desc">整理區間持續收縮且成交量萎縮，籌碼沉澱中。等待放量突破整理高點，突破當下進場，停損設突破當日最低點。</p>
+<div class="section"><p style='color:#8b949e'>今日無 VCP 訊號。</p></div>
+
+<h2>四、強勢觀察名單</h2>
+<p class="desc">符合強勢趨勢條件，但今日波幅已大或尚無整理型態，先觀察等待更好的進場機會。</p>
+<div class="section"><table><tr><th>型態</th><th>代號</th><th>名稱</th><th>市場</th><th>收盤</th><th>ADR%</th><th>前段漲幅</th><th>日均成交</th><th>量比</th><th>跳空</th><th>RS背離</th><th>分數</th><th>看圖</th></tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3135" target="_blank" class="code-link">3135</a></td>
+          <td class="name">凌航</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">208.0</td>
+          <td class="green">7.35%</td>
+          <td class="green">+100.0%</td>
+          <td>1520M</td>
+          <td class="">0.24x</td>
+          <td class="">-14.14%</td>
+          <td class="green">+23.2%</td>
+          <td class="score-mid">13</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3135" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3026" target="_blank" class="code-link">3026</a></td>
+          <td class="name">禾伸堂</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">359.5</td>
+          <td class="green">8.64%</td>
+          <td class="green">+162.4%</td>
+          <td>2525M</td>
+          <td class="">0.22x</td>
+          <td class="">-9.14%</td>
+          <td class="green">+44.4%</td>
+          <td class="score-mid">12</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3026" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank" class="code-link">2464</a></td>
+          <td class="name">盟立</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">139.0</td>
+          <td class="green">8.47%</td>
+          <td class="green">+111.6%</td>
+          <td>3075M</td>
+          <td class="green">2.08x</td>
+          <td class="">0.0%</td>
+          <td class="green">+14.1%</td>
+          <td class="score-mid">12</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank" class="code-link">2492</a></td>
+          <td class="name">華新科</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">217.5</td>
+          <td class="green">7.21%</td>
+          <td class="yellow">+92.5%</td>
+          <td>3311M</td>
+          <td class="">0.46x</td>
+          <td class="">-5.62%</td>
+          <td class="green">+46.2%</td>
+          <td class="score-mid">12</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank" class="code-link">7769</a></td>
+          <td class="name">鴻勁</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">6655.0</td>
+          <td class="green">6.42%</td>
+          <td class="yellow">+74.7%</td>
+          <td>7943M</td>
+          <td class="">0.55x</td>
+          <td class="">-13.66%</td>
+          <td class="green">+23.5%</td>
+          <td class="score-mid">12</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3028" target="_blank" class="code-link">3028</a></td>
+          <td class="name">增你強</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">81.2</td>
+          <td class="green">6.3%</td>
+          <td class="yellow">+62.4%</td>
+          <td>545M</td>
+          <td class="">1.31x</td>
+          <td class="">-0.25%</td>
+          <td class="green">+17.2%</td>
+          <td class="score-mid">12</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3028" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7610" target="_blank" class="code-link">7610</a></td>
+          <td class="name">聯友金屬-創</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">1030.0</td>
+          <td class="green">8.38%</td>
+          <td class="green">+178.8%</td>
+          <td>658M</td>
+          <td class="">1.47x</td>
+          <td class="">-0.42%</td>
+          <td class="green">+42.4%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7610" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank" class="code-link">6531</a></td>
+          <td class="name">愛普*</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">1135.0</td>
+          <td class="green">8.97%</td>
+          <td class="green">+158.0%</td>
+          <td>6323M</td>
+          <td class="">1.12x</td>
+          <td class="">-10.04%</td>
+          <td class="green">+15.9%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2303" target="_blank" class="code-link">2303</a></td>
+          <td class="name">聯電</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">111.0</td>
+          <td class="green">6.91%</td>
+          <td class="green">+110.2%</td>
+          <td>23423M</td>
+          <td class="">1.01x</td>
+          <td class="">-8.05%</td>
+          <td class="green">+33.5%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2303" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank" class="code-link">2327</a></td>
+          <td class="name">國巨*</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">501.0</td>
+          <td class="green">6.3%</td>
+          <td class="green">+104.5%</td>
+          <td>18891M</td>
+          <td class="green">1.85x</td>
+          <td class="">-3.55%</td>
+          <td class="green">+39.8%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank" class="code-link">4576</a></td>
+          <td class="name">大銀微系統</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">258.5</td>
+          <td class="green">8.43%</td>
+          <td class="yellow">+99.6%</td>
+          <td>1358M</td>
+          <td class="yellow">1.56x</td>
+          <td class="">+3.2%</td>
+          <td class="green">+10.2%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3583" target="_blank" class="code-link">3583</a></td>
+          <td class="name">辛耘</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">900.0</td>
+          <td class="green">7.72%</td>
+          <td class="yellow">+95.2%</td>
+          <td>2748M</td>
+          <td class="">0.63x</td>
+          <td class="">-9.58%</td>
+          <td class="green">+9.9%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3583" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank" class="code-link">6831</a></td>
+          <td class="name">邁科</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">732.0</td>
+          <td class="green">7.81%</td>
+          <td class="yellow">+90.4%</td>
+          <td>1147M</td>
+          <td class="">0.37x</td>
+          <td class="">-7.11%</td>
+          <td class="green">+40.5%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank" class="code-link">1727</a></td>
+          <td class="name">中華化</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">87.7</td>
+          <td class="green">8.59%</td>
+          <td class="yellow">+87.8%</td>
+          <td>1395M</td>
+          <td class="green">2.16x</td>
+          <td class="">+0.69%</td>
+          <td class="green">+6.2%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2351" target="_blank" class="code-link">2351</a></td>
+          <td class="name">順德</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">180.5</td>
+          <td class="green">7.84%</td>
+          <td class="yellow">+82.7%</td>
+          <td>1818M</td>
+          <td class="">0.41x</td>
+          <td class="">-9.14%</td>
+          <td class="green">+12.7%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2351" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6426" target="_blank" class="code-link">6426</a></td>
+          <td class="name">統新</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">268.5</td>
+          <td class="green">9.57%</td>
+          <td class="yellow">+74.9%</td>
+          <td>1001M</td>
+          <td class="">0.83x</td>
+          <td class="">-8.17%</td>
+          <td class="green">+10.3%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6426" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3450" target="_blank" class="code-link">3450</a></td>
+          <td class="name">聯鈞</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">410.0</td>
+          <td class="green">8.59%</td>
+          <td class="yellow">+70.1%</td>
+          <td>7278M</td>
+          <td class="">0.22x</td>
+          <td class="">-8.6%</td>
+          <td class="green">+13.4%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3450" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A8028" target="_blank" class="code-link">8028</a></td>
+          <td class="name">昇陽半導體</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">278.5</td>
+          <td class="green">7.08%</td>
+          <td class="yellow">+63.8%</td>
+          <td>4952M</td>
+          <td class="">1.13x</td>
+          <td class="">-0.87%</td>
+          <td class="green">+15.1%</td>
+          <td class="score-mid">11</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A8028" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3055" target="_blank" class="code-link">3055</a></td>
+          <td class="name">蔚華科</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">113.0</td>
+          <td class="green">7.12%</td>
+          <td class="green">+100.7%</td>
+          <td>340M</td>
+          <td class="">1.2x</td>
+          <td class="">-6.79%</td>
+          <td class="green">+42.0%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3055" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank" class="code-link">6415</a></td>
+          <td class="name">矽力*-KY</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">514.0</td>
+          <td class="green">6.47%</td>
+          <td class="yellow">+92.5%</td>
+          <td>3312M</td>
+          <td class="">0.91x</td>
+          <td class="">+0.4%</td>
+          <td class="green">+12.4%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6449" target="_blank" class="code-link">6449</a></td>
+          <td class="name">鈺邦</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">271.0</td>
+          <td class="green">6.01%</td>
+          <td class="yellow">+84.4%</td>
+          <td>503M</td>
+          <td class="green">4.52x</td>
+          <td class="">0.0%</td>
+          <td class="green">+61.1%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6449" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2472" target="_blank" class="code-link">2472</a></td>
+          <td class="name">立隆電</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">235.0</td>
+          <td class="green">7.35%</td>
+          <td class="yellow">+83.6%</td>
+          <td>1630M</td>
+          <td class="yellow">1.58x</td>
+          <td class="">-7.13%</td>
+          <td class="green">+22.0%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2472" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank" class="code-link">3209</a></td>
+          <td class="name">全科</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">73.3</td>
+          <td class="green">5.63%</td>
+          <td class="yellow">+81.9%</td>
+          <td>358M</td>
+          <td class="green">1.89x</td>
+          <td class="">0.0%</td>
+          <td class="green">+33.3%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3006" target="_blank" class="code-link">3006</a></td>
+          <td class="name">晶豪科</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">252.0</td>
+          <td class="green">7.49%</td>
+          <td class="yellow">+71.4%</td>
+          <td>5484M</td>
+          <td class="">0.88x</td>
+          <td class="">-6.9%</td>
+          <td class="green">+36.2%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3006" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3048" target="_blank" class="code-link">3048</a></td>
+          <td class="name">益登</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">57.3</td>
+          <td class="green">5.46%</td>
+          <td class="yellow">+69.3%</td>
+          <td>560M</td>
+          <td class="green">4.58x</td>
+          <td class="purple">+5.17%</td>
+          <td class="green">+49.8%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3048" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3481" target="_blank" class="code-link">3481</a></td>
+          <td class="name">群創</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">38.7</td>
+          <td class="green">6.44%</td>
+          <td class="yellow">+68.6%</td>
+          <td>16566M</td>
+          <td class="green">1.83x</td>
+          <td class="">-6.38%</td>
+          <td class="green">+44.3%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3481" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2049" target="_blank" class="code-link">2049</a></td>
+          <td class="name">上銀</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">378.5</td>
+          <td class="green">5.59%</td>
+          <td class="yellow">+67.8%</td>
+          <td>3016M</td>
+          <td class="">0.88x</td>
+          <td class="">-1.63%</td>
+          <td class="green">+19.9%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2049" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3090" target="_blank" class="code-link">3090</a></td>
+          <td class="name">日電貿</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">148.0</td>
+          <td class="green">6.61%</td>
+          <td class="yellow">+63.7%</td>
+          <td>1454M</td>
+          <td class="green">3.06x</td>
+          <td class="">-0.35%</td>
+          <td class="green">+30.8%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3090" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2478" target="_blank" class="code-link">2478</a></td>
+          <td class="name">大毅</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">91.8</td>
+          <td class="green">6.66%</td>
+          <td class="yellow">+61.9%</td>
+          <td>438M</td>
+          <td class="green">2.14x</td>
+          <td class="">-6.38%</td>
+          <td class="green">+18.0%</td>
+          <td class="">10</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2478" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6451" target="_blank" class="code-link">6451</a></td>
+          <td class="name">訊芯-KY</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">520.0</td>
+          <td class="green">8.95%</td>
+          <td class="yellow">+80.6%</td>
+          <td>2029M</td>
+          <td class="green">1.88x</td>
+          <td class="">-1.39%</td>
+          <td class="green">+11.6%</td>
+          <td class="">9</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6451" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4540" target="_blank" class="code-link">4540</a></td>
+          <td class="name">全球傳動</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">71.0</td>
+          <td class="green">7.39%</td>
+          <td class="yellow">+74.4%</td>
+          <td>916M</td>
+          <td class="green">1.88x</td>
+          <td class="">-1.41%</td>
+          <td class="yellow">+1.5%</td>
+          <td class="">9</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4540" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank" class="code-link">6285</a></td>
+          <td class="name">啟碁</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">286.0</td>
+          <td class="green">6.96%</td>
+          <td class="yellow">+62.5%</td>
+          <td>7412M</td>
+          <td class="">1.29x</td>
+          <td class="">-6.27%</td>
+          <td class="green">+22.4%</td>
+          <td class="">9</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank">📈 TV</a></td>
+        </tr>
+        <tr class="">
+          <td><span class="badge watch">↑ 強勢</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4722" target="_blank" class="code-link">4722</a></td>
+          <td class="name">國精化</td>
+          <td class="mkt">TWSE</td>
+          <td class="price">255.5</td>
+          <td class="green">7.86%</td>
+          <td class="yellow">+60.7%</td>
+          <td>1096M</td>
+          <td class="">1.18x</td>
+          <td class="">-4.4%</td>
+          <td class="green">+42.6%</td>
+          <td class="">9</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4722" target="_blank">📈 TV</a></td>
+        </tr></table></div>
+
+<h2>五、風險控管與股數試算</h2>
+<div class="risk-table">
+  <div class="risk-item"><span class="risk-label">總資金</span><span class="risk-value">1,000,000 元</span></div>
+  <div class="risk-item"><span class="risk-label">單筆最大虧損 (1%)</span><span class="risk-value">10,000 元</span></div>
+  <div class="risk-item"><span class="risk-label">單股最大倉位 (15%)</span><span class="risk-value">150,000 元</span></div>
+  <div class="risk-item"><span class="risk-label">最多同時持股</span><span class="risk-value">6 檔</span></div>
+  <div class="risk-item"><span class="risk-label">全滿倉最大損失 (6%)</span><span class="risk-value">60,000 元</span></div>
+  <div class="risk-item"><span class="risk-label">停利規則</span><span class="risk-value">獲利達 2R 先出半倉，剩餘停損移至進場價</span></div>
+</div>
+<h3>各股建議股數（停損距離 = 1 個 ADR）</h3>
+<div class="section">
+<table>
+  <tr><th>代號</th><th>名稱</th><th>收盤</th><th>ADR%</th><th>停損距離</th><th>最多買入</th><th>投入金額</th><th>佔總資金</th></tr>
+  
+        <tr>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6166" target="_blank" class="code-link">6166</a></td>
+          <td class="name">凌華</td>
+          <td>113.5</td>
+          <td>6.17%</td>
+          <td>7.0 元</td>
+          <td>1,000 股</td>
+          <td>113,500 元</td>
+          <td class="green">11.3%</td>
+        </tr>
+        <tr>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank" class="code-link">6278</a></td>
+          <td class="name">台表科</td>
+          <td>210.0</td>
+          <td>9.52%</td>
+          <td>20.0 元</td>
+          <td>0 股 <span class="cap-note">上限</span></td>
+          <td>0 元</td>
+          <td class="green">0.0%</td>
+        </tr>
+</table>
+</div>
+
+<h2>六、風險提醒</h2>
+<div class="section">
+  <ul style="color:#8b949e; line-height:2; padding-left:20px;">
+    <li>停損原則：進場當日最低點跌破立即出場，不凹單</li>
+    <li>今日波幅過大（Range/ATR &gt; 67%）不追，等整理後再看</li>
+    <li>EP 跳空接近漲停板者，隔日注意開盤後是否有大量賣壓回落</li>
+    <li>收盤跌破 20MA → 出場；收盤跌破 50MA → 立即出場</li>
+  </ul>
+</div>
+
+<p class="footer">本報告由自動化程式每日產生，僅供參考，不構成投資建議。</p>
+</body>
+</html>
