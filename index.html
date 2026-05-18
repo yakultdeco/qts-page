@@ -1,1 +1,38 @@
-<meta http-equiv="refresh" content="0;url=intraday_monitor.html">
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QTS 台股交易系統</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0d1117; color: #e6edf3; font-family: -apple-system, 'Segoe UI', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; }
+  .container { max-width: 480px; width: 100%; }
+  h1 { font-size: 22px; font-weight: 700; margin-bottom: 6px; }
+  .sub { color: #8b949e; font-size: 13px; margin-bottom: 32px; }
+  .card { display: block; background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px 24px; margin-bottom: 14px; text-decoration: none; color: inherit; transition: border-color .15s; }
+  .card:hover { border-color: #388bfd; }
+  .card-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+  .card-desc { font-size: 13px; color: #8b949e; }
+  .badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 20px; margin-bottom: 10px; }
+  .badge-scan { background: #1a3a1a; color: #3fb950; border: 1px solid #238636; }
+  .badge-monitor { background: #1a2d3d; color: #79c0ff; border: 1px solid #388bfd; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>QTS 台股交易系統</h1>
+  <p class="sub">Qullamaggie 策略 · 每日掃描 · 盤中監控</p>
+  <a class="card" href="qts_report.html">
+    <div class="badge badge-scan">每日更新</div>
+    <div class="card-title">📊 每日掃描報告</div>
+    <div class="card-desc">EP · VCP · RS 背離 · 評分排名</div>
+  </a>
+  <a class="card" href="intraday_monitor.html">
+    <div class="badge badge-monitor">盤中即時</div>
+    <div class="card-title">📈 盤中監控</div>
+    <div class="card-desc">即時報價 · 進場訊號 · 量能步調</div>
+  </a>
+</div>
+</body>
+</html>
