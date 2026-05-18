@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>盤中監控 05:31:20</title>
+<title>盤中監控 05:36:40</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: #0d1117; color: #e6edf3; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 13px; padding: 16px; }
@@ -69,6 +69,33 @@ tr.vcp-row td { border-left: 3px solid #58a6ff; }
 .limit-up { color: #ff6b6b; font-weight: bold; }
 .limit-dn { color: #58a6ff; font-weight: bold; }
 .tv-btn { color: #8b949e; text-decoration: none; }
+
+/* 進場按鈕 */
+.entry-btn { background:#0d2844; color:#58a6ff; border:1px solid #1f6feb; border-radius:4px; padding:2px 8px; font-size:12px; cursor:pointer; }
+.entry-btn:hover { background:#1f6feb; color:#fff; }
+
+/* Modal */
+.modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); display:flex; align-items:center; justify-content:center; z-index:1000; }
+.modal-box { background:#161b22; border:1px solid #30363d; border-radius:12px; padding:20px 24px; min-width:290px; max-width:360px; width:90%; }
+.modal-box h3 { color:#f0f6fc; font-size:15px; margin-bottom:14px; }
+.modal-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:9px; }
+.modal-label { color:#8b949e; font-size:12px; }
+.modal-val { font-size:13px; text-align:right; }
+.modal-note { color:#484f58; font-size:11px; margin-top:10px; margin-bottom:14px; }
+.modal-actions { display:flex; gap:8px; justify-content:flex-end; }
+.confirm-btn { background:#238636; color:#fff; border:none; border-radius:6px; padding:6px 18px; font-size:13px; cursor:pointer; font-weight:600; }
+.confirm-btn:hover { background:#2ea043; }
+.cancel-btn { background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:6px; padding:6px 14px; font-size:13px; cursor:pointer; }
+.cancel-btn:hover { background:#30363d; color:#e6edf3; }
+
+/* 持倉表格 */
+.close-btn { background:#2d1f0a; color:#f85149; border:1px solid #da3633; border-radius:4px; padding:2px 8px; font-size:11px; cursor:pointer; }
+.close-btn:hover { background:#da3633; color:#fff; }
+.pnl-pos { color:#3fb950; font-weight:bold; }
+.pnl-neg { color:#f85149; font-weight:bold; }
+.stop-hit-row td { background:#1a0a0a !important; }
+.pos-header { background:#161b22; padding:8px 14px; border-bottom:1px solid #30363d; font-size:12px; color:#8b949e; font-weight:600; }
+
 .footer { color: #484f58; font-size: 11px; margin-top: 12px; }
 .refresh-bar { display:flex; align-items:center; gap:12px; margin-bottom:10px; }
 .countdown { color: #8b949e; font-size: 12px; }
@@ -86,19 +113,88 @@ function _tick() {
 }
 setInterval(_tick, 1000);
 function manualRefresh() { location.reload(); }
+
+// ── 持倉追蹤 ──────────────────────────────────────────
+const _SK = 'qts_positions_v1';
+function _getPos() { return JSON.parse(localStorage.getItem(_SK) || '[]'); }
+function _savePos(ps) { localStorage.setItem(_SK, JSON.stringify(ps)); }
+
+let _md = null;
+
+function openModal(tr) {
+  const d = tr.dataset;
+  if (!d.last) { alert('目前無報價，無法建立部位'); return; }
+  _md = { code:d.code, name:d.name, price:parseFloat(d.last), stop:d.stop?parseFloat(d.stop):null, type:d.type };
+  const slvTxt = ['⚪ 等待','🔵 接近進場','🟠 量偏弱','🟡 突破確認','🟢 強量突破'][parseInt(d.slv)]||'';
+  const sd = _md.stop ? ((_md.price-_md.stop)/_md.price*100).toFixed(1) : '-';
+  document.getElementById('modal-content').innerHTML = `
+    <div class="modal-row"><span class="modal-label">股票</span><span class="modal-val bold" style="color:#58a6ff">${d.code} ${d.name}</span></div>
+    <div class="modal-row"><span class="modal-label">型態</span><span class="modal-val">${d.type}</span></div>
+    <div class="modal-row"><span class="modal-label">訊號</span><span class="modal-val">${slvTxt}</span></div>
+    <div class="modal-row"><span class="modal-label">模擬進場價</span><span class="modal-val bold" style="color:#f0a500">${_md.price.toFixed(2)}</span></div>
+    <div class="modal-row"><span class="modal-label">停損</span><span class="modal-val">${_md.stop ? _md.stop.toFixed(2)+' (-'+sd+'%)' : '-'}</span></div>
+    <div class="modal-note">以當前報價模擬進場，僅追蹤 % 報酬，不含金額</div>`;
+  document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() { document.getElementById('modal').style.display='none'; _md=null; }
+
+function confirmEntry() {
+  if (!_md) return;
+  const ps = _getPos();
+  const ei = ps.findIndex(p=>p.code===_md.code);
+  if (ei>=0) { if(!confirm(`${_md.code} 已有部位，要覆蓋嗎？`)) return; ps.splice(ei,1); }
+  ps.push({ code:_md.code, name:_md.name, entryPrice:_md.price, stopPrice:_md.stop, type:_md.type,
+             entryDate:new Date().toLocaleDateString('zh-TW') });
+  _savePos(ps); closeModal(); renderPositions();
+}
+
+function closePosition(i) {
+  const ps=_getPos(); ps.splice(i,1); _savePos(ps); renderPositions();
+}
+
+function _curPrice(code) {
+  const tr=document.querySelector(`tr[data-code="${code}"]`);
+  if(!tr||!tr.dataset.last) return null;
+  const v=parseFloat(tr.dataset.last); return isNaN(v)?null:v;
+}
+
+function renderPositions() {
+  const ps=_getPos(), sec=document.getElementById('positions-section');
+  if(!sec) return;
+  if(!ps.length) { sec.innerHTML=''; return; }
+  let rows='';
+  ps.forEach((p,i)=>{
+    const cur=_curPrice(p.code);
+    let pnlH='<span class="na">-</span>', riskH='<span class="na">-</span>', hit=false;
+    if(cur!==null) {
+      const pnl=(cur-p.entryPrice)/p.entryPrice*100;
+      pnlH=`<span class="${pnl>=0?'pnl-pos':'pnl-neg'}">${pnl>=0?'+':''}${pnl.toFixed(2)}%</span>`;
+      if(p.stopPrice) {
+        const sd=(cur-p.stopPrice)/cur*100; hit=cur<=p.stopPrice;
+        riskH=`<span class="${hit?'pnl-neg bold':sd<2?'dn':'grey'}">${hit?'⚠️ 停損':'-'+sd.toFixed(1)+'%'}</span>`;
+      }
+    }
+    const curH=cur?`<span class="${hit?'pnl-neg':''}">${cur.toFixed(2)}</span>`:'<span class="na">-</span>';
+    rows+=`<tr ${hit?'class="stop-hit-row"':''}><td class="num bold" style="color:#58a6ff">${p.code}</td><td>${p.name}</td><td><span class="badge ${p.type==='EP'?'ep':p.type==='VCP'?'vcp':'watch'}">${p.type}</span></td><td class="grey xsm">${p.entryDate}</td><td class="num entry-col">${p.entryPrice.toFixed(2)}</td><td class="num">${curH}</td><td class="num bold">${pnlH}</td><td>${riskH}</td><td><button class="close-btn" onclick="closePosition(${i})">平倉</button></td></tr>`;
+  });
+  sec.innerHTML=`<div class="section" style="margin-bottom:14px"><div class="pos-header">📊 模擬持倉（${ps.length}）</div><table><thead><tr><th>代號</th><th>名稱</th><th>型態</th><th>進場日</th><th>進場價</th><th>現價</th><th>損益%</th><th>停損距</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+document.addEventListener('DOMContentLoaded', renderPositions);
 </script>
 </head>
 <body>
 
 <h1>QTS 盤中監控</h1>
-<p class="sub">掃描基準 20260518 · 2026年05月18日（星期一）· 頁面每 3 分鐘自動更新</p>
+<p class="sub">掃描基準 20260518 · 2026年05月18日（星期一）· 頁面每 60 秒自動更新</p>
 
 <div class="top-bar">
   <span class="chip mkt">已收盤</span>
-  <span class="chip">更新 05:31:20</span>
+  <span class="chip">更新 05:36:40</span>
   <div class="taiex-card">
     <div class="taiex-label">加權指數 TAIEX</div>
-    <div class="taiex-val"><span class='dn'>40,918（-254 / -0.62%）</span></div>
+    <div class="taiex-val"><span class='dn'>40,892（-281 / -0.68%）</span></div>
   </div>
   <div class="stat-cards">
     <div class="stat-card"><div class="stat-n c4">0</div><div class="stat-lbl">🟢 強量突破</div></div>
@@ -110,6 +206,8 @@ function manualRefresh() { location.reload(); }
 </div>
 
 
+
+<div id="positions-section"></div>
 
 <div class="refresh-bar">
   <span class="countdown"><span id="cd">60</span> 秒後自動更新</span>
@@ -146,10 +244,11 @@ function manualRefresh() { location.reload(); }
       <th>時間</th>
       <th>分</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-        <tr class="ep-row">
+        <tr class="ep-row" data-code="2464" data-name="盟立" data-last="139.00" data-stop="119.00" data-entry="139.00" data-type="EP" data-slv="2">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge ep'>★ EP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank" class="code-link">2464</a></td>
@@ -168,8 +267,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">11</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="ep-row">
+        <tr class="ep-row" data-code="2327" data-name="國巨*" data-last="501.00" data-stop="467.50" data-entry="501.00" data-type="EP" data-slv="2">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge ep'>★ EP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank" class="code-link">2327</a></td>
@@ -188,8 +288,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">11</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="6415" data-name="矽力*-KY" data-last="514.00" data-stop="454.00" data-entry="514.00" data-type="WATCH" data-slv="2">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank" class="code-link">6415</a></td>
@@ -208,8 +309,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="6285" data-name="啟碁" data-last="286.00" data-stop="254.00" data-entry="286.00" data-type="WATCH" data-slv="2">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank" class="code-link">6285</a></td>
@@ -228,8 +330,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="6531" data-name="愛普*" data-last="1135.00" data-stop="903.00" data-entry="1145.00" data-type="WATCH" data-slv="1">
           <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank" class="code-link">6531</a></td>
@@ -248,8 +351,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="7610" data-name="聯友金屬-創" data-last="1030.00" data-stop="773.00" data-entry="1040.00" data-type="WATCH" data-slv="1">
           <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7610" target="_blank" class="code-link">7610</a></td>
@@ -268,8 +372,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7610" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2492" data-name="華新科" data-last="217.50" data-stop="167.50" data-entry="222.50" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank" class="code-link">2492</a></td>
@@ -288,8 +393,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="ep-row">
+        <tr class="ep-row" data-code="1582" data-name="信錦" data-last="106.50" data-stop="97.90" data-entry="109.00" data-type="EP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge ep'>★ EP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1582" target="_blank" class="code-link">1582</a></td>
@@ -308,8 +414,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1582" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="1727" data-name="中華化" data-last="87.70" data-stop="75.30" data-entry="90.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank" class="code-link">1727</a></td>
@@ -328,8 +435,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="8028" data-name="昇陽半導體" data-last="278.50" data-stop="228.00" data-entry="287.50" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A8028" target="_blank" class="code-link">8028</a></td>
@@ -348,8 +456,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A8028" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="ep-row">
+        <tr class="ep-row" data-code="6449" data-name="鈺邦" data-last="271.00" data-stop="254.00" data-entry="280.00" data-type="EP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge ep'>★ EP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6449" target="_blank" class="code-link">6449</a></td>
@@ -368,8 +477,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">10</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6449" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="6257" data-name="矽格" data-last="218.50" data-stop="204.00" data-entry="226.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6257" target="_blank" class="code-link">6257</a></td>
@@ -388,8 +498,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6257" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="3006" data-name="晶豪科" data-last="252.00" data-stop="210.00" data-entry="261.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3006" target="_blank" class="code-link">3006</a></td>
@@ -408,8 +519,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3006" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="ep-row">
+        <tr class="ep-row" data-code="2359" data-name="所羅門" data-last="139.00" data-stop="130.00" data-entry="145.00" data-type="EP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge ep'>★ EP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2359" target="_blank" class="code-link">2359</a></td>
@@ -428,8 +540,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2359" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="6139" data-name="亞翔" data-last="721.00" data-stop="663.00" data-entry="754.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6139" target="_blank" class="code-link">6139</a></td>
@@ -448,8 +561,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6139" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2344" data-name="華邦電" data-last="130.50" data-stop="115.00" data-entry="136.50" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2344" target="_blank" class="code-link">2344</a></td>
@@ -468,8 +582,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2344" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="1560" data-name="中砂" data-last="649.00" data-stop="615.00" data-entry="683.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1560" target="_blank" class="code-link">1560</a></td>
@@ -488,8 +603,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1560" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2049" data-name="上銀" data-last="378.50" data-stop="342.50" data-entry="399.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2049" target="_blank" class="code-link">2049</a></td>
@@ -508,8 +624,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2049" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="4576" data-name="大銀微系統" data-last="258.50" data-stop="239.00" data-entry="274.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank" class="code-link">4576</a></td>
@@ -528,8 +645,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="ep-row">
+        <tr class="ep-row" data-code="2376" data-name="技嘉" data-last="330.50" data-stop="328.00" data-entry="351.00" data-type="EP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge ep'>★ EP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2376" target="_blank" class="code-link">2376</a></td>
@@ -548,8 +666,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2376" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2303" data-name="聯電" data-last="111.00" data-stop="94.30" data-entry="118.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2303" target="_blank" class="code-link">2303</a></td>
@@ -568,8 +687,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2303" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="2409" data-name="友達" data-last="19.25" data-stop="18.20" data-entry="20.70" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2409" target="_blank" class="code-link">2409</a></td>
@@ -588,8 +708,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2409" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="2345" data-name="智邦" data-last="2495.00" data-stop="2375.00" data-entry="2695.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2345" target="_blank" class="code-link">2345</a></td>
@@ -608,8 +729,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2345" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2363" data-name="矽統" data-last="61.40" data-stop="57.50" data-entry="66.50" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2363" target="_blank" class="code-link">2363</a></td>
@@ -628,8 +750,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2363" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2472" data-name="立隆電" data-last="235.00" data-stop="209.50" data-entry="256.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2472" target="_blank" class="code-link">2472</a></td>
@@ -648,8 +771,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2472" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="3035" data-name="智原" data-last="193.00" data-stop="177.00" data-entry="210.50" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3035" target="_blank" class="code-link">3035</a></td>
@@ -668,8 +792,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3035" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="6209" data-name="今國光" data-last="68.00" data-stop="61.90" data-entry="74.30" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6209" target="_blank" class="code-link">6209</a></td>
@@ -688,8 +813,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6209" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="4906" data-name="正文" data-last="38.90" data-stop="37.90" data-entry="42.55" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4906" target="_blank" class="code-link">4906</a></td>
@@ -708,8 +834,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4906" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2451" data-name="創見" data-last="328.50" data-stop="320.00" data-entry="360.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2451" target="_blank" class="code-link">2451</a></td>
@@ -728,8 +855,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2451" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="6196" data-name="帆宣" data-last="410.50" data-stop="392.50" data-entry="450.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6196" target="_blank" class="code-link">6196</a></td>
@@ -748,8 +876,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6196" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2377" data-name="微星" data-last="113.00" data-stop="103.50" data-entry="124.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2377" target="_blank" class="code-link">2377</a></td>
@@ -768,8 +897,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2377" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="2467" data-name="志聖" data-last="594.00" data-stop="561.00" data-entry="653.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2467" target="_blank" class="code-link">2467</a></td>
@@ -788,8 +918,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2467" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2313" data-name="華通" data-last="259.00" data-stop="233.50" data-entry="285.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2313" target="_blank" class="code-link">2313</a></td>
@@ -808,8 +939,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2313" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="5269" data-name="祥碩" data-last="1390.00" data-stop="1375.00" data-entry="1545.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A5269" target="_blank" class="code-link">5269</a></td>
@@ -828,8 +960,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A5269" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="3645" data-name="達邁" data-last="107.00" data-stop="100.50" data-entry="119.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3645" target="_blank" class="code-link">3645</a></td>
@@ -848,8 +981,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3645" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="2337" data-name="旺宏" data-last="160.00" data-stop="147.00" data-entry="178.50" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2337" target="_blank" class="code-link">2337</a></td>
@@ -868,8 +1002,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2337" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="6451" data-name="訊芯-KY" data-last="520.00" data-stop="443.50" data-entry="583.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6451" target="_blank" class="code-link">6451</a></td>
@@ -888,8 +1023,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6451" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="3583" data-name="辛耘" data-last="900.00" data-stop="847.00" data-entry="1010.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3583" target="_blank" class="code-link">3583</a></td>
@@ -908,8 +1044,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">11</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3583" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="3450" data-name="聯鈞" data-last="410.00" data-stop="380.50" data-entry="470.50" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3450" target="_blank" class="code-link">3450</a></td>
@@ -928,8 +1065,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3450" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="8271" data-name="宇瞻" data-last="236.00" data-stop="228.00" data-entry="271.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A8271" target="_blank" class="code-link">8271</a></td>
@@ -948,8 +1086,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A8271" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="6669" data-name="緯穎" data-last="5090.00" data-stop="4920.00" data-entry="5870.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6669" target="_blank" class="code-link">6669</a></td>
@@ -968,8 +1107,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6669" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="3135" data-name="凌航" data-last="208.00" data-stop="199.50" data-entry="240.50" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3135" target="_blank" class="code-link">3135</a></td>
@@ -988,8 +1128,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3135" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="6278" data-name="台表科" data-last="210.00" data-stop="200.00" data-entry="243.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank" class="code-link">6278</a></td>
@@ -1008,8 +1149,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2408" data-name="南亞科" data-last="305.00" data-stop="287.00" data-entry="353.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2408" target="_blank" class="code-link">2408</a></td>
@@ -1028,8 +1170,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2408" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2454" data-name="聯發科" data-last="3400.00" data-stop="3150.00" data-entry="3985.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2454" target="_blank" class="code-link">2454</a></td>
@@ -1048,8 +1191,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2454" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="2301" data-name="光寶科" data-last="207.50" data-stop="196.00" data-entry="246.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2301" target="_blank" class="code-link">2301</a></td>
@@ -1068,8 +1212,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2301" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="7769" data-name="鴻勁" data-last="6655.00" data-stop="6360.00" data-entry="7995.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank" class="code-link">7769</a></td>
@@ -1088,8 +1233,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="7750" data-name="新代" data-last="2540.00" data-stop="2480.00" data-entry="3070.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7750" target="_blank" class="code-link">7750</a></td>
@@ -1108,8 +1254,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">9</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7750" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row">
+        <tr class="vcp-row" data-code="3661" data-name="世芯-KY" data-last="4590.00" data-stop="4340.00" data-entry="5640.00" data-type="VCP" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● VCP</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3661" target="_blank" class="code-link">3661</a></td>
@@ -1128,8 +1275,9 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">8</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3661" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="">
+        <tr class="" data-code="3443" data-name="創意" data-last="4740.00" data-stop="4560.00" data-entry="5950.00" data-type="WATCH" data-slv="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3443" target="_blank" class="code-link">3443</a></td>
@@ -1148,6 +1296,7 @@ function manualRefresh() { location.reload(); }
           <td class="num grey xsm">13:30:00</td>
           <td class="num xsm">7</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3443" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr></tbody>
 </table>
 </div>
@@ -1155,6 +1304,18 @@ function manualRefresh() { location.reload(); }
 <div class="footer">
   進場價：EP = ORH（9:15後鎖定開盤區間高點）｜VCP = 整理區高點（近15根K棒高點）｜停損 = 整理區最低點<br>
   量能步調超過150%才算強量突破；大盤跌超過1%時，個股突破需提高量能門檻（建議 ≥200%）
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <h3>模擬建立部位</h3>
+    <div id="modal-content"></div>
+    <div class="modal-actions">
+      <button class="cancel-btn" onclick="closeModal()">取消</button>
+      <button class="confirm-btn" onclick="confirmEntry()">確認進場</button>
+    </div>
+  </div>
 </div>
 
 </body>
