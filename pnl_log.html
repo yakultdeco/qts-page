@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QTS 模擬交易紀錄</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0d1117; color: #e6edf3; font-family: -apple-system,'Segoe UI',sans-serif; font-size: 13px; padding: 16px; }
+h1 { color: #f0f6fc; font-size: 18px; margin-bottom: 4px; }
+.sub { color: #8b949e; font-size: 12px; margin-bottom: 14px; }
+.topbar { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+.back-link { color: #58a6ff; text-decoration: none; font-size: 13px; padding: 4px 10px; border: 1px solid #30363d; border-radius: 6px; }
+.back-link:hover { background: #161b22; }
+#last-update { color: #8b949e; font-size: 12px; margin-left: auto; }
+
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 16px; }
+.stat-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 10px 14px; }
+.stat-label { color: #8b949e; font-size: 11px; margin-bottom: 4px; }
+.stat-value { font-size: 20px; font-weight: bold; color: #f0f6fc; }
+.stat-value.pos { color: #3fb950; }
+.stat-value.neg { color: #f85149; }
+.stat-sub { color: #8b949e; font-size: 11px; margin-top: 2px; }
+
+.filters { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; align-items: center; }
+.filter-label { color: #8b949e; font-size: 12px; }
+select { background: #0d1117; color: #e6edf3; border: 1px solid #30363d; border-radius: 6px; padding: 4px 8px; font-size: 12px; }
+
+table { width: 100%; border-collapse: collapse; background: #161b22; border-radius: 8px; overflow: hidden; }
+th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid #21262d; font-size: 12px; }
+th { background: #21262d; color: #f0f6fc; font-size: 11px; font-weight: 600; cursor: pointer; user-select: none; }
+th:hover { background: #30363d; }
+th .sort-arrow { color: #8b949e; font-size: 10px; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.bold { font-weight: bold; }
+.pnl-pos { color: #3fb950; }
+.pnl-neg { color: #f85149; }
+.reason-loss { color: #f85149; }
+.reason-profit { color: #3fb950; }
+.reason-manual { color: #8b949e; }
+.badge { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; }
+.badge.ep { background: #1f6feb; color: #fff; }
+.badge.vcp { background: #6e40c9; color: #fff; }
+.badge.watch { background: #484f58; color: #fff; }
+.empty { padding: 30px; text-align: center; color: #8b949e; }
+.refresh-btn { background: #21262d; color: #58a6ff; border: 1px solid #30363d; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+.refresh-btn:hover { background: #30363d; }
+.delete-btn { background: transparent; color: #8b949e; border: 1px solid #30363d; border-radius: 4px; padding: 2px 6px; font-size: 11px; cursor: pointer; }
+.delete-btn:hover { background: #2d1f0a; color: #f0a500; border-color: #f0a500; }
+</style>
+</head>
+<body>
+
+<h1>📊 QTS 模擬交易紀錄</h1>
+<p class="sub">所有自動停損／2R 停利／手動平倉都會記錄到 Gist · 跨裝置同步</p>
+
+<div class="topbar">
+  <a class="back-link" href="intraday_monitor.html">← 返回盤中監控</a>
+  <button class="refresh-btn" onclick="reload()">⟳ 重新整理</button>
+  <span id="last-update"></span>
+</div>
+
+<div class="stats-grid" id="stats-grid"></div>
+
+<div class="filters">
+  <span class="filter-label">型態：</span>
+  <select id="filter-type" onchange="applyFilter()">
+    <option value="all">全部</option>
+    <option value="EP">EP</option>
+    <option value="VCP">VCP</option>
+    <option value="強勢觀察">強勢觀察</option>
+  </select>
+  <span class="filter-label">出場原因：</span>
+  <select id="filter-reason" onchange="applyFilter()">
+    <option value="all">全部</option>
+    <option value="stop_profit">🎯 自動停利 (2R)</option>
+    <option value="stop_loss">🛑 自動停損</option>
+    <option value="manual">手動平倉</option>
+  </select>
+</div>
+
+<table id="trades-table">
+  <thead><tr>
+    <th onclick="sortBy('exitDate')">出場日</th>
+    <th onclick="sortBy('code')">代號</th>
+    <th>名稱</th>
+    <th onclick="sortBy('type')">型態</th>
+    <th onclick="sortBy('entryDate')">進場日</th>
+    <th class="num" onclick="sortBy('entryPrice')">進場價</th>
+    <th class="num" onclick="sortBy('stopPrice')">停損</th>
+    <th class="num" onclick="sortBy('exitPrice')">出場價</th>
+    <th onclick="sortBy('exitReason')">原因</th>
+    <th class="num" onclick="sortBy('daysHeld')">天數</th>
+    <th class="num" onclick="sortBy('pnlPct')">損益%</th>
+    <th class="num" onclick="sortBy('rMultiple')">R倍數</th>
+    <th></th>
+  </tr></thead>
+  <tbody id="trades-body"></tbody>
+</table>
+
+<script>
+const _GID   = '7ef3b5e9504333701f2e525f4fbe10c2';
+const _GTOK  = ['ghp','_HYrbdvQaFFK9Pm','TRh780OfK6FL8Ndq0x3iud'].join('');
+const _TFILE = 'qts_trades.json';
+
+let _allTrades = [];
+let _sortKey   = 'exitDate';
+let _sortDesc  = true;
+
+async function _fetchTrades() {
+  const r = await fetch(`https://api.github.com/gists/${_GID}`, {
+    headers: { Authorization: `token ${_GTOK}`, Accept: 'application/vnd.github.v3+json' }
+  });
+  if (!r.ok) throw new Error('fetch failed');
+  const d = await r.json();
+  const f = d.files[_TFILE];
+  if (!f) return [];
+  try { return JSON.parse(f.content).trades || []; } catch(e) { return []; }
+}
+
+async function _pushTrades(trades) {
+  await fetch(`https://api.github.com/gists/${_GID}`, {
+    method: 'PATCH',
+    headers: { Authorization: `token ${_GTOK}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ files: { [_TFILE]: { content: JSON.stringify({ trades }) } } })
+  });
+}
+
+async function deleteTrade(idx) {
+  if (!confirm('確定要刪除這筆交易紀錄？')) return;
+  // idx 是 _allTrades 的索引（不是過濾後的）
+  _allTrades.splice(idx, 1);
+  await _pushTrades(_allTrades).catch(e => alert('Gist 同步失敗：' + e));
+  applyFilter();
+}
+
+function computeStats(trades) {
+  const n = trades.length;
+  if (!n) return { n: 0 };
+  const wins = trades.filter(t => t.pnlPct > 0);
+  const losses = trades.filter(t => t.pnlPct <= 0);
+  const winRate = wins.length / n * 100;
+  const sumPnl = trades.reduce((s, t) => s + t.pnlPct, 0);
+  const rTrades = trades.filter(t => t.rMultiple !== null && t.rMultiple !== undefined);
+  const sumR = rTrades.reduce((s, t) => s + t.rMultiple, 0);
+  const avgR = rTrades.length ? sumR / rTrades.length : null;
+  const avgWinR = wins.filter(t => t.rMultiple !== null && t.rMultiple !== undefined)
+    .reduce((s, t, _, a) => s + t.rMultiple / a.length, 0);
+  const avgLossR = losses.filter(t => t.rMultiple !== null && t.rMultiple !== undefined)
+    .reduce((s, t, _, a) => s + t.rMultiple / a.length, 0);
+  const expectancy = wins.length && losses.length
+    ? (wins.length / n) * avgWinR + (losses.length / n) * avgLossR
+    : avgR;
+  const avgDays = trades.reduce((s, t) => s + (t.daysHeld || 0), 0) / n;
+
+  // 連續勝/敗
+  let curStreak = 0, maxWinStreak = 0, maxLossStreak = 0;
+  const sorted = [...trades].sort((a, b) => (a.exitDate || '').localeCompare(b.exitDate || ''));
+  let prevSign = 0;
+  for (const t of sorted) {
+    const sign = t.pnlPct > 0 ? 1 : -1;
+    if (sign === prevSign) curStreak++;
+    else curStreak = 1;
+    if (sign > 0) maxWinStreak = Math.max(maxWinStreak, curStreak);
+    else maxLossStreak = Math.max(maxLossStreak, curStreak);
+    prevSign = sign;
+  }
+
+  return {
+    n, winRate, sumPnl, sumR, avgR, avgWinR, avgLossR, expectancy, avgDays,
+    nWins: wins.length, nLosses: losses.length,
+    maxWinStreak, maxLossStreak,
+  };
+}
+
+function _fmt(v, digits = 2) {
+  if (v === null || v === undefined || isNaN(v)) return '-';
+  return v.toFixed(digits);
+}
+function _fmtR(v) { return v === null || v === undefined ? '-' : (v >= 0 ? '+' : '') + v.toFixed(2) + 'R'; }
+function _fmtPct(v) { return v === null || v === undefined ? '-' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }
+
+function renderStats(s) {
+  const grid = document.getElementById('stats-grid');
+  if (!s.n) {
+    grid.innerHTML = '<div class="empty" style="grid-column: 1 / -1">尚無交易紀錄</div>';
+    return;
+  }
+  const pnlCls = s.sumPnl >= 0 ? 'pos' : 'neg';
+  const rCls   = s.sumR >= 0 ? 'pos' : 'neg';
+  const expCls = (s.expectancy || 0) >= 0 ? 'pos' : 'neg';
+  grid.innerHTML = `
+    <div class="stat-card"><div class="stat-label">交易筆數</div><div class="stat-value">${s.n}</div><div class="stat-sub">勝 ${s.nWins} ／ 敗 ${s.nLosses}</div></div>
+    <div class="stat-card"><div class="stat-label">勝率</div><div class="stat-value">${_fmt(s.winRate, 1)}%</div></div>
+    <div class="stat-card"><div class="stat-label">總損益%</div><div class="stat-value ${pnlCls}">${_fmtPct(s.sumPnl)}</div></div>
+    <div class="stat-card"><div class="stat-label">累積 R</div><div class="stat-value ${rCls}">${_fmtR(s.sumR)}</div></div>
+    <div class="stat-card"><div class="stat-label">平均 R</div><div class="stat-value">${_fmtR(s.avgR)}</div></div>
+    <div class="stat-card"><div class="stat-label">期望值 R</div><div class="stat-value ${expCls}">${_fmtR(s.expectancy)}</div><div class="stat-sub">每筆預期</div></div>
+    <div class="stat-card"><div class="stat-label">平均持倉</div><div class="stat-value">${_fmt(s.avgDays, 1)} 天</div></div>
+    <div class="stat-card"><div class="stat-label">最大連敗</div><div class="stat-value neg">${s.maxLossStreak}</div><div class="stat-sub">最大連勝 ${s.maxWinStreak}</div></div>
+  `;
+}
+
+function _reasonBadge(reason) {
+  if (reason === 'stop_loss')   return '<span class="reason-loss">🛑 停損</span>';
+  if (reason === 'stop_profit') return '<span class="reason-profit">🎯 停利 2R</span>';
+  if (reason === 'manual')      return '<span class="reason-manual">✋ 手動</span>';
+  return reason || '-';
+}
+
+function _typeBadge(type) {
+  const cls = type === 'EP' ? 'ep' : type === 'VCP' ? 'vcp' : 'watch';
+  return `<span class="badge ${cls}">${type || '-'}</span>`;
+}
+
+function renderTrades(trades, indexMap) {
+  const tbody = document.getElementById('trades-body');
+  if (!trades.length) {
+    tbody.innerHTML = '<tr><td colspan="13" class="empty">無符合條件的紀錄</td></tr>';
+    return;
+  }
+  tbody.innerHTML = trades.map((t, _) => {
+    const pnlCls = t.pnlPct >= 0 ? 'pnl-pos' : 'pnl-neg';
+    const rCls   = (t.rMultiple || 0) >= 0 ? 'pnl-pos' : 'pnl-neg';
+    const realIdx = indexMap[_];
+    return `<tr>
+      <td>${t.exitDate || '-'}</td>
+      <td class="bold" style="color:#58a6ff">${t.code}</td>
+      <td>${t.name || '-'}</td>
+      <td>${_typeBadge(t.type)}</td>
+      <td>${t.entryDate || '-'}</td>
+      <td class="num">${_fmt(t.entryPrice)}</td>
+      <td class="num">${_fmt(t.stopPrice)}</td>
+      <td class="num">${_fmt(t.exitPrice)}</td>
+      <td>${_reasonBadge(t.exitReason)}</td>
+      <td class="num">${t.daysHeld || '-'}</td>
+      <td class="num bold ${pnlCls}">${_fmtPct(t.pnlPct)}</td>
+      <td class="num bold ${rCls}">${_fmtR(t.rMultiple)}</td>
+      <td><button class="delete-btn" onclick="deleteTrade(${realIdx})">刪除</button></td>
+    </tr>`;
+  }).join('');
+}
+
+function applyFilter() {
+  const fType   = document.getElementById('filter-type').value;
+  const fReason = document.getElementById('filter-reason').value;
+  // 帶 indexMap 才能在過濾後也能正確刪除原 _allTrades
+  const filtered = [];
+  const indexMap = [];
+  _allTrades.forEach((t, i) => {
+    if (fType !== 'all' && t.type !== fType) return;
+    if (fReason !== 'all' && t.exitReason !== fReason) return;
+    filtered.push(t);
+    indexMap.push(i);
+  });
+  // 排序
+  const fact = _sortDesc ? -1 : 1;
+  const indexed = filtered.map((t, i) => ({t, origIdx: indexMap[i]}));
+  indexed.sort((a, b) => {
+    const av = a.t[_sortKey], bv = b.t[_sortKey];
+    if (av === null || av === undefined) return 1;
+    if (bv === null || bv === undefined) return -1;
+    if (typeof av === 'number') return (av - bv) * fact;
+    return String(av).localeCompare(String(bv)) * fact;
+  });
+  renderStats(computeStats(filtered));
+  renderTrades(indexed.map(x => x.t), indexed.map(x => x.origIdx));
+}
+
+function sortBy(key) {
+  if (_sortKey === key) _sortDesc = !_sortDesc;
+  else { _sortKey = key; _sortDesc = true; }
+  applyFilter();
+}
+
+async function reload() {
+  try {
+    _allTrades = await _fetchTrades();
+    document.getElementById('last-update').textContent = '更新 ' + new Date().toLocaleString('zh-TW');
+    applyFilter();
+  } catch(e) {
+    alert('載入失敗：' + e.message);
+  }
+}
+
+reload();
+setInterval(reload, 300000);  // 每 5 分鐘自動刷新
+</script>
+
+</body>
+</html>
