@@ -13,7 +13,7 @@ h1 { color: #f0f6fc; font-size: 17px; margin-bottom: 3px; }
 /* 頂部資訊列 */
 .top-bar { display: flex; gap: 12px; align-items: stretch; margin-bottom: 14px; flex-wrap: wrap; }
 .chip { background: #161b22; border: 1px solid #30363d; border-radius: 14px; padding: 3px 11px; font-size: 12px; align-self: center; }
-.chip.mkt { border-color: #3fb950; color: #3fb950; font-weight: 600; }
+.chip.mkt { border-color: #f85149; color: #f85149; font-weight: 600; }
 .taiex-card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 8px 14px; }
 .taiex-label { color: #8b949e; font-size: 11px; }
 .taiex-val { font-size: 15px; font-weight: 600; }
@@ -181,7 +181,7 @@ details[open] .waiting-summary { color:#e6edf3; }
 </style>
 <script>
 const _SCAN_DATA   = {"6166": {"name": "凌華", "market": "TWSE", "entry": 120.5, "stop": 102.5, "avg_vol": 4056829, "rs_div": 48.1, "rs_strong": true, "score": 17, "adr_pct": 5.97, "price": 113.5}, "6278": {"name": "台表科", "market": "TWSE", "entry": 243.0, "stop": 200.0, "avg_vol": 16792449, "rs_div": 20.2, "rs_strong": true, "score": 16, "adr_pct": 9.33, "price": 215.5}, "3028": {"name": "增你強", "market": "TWSE", "entry": 84.4, "stop": 72.3, "avg_vol": 7524844, "rs_div": 10.8, "rs_strong": true, "score": 14, "adr_pct": 6.23, "price": 81.8}, "3026": {"name": "禾伸堂", "market": "TWSE", "entry": 386.0, "stop": 316.0, "avg_vol": 9078350, "rs_div": 43.7, "rs_strong": true, "score": 13, "adr_pct": 8.84, "price": 365.0}, "4576": {"name": "大銀微系統", "market": "TWSE", "entry": 274.0, "stop": 239.0, "avg_vol": 5892025, "rs_div": 11.1, "rs_strong": true, "score": 13, "adr_pct": 8.62, "price": 252.0}, "2233": {"name": "宇隆", "market": "TWSE", "entry": 345.5, "stop": 279.5, "avg_vol": 1988561, "rs_div": 7.0, "rs_strong": true, "score": 13, "adr_pct": 6.8, "price": 340.0}, "2464": {"name": "盟立", "market": "TWSE", "entry": 140.5, "stop": 110.0, "avg_vol": 28927788, "rs_div": 24.5, "rs_strong": true, "score": 12, "adr_pct": 8.56, "price": 135.0}, "2492": {"name": "華新科", "market": "TWSE", "entry": 222.5, "stop": 181.5, "avg_vol": 19356677, "rs_div": 45.6, "rs_strong": true, "score": 12, "adr_pct": 7.23, "price": 220.0}, "7769": {"name": "鴻勁", "market": "TWSE", "entry": 7995.0, "stop": 6360.0, "avg_vol": 1374297, "rs_div": 19.6, "rs_strong": true, "score": 12, "adr_pct": 6.39, "price": 6600.0}, "7610": {"name": "聯友金屬-創", "market": "TWSE", "entry": 1040.0, "stop": 773.0, "avg_vol": 871883, "rs_div": 40.1, "rs_strong": true, "score": 11, "adr_pct": 8.46, "price": 1020.0}, "2303": {"name": "聯電", "market": "TWSE", "entry": 120.5, "stop": 94.5, "avg_vol": 257187163, "rs_div": 34.2, "rs_strong": true, "score": 11, "adr_pct": 7.06, "price": 113.0}, "6831": {"name": "邁科", "market": "TWSE", "entry": 755.0, "stop": 638.0, "avg_vol": 1957328, "rs_div": 31.9, "rs_strong": true, "score": 11, "adr_pct": 7.62, "price": 733.0}, "1727": {"name": "中華化", "market": "TWSE", "entry": 92.7, "stop": 77.1, "avg_vol": 18958111, "rs_div": 17.1, "rs_strong": true, "score": 11, "adr_pct": 8.7, "price": 87.5}, "4540": {"name": "全球傳動", "market": "TWSE", "entry": 75.9, "stop": 64.0, "avg_vol": 14053194, "rs_div": 9.8, "rs_strong": true, "score": 11, "adr_pct": 7.61, "price": 72.5}, "3055": {"name": "蔚華科", "market": "TWSE", "entry": 124.0, "stop": 99.5, "avg_vol": 4287465, "rs_div": 47.4, "rs_strong": true, "score": 10, "adr_pct": 7.47, "price": 124.0}, "6531": {"name": "愛普*", "market": "TWSE", "entry": 1150.0, "stop": 980.0, "avg_vol": 6836574, "rs_div": 12.5, "rs_strong": true, "score": 10, "adr_pct": 8.96, "price": 1025.0}, "2327": {"name": "國巨*", "market": "TWSE", "entry": 516.0, "stop": 404.0, "avg_vol": 52578530, "rs_div": 45.1, "rs_strong": true, "score": 10, "adr_pct": 6.39, "price": 497.0}, "3209": {"name": "全科", "market": "TWSE", "entry": 77.6, "stop": 59.6, "avg_vol": 6351155, "rs_div": 40.2, "rs_strong": true, "score": 10, "adr_pct": 5.88, "price": 76.2}, "2472": {"name": "立隆電", "market": "TWSE", "entry": 256.0, "stop": 213.0, "avg_vol": 7927904, "rs_div": 25.4, "rs_strong": true, "score": 10, "adr_pct": 7.46, "price": 232.0}, "6415": {"name": "矽力*-KY", "market": "TWSE", "entry": 544.0, "stop": 454.0, "avg_vol": 8188743, "rs_div": 23.2, "rs_strong": true, "score": 10, "adr_pct": 7.1, "price": 482.0}, "3090": {"name": "日電貿", "market": "TWSE", "entry": 162.5, "stop": 115.5, "avg_vol": 13217335, "rs_div": 49.4, "rs_strong": true, "score": 10, "adr_pct": 6.58, "price": 162.5}, "2478": {"name": "大毅", "market": "TWSE", "entry": 98.4, "stop": 77.3, "avg_vol": 6415209, "rs_div": 26.9, "rs_strong": true, "score": 10, "adr_pct": 6.81, "price": 96.3}, "3048": {"name": "益登", "market": "TWSE", "entry": 60.2, "stop": 44.35, "avg_vol": 12330153, "rs_div": 37.7, "rs_strong": true, "score": 10, "adr_pct": 5.75, "price": 56.1}, "2049": {"name": "上銀", "market": "TWSE", "entry": 399.0, "stop": 342.5, "avg_vol": 9034296, "rs_div": 19.3, "rs_strong": true, "score": 10, "adr_pct": 5.66, "price": 376.0}, "6449": {"name": "鈺邦", "market": "TWSE", "entry": 280.0, "stop": 190.0, "avg_vol": 2333358, "rs_div": 55.3, "rs_strong": true, "score": 10, "adr_pct": 6.37, "price": 244.5}, "3481": {"name": "群創", "market": "TWSE", "entry": 39.4, "stop": 33.85, "avg_vol": 541901745, "rs_div": 38.0, "rs_strong": true, "score": 10, "adr_pct": 6.54, "price": 37.45}, "3006": {"name": "晶豪科", "market": "TWSE", "entry": 261.0, "stop": 211.5, "avg_vol": 29237687, "rs_div": 32.8, "rs_strong": true, "score": 10, "adr_pct": 7.82, "price": 236.0}, "6285": {"name": "啟碁", "market": "TWSE", "entry": 310.0, "stop": 254.0, "avg_vol": 31295878, "rs_div": 32.3, "rs_strong": true, "score": 9, "adr_pct": 7.04, "price": 292.0}, "3673": {"name": "TPK-KY", "market": "TWSE", "entry": 75.4, "stop": 60.8, "avg_vol": 16999307, "rs_div": 21.6, "rs_strong": true, "score": 8, "adr_pct": 6.88, "price": 75.4}, "3167": {"name": "大量", "market": "TWSE", "entry": 818.0, "stop": 662.0, "avg_vol": 1993199, "rs_div": 1.0, "rs_strong": false, "score": 6, "adr_pct": 8.83, "price": 784.0}};
-const _QUOTES_DATA = {"6166": {"z": "114.5", "y": "113.5", "o": "112.0", "h": "116.5", "l": "112.0", "v": "2953", "u": "124.5", "ex": "tse"}, "6278": {"z": "203.5", "y": "215.5", "o": "214.0", "h": "216.5", "l": "201.5", "v": "13227", "u": "237.0", "ex": "tse"}, "3028": {"z": "84.3", "y": "81.8", "o": "82.9", "h": "88.3", "l": "82.6", "v": "10373", "u": "89.9", "ex": "tse"}, "3026": {"z": "391.0", "y": "365.0", "o": "382.0", "h": "401.5", "l": "381.0", "v": "3064", "u": "401.5", "ex": "tse"}, "4576": {"z": "236.5", "y": "252.0", "o": "252.0", "h": "252.0", "l": "231.5", "v": "3578", "u": "277.0", "ex": "tse"}, "2233": {"z": "333.5", "y": "340.0", "o": "333.5", "h": "347.0", "l": "333.5", "v": "614", "u": "374.0", "ex": "tse"}, "2464": {"z": "124.5", "y": "135.0", "o": "136.5", "h": "136.5", "l": "123.5", "v": "25146", "u": "148.5", "ex": "tse"}, "2492": {"z": "241.5", "y": "220.0", "o": "224.0", "h": "242.0", "l": "224.0", "v": "9214", "u": "242.0", "ex": "tse"}, "7769": {"z": "6900.0", "y": "6600.0", "o": "6470.0", "h": "6995.0", "l": "6470.0", "v": "371", "u": "7260.0", "ex": "tse"}, "7610": {"z": "1120.0", "y": "1020.0", "o": "1020.0", "h": "1120.0", "l": "1005.0", "v": "736", "u": "1120.0", "ex": "tse"}, "2303": {"z": "107.0", "y": "113.0", "o": "114.0", "h": "115.5", "l": "107.0", "v": "214369", "u": "124.0", "ex": "tse"}, "6831": {"z": "720.0", "y": "733.0", "o": "726.0", "h": "728.0", "l": "700.0", "v": "559", "u": "806.0", "ex": "tse"}, "1727": {"z": "83.0", "y": "87.5", "o": "87.4", "h": "87.8", "l": "82.6", "v": "9016", "u": "96.2", "ex": "tse"}, "4540": {"z": "69.5", "y": "72.5", "o": "72.0", "h": "72.9", "l": "67.2", "v": "12037", "u": "79.7", "ex": "tse"}, "3055": {"z": "112.0", "y": "124.0", "o": "122.0", "h": "122.5", "l": "112.0", "v": "7734", "u": "136.0", "ex": "tse"}, "6531": {"z": "976.0", "y": "1025.0", "o": "1000.0", "h": "1025.0", "l": "953.0", "v": "6952", "u": "1125.0", "ex": "tse"}, "2327": {"z": "517.0", "y": "497.0", "o": "514.0", "h": "545.0", "l": "503.0", "v": "80442", "u": "546.0", "ex": "tse"}, "3209": {"z": "77.2", "y": "76.2", "o": "76.3", "h": "79.8", "l": "76.2", "v": "7560", "u": "83.8", "ex": "tse"}, "2472": {"z": "255.0", "y": "232.0", "o": "234.0", "h": "255.0", "l": "232.0", "v": "14099", "u": "255.0", "ex": "tse"}, "6415": {"z": "509.0", "y": "482.0", "o": "480.0", "h": "518.0", "l": "465.0", "v": "11536", "u": "530.0", "ex": "tse"}, "3090": {"z": "178.5", "y": "162.5", "o": "167.5", "h": "178.5", "l": "164.0", "v": "27368", "u": "178.5", "ex": "tse"}, "2478": {"z": "105.5", "y": "96.3", "o": "96.2", "h": "105.5", "l": "96.0", "v": "9128", "u": "105.5", "ex": "tse"}, "3048": {"z": "61.7", "y": "56.1", "o": "59.0", "h": "61.7", "l": "58.3", "v": "13529", "u": "61.7", "ex": "tse"}, "2049": {"z": "357.0", "y": "376.0", "o": "378.0", "h": "378.0", "l": "355.5", "v": "6609", "u": "413.5", "ex": "tse"}, "6449": {"z": "268.5", "y": "244.5", "o": "250.0", "h": "268.5", "l": "247.0", "v": "1485", "u": "268.5", "ex": "tse"}, "3481": {"z": "36.9", "y": "37.45", "o": "37.8", "h": "38.0", "l": "36.0", "v": "601659", "u": "41.15", "ex": "tse"}, "3006": {"z": "222.0", "y": "236.0", "o": "236.5", "h": "241.0", "l": "216.0", "v": "31193", "u": "259.5", "ex": "tse"}, "6285": {"z": "279.5", "y": "292.0", "o": "296.0", "h": "302.5", "l": "278.0", "v": "40799", "u": "321.0", "ex": "tse"}, "3673": {"z": "71.6", "y": "75.4", "o": "76.8", "h": "76.8", "l": "70.3", "v": "46888", "u": "82.9", "ex": "tse"}, "3167": {"z": "769.0", "y": "784.0", "o": "793.0", "h": "828.0", "l": "753.0", "v": "7498", "u": "862.0", "ex": "tse"}, "2330": {"z": "-", "y": "2205.0000", "o": "2205.0000", "h": "2210.0000", "l": "2190.0000", "v": "20942", "u": "2425.0000", "b": "2190.0000_2185.0000_2180.0000_2175.0000_2170.0000_", "ex": "tse", "n": "台積電"}};
+const _QUOTES_DATA = {"6166": {"z": "115.5", "y": "113.5", "o": "112.0", "h": "116.5", "l": "112.0", "v": "3103", "u": "124.5", "ex": "tse"}, "6278": {"z": "203.0", "y": "215.5", "o": "214.0", "h": "216.5", "l": "201.5", "v": "13872", "u": "237.0", "ex": "tse"}, "3028": {"z": "84.3", "y": "81.8", "o": "82.9", "h": "88.3", "l": "82.6", "v": "10373", "u": "89.9", "ex": "tse"}, "3026": {"z": "391.0", "y": "365.0", "o": "382.0", "h": "401.5", "l": "381.0", "v": "3064", "u": "401.5", "ex": "tse"}, "4576": {"z": "236.5", "y": "252.0", "o": "252.0", "h": "252.0", "l": "231.5", "v": "3723", "u": "277.0", "ex": "tse"}, "2233": {"z": "332.0", "y": "340.0", "o": "333.5", "h": "347.0", "l": "332.0", "v": "654", "u": "374.0", "ex": "tse"}, "2464": {"z": "124.5", "y": "135.0", "o": "136.5", "h": "136.5", "l": "123.5", "v": "26038", "u": "148.5", "ex": "tse"}, "2492": {"z": "242.0", "y": "220.0", "o": "224.0", "h": "242.0", "l": "224.0", "v": "9680", "u": "242.0", "ex": "tse"}, "7769": {"z": "6965.0", "y": "6600.0", "o": "6470.0", "h": "6995.0", "l": "6470.0", "v": "371", "u": "7260.0", "ex": "tse"}, "7610": {"z": "1120.0", "y": "1020.0", "o": "1020.0", "h": "1120.0", "l": "1005.0", "v": "741", "u": "1120.0", "ex": "tse"}, "2303": {"z": "108.0", "y": "113.0", "o": "114.0", "h": "115.5", "l": "107.0", "v": "225669", "u": "124.0", "ex": "tse"}, "6831": {"z": "720.0", "y": "733.0", "o": "726.0", "h": "728.0", "l": "700.0", "v": "639", "u": "806.0", "ex": "tse"}, "1727": {"z": "84.6", "y": "87.5", "o": "87.4", "h": "87.8", "l": "82.6", "v": "9665", "u": "96.2", "ex": "tse"}, "4540": {"z": "67.7", "y": "72.5", "o": "72.0", "h": "72.9", "l": "67.2", "v": "12750", "u": "79.7", "ex": "tse"}, "3055": {"z": "112.0", "y": "124.0", "o": "122.0", "h": "122.5", "l": "112.0", "v": "7795", "u": "136.0", "ex": "tse"}, "6531": {"z": "973.0", "y": "1025.0", "o": "1000.0", "h": "1025.0", "l": "953.0", "v": "6419", "u": "1125.0", "ex": "tse"}, "2327": {"z": "520.0", "y": "497.0", "o": "514.0", "h": "545.0", "l": "503.0", "v": "83224", "u": "546.0", "ex": "tse"}, "3209": {"z": "78.0", "y": "76.2", "o": "76.3", "h": "79.8", "l": "76.2", "v": "7924", "u": "83.8", "ex": "tse"}, "2472": {"z": "255.0", "y": "232.0", "o": "234.0", "h": "255.0", "l": "232.0", "v": "14154", "u": "255.0", "ex": "tse"}, "6415": {"z": "507.0", "y": "482.0", "o": "480.0", "h": "518.0", "l": "465.0", "v": "11976", "u": "530.0", "ex": "tse"}, "3090": {"z": "178.5", "y": "162.5", "o": "167.5", "h": "178.5", "l": "164.0", "v": "27395", "u": "178.5", "ex": "tse"}, "2478": {"z": "105.5", "y": "96.3", "o": "96.2", "h": "105.5", "l": "96.0", "v": "9155", "u": "105.5", "ex": "tse"}, "3048": {"z": "61.7", "y": "56.1", "o": "59.0", "h": "61.7", "l": "58.3", "v": "13601", "u": "61.7", "ex": "tse"}, "2049": {"z": "359.5", "y": "376.0", "o": "378.0", "h": "378.0", "l": "355.5", "v": "7079", "u": "413.5", "ex": "tse"}, "6449": {"z": "268.5", "y": "244.5", "o": "250.0", "h": "268.5", "l": "247.0", "v": "1492", "u": "268.5", "ex": "tse"}, "3481": {"z": "36.95", "y": "37.45", "o": "37.8", "h": "38.0", "l": "36.0", "v": "622155", "u": "41.15", "ex": "tse"}, "3006": {"z": "222.5", "y": "236.0", "o": "236.5", "h": "241.0", "l": "216.0", "v": "32549", "u": "259.5", "ex": "tse"}, "6285": {"z": "279.0", "y": "292.0", "o": "296.0", "h": "302.5", "l": "278.0", "v": "42552", "u": "321.0", "ex": "tse"}, "3673": {"z": "71.7", "y": "75.4", "o": "76.8", "h": "76.8", "l": "70.3", "v": "48709", "u": "82.9", "ex": "tse"}, "3167": {"z": "780.0", "y": "784.0", "o": "793.0", "h": "828.0", "l": "753.0", "v": "7722", "u": "862.0", "ex": "tse"}, "2330": {"z": "2185.0000", "y": "2205.0000", "o": "2205.0000", "h": "2210.0000", "l": "2185.0000", "v": "29078", "u": "2425.0000", "b": "2185.0000_2180.0000_2175.0000_2170.0000_2165.0000_", "ex": "tse", "n": "台積電"}};
 const _MARKET_STATE = {"cat": "pullback", "icon": "↘", "text": "大盤回檔中（加權 40,176｜10MA 41,373 > 20MA 40,235｜多頭回檔（距高點 -4.2%））｜優先留意 RS★ 強勢背離股"};
 let _secs = 300;
 function _tick() {
@@ -1068,17 +1068,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 <p class="sub">掃描基準 20260520 · 2026年05月20日（星期三）· 頁面每 5 分鐘自動更新</p>
 
 <div class="top-bar">
-  <span class="chip mkt">開盤中 ●</span>
-  <span class="chip" id="live-clock">更新 13:25:29</span>
+  <span class="chip mkt">已收盤</span>
+  <span class="chip" id="live-clock">更新 13:30:34</span>
   <div class="taiex-card">
     <div class="taiex-label">加權指數 TAIEX</div>
     <div class="taiex-val"><span class='dn'>40,068（-108 / -0.27%）</span></div>
   </div>
   <div class="stat-cards">
     <div class="stat-card"><div class="stat-n c4">2</div><div class="stat-lbl">🟢 強量突破</div></div>
-    <div class="stat-card"><div class="stat-n c3">2</div><div class="stat-lbl">🟡 突破確認</div></div>
+    <div class="stat-card"><div class="stat-n c3">3</div><div class="stat-lbl">🟡 突破確認</div></div>
     <div class="stat-card"><div class="stat-n c2">3</div><div class="stat-lbl">🟠 量偏弱</div></div>
-    <div class="stat-card"><div class="stat-n c1">4</div><div class="stat-lbl">🔵 接近</div></div>
+    <div class="stat-card"><div class="stat-n c1">3</div><div class="stat-lbl">🔵 接近</div></div>
     <div class="stat-card"><div class="stat-n">30</div><div class="stat-lbl">監控總數</div></div>
   </div>
 </div>
@@ -1156,8 +1156,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.85%</span></td>
           <td class="entry-col">162.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+9.8%</span></td>
-          <td><span class='vp-strong'>211%</span></td>
-          <td class="num grey xsm">27,368張 / <span class='grey'>13,217張</span></td>
+          <td><span class='vp-strong'>207%</span></td>
+          <td class="num grey xsm">27,395張 / <span class='grey'>13,217張</span></td>
           <td class="num grey">164.00 <span class='grey'>(8.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>136%</span></td>
@@ -1172,18 +1172,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3090" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2327" data-name="國巨*" data-last="517.00" data-prev="497.00" data-stop="503.00" data-entry="516.00" data-adr="6.39" data-type="強勢觀察" data-slv="4" data-rsi14="82.8" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="2327" data-name="國巨*" data-last="520.00" data-prev="497.00" data-stop="503.00" data-entry="516.00" data-adr="6.39" data-type="強勢觀察" data-slv="4" data-rsi14="82.8" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#3fb950'>🟢 突破確認＋強量</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank" class="code-link">2327</a></td>
           <td class="name-cell">國巨*</td>
-          <td class="num bold">517.00 <span class="grey xsm">買</span></td>
-          <td><span class='up'>+4.02%</span></td>
+          <td class="num bold">520.00</td>
+          <td><span class='up'>+4.63%</span></td>
           <td class="entry-col">516.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='trig'>+0.2%</span></td>
-          <td><span class='vp-strong'>156%</span></td>
-          <td class="num grey xsm">80,442張 / <span class='grey'>52,578張</span></td>
-          <td class="num grey">503.00 <span class='grey'>(2.7%↓)</span></td>
+          <td><span class='trig'>+0.8%</span></td>
+          <td><span class='vp-strong'>158%</span></td>
+          <td class="num grey xsm">83,224張 / <span class='grey'>52,578張</span></td>
+          <td class="num grey">503.00 <span class='grey'>(3.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>132%</span></td>
           <td><span class='rs-strong'>+45.1%★</span></td>
@@ -1206,8 +1206,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.55%</span></td>
           <td class="entry-col">98.40 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+7.2%</span></td>
-          <td><span class='vp-ok'>145%</span></td>
-          <td class="num grey xsm">9,128張 / <span class='grey'>6,415張</span></td>
+          <td><span class='vp-ok'>142%</span></td>
+          <td class="num grey xsm">9,155張 / <span class='grey'>6,415張</span></td>
           <td class="num grey">96.00 <span class='grey'>(9.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>145%</span></td>
@@ -1231,8 +1231,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.98%</span></td>
           <td class="entry-col">60.20 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+2.5%</span></td>
-          <td><span class='vp-ok'>112%</span></td>
-          <td class="num grey xsm">13,529張 / <span class='grey'>12,330張</span></td>
+          <td><span class='vp-ok'>110%</span></td>
+          <td class="num grey xsm">13,601張 / <span class='grey'>12,330張</span></td>
           <td class="num grey">58.30 <span class='grey'>(5.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>105%</span></td>
@@ -1247,18 +1247,43 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3048" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2492" data-name="華新科" data-last="241.50" data-prev="220.00" data-stop="224.00" data-entry="222.50" data-adr="7.23" data-type="強勢觀察" data-slv="2" data-rsi14="74.8" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="3209" data-name="全科" data-last="78.00" data-prev="76.20" data-stop="76.20" data-entry="77.60" data-adr="5.88" data-type="強勢觀察" data-slv="3" data-rsi14="82.0" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#d29922'>🟡 突破確認＋量正常</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank" class="code-link">3209</a></td>
+          <td class="name-cell">全科</td>
+          <td class="num bold">78.00</td>
+          <td><span class='up'>+2.36%</span></td>
+          <td class="entry-col">77.60 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.5%</span></td>
+          <td><span class='vp-ok'>124%</span></td>
+          <td class="num grey xsm">7,924張 / <span class='grey'>6,351張</span></td>
+          <td class="num grey">76.20 <span class='grey'>(2.3%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='grey'>80%</span></td>
+          <td><span class='rs-strong'>+40.2%★</span></td>
+          <td><span class='grey'>82</span></td>
+          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
+          <td class="num grey">76.30</td>
+          <td class="num grey">79.80</td>
+          <td class="num grey">76.20</td>
+          <td class="num grey">84</td>
+          <td class="num xsm">10/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="2492" data-name="華新科" data-last="242.00" data-prev="220.00" data-stop="224.00" data-entry="222.50" data-adr="7.23" data-type="強勢觀察" data-slv="2" data-rsi14="74.8" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank" class="code-link">2492</a></td>
           <td class="name-cell">華新科</td>
-          <td class="num bold">241.50</td>
-          <td><span class='up'>+9.77%</span></td>
+          <td class="num bold">242.00</td>
+          <td><span class='up'>+10.00%</span></td>
           <td class="entry-col">222.50 <span class='grey xsm'>整理高</span></td>
-          <td><span class='trig'>+8.5%</span></td>
-          <td><span class='vp-weak'>48%</span></td>
-          <td class="num grey xsm">9,214張 / <span class='grey'>19,356張</span></td>
-          <td class="num grey">224.00 <span class='grey'>(7.2%↓)</span></td>
+          <td><span class='trig'>+8.8%</span></td>
+          <td><span class='vp-weak'>50%</span></td>
+          <td class="num grey xsm">9,680張 / <span class='grey'>19,356張</span></td>
+          <td class="num grey">224.00 <span class='grey'>(7.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>113%</span></td>
           <td><span class='rs-strong'>+45.6%★</span></td>
@@ -1267,7 +1292,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td class="num grey">224.00</td>
           <td class="num grey">242.00</td>
           <td class="num grey">224.00</td>
-          <td class="num grey">242</td>
+          <td class="num limit-up">242</td>
           <td class="num xsm">12/25</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
@@ -1281,8 +1306,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.80%</span></td>
           <td class="entry-col">1040.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+7.7%</span></td>
-          <td><span class='vp-weak'>86%</span></td>
-          <td class="num grey xsm">736張 / <span class='grey'>871張</span></td>
+          <td><span class='vp-weak'>85%</span></td>
+          <td class="num grey xsm">741張 / <span class='grey'>871張</span></td>
           <td class="num grey">1005.00 <span class='grey'>(10.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>133%</span></td>
@@ -1331,7 +1356,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.06%</span></td>
           <td class="entry-col">84.40 <span class='grey xsm'>突破點</span></td>
           <td><span class='near-txt'>-0.1%</span></td>
-          <td><span class='vp-ok'>140%</span></td>
+          <td><span class='vp-ok'>138%</span></td>
           <td class="num grey xsm">10,373張 / <span class='grey'>7,524張</span></td>
           <td class="num grey">72.30 <span class='grey'>(14.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1356,8 +1381,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.91%</span></td>
           <td class="entry-col">256.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-0.4%</span></td>
-          <td><span class='vp-strong'>181%</span></td>
-          <td class="num grey xsm">14,099張 / <span class='grey'>7,927張</span></td>
+          <td><span class='vp-strong'>178%</span></td>
+          <td class="num grey xsm">14,154張 / <span class='grey'>7,927張</span></td>
           <td class="num grey">213.00 <span class='grey'>(16.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>133%</span></td>
@@ -1372,43 +1397,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2472" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="3209" data-name="全科" data-last="77.20" data-prev="76.20" data-stop="59.60" data-entry="77.60" data-adr="5.88" data-type="強勢觀察" data-slv="1" data-rsi14="82.0" data-rsi-bear="0" data-mom-surge="0">
-          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank" class="code-link">3209</a></td>
-          <td class="name-cell">全科</td>
-          <td class="num bold">77.20 <span class="grey xsm">買</span></td>
-          <td><span class='up'>+1.31%</span></td>
-          <td class="entry-col">77.60 <span class='grey xsm'>整理高</span></td>
-          <td><span class='near-txt'>-0.5%</span></td>
-          <td><span class='vp-ok'>121%</span></td>
-          <td class="num grey xsm">7,560張 / <span class='grey'>6,351張</span></td>
-          <td class="num grey">59.60 <span class='grey'>(22.8%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='grey'>80%</span></td>
-          <td><span class='rs-strong'>+40.2%★</span></td>
-          <td><span class='grey'>82</span></td>
-          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">76.30</td>
-          <td class="num grey">79.80</td>
-          <td class="num grey">76.20</td>
-          <td class="num grey">84</td>
-          <td class="num xsm">10/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
-        <tr class="ep-row" data-code="6166" data-name="凌華" data-last="114.50" data-prev="113.50" data-stop="102.50" data-entry="116.50" data-adr="5.97" data-type="底部蓄積" data-slv="1" data-rsi14="83.9" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="ep-row" data-code="6166" data-name="凌華" data-last="115.50" data-prev="113.50" data-stop="102.50" data-entry="116.50" data-adr="5.97" data-type="底部蓄積" data-slv="1" data-rsi14="83.9" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
           <td><span class='badge ep-base'>⚡ 底部蓄積 (9天)</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6166" target="_blank" class="code-link">6166</a></td>
           <td class="name-cell">凌華</td>
-          <td class="num bold">114.50 <span class="grey xsm">買</span></td>
-          <td><span class='up'>+0.88%</span></td>
+          <td class="num bold">115.50</td>
+          <td><span class='up'>+1.76%</span></td>
           <td class="entry-col">116.50 <span class='grey xsm'>突破點</span></td>
-          <td><span class='near-txt'>-1.7%</span></td>
-          <td><span class='vp-weak'>74%</span></td>
-          <td class="num grey xsm">2,953張 / <span class='grey'>4,056張</span></td>
-          <td class="num grey">102.50 <span class='grey'>(10.5%↓)</span></td>
+          <td><span class='near-txt'>-0.9%</span></td>
+          <td><span class='vp-weak'>76%</span></td>
+          <td class="num grey xsm">3,103張 / <span class='grey'>4,056張</span></td>
+          <td class="num grey">102.50 <span class='grey'>(11.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='grey'>66%</span></td>
           <td><span class='rs-strong'>+48.1%★</span></td>
@@ -1439,26 +1439,26 @@ document.addEventListener('DOMContentLoaded', async () => {
       </tr>
     </thead>
     <tbody>
-        <tr class="vcp-row" data-code="2233" data-name="宇隆" data-last="333.50" data-prev="340.00" data-stop="279.50" data-entry="345.50" data-adr="6.80" data-type="收縮整理" data-slv="0" data-rsi14="71.6" data-rsi-bear="1" data-mom-surge="0">
+        <tr class="vcp-row" data-code="2233" data-name="宇隆" data-last="332.00" data-prev="340.00" data-stop="279.50" data-entry="345.50" data-adr="6.80" data-type="收縮整理" data-slv="0" data-rsi14="71.6" data-rsi-bear="1" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● 收縮整理</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2233" target="_blank" class="code-link">2233</a></td>
           <td class="name-cell">宇隆</td>
-          <td class="num bold">333.50 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-1.91%</span></td>
+          <td class="num bold">332.00</td>
+          <td><span class='dn'>-2.35%</span></td>
           <td class="entry-col">345.50 <span class='grey xsm'>突破點</span></td>
-          <td><span class='far-txt'>-3.5%</span></td>
-          <td><span class='vp-weak'>31%</span></td>
-          <td class="num grey xsm">614張 / <span class='grey'>1,988張</span></td>
-          <td class="num grey">279.50 <span class='grey'>(16.2%↓)</span></td>
+          <td><span class='far-txt'>-3.9%</span></td>
+          <td><span class='vp-weak'>33%</span></td>
+          <td class="num grey xsm">654張 / <span class='grey'>1,988張</span></td>
+          <td class="num grey">279.50 <span class='grey'>(15.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='grey'>58%</span></td>
+          <td><span class='grey'>65%</span></td>
           <td><span class='rs-strong'>+7.0%★</span></td>
           <td><span class='rsi-bear'>⚠️72</span></td>
           <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
           <td class="num grey">333.50</td>
           <td class="num grey">347.00</td>
-          <td class="num grey">333.50</td>
+          <td class="num grey">332.00</td>
           <td class="num grey">374</td>
           <td class="num xsm">13/25</td>
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2233" target="_blank">📈</a></td>
@@ -1473,8 +1473,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.82%</span></td>
           <td class="entry-col">280.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.1%</span></td>
-          <td><span class='vp-weak'>65%</span></td>
-          <td class="num grey xsm">1,485張 / <span class='grey'>2,333張</span></td>
+          <td><span class='vp-weak'>64%</span></td>
+          <td class="num grey xsm">1,492張 / <span class='grey'>2,333張</span></td>
           <td class="num grey">190.00 <span class='grey'>(29.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>138%</span></td>
@@ -1494,12 +1494,12 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank" class="code-link">6831</a></td>
           <td class="name-cell">邁科</td>
-          <td class="num bold">720.00 <span class="grey xsm">買</span></td>
+          <td class="num bold">720.00</td>
           <td><span class='dn'>-1.77%</span></td>
           <td class="entry-col">755.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.6%</span></td>
-          <td><span class='vp-weak'>29%</span></td>
-          <td class="num grey xsm">559張 / <span class='grey'>1,957張</span></td>
+          <td><span class='vp-weak'>33%</span></td>
+          <td class="num grey xsm">639張 / <span class='grey'>1,957張</span></td>
           <td class="num grey">638.00 <span class='grey'>(11.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='grey'>50%</span></td>
@@ -1514,43 +1514,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="3673" data-name="TPK-KY" data-last="71.60" data-prev="75.40" data-stop="60.80" data-entry="75.40" data-adr="6.88" data-type="強勢觀察" data-slv="0" data-rsi14="73.2" data-rsi-bear="1" data-mom-surge="0">
-          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3673" target="_blank" class="code-link">3673</a></td>
-          <td class="name-cell">TPK-KY</td>
-          <td class="num bold">71.60 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-5.04%</span></td>
-          <td class="entry-col">75.40 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-5.0%</span></td>
-          <td><span class='vp-strong'>280%</span></td>
-          <td class="num grey xsm">46,888張 / <span class='grey'>16,999張</span></td>
-          <td class="num grey">60.80 <span class='grey'>(15.1%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='ratr-mid'>125%</span></td>
-          <td><span class='rs-strong'>+21.6%★</span></td>
-          <td><span class='rsi-bear'>⚠️73</span></td>
-          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">76.80</td>
-          <td class="num grey">76.80</td>
-          <td class="num grey">70.30</td>
-          <td class="num grey">83</td>
-          <td class="num xsm">8/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3673" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
-        <tr class="" data-code="3167" data-name="大量" data-last="769.00" data-prev="784.00" data-stop="662.00" data-entry="818.00" data-adr="8.83" data-type="強勢觀察" data-slv="0" data-rsi14="59.5" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="3167" data-name="大量" data-last="780.00" data-prev="784.00" data-stop="662.00" data-entry="818.00" data-adr="8.83" data-type="強勢觀察" data-slv="0" data-rsi14="59.5" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3167" target="_blank" class="code-link">3167</a></td>
           <td class="name-cell">大量</td>
-          <td class="num bold">769.00 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-1.91%</span></td>
+          <td class="num bold">780.00</td>
+          <td><span class='dn'>-0.51%</span></td>
           <td class="entry-col">818.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-6.0%</span></td>
-          <td><span class='vp-strong'>382%</span></td>
-          <td class="num grey xsm">7,498張 / <span class='grey'>1,993張</span></td>
-          <td class="num grey">662.00 <span class='grey'>(13.9%↓)</span></td>
+          <td><span class='far-txt'>-4.6%</span></td>
+          <td><span class='vp-strong'>386%</span></td>
+          <td class="num grey xsm">7,722張 / <span class='grey'>1,993張</span></td>
+          <td class="num grey">662.00 <span class='grey'>(15.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>108%</span></td>
           <td><span class='rs-ok'>+1.0%</span></td>
@@ -1564,43 +1539,43 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3167" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="ep-row" data-code="6278" data-name="台表科" data-last="203.50" data-prev="215.50" data-stop="200.00" data-entry="216.50" data-adr="9.33" data-type="底部蓄積" data-slv="0" data-rsi14="68.4" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="3673" data-name="TPK-KY" data-last="71.70" data-prev="75.40" data-stop="60.80" data-entry="75.40" data-adr="6.88" data-type="強勢觀察" data-slv="0" data-rsi14="73.2" data-rsi-bear="1" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
-          <td><span class='badge ep-base'>⚡ 底部蓄積 (26天)</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank" class="code-link">6278</a></td>
-          <td class="name-cell">台表科</td>
-          <td class="num bold">203.50 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-5.57%</span></td>
-          <td class="entry-col">216.50 <span class='grey xsm'>突破點</span></td>
-          <td><span class='far-txt'>-6.0%</span></td>
-          <td><span class='vp-weak'>80%</span></td>
-          <td class="num grey xsm">13,227張 / <span class='grey'>16,792張</span></td>
-          <td class="num grey">200.00 <span class='grey'>(1.7%↓)</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3673" target="_blank" class="code-link">3673</a></td>
+          <td class="name-cell">TPK-KY</td>
+          <td class="num bold">71.70</td>
+          <td><span class='dn'>-4.91%</span></td>
+          <td class="entry-col">75.40 <span class='grey xsm'>整理高</span></td>
+          <td><span class='far-txt'>-4.9%</span></td>
+          <td><span class='vp-strong'>286%</span></td>
+          <td class="num grey xsm">48,709張 / <span class='grey'>16,999張</span></td>
+          <td class="num grey">60.80 <span class='grey'>(15.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='grey'>75%</span></td>
-          <td><span class='rs-strong'>+20.2%★</span></td>
-          <td><span class='grey'>68</span></td>
+          <td><span class='ratr-mid'>125%</span></td>
+          <td><span class='rs-strong'>+21.6%★</span></td>
+          <td><span class='rsi-bear'>⚠️73</span></td>
           <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">214.00</td>
-          <td class="num grey">216.50</td>
-          <td class="num grey">201.50</td>
-          <td class="num grey">237</td>
-          <td class="num xsm">16/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank">📈</a></td>
+          <td class="num grey">76.80</td>
+          <td class="num grey">76.80</td>
+          <td class="num grey">70.30</td>
+          <td class="num grey">83</td>
+          <td class="num xsm">8/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3673" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="3481" data-name="群創" data-last="36.90" data-prev="37.45" data-stop="33.85" data-entry="39.40" data-adr="6.54" data-type="強勢觀察" data-slv="0" data-rsi14="70.8" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="3481" data-name="群創" data-last="36.95" data-prev="37.45" data-stop="33.85" data-entry="39.40" data-adr="6.54" data-type="強勢觀察" data-slv="0" data-rsi14="70.8" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3481" target="_blank" class="code-link">3481</a></td>
           <td class="name-cell">群創</td>
-          <td class="num bold">36.90 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-1.47%</span></td>
+          <td class="num bold">36.95</td>
+          <td><span class='dn'>-1.34%</span></td>
           <td class="entry-col">39.40 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-6.3%</span></td>
-          <td><span class='vp-ok'>113%</span></td>
-          <td class="num grey xsm">601,659張 / <span class='grey'>541,901張</span></td>
-          <td class="num grey">33.85 <span class='grey'>(8.3%↓)</span></td>
+          <td><span class='far-txt'>-6.2%</span></td>
+          <td><span class='vp-ok'>115%</span></td>
+          <td class="num grey xsm">622,155張 / <span class='grey'>541,901張</span></td>
+          <td class="num grey">33.85 <span class='grey'>(8.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='grey'>82%</span></td>
           <td><span class='rs-strong'>+38.0%★</span></td>
@@ -1614,18 +1589,43 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3481" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6415" data-name="矽力*-KY" data-last="509.00" data-prev="482.00" data-stop="454.00" data-entry="544.00" data-adr="7.10" data-type="強勢觀察" data-slv="0" data-rsi14="63.0" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="ep-row" data-code="6278" data-name="台表科" data-last="203.00" data-prev="215.50" data-stop="200.00" data-entry="216.50" data-adr="9.33" data-type="底部蓄積" data-slv="0" data-rsi14="68.4" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
+          <td><span class='badge ep-base'>⚡ 底部蓄積 (26天)</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank" class="code-link">6278</a></td>
+          <td class="name-cell">台表科</td>
+          <td class="num bold">203.00</td>
+          <td><span class='dn'>-5.80%</span></td>
+          <td class="entry-col">216.50 <span class='grey xsm'>突破點</span></td>
+          <td><span class='far-txt'>-6.2%</span></td>
+          <td><span class='vp-weak'>82%</span></td>
+          <td class="num grey xsm">13,872張 / <span class='grey'>16,792張</span></td>
+          <td class="num grey">200.00 <span class='grey'>(1.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='grey'>75%</span></td>
+          <td><span class='rs-strong'>+20.2%★</span></td>
+          <td><span class='grey'>68</span></td>
+          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
+          <td class="num grey">214.00</td>
+          <td class="num grey">216.50</td>
+          <td class="num grey">201.50</td>
+          <td class="num grey">237</td>
+          <td class="num xsm">16/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6415" data-name="矽力*-KY" data-last="507.00" data-prev="482.00" data-stop="454.00" data-entry="544.00" data-adr="7.10" data-type="強勢觀察" data-slv="0" data-rsi14="63.0" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank" class="code-link">6415</a></td>
           <td class="name-cell">矽力*-KY</td>
-          <td class="num bold">509.00 <span class="grey xsm">買</span></td>
-          <td><span class='up'>+5.60%</span></td>
+          <td class="num bold">507.00</td>
+          <td><span class='up'>+5.19%</span></td>
           <td class="entry-col">544.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-6.4%</span></td>
-          <td><span class='vp-ok'>143%</span></td>
-          <td class="num grey xsm">11,536張 / <span class='grey'>8,188張</span></td>
-          <td class="num grey">454.00 <span class='grey'>(10.8%↓)</span></td>
+          <td><span class='far-txt'>-6.8%</span></td>
+          <td><span class='vp-ok'>146%</span></td>
+          <td class="num grey xsm">11,976張 / <span class='grey'>8,188張</span></td>
+          <td class="num grey">454.00 <span class='grey'>(10.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-high'>155%</span></td>
           <td><span class='rs-strong'>+23.2%★</span></td>
@@ -1639,29 +1639,29 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="4540" data-name="全球傳動" data-last="69.50" data-prev="72.50" data-stop="64.00" data-entry="75.90" data-adr="7.61" data-type="強勢觀察" data-slv="0" data-rsi14="66.1" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="1727" data-name="中華化" data-last="84.60" data-prev="87.50" data-stop="77.10" data-entry="92.70" data-adr="8.70" data-type="強勢觀察" data-slv="0" data-rsi14="73.1" data-rsi-bear="1" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4540" target="_blank" class="code-link">4540</a></td>
-          <td class="name-cell">全球傳動</td>
-          <td class="num bold">69.50 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-4.14%</span></td>
-          <td class="entry-col">75.90 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-weak'>87%</span></td>
-          <td class="num grey xsm">12,037張 / <span class='grey'>14,053張</span></td>
-          <td class="num grey">64.00 <span class='grey'>(7.9%↓)</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank" class="code-link">1727</a></td>
+          <td class="name-cell">中華化</td>
+          <td class="num bold">84.60</td>
+          <td><span class='dn'>-3.31%</span></td>
+          <td class="entry-col">92.70 <span class='grey xsm'>整理高</span></td>
+          <td><span class='far-txt'>-8.7%</span></td>
+          <td><span class='vp-weak'>51%</span></td>
+          <td class="num grey xsm">9,665張 / <span class='grey'>18,958張</span></td>
+          <td class="num grey">77.10 <span class='grey'>(8.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='ratr-mid'>103%</span></td>
-          <td><span class='rs-strong'>+9.8%★</span></td>
-          <td><span class='grey'>66</span></td>
+          <td><span class='grey'>68%</span></td>
+          <td><span class='rs-strong'>+17.1%★</span></td>
+          <td><span class='rsi-bear'>⚠️73</span></td>
           <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">72.00</td>
-          <td class="num grey">72.90</td>
-          <td class="num grey">67.20</td>
-          <td class="num grey">80</td>
+          <td class="num grey">87.40</td>
+          <td class="num grey">87.80</td>
+          <td class="num grey">82.60</td>
+          <td class="num grey">96</td>
           <td class="num xsm">11/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4540" target="_blank">📈</a></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
         <tr class="" data-code="3055" data-name="蔚華科" data-last="112.00" data-prev="124.00" data-stop="99.50" data-entry="124.00" data-adr="7.47" data-type="強勢觀察" data-slv="0" data-rsi14="79.1" data-rsi-bear="1" data-mom-surge="0">
@@ -1673,8 +1673,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-9.68%</span></td>
           <td class="entry-col">124.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.7%</span></td>
-          <td><span class='vp-strong'>183%</span></td>
-          <td class="num grey xsm">7,734張 / <span class='grey'>4,287張</span></td>
+          <td><span class='vp-strong'>181%</span></td>
+          <td class="num grey xsm">7,795張 / <span class='grey'>4,287張</span></td>
           <td class="num grey">99.50 <span class='grey'>(11.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>113%</span></td>
@@ -1689,68 +1689,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3055" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6285" data-name="啟碁" data-last="279.50" data-prev="292.00" data-stop="254.00" data-entry="310.00" data-adr="7.04" data-type="強勢觀察" data-slv="0" data-rsi14="67.8" data-rsi-bear="0" data-mom-surge="0">
-          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank" class="code-link">6285</a></td>
-          <td class="name-cell">啟碁</td>
-          <td class="num bold">279.50 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-4.28%</span></td>
-          <td class="entry-col">310.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-9.8%</span></td>
-          <td><span class='vp-ok'>133%</span></td>
-          <td class="num grey xsm">40,799張 / <span class='grey'>31,295張</span></td>
-          <td class="num grey">254.00 <span class='grey'>(9.1%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='ratr-mid'>119%</span></td>
-          <td><span class='rs-strong'>+32.3%★</span></td>
-          <td><span class='grey'>68</span></td>
-          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">296.00</td>
-          <td class="num grey">302.50</td>
-          <td class="num grey">278.00</td>
-          <td class="num grey">321</td>
-          <td class="num xsm">9/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
-        <tr class="" data-code="1727" data-name="中華化" data-last="83.00" data-prev="87.50" data-stop="77.10" data-entry="92.70" data-adr="8.70" data-type="強勢觀察" data-slv="0" data-rsi14="73.1" data-rsi-bear="1" data-mom-surge="0">
-          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank" class="code-link">1727</a></td>
-          <td class="name-cell">中華化</td>
-          <td class="num bold">83.00 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-5.14%</span></td>
-          <td class="entry-col">92.70 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-10.5%</span></td>
-          <td><span class='vp-weak'>48%</span></td>
-          <td class="num grey xsm">9,016張 / <span class='grey'>18,958張</span></td>
-          <td class="num grey">77.10 <span class='grey'>(7.1%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='grey'>68%</span></td>
-          <td><span class='rs-strong'>+17.1%★</span></td>
-          <td><span class='rsi-bear'>⚠️73</span></td>
-          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">87.40</td>
-          <td class="num grey">87.80</td>
-          <td class="num grey">82.60</td>
-          <td class="num grey">96</td>
-          <td class="num xsm">11/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
-        <tr class="" data-code="2049" data-name="上銀" data-last="357.00" data-prev="376.00" data-stop="342.50" data-entry="399.00" data-adr="5.66" data-type="強勢觀察" data-slv="0" data-rsi14="73.5" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="2049" data-name="上銀" data-last="359.50" data-prev="376.00" data-stop="342.50" data-entry="399.00" data-adr="5.66" data-type="強勢觀察" data-slv="0" data-rsi14="73.5" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2049" target="_blank" class="code-link">2049</a></td>
           <td class="name-cell">上銀</td>
-          <td class="num bold">357.00 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-5.05%</span></td>
+          <td class="num bold">359.50</td>
+          <td><span class='dn'>-4.39%</span></td>
           <td class="entry-col">399.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-10.5%</span></td>
-          <td><span class='vp-weak'>74%</span></td>
-          <td class="num grey xsm">6,609張 / <span class='grey'>9,034張</span></td>
-          <td class="num grey">342.50 <span class='grey'>(4.1%↓)</span></td>
+          <td><span class='far-txt'>-9.9%</span></td>
+          <td><span class='vp-weak'>78%</span></td>
+          <td class="num grey xsm">7,079張 / <span class='grey'>9,034張</span></td>
+          <td class="num grey">342.50 <span class='grey'>(4.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>106%</span></td>
           <td><span class='rs-strong'>+19.3%★</span></td>
@@ -1764,18 +1714,43 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2049" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2303" data-name="聯電" data-last="107.00" data-prev="113.00" data-stop="94.50" data-entry="120.50" data-adr="7.06" data-type="強勢觀察" data-slv="0" data-rsi14="76.9" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="6285" data-name="啟碁" data-last="279.00" data-prev="292.00" data-stop="254.00" data-entry="310.00" data-adr="7.04" data-type="強勢觀察" data-slv="0" data-rsi14="67.8" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank" class="code-link">6285</a></td>
+          <td class="name-cell">啟碁</td>
+          <td class="num bold">279.00</td>
+          <td><span class='dn'>-4.45%</span></td>
+          <td class="entry-col">310.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='far-txt'>-10.0%</span></td>
+          <td><span class='vp-ok'>136%</span></td>
+          <td class="num grey xsm">42,552張 / <span class='grey'>31,295張</span></td>
+          <td class="num grey">254.00 <span class='grey'>(9.0%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='ratr-mid'>119%</span></td>
+          <td><span class='rs-strong'>+32.3%★</span></td>
+          <td><span class='grey'>68</span></td>
+          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
+          <td class="num grey">296.00</td>
+          <td class="num grey">302.50</td>
+          <td class="num grey">278.00</td>
+          <td class="num grey">321</td>
+          <td class="num xsm">9/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6285" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="2303" data-name="聯電" data-last="108.00" data-prev="113.00" data-stop="94.50" data-entry="120.50" data-adr="7.06" data-type="強勢觀察" data-slv="0" data-rsi14="76.9" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2303" target="_blank" class="code-link">2303</a></td>
           <td class="name-cell">聯電</td>
-          <td class="num bold">107.00 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-5.31%</span></td>
+          <td class="num bold">108.00</td>
+          <td><span class='dn'>-4.42%</span></td>
           <td class="entry-col">120.50 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-11.2%</span></td>
-          <td><span class='vp-weak'>85%</span></td>
-          <td class="num grey xsm">214,369張 / <span class='grey'>257,187張</span></td>
-          <td class="num grey">94.50 <span class='grey'>(11.7%↓)</span></td>
+          <td><span class='far-txt'>-10.4%</span></td>
+          <td><span class='vp-weak'>88%</span></td>
+          <td class="num grey xsm">225,669張 / <span class='grey'>257,187張</span></td>
+          <td class="num grey">94.50 <span class='grey'>(12.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>107%</span></td>
           <td><span class='rs-strong'>+34.2%★</span></td>
@@ -1789,17 +1764,42 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2303" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
+        <tr class="" data-code="4540" data-name="全球傳動" data-last="67.70" data-prev="72.50" data-stop="64.00" data-entry="75.90" data-adr="7.61" data-type="強勢觀察" data-slv="0" data-rsi14="66.1" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4540" target="_blank" class="code-link">4540</a></td>
+          <td class="name-cell">全球傳動</td>
+          <td class="num bold">67.70</td>
+          <td><span class='dn'>-6.62%</span></td>
+          <td class="entry-col">75.90 <span class='grey xsm'>整理高</span></td>
+          <td><span class='far-txt'>-10.8%</span></td>
+          <td><span class='vp-weak'>91%</span></td>
+          <td class="num grey xsm">12,750張 / <span class='grey'>14,053張</span></td>
+          <td class="num grey">64.00 <span class='grey'>(5.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='ratr-mid'>103%</span></td>
+          <td><span class='rs-strong'>+9.8%★</span></td>
+          <td><span class='grey'>66</span></td>
+          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
+          <td class="num grey">72.00</td>
+          <td class="num grey">72.90</td>
+          <td class="num grey">67.20</td>
+          <td class="num grey">80</td>
+          <td class="num xsm">11/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4540" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
         <tr class="" data-code="2464" data-name="盟立" data-last="124.50" data-prev="135.00" data-stop="110.00" data-entry="140.50" data-adr="8.56" data-type="強勢觀察" data-slv="0" data-rsi14="72.5" data-rsi-bear="1" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank" class="code-link">2464</a></td>
           <td class="name-cell">盟立</td>
-          <td class="num bold">124.50 <span class="grey xsm">買</span></td>
+          <td class="num bold">124.50</td>
           <td><span class='dn'>-7.78%</span></td>
           <td class="entry-col">140.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.4%</span></td>
-          <td><span class='vp-weak'>88%</span></td>
-          <td class="num grey xsm">25,146張 / <span class='grey'>28,927張</span></td>
+          <td><span class='vp-weak'>90%</span></td>
+          <td class="num grey xsm">26,038張 / <span class='grey'>28,927張</span></td>
           <td class="num grey">110.00 <span class='grey'>(11.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>112%</span></td>
@@ -1814,17 +1814,42 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
+        <tr class="" data-code="7769" data-name="鴻勁" data-last="6965.00" data-prev="6600.00" data-stop="6360.00" data-entry="7995.00" data-adr="6.39" data-type="強勢觀察" data-slv="0" data-rsi14="64.9" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank" class="code-link">7769</a></td>
+          <td class="name-cell">鴻勁</td>
+          <td class="num bold">6965.00 <span class="grey xsm">買</span></td>
+          <td><span class='up'>+5.53%</span></td>
+          <td class="entry-col">7995.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='far-txt'>-12.9%</span></td>
+          <td><span class='vp-weak'>27%</span></td>
+          <td class="num grey xsm">371張 / <span class='grey'>1,374張</span></td>
+          <td class="num grey">6360.00 <span class='grey'>(8.7%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='ratr-mid'>124%</span></td>
+          <td><span class='rs-strong'>+19.6%★</span></td>
+          <td><span class='grey'>65</span></td>
+          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
+          <td class="num grey">6470.00</td>
+          <td class="num grey">6995.00</td>
+          <td class="num grey">6470.00</td>
+          <td class="num grey">7260</td>
+          <td class="num xsm">12/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
         <tr class="vcp-row" data-code="4576" data-name="大銀微系統" data-last="236.50" data-prev="252.00" data-stop="239.00" data-entry="274.00" data-adr="8.62" data-type="收縮整理" data-slv="0" data-rsi14="64.8" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge vcp'>● 收縮整理</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank" class="code-link">4576</a></td>
           <td class="name-cell">大銀微系統</td>
-          <td class="num bold">236.50 <span class="grey xsm">買</span></td>
+          <td class="num bold">236.50</td>
           <td><span class='dn'>-6.15%</span></td>
           <td class="entry-col">274.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-13.7%</span></td>
-          <td><span class='vp-weak'>62%</span></td>
-          <td class="num grey xsm">3,578張 / <span class='grey'>5,892張</span></td>
+          <td><span class='vp-weak'>63%</span></td>
+          <td class="num grey xsm">3,723張 / <span class='grey'>5,892張</span></td>
           <td class="num grey">239.00 <span class='grey'>(-1.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='grey'>94%</span></td>
@@ -1839,43 +1864,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="7769" data-name="鴻勁" data-last="6900.00" data-prev="6600.00" data-stop="6360.00" data-entry="7995.00" data-adr="6.39" data-type="強勢觀察" data-slv="0" data-rsi14="64.9" data-rsi-bear="0" data-mom-surge="0">
-          <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank" class="code-link">7769</a></td>
-          <td class="name-cell">鴻勁</td>
-          <td class="num bold">6900.00 <span class="grey xsm">買</span></td>
-          <td><span class='up'>+4.55%</span></td>
-          <td class="entry-col">7995.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-13.7%</span></td>
-          <td><span class='vp-weak'>27%</span></td>
-          <td class="num grey xsm">371張 / <span class='grey'>1,374張</span></td>
-          <td class="num grey">6360.00 <span class='grey'>(7.8%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='ratr-mid'>124%</span></td>
-          <td><span class='rs-strong'>+19.6%★</span></td>
-          <td><span class='grey'>65</span></td>
-          <td><span class='grey'>→維持</span> <span class='grey xsm'></span></td>
-          <td class="num grey">6470.00</td>
-          <td class="num grey">6995.00</td>
-          <td class="num grey">6470.00</td>
-          <td class="num grey">7260</td>
-          <td class="num xsm">12/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
-        <tr class="" data-code="3006" data-name="晶豪科" data-last="222.00" data-prev="236.00" data-stop="211.50" data-entry="261.00" data-adr="7.82" data-type="強勢觀察" data-slv="0" data-rsi14="66.2" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="3006" data-name="晶豪科" data-last="222.50" data-prev="236.00" data-stop="211.50" data-entry="261.00" data-adr="7.82" data-type="強勢觀察" data-slv="0" data-rsi14="66.2" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3006" target="_blank" class="code-link">3006</a></td>
           <td class="name-cell">晶豪科</td>
-          <td class="num bold">222.00 <span class="grey xsm">買</span></td>
-          <td><span class='dn'>-5.93%</span></td>
+          <td class="num bold">222.50</td>
+          <td><span class='dn'>-5.72%</span></td>
           <td class="entry-col">261.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-14.9%</span></td>
-          <td><span class='vp-ok'>108%</span></td>
-          <td class="num grey xsm">31,193張 / <span class='grey'>29,237張</span></td>
-          <td class="num grey">211.50 <span class='grey'>(4.7%↓)</span></td>
+          <td><span class='far-txt'>-14.8%</span></td>
+          <td><span class='vp-ok'>111%</span></td>
+          <td class="num grey xsm">32,549張 / <span class='grey'>29,237張</span></td>
+          <td class="num grey">211.50 <span class='grey'>(4.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='ratr-mid'>135%</span></td>
           <td><span class='rs-strong'>+32.8%★</span></td>
@@ -1889,18 +1889,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3006" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6531" data-name="愛普*" data-last="976.00" data-prev="1025.00" data-stop="980.00" data-entry="1150.00" data-adr="8.96" data-type="強勢觀察" data-slv="0" data-rsi14="64.9" data-rsi-bear="0" data-mom-surge="0">
+        <tr class="" data-code="6531" data-name="愛普*" data-last="973.00" data-prev="1025.00" data-stop="980.00" data-entry="1150.00" data-adr="8.96" data-type="強勢觀察" data-slv="0" data-rsi14="64.9" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank" class="code-link">6531</a></td>
           <td class="name-cell">愛普*</td>
-          <td class="num bold">976.00</td>
-          <td><span class='dn'>-4.78%</span></td>
+          <td class="num bold">973.00 <span class="grey xsm">買</span></td>
+          <td><span class='dn'>-5.07%</span></td>
           <td class="entry-col">1150.00 <span class='grey xsm'>整理高</span></td>
-          <td><span class='far-txt'>-15.1%</span></td>
-          <td><span class='vp-ok'>103%</span></td>
-          <td class="num grey xsm">6,952張 / <span class='grey'>6,836張</span></td>
-          <td class="num grey">980.00 <span class='grey'>(-0.4%↓)</span></td>
+          <td><span class='far-txt'>-15.4%</span></td>
+          <td><span class='vp-weak'>94%</span></td>
+          <td class="num grey xsm">6,419張 / <span class='grey'>6,836張</span></td>
+          <td class="num grey">980.00 <span class='grey'>(-0.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
           <td><span class='grey'>78%</span></td>
           <td><span class='rs-strong'>+12.5%★</span></td>
