@@ -201,9 +201,9 @@ function renderStats(s) {
   `;
 }
 
-function _reasonBadge(reason) {
+function _reasonBadge(reason, half) {
   if (reason === 'stop_loss')   return '<span class="reason-loss">🛑 停損</span>';
-  if (reason === 'stop_profit') return '<span class="reason-profit">🎯 停利 2R</span>';
+  if (reason === 'stop_profit') return half ? '<span class="reason-profit">🎯 停利 2R（半倉）</span>' : '<span class="reason-profit">🎯 停利 2R</span>';
   if (reason === 'manual')      return '<span class="reason-manual">✋ 手動</span>';
   return reason || '-';
 }
@@ -232,7 +232,7 @@ function renderTrades(trades, indexMap) {
       <td class="num">${_fmt(t.entryPrice)}</td>
       <td class="num">${_fmt(t.stopPrice)}</td>
       <td class="num">${_fmt(t.exitPrice)}</td>
-      <td>${_reasonBadge(t.exitReason)}</td>
+      <td>${_reasonBadge(t.exitReason, t.half)}</td>
       <td class="num">${t.daysHeld || '-'}</td>
       <td class="num bold ${pnlCls}">${_fmtPct(t.pnlPct)}</td>
       <td class="num bold ${rCls}">${_fmtR(t.rMultiple)}</td>
