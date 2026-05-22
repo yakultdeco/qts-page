@@ -10,6 +10,16 @@ body { background: #0d1117; color: #e6edf3; font-family: -apple-system,'Segoe UI
 h1 { color: #f0f6fc; font-size: 17px; margin-bottom: 3px; }
 .sub { color: #8b949e; font-size: 12px; margin-bottom: 12px; }
 
+/* 分頁切換 */
+.tab-nav { display: flex; gap: 6px; margin-bottom: 14px; border-bottom: 1px solid #30363d; }
+.tab-btn { background: none; border: none; border-bottom: 2px solid transparent; color: #8b949e; font-size: 14px; font-weight: 600; padding: 8px 16px; cursor: pointer; margin-bottom: -1px; }
+.tab-btn:hover { color: #e6edf3; }
+.tab-btn.active { color: #58a6ff; border-bottom-color: #58a6ff; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+.buy-hint { color: #8b949e; font-size: 12px; margin: 4px 0 14px; }
+.buy-empty { color: #8b949e; text-align: center; padding: 40px 0; }
+
 /* 頂部資訊列 */
 .top-bar { display: flex; gap: 12px; align-items: stretch; margin-bottom: 14px; flex-wrap: wrap; }
 .chip { background: #161b22; border: 1px solid #30363d; border-radius: 14px; padding: 3px 11px; font-size: 12px; align-self: center; }
@@ -541,6 +551,18 @@ function _initSizingInputs() {
   [cap, rsk, mx].forEach(el => el.addEventListener('input', apply));
 }
 document.addEventListener('DOMContentLoaded', _initSizingInputs);
+
+const _TAB_KEY = 'qts_active_tab';
+function switchTab(name) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
+  try { localStorage.setItem(_TAB_KEY, name); } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', () => {
+  let t = 'monitor';
+  try { t = localStorage.getItem(_TAB_KEY) || 'monitor'; } catch(e) {}
+  if (t === 'buy') switchTab('buy');
+});
 
 function _calcSize(price, stop) {
   if (!price || price <= 0) return null;
@@ -1246,17 +1268,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 <h1>QTS 盤中監控</h1>
 <p class="sub">掃描基準 20260522 · 2026年05月22日（星期五）· 頁面每 5 分鐘自動更新</p>
 
+<div class="tab-nav">
+  <button class="tab-btn active" data-tab="monitor" onclick="switchTab('monitor')">📊 盤中監控</button>
+  <button class="tab-btn" data-tab="buy" onclick="switchTab('buy')">🎯 找買進標的</button>
+</div>
+
+<div id="tab-monitor" class="tab-pane active">
+
 <div class="top-bar">
   <span class="chip mkt">已收盤</span>
-  <span class="chip" id="live-clock">更新 16:31:16</span>
+  <span class="chip" id="live-clock">更新 16:48:01</span>
   <div class="taiex-card">
     <div class="taiex-label">加權指數 TAIEX</div>
     <div class="taiex-val"><span class='up'>42,268（++900 / +2.18%）</span></div>
   </div>
   <div class="stat-cards">
     <div class="stat-card"><div class="stat-n c4">1</div><div class="stat-lbl">🟢 強量突破</div></div>
-    <div class="stat-card"><div class="stat-n c3">2</div><div class="stat-lbl">🟡 突破確認</div></div>
-    <div class="stat-card"><div class="stat-n c2">21</div><div class="stat-lbl">🟠 量偏弱</div></div>
+    <div class="stat-card"><div class="stat-n c3">0</div><div class="stat-lbl">🟡 突破確認</div></div>
+    <div class="stat-card"><div class="stat-n c2">23</div><div class="stat-lbl">🟠 量偏弱</div></div>
     <div class="stat-card"><div class="stat-n c1">13</div><div class="stat-lbl">🔵 接近</div></div>
     <div class="stat-card"><div class="stat-n">100</div><div class="stat-lbl">監控總數</div></div>
   </div>
@@ -1337,7 +1366,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.92%</span></td>
           <td class="entry-col">49.30 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-strong'>165%</span></td>
+          <td><span class='vp-strong'>159%</span></td>
           <td class="num grey xsm">34,285張 / <span class='grey'>12,430張</span></td>
           <td class="num grey">45.30 <span class='grey'>(8.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1355,60 +1384,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2484" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="4919" data-name="新唐" data-last="199.50" data-prev="181.50" data-stop="188.50" data-entry="199.50" data-adr="8.57" data-ma10="169.00" data-ma20="162.22" data-type="強勢觀察" data-slv="3" data-risk="0" data-rsi14="69.8" data-rsi-bear="0" data-mom-surge="0">
-          <td><span class='sig-badge' style='color:#d29922'>🟡 突破確認＋量正常</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank" class="code-link">4919</a></td>
-          <td class="name-cell">新唐</td>
-          <td class="num bold">199.50 <span class="limit-up xsm">漲停↑</span></td>
-          <td><span class='up'>+9.92%</span></td>
-          <td class="entry-col">199.50 <span class='grey xsm'>整理高</span></td>
-          <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-ok'>103%</span></td>
-          <td class="num grey xsm">41,941張 / <span class='grey'>24,406張</span></td>
-          <td class="num grey">188.50 <span class='grey'>(5.5%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='grey'>64%</span></td>
-          <td><span class='ratr-high'>+18.0%</span> <span class='grey xsm'>2.1A</span></td>
-          <td><span class='rs-strong'>+7.3%★</span></td>
-          <td><span class='rs-strong'>97</span></td>
-          <td><span class='grey'>70</span></td>
-          <td><span class='rs-strong'>▲加速</span> <span class='grey xsm'>59→65→70</span></td>
-          <td class="num grey">190.50</td>
-          <td class="num grey">199.50</td>
-          <td class="num grey">188.50</td>
-          <td class="num limit-up">200</td>
-          <td class="num xsm">10/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
-        <tr class="" data-code="3221" data-name="台嘉碩" data-last="56.40" data-prev="51.30" data-stop="53.00" data-entry="56.40" data-adr="7.51" data-ma10="45.76" data-ma20="44.84" data-type="強勢觀察" data-slv="3" data-risk="0" data-rsi14="70.2" data-rsi-bear="0" data-mom-surge="1">
-          <td><span class='sig-badge' style='color:#d29922'>🟡 突破確認＋量正常</span></td>
-          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
-          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A3221" target="_blank" class="code-link">3221</a></td>
-          <td class="name-cell">台嘉碩</td>
-          <td class="num bold">56.40 <span class="limit-up xsm">漲停↑</span></td>
-          <td><span class='up'>+9.94%</span></td>
-          <td class="entry-col">56.40 <span class='grey xsm'>整理高</span></td>
-          <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-ok'>101%</span></td>
-          <td class="num grey xsm">12,319張 / <span class='grey'>7,311張</span></td>
-          <td class="num grey">53.00 <span class='grey'>(6.0%↓)</span></td>
-          <td class="num size-cell"><span class="na">-</span></td>
-          <td><span class='grey'>80%</span></td>
-          <td><span class='ratr-high'>+23.2%</span> <span class='grey xsm'>3.1A</span></td>
-          <td><span class='rs-strong'>+23.1%★</span></td>
-          <td><span class='rs-ok'>84</span></td>
-          <td><span class='rs-strong'>🔥70</span></td>
-          <td><span class='rs-strong'>▲加速</span> <span class='grey xsm'>60→65→70</span></td>
-          <td class="num grey">53.00</td>
-          <td class="num grey">56.40</td>
-          <td class="num grey">53.00</td>
-          <td class="num limit-up">56</td>
-          <td class="num xsm">10/25</td>
-          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A3221" target="_blank">📈</a></td>
-          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
-        </tr>
         <tr class="ep-row" data-code="6278" data-name="台表科" data-last="245.00" data-prev="223.00" data-stop="228.50" data-entry="245.00" data-adr="8.72" data-ma10="217.85" data-ma20="193.70" data-type="底部蓄積" data-slv="2" data-risk="0" data-rsi14="72.2" data-rsi-bear="1" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge ep-base'>⚡ 底部蓄積 (29天)</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
@@ -1418,7 +1393,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.87%</span></td>
           <td class="entry-col">245.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>64%</span></td>
+          <td><span class='vp-weak'>62%</span></td>
           <td class="num grey xsm">19,341張 / <span class='grey'>17,984張</span></td>
           <td class="num grey">228.50 <span class='grey'>(6.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1445,7 +1420,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+10.00%</span></td>
           <td class="entry-col">341.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>57%</span></td>
+          <td><span class='vp-weak'>55%</span></td>
           <td class="num grey xsm">1,707張 / <span class='grey'>1,793張</span></td>
           <td class="num grey">328.00 <span class='grey'>(3.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1472,7 +1447,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.96%</span></td>
           <td class="entry-col">541.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>90%</span></td>
+          <td><span class='vp-weak'>87%</span></td>
           <td class="num grey xsm">2,984張 / <span class='grey'>1,983張</span></td>
           <td class="num grey">513.00 <span class='grey'>(5.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1526,7 +1501,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+10.00%</span></td>
           <td class="entry-col">814.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>34%</span></td>
+          <td><span class='vp-weak'>33%</span></td>
           <td class="num grey xsm">1,884張 / <span class='grey'>3,318張</span></td>
           <td class="num grey">750.00 <span class='grey'>(7.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1553,7 +1528,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.96%</span></td>
           <td class="entry-col">419.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>73%</span></td>
+          <td><span class='vp-weak'>71%</span></td>
           <td class="num grey xsm">5,431張 / <span class='grey'>4,440張</span></td>
           <td class="num grey">395.00 <span class='grey'>(5.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1580,7 +1555,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.98%</span></td>
           <td class="entry-col">725.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>43%</span></td>
+          <td><span class='vp-weak'>42%</span></td>
           <td class="num grey xsm">1,900張 / <span class='grey'>2,634張</span></td>
           <td class="num grey">695.00 <span class='grey'>(4.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1607,7 +1582,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.68%</span></td>
           <td class="entry-col">102.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>49%</span></td>
+          <td><span class='vp-weak'>48%</span></td>
           <td class="num grey xsm">14,982張 / <span class='grey'>18,131張</span></td>
           <td class="num grey">94.00 <span class='grey'>(7.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1634,7 +1609,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.91%</span></td>
           <td class="entry-col">294.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>29%</span></td>
+          <td><span class='vp-weak'>28%</span></td>
           <td class="num grey xsm">8,271張 / <span class='grey'>17,178張</span></td>
           <td class="num grey">280.50 <span class='grey'>(4.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1661,7 +1636,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.98%</span></td>
           <td class="entry-col">286.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>87%</span></td>
+          <td><span class='vp-weak'>84%</span></td>
           <td class="num grey xsm">6,822張 / <span class='grey'>4,710張</span></td>
           <td class="num grey">269.00 <span class='grey'>(6.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1688,7 +1663,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.93%</span></td>
           <td class="entry-col">609.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>20%</span></td>
+          <td><span class='vp-weak'>19%</span></td>
           <td class="num grey xsm">10,405張 / <span class='grey'>31,771張</span></td>
           <td class="num grey">588.00 <span class='grey'>(3.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1715,7 +1690,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.96%</span></td>
           <td class="entry-col">425.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>79%</span></td>
+          <td><span class='vp-weak'>76%</span></td>
           <td class="num grey xsm">14,992張 / <span class='grey'>11,411張</span></td>
           <td class="num grey">398.50 <span class='grey'>(6.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1733,6 +1708,33 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2455" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
+        <tr class="" data-code="4919" data-name="新唐" data-last="199.50" data-prev="181.50" data-stop="188.50" data-entry="199.50" data-adr="8.57" data-ma10="169.00" data-ma20="162.22" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="69.8" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank" class="code-link">4919</a></td>
+          <td class="name-cell">新唐</td>
+          <td class="num bold">199.50 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.92%</span></td>
+          <td class="entry-col">199.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td><span class='vp-weak'>99%</span></td>
+          <td class="num grey xsm">41,941張 / <span class='grey'>24,406張</span></td>
+          <td class="num grey">188.50 <span class='grey'>(5.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='grey'>64%</span></td>
+          <td><span class='ratr-high'>+18.0%</span> <span class='grey xsm'>2.1A</span></td>
+          <td><span class='rs-strong'>+7.3%★</span></td>
+          <td><span class='rs-strong'>97</span></td>
+          <td><span class='grey'>70</span></td>
+          <td><span class='rs-strong'>▲加速</span> <span class='grey xsm'>59→65→70</span></td>
+          <td class="num grey">190.50</td>
+          <td class="num grey">199.50</td>
+          <td class="num grey">188.50</td>
+          <td class="num limit-up">200</td>
+          <td class="num xsm">10/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
         <tr class="" data-code="6706" data-name="惠特" data-last="185.00" data-prev="168.50" data-stop="173.00" data-entry="185.00" data-adr="7.20" data-ma10="168.45" data-ma20="161.43" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="63.7" data-rsi-bear="1" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
@@ -1742,7 +1744,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.79%</span></td>
           <td class="entry-col">185.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>63%</span></td>
+          <td><span class='vp-weak'>61%</span></td>
           <td class="num grey xsm">9,243張 / <span class='grey'>8,769張</span></td>
           <td class="num grey">173.00 <span class='grey'>(6.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1769,7 +1771,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.82%</span></td>
           <td class="entry-col">123.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>86%</span></td>
+          <td><span class='vp-weak'>83%</span></td>
           <td class="num grey xsm">10,113張 / <span class='grey'>7,043張</span></td>
           <td class="num grey">113.50 <span class='grey'>(7.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1823,7 +1825,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+10.00%</span></td>
           <td class="entry-col">192.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>17%</span></td>
+          <td><span class='vp-weak'>16%</span></td>
           <td class="num grey xsm">1,831張 / <span class='grey'>6,634張</span></td>
           <td class="num grey">182.50 <span class='grey'>(5.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1850,7 +1852,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.91%</span></td>
           <td class="entry-col">69.90 <span class='grey xsm'>突破點</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>37%</span></td>
+          <td><span class='vp-weak'>35%</span></td>
           <td class="num grey xsm">28,912張 / <span class='grey'>47,350張</span></td>
           <td class="num grey">65.40 <span class='grey'>(6.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1877,7 +1879,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.90%</span></td>
           <td class="entry-col">516.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>53%</span></td>
+          <td><span class='vp-weak'>51%</span></td>
           <td class="num grey xsm">50,870張 / <span class='grey'>57,420張</span></td>
           <td class="num grey">480.00 <span class='grey'>(7.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1904,7 +1906,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.83%</span></td>
           <td class="entry-col">51.40 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>36%</span></td>
+          <td><span class='vp-weak'>35%</span></td>
           <td class="num grey xsm">28,749張 / <span class='grey'>47,465張</span></td>
           <td class="num grey">50.70 <span class='grey'>(1.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1922,6 +1924,33 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2489" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
+        <tr class="" data-code="3221" data-name="台嘉碩" data-last="56.40" data-prev="51.30" data-stop="53.00" data-entry="56.40" data-adr="7.51" data-ma10="45.76" data-ma20="44.84" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="70.2" data-rsi-bear="0" data-mom-surge="1">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A3221" target="_blank" class="code-link">3221</a></td>
+          <td class="name-cell">台嘉碩</td>
+          <td class="num bold">56.40 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.94%</span></td>
+          <td class="entry-col">56.40 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td><span class='vp-weak'>97%</span></td>
+          <td class="num grey xsm">12,319張 / <span class='grey'>7,311張</span></td>
+          <td class="num grey">53.00 <span class='grey'>(6.0%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><span class='grey'>80%</span></td>
+          <td><span class='ratr-high'>+23.2%</span> <span class='grey xsm'>3.1A</span></td>
+          <td><span class='rs-strong'>+23.1%★</span></td>
+          <td><span class='rs-ok'>84</span></td>
+          <td><span class='rs-strong'>🔥70</span></td>
+          <td><span class='rs-strong'>▲加速</span> <span class='grey xsm'>60→65→70</span></td>
+          <td class="num grey">53.00</td>
+          <td class="num grey">56.40</td>
+          <td class="num grey">53.00</td>
+          <td class="num limit-up">56</td>
+          <td class="num xsm">10/25</td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A3221" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
         <tr class=" risk-row-disposal" data-code="2492" data-name="華新科" data-last="292.50" data-prev="266.00" data-stop="280.50" data-entry="292.50" data-adr="6.94" data-ma10="222.40" data-ma20="182.07" data-type="強勢觀察" data-slv="2" data-risk="3" data-rsi14="85.4" data-rsi-bear="0" data-mom-surge="0">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
@@ -1931,7 +1960,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.96%</span></td>
           <td class="entry-col">292.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>34%</span></td>
+          <td><span class='vp-weak'>32%</span></td>
           <td class="num grey xsm">10,747張 / <span class='grey'>19,177張</span></td>
           <td class="num grey">280.50 <span class='grey'>(4.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1958,7 +1987,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.97%</span></td>
           <td class="entry-col">629.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>78%</span></td>
+          <td><span class='vp-weak'>75%</span></td>
           <td class="num grey xsm">72,117張 / <span class='grey'>55,647張</span></td>
           <td class="num grey">600.00 <span class='grey'>(4.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -1985,7 +2014,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.84%</span></td>
           <td class="entry-col">690.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-0.3%</span></td>
-          <td><span class='vp-weak'>75%</span></td>
+          <td><span class='vp-weak'>72%</span></td>
           <td class="num grey xsm">3,734張 / <span class='grey'>2,994張</span></td>
           <td class="num grey">602.00 <span class='grey'>(12.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2066,7 +2095,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.91%</span></td>
           <td class="entry-col">450.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.8%</span></td>
-          <td><span class='vp-weak'>55%</span></td>
+          <td><span class='vp-weak'>54%</span></td>
           <td class="num grey xsm">2,816張 / <span class='grey'>3,035張</span></td>
           <td class="num grey">392.50 <span class='grey'>(11.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2093,7 +2122,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+7.56%</span></td>
           <td class="entry-col">258.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-0.8%</span></td>
-          <td><span class='vp-weak'>94%</span></td>
+          <td><span class='vp-weak'>91%</span></td>
           <td class="num grey xsm">9,137張 / <span class='grey'>5,785張</span></td>
           <td class="num grey">212.00 <span class='grey'>(17.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2120,7 +2149,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.25%</span></td>
           <td class="entry-col">550.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='near-txt'>-1.1%</span></td>
-          <td><span class='vp-weak'>90%</span></td>
+          <td><span class='vp-weak'>87%</span></td>
           <td class="num grey xsm">1,476張 / <span class='grey'>981張</span></td>
           <td class="num grey">470.50 <span class='grey'>(13.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2174,7 +2203,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+7.18%</span></td>
           <td class="entry-col">986.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.6%</span></td>
-          <td><span class='vp-weak'>81%</span></td>
+          <td><span class='vp-weak'>78%</span></td>
           <td class="num grey xsm">37,492張 / <span class='grey'>27,820張</span></td>
           <td class="num grey">776.00 <span class='grey'>(20.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2201,7 +2230,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.88%</span></td>
           <td class="entry-col">271.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.7%</span></td>
-          <td><span class='vp-strong'>151%</span></td>
+          <td><span class='vp-ok'>146%</span></td>
           <td class="num grey xsm">4,163張 / <span class='grey'>1,644張</span></td>
           <td class="num grey">220.00 <span class='grey'>(17.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2228,7 +2257,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.81%</span></td>
           <td class="entry-col">1480.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='near-txt'>-1.7%</span></td>
-          <td><span class='vp-weak'>21%</span></td>
+          <td><span class='vp-weak'>20%</span></td>
           <td class="num grey xsm">1,581張 / <span class='grey'>4,466張</span></td>
           <td class="num grey">1190.00 <span class='grey'>(18.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2255,7 +2284,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.52%</span></td>
           <td class="entry-col">185.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.9%</span></td>
-          <td><span class='vp-weak'>76%</span></td>
+          <td><span class='vp-weak'>73%</span></td>
           <td class="num grey xsm">2,367張 / <span class='grey'>1,872張</span></td>
           <td class="num grey">161.50 <span class='grey'>(11.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2282,7 +2311,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.90%</span></td>
           <td class="entry-col">573.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.9%</span></td>
-          <td><span class='vp-ok'>108%</span></td>
+          <td><span class='vp-ok'>104%</span></td>
           <td class="num grey xsm">11,987張 / <span class='grey'>6,620張</span></td>
           <td class="num grey">465.00 <span class='grey'>(17.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2309,7 +2338,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.64%</span></td>
           <td class="entry-col">89.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.3%</span></td>
-          <td><span class='vp-ok'>100%</span></td>
+          <td><span class='vp-weak'>96%</span></td>
           <td class="num grey xsm">14,572張 / <span class='grey'>8,742張</span></td>
           <td class="num grey">70.20 <span class='grey'>(20.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2353,7 +2382,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.86%</span></td>
           <td class="entry-col">418.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.0%</span></td>
-          <td><span class='vp-weak'>71%</span></td>
+          <td><span class='vp-weak'>69%</span></td>
           <td class="num grey xsm">2,505張 / <span class='grey'>2,102張</span></td>
           <td class="num grey">358.50 <span class='grey'>(12.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2407,7 +2436,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.79%</span></td>
           <td class="entry-col">191.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.6%</span></td>
-          <td><span class='vp-weak'>79%</span></td>
+          <td><span class='vp-weak'>77%</span></td>
           <td class="num grey xsm">3,890張 / <span class='grey'>2,929張</span></td>
           <td class="num grey">168.50 <span class='grey'>(9.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2434,7 +2463,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-1.85%</span></td>
           <td class="entry-col">300.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.7%</span></td>
-          <td><span class='vp-weak'>48%</span></td>
+          <td><span class='vp-weak'>46%</span></td>
           <td class="num grey xsm">2,163張 / <span class='grey'>2,713張</span></td>
           <td class="num grey">268.00 <span class='grey'>(8.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2461,7 +2490,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.83%</span></td>
           <td class="entry-col">124.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.8%</span></td>
-          <td><span class='vp-weak'>72%</span></td>
+          <td><span class='vp-weak'>69%</span></td>
           <td class="num grey xsm">6,933張 / <span class='grey'>5,773張</span></td>
           <td class="num grey">112.00 <span class='grey'>(7.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2488,7 +2517,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.46%</span></td>
           <td class="entry-col">189.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.9%</span></td>
-          <td><span class='vp-weak'>83%</span></td>
+          <td><span class='vp-weak'>80%</span></td>
           <td class="num grey xsm">5,115張 / <span class='grey'>3,685張</span></td>
           <td class="num grey">153.00 <span class='grey'>(16.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2515,7 +2544,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+1.27%</span></td>
           <td class="entry-col">82.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-3.0%</span></td>
-          <td><span class='vp-weak'>47%</span></td>
+          <td><span class='vp-weak'>45%</span></td>
           <td class="num grey xsm">8,836張 / <span class='grey'>11,223張</span></td>
           <td class="num grey">75.60 <span class='grey'>(5.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2542,7 +2571,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.72%</span></td>
           <td class="entry-col">7995.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.3%</span></td>
-          <td><span class='vp-weak'>24%</span></td>
+          <td><span class='vp-weak'>23%</span></td>
           <td class="num grey xsm">478張 / <span class='grey'>1,183張</span></td>
           <td class="num grey">6360.00 <span class='grey'>(17.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2569,7 +2598,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.22%</span></td>
           <td class="entry-col">94.30 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-4.1%</span></td>
-          <td><span class='vp-weak'>82%</span></td>
+          <td><span class='vp-weak'>79%</span></td>
           <td class="num grey xsm">5,626張 / <span class='grey'>4,115張</span></td>
           <td class="num grey">83.30 <span class='grey'>(7.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2596,7 +2625,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.53%</span></td>
           <td class="entry-col">310.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.5%</span></td>
-          <td><span class='vp-weak'>58%</span></td>
+          <td><span class='vp-weak'>56%</span></td>
           <td class="num grey xsm">30,369張 / <span class='grey'>31,237張</span></td>
           <td class="num grey">254.00 <span class='grey'>(14.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2623,7 +2652,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.44%</span></td>
           <td class="entry-col">274.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-4.6%</span></td>
-          <td><span class='vp-weak'>41%</span></td>
+          <td><span class='vp-weak'>39%</span></td>
           <td class="num grey xsm">4,233張 / <span class='grey'>6,196張</span></td>
           <td class="num grey">231.50 <span class='grey'>(11.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2650,7 +2679,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.38%</span></td>
           <td class="entry-col">87.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.6%</span></td>
-          <td><span class='vp-weak'>67%</span></td>
+          <td><span class='vp-weak'>65%</span></td>
           <td class="num grey xsm">30,580張 / <span class='grey'>27,260張</span></td>
           <td class="num grey">71.40 <span class='grey'>(14.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2677,7 +2706,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-2.26%</span></td>
           <td class="entry-col">272.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.6%</span></td>
-          <td><span class='vp-weak'>95%</span></td>
+          <td><span class='vp-weak'>91%</span></td>
           <td class="num grey xsm">16,310張 / <span class='grey'>10,298張</span></td>
           <td class="num grey">215.00 <span class='grey'>(17.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2704,7 +2733,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+1.29%</span></td>
           <td class="entry-col">124.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.8%</span></td>
-          <td><span class='vp-weak'>59%</span></td>
+          <td><span class='vp-weak'>57%</span></td>
           <td class="num grey xsm">4,673張 / <span class='grey'>4,759張</span></td>
           <td class="num grey">102.50 <span class='grey'>(13.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2731,7 +2760,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-2.86%</span></td>
           <td class="entry-col">197.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.3%</span></td>
-          <td><span class='vp-weak'>54%</span></td>
+          <td><span class='vp-weak'>52%</span></td>
           <td class="num grey xsm">8,337張 / <span class='grey'>9,301張</span></td>
           <td class="num grey">169.00 <span class='grey'>(9.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2758,7 +2787,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.53%</span></td>
           <td class="entry-col">80.40 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-5.3%</span></td>
-          <td><span class='vp-weak'>35%</span></td>
+          <td><span class='vp-weak'>34%</span></td>
           <td class="num grey xsm">4,647張 / <span class='grey'>7,970張</span></td>
           <td class="num grey">72.30 <span class='grey'>(5.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2785,7 +2814,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-1.72%</span></td>
           <td class="entry-col">120.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-5.4%</span></td>
-          <td><span class='vp-weak'>48%</span></td>
+          <td><span class='vp-weak'>46%</span></td>
           <td class="num grey xsm">201,106張 / <span class='grey'>249,615張</span></td>
           <td class="num grey">103.50 <span class='grey'>(9.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2812,7 +2841,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.54%</span></td>
           <td class="entry-col">235.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.5%</span></td>
-          <td><span class='vp-weak'>53%</span></td>
+          <td><span class='vp-weak'>51%</span></td>
           <td class="num grey xsm">13,296張 / <span class='grey'>15,099張</span></td>
           <td class="num grey">206.00 <span class='grey'>(7.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2839,7 +2868,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.80%</span></td>
           <td class="entry-col">399.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.6%</span></td>
-          <td><span class='vp-weak'>40%</span></td>
+          <td><span class='vp-weak'>39%</span></td>
           <td class="num grey xsm">5,555張 / <span class='grey'>8,211張</span></td>
           <td class="num grey">355.50 <span class='grey'>(5.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2866,7 +2895,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.37%</span></td>
           <td class="entry-col">5870.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.9%</span></td>
-          <td><span class='vp-weak'>45%</span></td>
+          <td><span class='vp-weak'>43%</span></td>
           <td class="num grey xsm">1,826張 / <span class='grey'>2,448張</span></td>
           <td class="num grey">4775.00 <span class='grey'>(13.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2893,7 +2922,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-3.15%</span></td>
           <td class="entry-col">230.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.5%</span></td>
-          <td><span class='vp-weak'>64%</span></td>
+          <td><span class='vp-weak'>62%</span></td>
           <td class="num grey xsm">60,554張 / <span class='grey'>56,767張</span></td>
           <td class="num grey">195.00 <span class='grey'>(9.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2920,7 +2949,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-1.20%</span></td>
           <td class="entry-col">88.30 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-6.8%</span></td>
-          <td><span class='vp-weak'>41%</span></td>
+          <td><span class='vp-weak'>39%</span></td>
           <td class="num grey xsm">5,557張 / <span class='grey'>8,153張</span></td>
           <td class="num grey">78.40 <span class='grey'>(4.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2947,7 +2976,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-3.65%</span></td>
           <td class="entry-col">93.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.8%</span></td>
-          <td><span class='vp-weak'>77%</span></td>
+          <td><span class='vp-weak'>74%</span></td>
           <td class="num grey xsm">30,478張 / <span class='grey'>23,750張</span></td>
           <td class="num grey">69.50 <span class='grey'>(20.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2974,7 +3003,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.91%</span></td>
           <td class="entry-col">199.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.0%</span></td>
-          <td><span class='vp-weak'>75%</span></td>
+          <td><span class='vp-weak'>72%</span></td>
           <td class="num grey xsm">4,863張 / <span class='grey'>3,893張</span></td>
           <td class="num grey">161.50 <span class='grey'>(11.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3001,7 +3030,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.10%</span></td>
           <td class="entry-col">294.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.8%</span></td>
-          <td><span class='vp-weak'>39%</span></td>
+          <td><span class='vp-weak'>37%</span></td>
           <td class="num grey xsm">2,438張 / <span class='grey'>3,767張</span></td>
           <td class="num grey">237.00 <span class='grey'>(11.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3028,7 +3057,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.98%</span></td>
           <td class="entry-col">261.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.0%</span></td>
-          <td><span class='vp-weak'>58%</span></td>
+          <td><span class='vp-weak'>56%</span></td>
           <td class="num grey xsm">29,268張 / <span class='grey'>30,233張</span></td>
           <td class="num grey">216.00 <span class='grey'>(9.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3055,7 +3084,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.00%</span></td>
           <td class="entry-col">114.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.2%</span></td>
-          <td><span class='vp-weak'>67%</span></td>
+          <td><span class='vp-weak'>64%</span></td>
           <td class="num grey xsm">4,581張 / <span class='grey'>4,112張</span></td>
           <td class="num grey">95.20 <span class='grey'>(8.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3082,7 +3111,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.81%</span></td>
           <td class="entry-col">6665.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.5%</span></td>
-          <td><span class='vp-weak'>52%</span></td>
+          <td><span class='vp-weak'>50%</span></td>
           <td class="num grey xsm">1,182張 / <span class='grey'>1,351張</span></td>
           <td class="num grey">5530.00 <span class='grey'>(8.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3109,7 +3138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.51%</span></td>
           <td class="entry-col">542.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.5%</span></td>
-          <td><span class='vp-weak'>37%</span></td>
+          <td><span class='vp-weak'>36%</span></td>
           <td class="num grey xsm">3,575張 / <span class='grey'>5,773張</span></td>
           <td class="num grey">454.00 <span class='grey'>(7.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3136,7 +3165,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.48%</span></td>
           <td class="entry-col">129.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-10.9%</span></td>
-          <td><span class='vp-weak'>45%</span></td>
+          <td><span class='vp-weak'>44%</span></td>
           <td class="num grey xsm">6,092張 / <span class='grey'>8,018張</span></td>
           <td class="num grey">104.00 <span class='grey'>(9.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3163,7 +3192,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.48%</span></td>
           <td class="entry-col">285.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.2%</span></td>
-          <td><span class='vp-weak'>43%</span></td>
+          <td><span class='vp-weak'>42%</span></td>
           <td class="num grey xsm">13,996張 / <span class='grey'>19,358張</span></td>
           <td class="num grey">228.00 <span class='grey'>(9.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3190,7 +3219,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.97%</span></td>
           <td class="entry-col">353.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-12.0%</span></td>
-          <td><span class='vp-weak'>64%</span></td>
+          <td><span class='vp-weak'>62%</span></td>
           <td class="num grey xsm">154,671張 / <span class='grey'>144,201張</span></td>
           <td class="num grey">265.50 <span class='grey'>(14.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3217,7 +3246,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-0.20%</span></td>
           <td class="entry-col">5640.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-13.2%</span></td>
-          <td><span class='vp-weak'>39%</span></td>
+          <td><span class='vp-weak'>38%</span></td>
           <td class="num grey xsm">1,501張 / <span class='grey'>2,302張</span></td>
           <td class="num grey">4340.00 <span class='grey'>(11.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3244,7 +3273,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+7.17%</span></td>
           <td class="entry-col">130.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.3%</span></td>
-          <td><span class='vp-weak'>64%</span></td>
+          <td><span class='vp-weak'>62%</span></td>
           <td class="num grey xsm">4,654張 / <span class='grey'>4,331張</span></td>
           <td class="num grey">110.50 <span class='grey'>(13.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3271,7 +3300,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.73%</span></td>
           <td class="entry-col">127.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.4%</span></td>
-          <td><span class='vp-weak'>35%</span></td>
+          <td><span class='vp-weak'>34%</span></td>
           <td class="num grey xsm">4,816張 / <span class='grey'>8,224張</span></td>
           <td class="num grey">110.00 <span class='grey'>(11.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3298,7 +3327,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.33%</span></td>
           <td class="entry-col">90.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.8%</span></td>
-          <td><span class='vp-weak'>96%</span></td>
+          <td><span class='vp-weak'>93%</span></td>
           <td class="num grey xsm">35,332張 / <span class='grey'>21,912張</span></td>
           <td class="num grey">72.00 <span class='grey'>(18.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3325,7 +3354,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+10.00%</span></td>
           <td class="entry-col">579.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.1%</span></td>
-          <td><span class='vp-weak'>70%</span></td>
+          <td><span class='vp-weak'>67%</span></td>
           <td class="num grey xsm">29,697張 / <span class='grey'>25,512張</span></td>
           <td class="num grey">465.00 <span class='grey'>(17.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3352,7 +3381,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.20%</span></td>
           <td class="entry-col">513.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.1%</span></td>
-          <td><span class='vp-ok'>113%</span></td>
+          <td><span class='vp-ok'>109%</span></td>
           <td class="num grey xsm">3,759張 / <span class='grey'>1,981張</span></td>
           <td class="num grey">401.00 <span class='grey'>(19.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3379,7 +3408,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+8.73%</span></td>
           <td class="entry-col">3985.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.1%</span></td>
-          <td><span class='vp-weak'>93%</span></td>
+          <td><span class='vp-weak'>90%</span></td>
           <td class="num grey xsm">19,490張 / <span class='grey'>12,488張</span></td>
           <td class="num grey">3100.00 <span class='grey'>(19.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3406,7 +3435,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-1.39%</span></td>
           <td class="entry-col">80.60 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.2%</span></td>
-          <td><span class='vp-weak'>49%</span></td>
+          <td><span class='vp-weak'>47%</span></td>
           <td class="num grey xsm">5,581張 / <span class='grey'>6,852張</span></td>
           <td class="num grey">67.10 <span class='grey'>(14.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3433,7 +3462,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.88%</span></td>
           <td class="entry-col">149.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.4%</span></td>
-          <td><span class='vp-weak'>75%</span></td>
+          <td><span class='vp-weak'>72%</span></td>
           <td class="num grey xsm">37,109張 / <span class='grey'>29,588張</span></td>
           <td class="num grey">119.00 <span class='grey'>(17.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3460,7 +3489,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+1.35%</span></td>
           <td class="entry-col">93.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.9%</span></td>
-          <td><span class='vp-ok'>119%</span></td>
+          <td><span class='vp-ok'>114%</span></td>
           <td class="num grey xsm">29,687張 / <span class='grey'>14,966張</span></td>
           <td class="num grey">72.00 <span class='grey'>(19.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3487,7 +3516,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.72%</span></td>
           <td class="entry-col">5215.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.0%</span></td>
-          <td><span class='vp-weak'>58%</span></td>
+          <td><span class='vp-weak'>56%</span></td>
           <td class="num grey xsm">2,730張 / <span class='grey'>2,826張</span></td>
           <td class="num grey">4300.00 <span class='grey'>(14.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3514,7 +3543,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+8.15%</span></td>
           <td class="entry-col">18535.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.1%</span></td>
-          <td><span class='vp-weak'>57%</span></td>
+          <td><span class='vp-weak'>55%</span></td>
           <td class="num grey xsm">325張 / <span class='grey'>338張</span></td>
           <td class="num grey">15140.00 <span class='grey'>(14.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3541,7 +3570,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.46%</span></td>
           <td class="entry-col">75.90 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-4.3%</span></td>
-          <td><span class='vp-weak'>46%</span></td>
+          <td><span class='vp-weak'>45%</span></td>
           <td class="num grey xsm">10,981張 / <span class='grey'>14,220張</span></td>
           <td class="num grey">67.20 <span class='grey'>(7.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3568,7 +3597,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+7.05%</span></td>
           <td class="entry-col">167.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.8%</span></td>
-          <td><span class='vp-weak'>59%</span></td>
+          <td><span class='vp-weak'>57%</span></td>
           <td class="num grey xsm">8,278張 / <span class='grey'>8,433張</span></td>
           <td class="num grey">140.50 <span class='grey'>(11.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3595,7 +3624,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-0.57%</span></td>
           <td class="entry-col">92.30 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-5.1%</span></td>
-          <td><span class='vp-weak'>35%</span></td>
+          <td><span class='vp-weak'>34%</span></td>
           <td class="num grey xsm">4,615張 / <span class='grey'>7,850張</span></td>
           <td class="num grey">79.50 <span class='grey'>(9.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3622,7 +3651,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.98%</span></td>
           <td class="entry-col">138.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.4%</span></td>
-          <td><span class='vp-ok'>121%</span></td>
+          <td><span class='vp-ok'>117%</span></td>
           <td class="num grey xsm">28,805張 / <span class='grey'>14,216張</span></td>
           <td class="num grey">105.50 <span class='grey'>(19.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3649,7 +3678,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-5.48%</span></td>
           <td class="entry-col">310.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.5%</span></td>
-          <td><span class='vp-weak'>95%</span></td>
+          <td><span class='vp-weak'>92%</span></td>
           <td class="num grey xsm">3,907張 / <span class='grey'>2,447張</span></td>
           <td class="num grey">258.00 <span class='grey'>(11.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3676,7 +3705,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.77%</span></td>
           <td class="entry-col">81.60 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.6%</span></td>
-          <td><span class='vp-ok'>131%</span></td>
+          <td><span class='vp-ok'>126%</span></td>
           <td class="num grey xsm">46,149張 / <span class='grey'>21,137張</span></td>
           <td class="num grey">63.70 <span class='grey'>(17.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3703,7 +3732,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.58%</span></td>
           <td class="entry-col">372.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.8%</span></td>
-          <td><span class='vp-ok'>122%</span></td>
+          <td><span class='vp-ok'>118%</span></td>
           <td class="num grey xsm">4,343張 / <span class='grey'>2,131張</span></td>
           <td class="num grey">290.00 <span class='grey'>(16.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3730,7 +3759,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.08%</span></td>
           <td class="entry-col">653.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-7.7%</span></td>
-          <td><span class='vp-weak'>49%</span></td>
+          <td><span class='vp-weak'>47%</span></td>
           <td class="num grey xsm">2,352張 / <span class='grey'>2,895張</span></td>
           <td class="num grey">547.00 <span class='grey'>(9.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3757,7 +3786,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.96%</span></td>
           <td class="entry-col">143.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.7%</span></td>
-          <td><span class='vp-weak'>80%</span></td>
+          <td><span class='vp-weak'>78%</span></td>
           <td class="num grey xsm">14,558張 / <span class='grey'>10,826張</span></td>
           <td class="num grey">117.00 <span class='grey'>(11.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3784,7 +3813,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-0.46%</span></td>
           <td class="entry-col">119.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-weak'>50%</span></td>
+          <td><span class='vp-weak'>49%</span></td>
           <td class="num grey xsm">9,423張 / <span class='grey'>11,203張</span></td>
           <td class="num grey">102.00 <span class='grey'>(6.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3811,7 +3840,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class=''>+0.00%</span></td>
           <td class="entry-col">2480.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.5%</span></td>
-          <td><span class='vp-weak'>58%</span></td>
+          <td><span class='vp-weak'>56%</span></td>
           <td class="num grey xsm">3,558張 / <span class='grey'>3,660張</span></td>
           <td class="num grey">1975.00 <span class='grey'>(13.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3838,7 +3867,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class=''>+0.00%</span></td>
           <td class="entry-col">100.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.5%</span></td>
-          <td><span class='vp-weak'>20%</span></td>
+          <td><span class='vp-weak'>19%</span></td>
           <td class="num grey xsm">3,925張 / <span class='grey'>11,981張</span></td>
           <td class="num grey">76.30 <span class='grey'>(16.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3865,7 +3894,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.41%</span></td>
           <td class="entry-col">623.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.8%</span></td>
-          <td><span class='vp-weak'>34%</span></td>
+          <td><span class='vp-weak'>32%</span></td>
           <td class="num grey xsm">2,360張 / <span class='grey'>4,197張</span></td>
           <td class="num grey">498.50 <span class='grey'>(12.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3892,7 +3921,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+3.98%</span></td>
           <td class="entry-col">5615.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-9.3%</span></td>
-          <td><span class='vp-weak'>15%</span></td>
+          <td><span class='vp-weak'>14%</span></td>
           <td class="num grey xsm">184張 / <span class='grey'>748張</span></td>
           <td class="num grey">4450.00 <span class='grey'>(12.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3919,7 +3948,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.01%</span></td>
           <td class="entry-col">583.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.1%</span></td>
-          <td><span class='vp-weak'>55%</span></td>
+          <td><span class='vp-weak'>53%</span></td>
           <td class="num grey xsm">4,557張 / <span class='grey'>4,978張</span></td>
           <td class="num grey">472.00 <span class='grey'>(9.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3946,7 +3975,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class=''>+0.00%</span></td>
           <td class="entry-col">363.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.8%</span></td>
-          <td><span class='vp-strong'>185%</span></td>
+          <td><span class='vp-strong'>179%</span></td>
           <td class="num grey xsm">3,678張 / <span class='grey'>1,187張</span></td>
           <td class="num grey">275.00 <span class='grey'>(14.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3973,7 +4002,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+1.48%</span></td>
           <td class="entry-col">5950.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-13.6%</span></td>
-          <td><span class='vp-weak'>64%</span></td>
+          <td><span class='vp-weak'>62%</span></td>
           <td class="num grey xsm">2,552張 / <span class='grey'>2,369張</span></td>
           <td class="num grey">4370.00 <span class='grey'>(15.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4000,7 +4029,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.67%</span></td>
           <td class="entry-col">55.30 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.5%</span></td>
-          <td><span class='vp-weak'>66%</span></td>
+          <td><span class='vp-weak'>63%</span></td>
           <td class="num grey xsm">23,810張 / <span class='grey'>21,718張</span></td>
           <td class="num grey">46.85 <span class='grey'>(13.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4027,7 +4056,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+1.63%</span></td>
           <td class="entry-col">1310.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.6%</span></td>
-          <td><span class='vp-ok'>106%</span></td>
+          <td><span class='vp-ok'>102%</span></td>
           <td class="num grey xsm">1,767張 / <span class='grey'>995張</span></td>
           <td class="num grey">926.00 <span class='grey'>(25.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4056,6 +4085,531 @@ document.addEventListener('DOMContentLoaded', async () => {
   量能步調超過150%才算強量突破；大盤跌超過1%時，個股突破需提高量能門檻（建議 ≥200%）<br>
   停利規則：獲利達2R（2倍停損距離）先出半倉，剩餘部位停損移至進場價（零成本）；持倉達2R時表格會顯示提醒
 </div>
+
+</div><!-- /tab-monitor -->
+
+<div id="tab-buy" class="tab-pane">
+  <p class="buy-hint">只列出今日有訊號的進場標的（🟢🟡🟠🔵），依訊號強度排序。建議張數沿用「盤中監控」分頁的部位設定。</p>
+  <div class="section"><table><thead><tr><th>進場訊號</th><th>型態</th><th>代號</th><th>名稱</th><th>即時價</th><th>漲跌%</th><th>進場價</th><th>距進場</th><th>停損</th><th>建議張數</th><th></th><th></th></tr></thead><tbody>
+        <tr class="" data-code="2484" data-name="希華" data-last="49.30" data-prev="44.85" data-stop="45.30" data-entry="49.30" data-adr="7.68" data-ma10="41.17" data-ma20="41.04" data-type="強勢觀察" data-slv="4" data-risk="0" data-rsi14="66.9" data-rsi-bear="0" data-mom-surge="1">
+          <td><span class='sig-badge' style='color:#3fb950'>🟢 突破確認＋強量</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2484" target="_blank" class="code-link">2484</a></td>
+          <td class="name-cell">希華</td>
+          <td class="num bold">49.30 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.92%</span></td>
+          <td class="entry-col">49.30 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">45.30 <span class='grey'>(8.1%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2484" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="ep-row" data-code="6278" data-name="台表科" data-last="245.00" data-prev="223.00" data-stop="228.50" data-entry="245.00" data-adr="8.72" data-ma10="217.85" data-ma20="193.70" data-type="底部蓄積" data-slv="2" data-risk="0" data-rsi14="72.2" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge ep-base'>⚡ 底部蓄積 (29天)</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank" class="code-link">6278</a></td>
+          <td class="name-cell">台表科</td>
+          <td class="num bold">245.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.87%</span></td>
+          <td class="entry-col">245.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">228.50 <span class='grey'>(6.7%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="4760" data-name="勤凱" data-last="341.00" data-prev="310.00" data-stop="328.00" data-entry="341.00" data-adr="8.15" data-ma10="305.00" data-ma20="275.38" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="69.2" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A4760" target="_blank" class="code-link">4760</a></td>
+          <td class="name-cell">勤凱</td>
+          <td class="num bold">341.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+10.00%</span></td>
+          <td class="entry-col">341.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">328.00 <span class='grey'>(3.8%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A4760" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6291" data-name="沛亨" data-last="541.00" data-prev="492.00" data-stop="513.00" data-entry="541.00" data-adr="7.06" data-ma10="491.25" data-ma20="467.25" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="63.3" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6291" target="_blank" class="code-link">6291</a></td>
+          <td class="name-cell">沛亨</td>
+          <td class="num bold">541.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.96%</span></td>
+          <td class="entry-col">541.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">513.00 <span class='grey'>(5.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6291" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="ep-row" data-code="6727" data-name="亞泰金屬" data-last="600.00" data-prev="546.00" data-stop="581.00" data-entry="600.00" data-adr="8.73" data-ma10="529.95" data-ma20="470.68" data-type="底部蓄積" data-slv="2" data-risk="0" data-rsi14="70.6" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge ep-base'>⚡ 底部蓄積 (13天)</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6727" target="_blank" class="code-link">6727</a></td>
+          <td class="name-cell">亞泰金屬</td>
+          <td class="num bold">600.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.89%</span></td>
+          <td class="entry-col">600.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">581.00 <span class='grey'>(3.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6727" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="vcp-row risk-row-disposal" data-code="4991" data-name="環宇-KY" data-last="814.00" data-prev="740.00" data-stop="750.00" data-entry="814.00" data-adr="8.81" data-ma10="709.50" data-ma20="682.95" data-type="收縮整理" data-slv="2" data-risk="3" data-rsi14="65.2" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A4991" target="_blank" class="code-link">4991</a></td>
+          <td class="name-cell">環宇-KY <span class='risk-flag risk-disposal' title='最近10個營業日內有6個營業日 1150511~1150522'>🛑處置</span></td>
+          <td class="num bold">814.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+10.00%</span></td>
+          <td class="entry-col">814.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">750.00 <span class='grey'>(7.9%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A4991" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="3030" data-name="德律" data-last="419.50" data-prev="381.50" data-stop="395.00" data-entry="419.50" data-adr="5.89" data-ma10="391.25" data-ma20="378.30" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="63.6" data-rsi-bear="0" data-mom-surge="1">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3030" target="_blank" class="code-link">3030</a></td>
+          <td class="name-cell">德律</td>
+          <td class="num bold">419.50 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.96%</span></td>
+          <td class="entry-col">419.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">395.00 <span class='grey'>(5.8%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3030" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="ep-row" data-code="6526" data-name="達發" data-last="725.00" data-prev="704.00" data-stop="695.00" data-entry="725.00" data-adr="5.21" data-ma10="700.30" data-ma20="658.35" data-type="底部蓄積" data-slv="2" data-risk="0" data-rsi14="64.7" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge ep-base'>⚡ 底部蓄積 (22天)</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6526" target="_blank" class="code-link">6526</a></td>
+          <td class="name-cell">達發</td>
+          <td class="num bold">725.00</td>
+          <td><span class='up'>+2.98%</span></td>
+          <td class="entry-col">725.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">695.00 <span class='grey'>(4.1%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6526" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="1727" data-name="中華化" data-last="102.00" data-prev="93.00" data-stop="94.00" data-entry="102.00" data-adr="8.12" data-ma10="85.66" data-ma20="81.58" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="79.0" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank" class="code-link">1727</a></td>
+          <td class="name-cell">中華化</td>
+          <td class="num bold">102.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.68%</span></td>
+          <td class="entry-col">102.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">94.00 <span class='grey'>(7.8%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="8028" data-name="昇陽半導體" data-last="294.00" data-prev="267.50" data-stop="280.50" data-entry="294.00" data-adr="6.90" data-ma10="262.00" data-ma20="249.75" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="69.4" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A8028" target="_blank" class="code-link">8028</a></td>
+          <td class="name-cell">昇陽半導體</td>
+          <td class="num bold">294.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.91%</span></td>
+          <td class="entry-col">294.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">280.50 <span class='grey'>(4.6%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A8028" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="4722" data-name="國精化" data-last="286.50" data-prev="260.50" data-stop="269.00" data-entry="286.50" data-adr="7.48" data-ma10="254.80" data-ma20="224.25" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="72.5" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4722" target="_blank" class="code-link">4722</a></td>
+          <td class="name-cell">國精化</td>
+          <td class="num bold">286.50 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.98%</span></td>
+          <td class="entry-col">286.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">269.00 <span class='grey'>(6.1%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4722" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="3189" data-name="景碩" data-last="609.00" data-prev="554.00" data-stop="588.00" data-entry="609.00" data-adr="7.50" data-ma10="518.75" data-ma20="513.17" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="70.7" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3189" target="_blank" class="code-link">3189</a></td>
+          <td class="name-cell">景碩</td>
+          <td class="num bold">609.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.93%</span></td>
+          <td class="entry-col">609.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">588.00 <span class='grey'>(3.4%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3189" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="2455" data-name="全新" data-last="425.00" data-prev="386.50" data-stop="398.50" data-entry="425.00" data-adr="7.73" data-ma10="380.80" data-ma20="360.77" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="68.1" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2455" target="_blank" class="code-link">2455</a></td>
+          <td class="name-cell">全新</td>
+          <td class="num bold">425.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.96%</span></td>
+          <td class="entry-col">425.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">398.50 <span class='grey'>(6.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2455" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="4919" data-name="新唐" data-last="199.50" data-prev="181.50" data-stop="188.50" data-entry="199.50" data-adr="8.57" data-ma10="169.00" data-ma20="162.22" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="69.8" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank" class="code-link">4919</a></td>
+          <td class="name-cell">新唐</td>
+          <td class="num bold">199.50 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.92%</span></td>
+          <td class="entry-col">199.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">188.50 <span class='grey'>(5.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6706" data-name="惠特" data-last="185.00" data-prev="168.50" data-stop="173.00" data-entry="185.00" data-adr="7.20" data-ma10="168.45" data-ma20="161.43" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="63.7" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6706" target="_blank" class="code-link">6706</a></td>
+          <td class="name-cell">惠特</td>
+          <td class="num bold">185.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.79%</span></td>
+          <td class="entry-col">185.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">173.00 <span class='grey'>(6.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6706" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="5243" data-name="乙盛-KY" data-last="123.00" data-prev="112.00" data-stop="113.50" data-entry="123.00" data-adr="7.01" data-ma10="107.55" data-ma20="107.22" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="63.7" data-rsi-bear="1" data-mom-surge="1">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A5243" target="_blank" class="code-link">5243</a></td>
+          <td class="name-cell">乙盛-KY</td>
+          <td class="num bold">123.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.82%</span></td>
+          <td class="entry-col">123.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">113.50 <span class='grey'>(7.7%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A5243" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="vcp-row risk-row-disposal" data-code="3026" data-name="禾伸堂" data-last="476.50" data-prev="433.50" data-stop="460.00" data-entry="476.50" data-adr="7.83" data-ma10="369.80" data-ma20="309.60" data-type="收縮整理" data-slv="2" data-risk="3" data-rsi14="83.7" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3026" target="_blank" class="code-link">3026</a></td>
+          <td class="name-cell">禾伸堂 <span class='risk-flag risk-disposal' title='第二次處置 連續三次 115/05/15～115/05/28'>🛑處置</span></td>
+          <td class="num bold">476.50</td>
+          <td><span class='up'>+9.92%</span></td>
+          <td class="entry-col">476.50 <span class='grey xsm'>突破點</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">460.00 <span class='grey'>(3.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3026" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class=" risk-row-disposal" data-code="6173" data-name="信昌電" data-last="192.50" data-prev="175.00" data-stop="182.50" data-entry="192.50" data-adr="6.95" data-ma10="162.05" data-ma20="127.13" data-type="強勢觀察" data-slv="2" data-risk="3" data-rsi14="80.9" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6173" target="_blank" class="code-link">6173</a></td>
+          <td class="name-cell">信昌電 <span class='risk-flag risk-disposal' title='因連續3個營業日達本中心作業要點第四條第一項第一款 1150515~1150528'>🛑處置</span></td>
+          <td class="num bold">192.50 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+10.00%</span></td>
+          <td class="entry-col">192.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">182.50 <span class='grey'>(5.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6173" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="vcp-row risk-row-disposal" data-code="6182" data-name="合晶" data-last="69.90" data-prev="63.60" data-stop="65.40" data-entry="69.90" data-adr="6.48" data-ma10="58.47" data-ma20="52.02" data-type="收縮整理" data-slv="2" data-risk="3" data-rsi14="81.3" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6182" target="_blank" class="code-link">6182</a></td>
+          <td class="name-cell">合晶 <span class='risk-flag risk-disposal' title='因連續3個營業日達本中心作業要點第四條第一項第一款 1150512~1150525'>🛑處置</span></td>
+          <td class="num bold">69.90 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.91%</span></td>
+          <td class="entry-col">69.90 <span class='grey xsm'>突破點</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">65.40 <span class='grey'>(6.4%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6182" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="4958" data-name="臻鼎-KY" data-last="516.00" data-prev="469.50" data-stop="480.00" data-entry="516.00" data-adr="7.66" data-ma10="432.05" data-ma20="416.18" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="74.9" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4958" target="_blank" class="code-link">4958</a></td>
+          <td class="name-cell">臻鼎-KY</td>
+          <td class="num bold">516.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.90%</span></td>
+          <td class="entry-col">516.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">480.00 <span class='grey'>(7.0%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4958" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="2489" data-name="瑞軒" data-last="51.40" data-prev="46.80" data-stop="50.70" data-entry="51.40" data-adr="7.31" data-ma10="42.90" data-ma20="42.17" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="67.9" data-rsi-bear="0" data-mom-surge="1">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2489" target="_blank" class="code-link">2489</a></td>
+          <td class="name-cell">瑞軒</td>
+          <td class="num bold">51.40 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.83%</span></td>
+          <td class="entry-col">51.40 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">50.70 <span class='grey'>(1.4%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2489" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="3221" data-name="台嘉碩" data-last="56.40" data-prev="51.30" data-stop="53.00" data-entry="56.40" data-adr="7.51" data-ma10="45.76" data-ma20="44.84" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="70.2" data-rsi-bear="0" data-mom-surge="1">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A3221" target="_blank" class="code-link">3221</a></td>
+          <td class="name-cell">台嘉碩</td>
+          <td class="num bold">56.40 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.94%</span></td>
+          <td class="entry-col">56.40 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">53.00 <span class='grey'>(6.0%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A3221" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class=" risk-row-disposal" data-code="2492" data-name="華新科" data-last="292.50" data-prev="266.00" data-stop="280.50" data-entry="292.50" data-adr="6.94" data-ma10="222.40" data-ma20="182.07" data-type="強勢觀察" data-slv="2" data-risk="3" data-rsi14="85.4" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank" class="code-link">2492</a></td>
+          <td class="name-cell">華新科 <span class='risk-flag risk-disposal' title='第一次處置 連續三次 115/05/15～115/05/28'>🛑處置</span></td>
+          <td class="num bold">292.50 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.96%</span></td>
+          <td class="entry-col">292.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">280.50 <span class='grey'>(4.1%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2492" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="2327" data-name="國巨*" data-last="629.00" data-prev="572.00" data-stop="600.00" data-entry="629.00" data-adr="6.21" data-ma10="486.75" data-ma20="411.23" data-type="強勢觀察" data-slv="2" data-risk="0" data-rsi14="90.2" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank" class="code-link">2327</a></td>
+          <td class="name-cell">國巨*</td>
+          <td class="num bold">629.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.97%</span></td>
+          <td class="entry-col">629.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='trig'>+0.0%</span></td>
+          <td class="num grey">600.00 <span class='grey'>(4.6%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2327" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="1560" data-name="中砂" data-last="688.00" data-prev="669.00" data-stop="602.00" data-entry="690.00" data-adr="5.38" data-ma10="648.10" data-ma20="599.30" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="68.7" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1560" target="_blank" class="code-link">1560</a></td>
+          <td class="name-cell">中砂</td>
+          <td class="num bold">688.00</td>
+          <td><span class='up'>+2.84%</span></td>
+          <td class="entry-col">690.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-0.3%</span></td>
+          <td class="num grey">602.00 <span class='grey'>(12.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1560" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class=" risk-row-disposal" data-code="6831" data-name="邁科" data-last="786.00" data-prev="781.00" data-stop="654.00" data-entry="792.00" data-adr="7.22" data-ma10="710.70" data-ma20="607.48" data-type="強勢觀察" data-slv="1" data-risk="3" data-rsi14="82.6" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank" class="code-link">6831</a></td>
+          <td class="name-cell">邁科 <span class='risk-flag risk-disposal' title='第一次處置 連續三次 115/05/15～115/05/28'>🛑處置</span></td>
+          <td class="num bold">786.00</td>
+          <td><span class='up'>+0.64%</span></td>
+          <td class="entry-col">792.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-0.8%</span></td>
+          <td class="num grey">654.00 <span class='grey'>(16.8%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="ep-row risk-row-disposal" data-code="4966" data-name="譜瑞-KY" data-last="795.00" data-prev="789.00" data-stop="703.00" data-entry="808.00" data-adr="5.61" data-ma10="775.00" data-ma20="686.70" data-type="底部蓄積" data-slv="1" data-risk="3" data-rsi14="68.5" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge ep-base'>⚡ 底部蓄積 (21天)</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A4966" target="_blank" class="code-link">4966</a></td>
+          <td class="name-cell">譜瑞-KY <span class='risk-flag risk-disposal' title='因連續3個營業日達本中心作業要點第四條第一項第一款 1150515~1150528'>🛑處置</span></td>
+          <td class="num bold">795.00</td>
+          <td><span class='up'>+0.76%</span></td>
+          <td class="entry-col">808.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='near-txt'>-1.6%</span></td>
+          <td class="num grey">703.00 <span class='grey'>(11.6%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A4966" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6196" data-name="帆宣" data-last="442.00" data-prev="429.50" data-stop="392.50" data-entry="450.00" data-adr="4.71" data-ma10="419.40" data-ma20="402.60" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="67.8" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6196" target="_blank" class="code-link">6196</a></td>
+          <td class="name-cell">帆宣</td>
+          <td class="num bold">442.00</td>
+          <td><span class='up'>+2.91%</span></td>
+          <td class="entry-col">450.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-1.8%</span></td>
+          <td class="num grey">392.50 <span class='grey'>(11.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6196" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6197" data-name="佳必琪" data-last="256.00" data-prev="238.00" data-stop="212.00" data-entry="258.00" data-adr="6.26" data-ma10="228.65" data-ma20="219.90" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="71.1" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6197" target="_blank" class="code-link">6197</a></td>
+          <td class="name-cell">佳必琪</td>
+          <td class="num bold">256.00</td>
+          <td><span class='up'>+7.56%</span></td>
+          <td class="entry-col">258.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-0.8%</span></td>
+          <td class="num grey">212.00 <span class='grey'>(17.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6197" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="ep-row" data-code="7749" data-name="意騰-KY" data-last="544.00" data-prev="512.00" data-stop="470.50" data-entry="550.00" data-adr="5.49" data-ma10="504.35" data-ma20="483.98" data-type="底部蓄積" data-slv="1" data-risk="0" data-rsi14="64.8" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge ep-base'>⚡ 底部蓄積 (14天)</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7749" target="_blank" class="code-link">7749</a></td>
+          <td class="name-cell">意騰-KY</td>
+          <td class="num bold">544.00</td>
+          <td><span class='up'>+6.25%</span></td>
+          <td class="entry-col">550.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='near-txt'>-1.1%</span></td>
+          <td class="num grey">470.50 <span class='grey'>(13.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A7749" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="vcp-row risk-row-disposal" data-code="8358" data-name="金居" data-last="522.00" data-prev="498.00" data-stop="368.00" data-entry="528.00" data-adr="7.70" data-ma10="454.85" data-ma20="429.05" data-type="收縮整理" data-slv="1" data-risk="3" data-rsi14="70.3" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A8358" target="_blank" class="code-link">8358</a></td>
+          <td class="name-cell">金居 <span class='risk-flag risk-disposal' title='最近10個營業日內有6個營業日 1150515~1150528'>🛑處置</span></td>
+          <td class="num bold">522.00</td>
+          <td><span class='up'>+4.82%</span></td>
+          <td class="entry-col">528.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='near-txt'>-1.1%</span></td>
+          <td class="num grey">368.00 <span class='grey'>(29.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A8358" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="3037" data-name="欣興" data-last="970.00" data-prev="905.00" data-stop="776.00" data-entry="986.00" data-adr="6.32" data-ma10="866.20" data-ma20="859.40" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="69.5" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3037" target="_blank" class="code-link">3037</a></td>
+          <td class="name-cell">欣興</td>
+          <td class="num bold">970.00</td>
+          <td><span class='up'>+7.18%</span></td>
+          <td class="entry-col">986.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-1.6%</span></td>
+          <td class="num grey">776.00 <span class='grey'>(20.0%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3037" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="4908" data-name="前鼎" data-last="267.00" data-prev="243.00" data-stop="220.00" data-entry="271.50" data-adr="7.30" data-ma10="240.50" data-ma20="226.68" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="72.5" data-rsi-bear="1" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A4908" target="_blank" class="code-link">4908</a></td>
+          <td class="name-cell">前鼎</td>
+          <td class="num bold">267.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.88%</span></td>
+          <td class="entry-col">271.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-1.7%</span></td>
+          <td class="num grey">220.00 <span class='grey'>(17.6%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A4908" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="vcp-row risk-row-disposal" data-code="6274" data-name="台燿" data-last="1455.00" data-prev="1325.00" data-stop="1190.00" data-entry="1480.00" data-adr="6.43" data-ma10="1358.00" data-ma20="1251.30" data-type="收縮整理" data-slv="1" data-risk="3" data-rsi14="68.5" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6274" target="_blank" class="code-link">6274</a></td>
+          <td class="name-cell">台燿 <span class='risk-flag risk-disposal' title='因連續3個營業日達本中心作業要點第四條第一項第一款 1150511~1150522'>🛑處置</span></td>
+          <td class="num bold">1455.00 <span class="limit-up xsm">漲停↑</span></td>
+          <td><span class='up'>+9.81%</span></td>
+          <td class="entry-col">1480.00 <span class='grey xsm'>突破點</span></td>
+          <td><span class='near-txt'>-1.7%</span></td>
+          <td class="num grey">1190.00 <span class='grey'>(18.2%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6274" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="3152" data-name="璟德" data-last="181.50" data-prev="172.00" data-stop="161.50" data-entry="185.00" data-adr="6.52" data-ma10="171.10" data-ma20="170.80" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="59.4" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A3152" target="_blank" class="code-link">3152</a></td>
+          <td class="name-cell">璟德</td>
+          <td class="num bold">181.50</td>
+          <td><span class='up'>+5.52%</span></td>
+          <td class="entry-col">185.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-1.9%</span></td>
+          <td class="num grey">161.50 <span class='grey'>(11.0%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A3152" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6415" data-name="矽力*-KY" data-last="562.00" data-prev="557.00" data-stop="465.00" data-entry="573.00" data-adr="6.88" data-ma10="500.50" data-ma20="461.95" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="72.3" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank" class="code-link">6415</a></td>
+          <td class="name-cell">矽力*-KY</td>
+          <td class="num bold">562.00</td>
+          <td><span class='up'>+0.90%</span></td>
+          <td class="entry-col">573.00 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-1.9%</span></td>
+          <td class="num grey">465.00 <span class='grey'>(17.3%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr>
+        <tr class="" data-code="6175" data-name="立敦" data-last="88.30" data-prev="85.20" data-stop="70.20" data-entry="89.50" data-adr="6.28" data-ma10="75.16" data-ma20="69.71" data-type="強勢觀察" data-slv="1" data-risk="0" data-rsi14="84.9" data-rsi-bear="0" data-mom-surge="0">
+          <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
+          <td><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
+          <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6175" target="_blank" class="code-link">6175</a></td>
+          <td class="name-cell">立敦</td>
+          <td class="num bold">88.30</td>
+          <td><span class='up'>+3.64%</span></td>
+          <td class="entry-col">89.50 <span class='grey xsm'>整理高</span></td>
+          <td><span class='near-txt'>-1.3%</span></td>
+          <td class="num grey">70.20 <span class='grey'>(20.5%↓)</span></td>
+          <td class="num size-cell"><span class="na">-</span></td>
+          <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6175" target="_blank">📈</a></td>
+          <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
+        </tr></tbody></table></div>
+</div><!-- /tab-buy -->
 
 <!-- Modal -->
 <div id="modal" class="modal-overlay" style="display:none" onclick="if(event.target===this)closeModal()">
