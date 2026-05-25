@@ -99,8 +99,9 @@ td.bold { font-weight: bold; }
 </table>
 
 <script>
-const _GID   = '7ef3b5e9504333701f2e525f4fbe10c2';
-const _GTOK  = ['ghp','_HYrbdvQaFFK9Pm','TRh780OfK6FL8Ndq0x3iud'].join('');
+const _GID   = "7ef3b5e9504333701f2e525f4fbe10c2";
+// token 只存在使用者瀏覽器 localStorage，永不寫進公開頁面
+const _GTOK  = (localStorage.getItem('qts_gist_token') || '').trim();
 const _TFILE = 'qts_trades.json';
 
 let _allTrades = [];
