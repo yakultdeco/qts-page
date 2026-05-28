@@ -990,6 +990,108 @@ function setOff() {
   document.getElementById('data-state').textContent = '未連線即時資料（顯示靜態）';
 }
 
+// ============ 📊 LED 跑馬燈 ============
+const TICKER_STOCKS = [
+  { c: '2330', n: 'TSMC',    p: '1085', d: +1.8 },
+  { c: '2454', n: 'MTK',     p: '1320', d: +2.3 },
+  { c: '2317', n: 'HHN',     p: '208.5', d: -0.4 },
+  { c: '3008', n: 'LGT',     p: '2845', d: +0.9 },
+  { c: '2603', n: 'EMC',     p: '186',  d: +5.6 },
+  { c: '2882', n: 'CTH',     p: '78.2', d: -0.3 },
+  { c: '0050', n: 'ETF50',   p: '215.6', d: +1.1 },
+  { c: '2308', n: 'DLT',     p: '385',  d: +3.2 },
+  { c: '2891', n: 'CTBC',    p: '42.8', d: +0.7 },
+  { c: '6505', n: 'FPC',     p: '92.1', d: -1.2 },
+  { c: '3034', n: 'NVT',     p: '720',  d: +4.4 },
+  { c: '2303', n: 'UMC',     p: '54.3', d: +1.6 },
+  { c: '5347', n: 'VIS',     p: '180',  d: -0.8 },
+  { c: '2376', n: 'GBT',     p: '362',  d: +2.9 },
+  { c: '2412', n: 'CHT',     p: '125',  d: +0.1 },
+  { c: '6669', n: 'WIWYNN',  p: '2480', d: +6.7 },
+];
+
+function renderTicker() {
+  const track = document.getElementById('ticker-track');
+  if (!track) return;
+  const html = TICKER_STOCKS.map(s => {
+    const up = s.d >= 0;
+    const cls = up ? 'up' : 'down';
+    const ar  = up ? '▲' : '▼';
+    const dStr = (up ? '+' : '') + s.d.toFixed(1) + '%';
+    return `<span class="t-item">
+      <span class="t-code">${s.c}</span>
+      <span class="t-price">${s.p}</span>
+      <span class="${cls}"><span class="arrow">${ar}</span>${dStr}</span>
+    </span>`;
+  }).join('');
+  // 重複兩遍讓 -50% 動畫無縫
+  track.innerHTML = html + html;
+}
+
+// 每 4 秒微幅抖動價格，模擬即時跳動
+function jitterTicker() {
+  TICKER_STOCKS.forEach(s => {
+    const move = (Math.random() - 0.48) * 0.4;
+    s.d = +(s.d + move).toFixed(1);
+    const pNum = parseFloat(s.p);
+    s.p = pNum > 100 ? Math.round(pNum + move * 3) + '' : (pNum + move * 0.5).toFixed(1);
+  });
+  renderTicker();
+}
+
+// ============ 💵 撒鈔票 ============
+function spawnMoneyRain(originEl, count = 7) {
+  if (!originEl) return;
+  const office = document.getElementById('office');
+  const r = originEl.getBoundingClientRect();
+  const o = office.getBoundingClientRect();
+  const cx = r.left - o.left + r.width / 2;
+  const cy = r.top  - o.top  + 6;
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const bill = document.createElement('div');
+      bill.className = 'money-bill';
+      bill.textContent = Math.random() > 0.5 ? '💵' : '💴';
+      bill.style.left = (cx - 8) + 'px';
+      bill.style.top  = cy + 'px';
+      bill.style.setProperty('--mx', (Math.random() * 120 - 60) + 'px');
+      bill.style.setProperty('--my', (70 + Math.random() * 50) + 'px');
+      bill.style.setProperty('--mr', (Math.random() * 720 - 360) + 'deg');
+      office.appendChild(bill);
+      setTimeout(() => bill.remove(), 1900);
+    }, i * 80);
+  }
+}
+
+// ============ 🎉 DEAL splash ============
+function spawnDealSplash(originEl, text = 'DEAL!') {
+  if (!originEl) return;
+  const office = document.getElementById('office');
+  const r = originEl.getBoundingClientRect();
+  const o = office.getBoundingClientRect();
+  const splash = document.createElement('div');
+  splash.className = 'deal-splash';
+  splash.textContent = text;
+  splash.style.left = (r.left - o.left + r.width / 2) + 'px';
+  splash.style.top  = (r.top  - o.top  - 8) + 'px';
+  office.appendChild(splash);
+  setTimeout(() => splash.remove(), 1600);
+}
+
+// ============ 📞 phone ring ============
+function spawnPhoneRing(originEl) {
+  if (!originEl) return;
+  const office = document.getElementById('office');
+  const r = originEl.getBoundingClientRect();
+  const o = office.getBoundingClientRect();
+  const ring = document.createElement('div');
+  ring.className = 'phone-ring';
+  ring.style.left = (r.left - o.left + r.width - 4) + 'px';
+  ring.style.top  = (r.top  - o.top  - 2) + 'px';
+  office.appendChild(ring);
+  setTimeout(() => ring.remove(), 900);
+}
+
 // ============ 環境氛圍：對話氣泡 ============
 const BUBBLES = {
   ortho: ['📋 派工', '⏱️ slv≥3', '🗂️', 'cache ✓', '☕', '6/6'],
@@ -1049,6 +1151,13 @@ function runConversation() {
     setTimeout(() => {
       const el = $(who);
       if (el) spawnBubble(el, { text });
+      // 對話以「✓✓ 進場」/「DEAL」這類關鍵字結尾 → 撒鈔票 + DEAL splash
+      if (i === pair.lines.length - 1 && /進場|✓✓|go/i.test(text)) {
+        setTimeout(() => {
+          spawnMoneyRain(el, 8);
+          spawnDealSplash(el, 'DEAL!');
+        }, 400);
+      }
     }, i * 900 + 100);
   });
 
@@ -1083,9 +1192,19 @@ function startAmbient() {
     setTimeout(chat, 11000 + Math.random() * 7000);
   }
   setTimeout(chat, 4000);
+  // 📞 歐西派工：每 7~12 秒響一次電話
+  function ring() {
+    const ortho = document.querySelector('.agent[data-id="ortho"]');
+    spawnPhoneRing(ortho);
+    setTimeout(ring, 7000 + Math.random() * 5000);
+  }
+  setTimeout(ring, 6500);
+  // 📊 ticker 抖動
+  setInterval(jitterTicker, 4500);
 }
 
 // ============ 啟動 ============
+renderTicker();
 renderAgents();
 wireAgents();
 fetchStats();
