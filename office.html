@@ -223,6 +223,56 @@
   .agent .status-badge.go   { color: var(--green); border-color: var(--green); }
   .agent .status-badge.skip { color: var(--amber); border-color: var(--amber); }
 
+  /* 對話氣泡 */
+  .thought-bubble {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background: #f0f6fc;
+    color: #0d1117;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border: 2px solid #0d1117;
+    border-radius: 8px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 30;
+    animation: bubble-pop 2.6s ease-out forwards;
+    font-family: ui-monospace, 'SF Mono', monospace;
+  }
+  .thought-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #0d1117;
+  }
+  .thought-bubble.left  { left: 30%; }
+  .thought-bubble.right { left: 70%; }
+  .thought-bubble.go    { color: #1a7f37; border-color: #1a7f37; }
+  .thought-bubble.go::after    { border-top-color: #1a7f37; }
+  .thought-bubble.skip  { color: #9e6a03; border-color: #9e6a03; }
+  .thought-bubble.skip::after  { border-top-color: #9e6a03; }
+  @keyframes bubble-pop {
+    0%   { opacity: 0; transform: translate(-50%, 8px) scale(0.5); }
+    15%  { opacity: 1; transform: translate(-50%, 0)   scale(1.05); }
+    25%  { transform: translate(-50%, 0) scale(1); }
+    80%  { opacity: 1; transform: translate(-50%, 0)   scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -10px) scale(0.95); }
+  }
+
+  /* 角色互動：偏頭討論 */
+  .agent.lean-l .sprite-img { transform: translateX(-3px) rotate(-3deg); }
+  .agent.lean-r .sprite-img { transform: translateX(3px)  rotate(3deg); }
+  .agent .sprite-img { transition: transform 0.25s ease-in-out; }
+
   /* 信封動畫 */
   .envelope {
     position: absolute;
@@ -324,6 +374,67 @@
   }
   .flow-step .step-who { color: var(--accent); font-weight: 600; }
   .flow-step code { color: var(--red); }
+
+  /* ─── 📱 手機版適配 ─── */
+  @media (max-width: 720px) {
+    :root {
+      --scale: 2;          /* 從 3 降到 2：tile 32px、辦公室 512×320，人物 32×48 仍清楚可讀 */
+    }
+    body { padding: 10px; }
+    h1 { font-size: 17px; letter-spacing: 0; }
+    .sub { font-size: 11px; margin-bottom: 10px; }
+
+    .layout { gap: 12px; }
+
+    /* 辦公室 wrap：允許橫向捲動超出視窗的部分（office 在 mobile 是 512px > 375px viewport） */
+    .office-wrap { padding: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .office-wrap::-webkit-scrollbar { height: 6px; }
+    .office-wrap::-webkit-scrollbar-thumb { background: #30363d; border-radius: 3px; }
+    .ow-head { margin-bottom: 8px; }
+    .ow-title { font-size: 13px; }
+    .ow-meta { font-size: 10px; }
+
+    /* office 本體：手機上不要被 wrap shrink，保留 native 寬讓 wrap 捲動 */
+    .office { max-width: none; }
+
+    /* 右側 panel：層疊時不需要 sticky，也不需要限高（會被 footer 切掉） */
+    .panel {
+      position: static;
+      max-height: none;
+      padding: 12px;
+      overflow-y: visible;
+    }
+    .card-head { gap: 8px; margin-bottom: 10px; }
+    .card-avatar { width: 48px; height: 64px; }
+    .card-avatar .sprite-img { width: 40px; height: 60px; background-size: 280px 240px; }
+    .card-name { font-size: 16px; }
+    .card-role { font-size: 10px; }
+    .card-file { font-size: 10px; word-break: break-all; }
+    .card-section { margin-top: 10px; }
+    .card-body { font-size: 12px; }
+    .card-quirk { font-size: 11px; padding: 6px 8px; }
+
+    .stats-grid { gap: 6px; }
+    .stat-cell { padding: 5px 7px; }
+    .stat-cell .v { font-size: 15px; }
+
+    .feed { margin-top: 12px; }
+    .feed-list { max-height: 180px; }
+    .feed-item { padding: 5px 8px; font-size: 11px; gap: 6px; }
+
+    /* 一日工作流：手機改單欄 */
+    .flow { padding: 12px; margin-top: 12px; }
+    .flow h3 { font-size: 13px; margin-bottom: 8px; }
+    .flow-steps { grid-template-columns: 1fr; gap: 8px; }
+    .flow-step { padding: 9px; font-size: 12px; }
+  }
+
+  @media (max-width: 420px) {
+    body { padding: 8px; }
+    h1 { font-size: 16px; }
+    .office-wrap { padding: 8px; }
+    .panel { padding: 10px; }
+  }
 </style>
 </head>
 <body>
@@ -411,8 +522,8 @@
       <div class="agent" data-id="combo" data-char="4" style="top: calc(var(--tile) * 7.7); left: calc(var(--tile) * 7.5);"></div>
       <!-- 芮薇（char_5 紅裙）-->
       <div class="agent" data-id="revie" data-char="5" style="top: calc(var(--tile) * 8.7); left: calc(var(--tile) * 12.5);"></div>
-      <!-- 史肯（char_2 橘衣）8:30 上工，灰調 -->
-      <div class="agent" data-id="scan"  data-char="2" style="top: calc(var(--tile) * 8.7); left: calc(var(--tile) * 1.5);"></div>
+      <!-- 史肯（char_2 橘衣）8:30 上工，灰調 — 在咖啡機旁 -->
+      <div class="agent" data-id="scan"  data-char="2" style="top: calc(var(--tile) * 8.3); left: calc(var(--tile) * 1.6);"></div>
     </div>
   </div>
 
@@ -707,11 +818,107 @@ function setOff() {
   document.getElementById('data-state').textContent = '未連線即時資料（顯示靜態）';
 }
 
+// ============ 環境氛圍：對話氣泡 ============
+const BUBBLES = {
+  ortho: ['📋 派工', '⏱️ slv≥3', '🗂️', 'cache ✓', '☕', '6/6'],
+  conti: ['📰', '🔍 news', '⊘ skip?', '🤔', '脈絡 OK', '✓'],
+  tai:   ['📈 EMA10', 'ADR ↑', '量增', '🔬 MCP', '籌碼 OK', '+RS'],
+  combo: ['🔨', '✓✓ go', '⚖️', '兩票！', '...', '門檻'],
+  revie: ['📝', '✏️', '紅筆', '綠筆', 'hindsight'],
+  scan:  ['💤', '☕', 'bye~'],
+};
+const BUBBLE_CLASS = {
+  ortho: '', conti: '', tai: '', combo: 'go', revie: '', scan: 'skip'
+};
+
+function spawnBubble(agentEl, opts = {}) {
+  if (!agentEl) return;
+  const id = agentEl.dataset.id;
+  const list = BUBBLES[id] || ['💬'];
+  const text = opts.text || list[Math.floor(Math.random() * list.length)];
+  const cls  = opts.cls  || BUBBLE_CLASS[id] || '';
+  // 移除舊氣泡避免疊在一起
+  agentEl.querySelectorAll('.thought-bubble').forEach(b => b.remove());
+  const bubble = document.createElement('div');
+  bubble.className = 'thought-bubble ' + cls + ' ' + (opts.side || '');
+  bubble.textContent = text;
+  agentEl.appendChild(bubble);
+  setTimeout(() => bubble.remove(), 2700);
+}
+
+// 偶爾兩人「對話」：依序冒兩三顆氣泡 + 偏頭
+const PAIRS = [
+  { a: 'ortho', b: 'conti', lines: [['ortho','派工 →'], ['conti','📰 看…'], ['conti','✓ go']] },
+  { a: 'conti', b: 'tai',   lines: [['conti','傳給你'], ['tai','📈 看籌碼'], ['tai','EMA10 ✓']] },
+  { a: 'tai',   b: 'combo', lines: [['tai','技術 go'], ['combo','⚖️ 兩票'], ['combo','✓✓ 進場']] },
+  { a: 'ortho', b: 'combo', lines: [['ortho','slv=4'], ['combo','收到'], ['ortho','下一檔']] },
+  { a: 'conti', b: 'combo', lines: [['conti','⊘ skip'], ['combo','否決'], ['conti','短路']] },
+];
+
+function pickPair() {
+  return PAIRS[Math.floor(Math.random() * PAIRS.length)];
+}
+
+let convoBusy = false;
+function runConversation() {
+  if (convoBusy) return;
+  convoBusy = true;
+  const pair = pickPair();
+  const $ = id => document.querySelector(`.agent[data-id="${id}"]`);
+  const aEl = $(pair.a), bEl = $(pair.b);
+  if (!aEl || !bEl) { convoBusy = false; return; }
+  // 偏頭：以 x 座標判斷誰朝向誰
+  const ax = aEl.getBoundingClientRect().left;
+  const bx = bEl.getBoundingClientRect().left;
+  if (ax < bx) { aEl.classList.add('lean-r'); bEl.classList.add('lean-l'); }
+  else         { aEl.classList.add('lean-l'); bEl.classList.add('lean-r'); }
+
+  pair.lines.forEach(([who, text], i) => {
+    setTimeout(() => {
+      const el = $(who);
+      if (el) spawnBubble(el, { text });
+    }, i * 900 + 100);
+  });
+
+  setTimeout(() => {
+    aEl.classList.remove('lean-l', 'lean-r');
+    bEl.classList.remove('lean-l', 'lean-r');
+    convoBusy = false;
+  }, pair.lines.length * 900 + 1200);
+}
+
+// 隨機單顆環境氣泡（讓畫面持續有活力）
+function ambientBubble() {
+  if (convoBusy) return;
+  const pool = ['ortho','conti','tai','combo','revie'];
+  // 史肯偶爾也冒泡
+  if (Math.random() < 0.12) pool.push('scan');
+  const id = pool[Math.floor(Math.random() * pool.length)];
+  const el = document.querySelector(`.agent[data-id="${id}"]`);
+  if (el) spawnBubble(el);
+}
+
+function startAmbient() {
+  // 環境氣泡：每 2.8~4.5 秒一顆
+  function tick() {
+    ambientBubble();
+    setTimeout(tick, 2800 + Math.random() * 1700);
+  }
+  setTimeout(tick, 1500);
+  // 雙人對話：每 11~18 秒觸發一次
+  function chat() {
+    runConversation();
+    setTimeout(chat, 11000 + Math.random() * 7000);
+  }
+  setTimeout(chat, 4000);
+}
+
 // ============ 啟動 ============
 renderAgents();
 wireAgents();
 fetchStats();
 setInterval(fetchStats, 30000);
+startAmbient();
 </script>
 
 </body>
