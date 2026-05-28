@@ -1357,12 +1357,190 @@ function startAmbient() {
   setInterval(jitterTicker, 4500);
 }
 
+// ============ 💬 LLM 對話紀錄 ============
+const CHAT_AGENT_META = {
+  context: { who: '康提 Conti',  role: '脈絡分析師', char: 3 },
+  ta:      { who: '泰艾 Tai',    role: '技術分析師', char: 1 },
+  bear:    { who: '熊方倡議者',  role: '反方推理',   char: 2 },
+  pm:      { who: '康柏 Combo',  role: 'PM 仲裁',    char: 4 },
+};
+
+let CHAT_FILTER = 'all';
+let CHAT_DATA = [];   // raw parsed entries
+let CHAT_EXPANDED = new Set();   // turn ids that are expanded
+
+function parseJSONL(text) {
+  if (!text) return [];
+  return text.split('\n').map(line => {
+    line = line.trim();
+    if (!line) return null;
+    try { return JSON.parse(line); }
+    catch { return null; }
+  }).filter(Boolean);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
+
+function fmtTs(ts) {
+  const d = new Date(ts * 1000);
+  const hh = String(d.getHours()).padStart(2,'0');
+  const mm = String(d.getMinutes()).padStart(2,'0');
+  const ss = String(d.getSeconds()).padStart(2,'0');
+  return `${hh}:${mm}:${ss}`;
+}
+
+function groupByCode(entries) {
+  // 同一個 code + 相近時間（< 5 分鐘）視為一輪對話
+  const map = new Map();   // key = code + bucket
+  entries.forEach(e => {
+    const bucket = Math.floor(e.ts / 300);   // 5 分鐘一桶
+    const key = `${e.code}__${bucket}`;
+    if (!map.has(key)) map.set(key, { code: e.code, ts: e.ts, turns: [] });
+    const g = map.get(key);
+    g.ts = Math.max(g.ts, e.ts);
+    g.turns.push(e);
+  });
+  const order = { context: 0, ta: 1, bear: 2, pm: 3 };
+  const arr = Array.from(map.values());
+  arr.forEach(g => g.turns.sort((a,b) => (order[a.agent] ?? 9) - (order[b.agent] ?? 9) || a.ts - b.ts));
+  arr.sort((a,b) => b.ts - a.ts);
+  return arr;
+}
+
+function renderChatLog() {
+  const body = document.getElementById('chat-body');
+  const meta = document.getElementById('chat-meta');
+  if (!CHAT_DATA.length) {
+    body.innerHTML = `<div class="chat-empty">
+      尚未連線到 <code>agent_chat.jsonl</code><br/>
+      盤中監控觸發任一檔 LLM agent 後即會自動出現
+    </div>`;
+    meta.textContent = '—';
+    return;
+  }
+
+  const filtered = CHAT_FILTER === 'all'
+    ? CHAT_DATA
+    : CHAT_DATA.filter(e => e.agent === CHAT_FILTER);
+
+  if (!filtered.length) {
+    body.innerHTML = `<div class="chat-empty">這個 agent 今天還沒有對話紀錄</div>`;
+    meta.textContent = `0 / ${CHAT_DATA.length} 筆`;
+    return;
+  }
+
+  const groups = groupByCode(filtered).slice(0, 20);   // 最多 20 組
+  meta.textContent = `${filtered.length} 筆訊息 · ${groups.length} 個候選`;
+
+  body.innerHTML = groups.map((g, gi) => {
+    // 用 group 內最後一個有 verdict 的 turn 當代表 verdict（通常是 pm）
+    const finalTurn = [...g.turns].reverse().find(t => t.verdict) || g.turns[g.turns.length - 1];
+    const fv = finalTurn?.verdict || '';
+    const verdictCls = ['go','wait','skip'].includes(fv) ? fv : 'wait';
+    const turnsHTML = g.turns.map((t, ti) => {
+      const meta = CHAT_AGENT_META[t.agent] || { who: t.agent, role: '', char: 0 };
+      const turnId = `${gi}-${ti}`;
+      const expanded = CHAT_EXPANDED.has(turnId);
+      const vCls = (t.verdict || 'wait').replace(/\s/g, '_');
+      const tok = t.error
+        ? `<span class="tok err">⚠ ${escapeHtml(t.error).slice(0, 40)}</span>`
+        : (t.usage && (t.usage.in || t.usage.out)
+            ? `<span class="tok">in ${t.usage.in||0} · out ${t.usage.out||0}${t.usage.cr ? ' · cache '+t.usage.cr : ''}</span>`
+            : '');
+      const preview = t.response || '（無回應）';
+      return `
+        <div class="turn ${t.agent} ${expanded ? 'expanded' : ''}" data-turn-id="${turnId}">
+          <div class="avatar">
+            <div class="sprite-img" style="background-image: url(${spriteBgUrl(meta.char)});"></div>
+          </div>
+          <div class="bubble">
+            <div class="who">
+              <span>${escapeHtml(meta.who)}</span>
+              <span class="role">${escapeHtml(meta.role)}</span>
+              ${t.verdict ? `<span class="v-pill ${vCls}">${escapeHtml(t.verdict)}</span>` : ''}
+              ${tok}
+            </div>
+            <div class="preview">${escapeHtml(preview)}</div>
+            <div class="full">
+              <div class="full-label">📤 USER MESSAGE</div>
+              <pre>${escapeHtml(t.user_msg || '')}</pre>
+              <div class="full-label">📥 LLM RESPONSE</div>
+              <pre>${escapeHtml(t.response || '（無回應）')}</pre>
+              ${t.error ? `<div class="full-label">❌ ERROR</div><pre>${escapeHtml(t.error)}</pre>` : ''}
+            </div>
+            <span class="more" data-turn-id="${turnId}">
+              ${expanded ? '▲ 收合' : '▼ 看完整 prompt + response'}
+            </span>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <div class="convo">
+        <div class="convo-head">
+          <span class="code-tag">${escapeHtml(g.code)}</span>
+          <span class="verdict-tag ${verdictCls}">${escapeHtml(fv || '—')}</span>
+          <span class="ts">${fmtTs(g.ts)} · ${g.turns.length} 個 agent 發言</span>
+        </div>
+        ${turnsHTML}
+      </div>
+    `;
+  }).join('');
+
+  // 綁定展開
+  body.querySelectorAll('.more').forEach(el => {
+    el.onclick = (ev) => {
+      ev.stopPropagation();
+      const id = el.dataset.turnId;
+      if (CHAT_EXPANDED.has(id)) CHAT_EXPANDED.delete(id);
+      else CHAT_EXPANDED.add(id);
+      renderChatLog();
+    };
+  });
+}
+
+function wireChatFilters() {
+  document.querySelectorAll('#chat-filters .chip').forEach(chip => {
+    chip.onclick = () => {
+      document.querySelectorAll('#chat-filters .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      CHAT_FILTER = chip.dataset.f;
+      renderChatLog();
+    };
+  });
+}
+
+async function fetchChatLog() {
+  try {
+    const res = await fetch('agent_chat.jsonl?_=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) throw new Error('no chat log');
+    const text = await res.text();
+    CHAT_DATA = parseJSONL(text);
+    // 只保留今日
+    const todayStart = new Date(); todayStart.setHours(0,0,0,0);
+    const cutoff = todayStart.getTime() / 1000;
+    CHAT_DATA = CHAT_DATA.filter(e => e.ts >= cutoff);
+    renderChatLog();
+  } catch (e) {
+    // 沒檔案就保持初始 empty 狀態
+    if (!CHAT_DATA.length) renderChatLog();
+  }
+}
+
 // ============ 啟動 ============
 renderTicker();
 renderAgents();
 wireAgents();
+wireChatFilters();
 fetchStats();
+fetchChatLog();
 setInterval(fetchStats, 30000);
+setInterval(fetchChatLog, 30000);
 startAmbient();
 </script>
 
