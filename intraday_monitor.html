@@ -245,6 +245,32 @@ th.sortable.active { color:#58a6ff; }
 .stop-price-cell .pct, .twor-price-cell .pct { font-size:10px; display:block; }
 .twor-reached { color:#f0a500; font-weight:bold; }
 
+/* 持倉群組標籤 */
+.pos-group-tag { display:inline-block; padding:1px 7px; border-radius:4px; font-size:10px; font-weight:600; margin-left:6px; vertical-align:middle; }
+.pos-group-tag.user  { background:#0d2844; color:#79c0ff; border:1px solid #1f6feb; }
+.pos-group-tag.agent { background:#2d2410; color:#f0c000; border:1px solid #bb8009; }
+
+/* 討論細節展開 */
+.detail-btn { background:#21262d; color:#8b949e; border:1px solid #30363d; border-radius:4px; padding:2px 8px; font-size:11px; cursor:pointer; white-space:nowrap; }
+.detail-btn:hover { background:#30363d; color:#e6edf3; }
+.detail-btn.open { background:#0d2844; color:#79c0ff; border-color:#1f6feb; }
+.vote-detail-row td { background:#0d1117 !important; padding:0 !important; border-bottom:1px solid #30363d; }
+.vote-detail-box { padding:12px 18px 14px; font-size:12px; color:#c9d1d9; line-height:1.55; }
+.vote-detail-head { font-size:13px; color:#f0f6fc; margin-bottom:6px; }
+.vote-detail-head .verdict-tag { display:inline-block; padding:1px 7px; border-radius:4px; font-size:11px; font-weight:600; margin-left:6px; }
+.vote-detail-head .v-go   { background:#0f2d1a; color:#3fb950; border:1px solid #238636; }
+.vote-detail-head .v-wait { background:#2b2410; color:#e3b341; border:1px solid #9e6a03; }
+.vote-detail-head .v-skip { background:#3d1418; color:#ff7b72; border:1px solid #da3633; }
+.vote-detail-scores { display:flex; flex-wrap:wrap; gap:14px; margin:6px 0 10px; color:#8b949e; font-size:11px; }
+.vote-detail-scores b { color:#e6edf3; }
+.vote-detail-section { margin:6px 0; }
+.vote-detail-section > .agent-label { color:#79c0ff; font-weight:600; margin-right:6px; }
+.vote-detail-section ul { margin:3px 0 6px 18px; padding:0; }
+.vote-detail-section li { margin:2px 0; color:#c9d1d9; }
+.vote-detail-empty { color:#8b949e; font-style:italic; padding:6px 0; }
+.vote-detail-meta { color:#8b949e; font-size:11px; margin-top:6px; padding-top:6px; border-top:1px dashed #30363d; }
+.vote-detail-meta span { margin-right:14px; }
+
 .ratr-high { color:#f85149; font-weight:bold; }
 .ratr-mid  { color:#d29922; }
 .ma-warn     { background:#3d1a00; border:1px solid #d29922; border-radius:6px; color:#ffa657; padding:7px 14px; margin-bottom:10px; font-size:12px; }
@@ -461,7 +487,7 @@ const _SCAN_DATA   = {"6278": {"name": "台表科", "market": "TWSE", "entry": 2
 const _UNIV_DATA   = {"2454": {"rs_rating": 94, "mom_trend": "加速", "rsi14_3d": "76→76→80", "ret_3d_pct": 20.2}, "2330": {"rs_rating": 31, "mom_trend": "維持", "rsi14_3d": "63→58→61", "ret_3d_pct": 2.0}, "3481": {"rs_rating": 77, "mom_trend": "維持", "rsi14_3d": "83→72→77", "ret_3d_pct": 12.4}, "2344": {"rs_rating": 35, "mom_trend": "加速", "rsi14_3d": "63→69→74", "ret_3d_pct": 24.0}, "2408": {"rs_rating": 24, "mom_trend": "維持", "rsi14_3d": "56→58→60", "ret_3d_pct": 0.5}, "2303": {"rs_rating": 90, "mom_trend": "加速", "rsi14_3d": "76→78→82", "ret_3d_pct": 25.9}, "3037": {"rs_rating": 90, "mom_trend": "加速", "rsi14_3d": "71→76→75", "ret_3d_pct": 11.3}, "3189": {"rs_rating": 92, "mom_trend": "加速", "rsi14_3d": "76→77→78", "ret_3d_pct": 15.3}, "2449": {"rs_rating": 15, "mom_trend": "維持", "rsi14_3d": "57→63→54", "ret_3d_pct": 6.6}, "2308": {"rs_rating": 77, "mom_trend": "加速", "rsi14_3d": "65→68→73", "ret_3d_pct": 20.3}, "2337": {"rs_rating": 45, "mom_trend": "維持", "rsi14_3d": "52→56→53", "ret_3d_pct": 4.0}, "1802": {"rs_rating": 23, "mom_trend": "維持", "rsi14_3d": "62→58→59", "ret_3d_pct": 3.3}, "2313": {"rs_rating": 36, "mom_trend": "維持", "rsi14_3d": "64→59→58", "ret_3d_pct": 1.4}, "6770": {"rs_rating": 16, "mom_trend": "加速", "rsi14_3d": "64→68→72", "ret_3d_pct": 17.2}, "3711": {"rs_rating": 75, "mom_trend": "加速", "rsi14_3d": "71→70→73", "ret_3d_pct": 14.4}, "4958": {"rs_rating": 96, "mom_trend": "維持", "rsi14_3d": "76→77→75", "ret_3d_pct": 3.1}, "8046": {"rs_rating": 72, "mom_trend": "轉弱", "rsi14_3d": "56→59→57", "ret_3d_pct": -3.1}, "6239": {"rs_rating": 46, "mom_trend": "加速", "rsi14_3d": "76→80→79", "ret_3d_pct": 20.3}, "2327": {"rs_rating": 93, "mom_trend": "轉弱", "rsi14_3d": "92→84→86", "ret_3d_pct": 11.4}, "2409": {"rs_rating": 40, "mom_trend": "轉弱", "rsi14_3d": "75→61→60", "ret_3d_pct": -1.8}, "3017": {"rs_rating": 63, "mom_trend": "加速", "rsi14_3d": "55→61→60", "ret_3d_pct": 6.1}, "2383": {"rs_rating": 90, "mom_trend": "維持", "rsi14_3d": "73→67→67", "ret_3d_pct": 6.0}, "6442": {"rs_rating": 4, "mom_trend": "維持", "rsi14_3d": "56→63→53", "ret_3d_pct": 8.8}, "2301": {"rs_rating": 58, "mom_trend": "加速", "rsi14_3d": "69→73→75", "ret_3d_pct": 18.8}, "2382": {"rs_rating": 19, "mom_trend": "維持", "rsi14_3d": "50→50→48", "ret_3d_pct": -1.3}, "2317": {"rs_rating": 26, "mom_trend": "加速", "rsi14_3d": "69→67→70", "ret_3d_pct": 5.6}, "6669": {"rs_rating": 33, "mom_trend": "轉弱", "rsi14_3d": "66→57→53", "ret_3d_pct": -8.1}, "4919": {"rs_rating": 95, "mom_trend": "維持", "rsi14_3d": "74→70→67", "ret_3d_pct": 3.5}, "2356": {"rs_rating": 50, "mom_trend": "轉弱", "rsi14_3d": "84→74→72", "ret_3d_pct": 4.2}, "6531": {"rs_rating": 95, "mom_trend": "加速", "rsi14_3d": "62→63→63", "ret_3d_pct": 12.1}, "3443": {"rs_rating": 81, "mom_trend": "維持", "rsi14_3d": "65→64→60", "ret_3d_pct": -0.8}, "2881": {"rs_rating": 31, "mom_trend": "加速", "rsi14_3d": "65→74→81", "ret_3d_pct": 15.7}, "2404": {"rs_rating": 28, "mom_trend": "維持", "rsi14_3d": "78→79→73", "ret_3d_pct": 6.9}, "3042": {"rs_rating": 88, "mom_trend": "加速", "rsi14_3d": "73→76→72", "ret_3d_pct": 12.5}, "2345": {"rs_rating": 79, "mom_trend": "加速", "rsi14_3d": "60→62→62", "ret_3d_pct": 6.1}, "1303": {"rs_rating": 21, "mom_trend": "加速", "rsi14_3d": "51→57→63", "ret_3d_pct": 10.1}, "50": {"rs_rating": 38, "mom_trend": "加速", "rsi14_3d": "73→70→74", "ret_3d_pct": 5.4}, "3661": {"rs_rating": 42, "mom_trend": "轉弱", "rsi14_3d": "63→55→52", "ret_3d_pct": -8.1}, "2312": {"rs_rating": 59, "mom_trend": "維持", "rsi14_3d": "75→80→69", "ret_3d_pct": 12.8}, "2368": {"rs_rating": 75, "mom_trend": "維持", "rsi14_3d": "60→61→55", "ret_3d_pct": 3.4}, "2324": {"rs_rating": 25, "mom_trend": "加速", "rsi14_3d": "68→63→62", "ret_3d_pct": 6.0}, "2481": {"rs_rating": 67, "mom_trend": "加速", "rsi14_3d": "71→77→77", "ret_3d_pct": 10.5}, "2360": {"rs_rating": 74, "mom_trend": "加速", "rsi14_3d": "64→65→69", "ret_3d_pct": 15.6}, "2489": {"rs_rating": 30, "mom_trend": "轉弱", "rsi14_3d": "73→63→61", "ret_3d_pct": -1.4}, "6116": {"rs_rating": 66, "mom_trend": "加速", "rsi14_3d": "76→79→81", "ret_3d_pct": 22.4}, "6285": {"rs_rating": 73, "mom_trend": "維持", "rsi14_3d": "67→68→70", "ret_3d_pct": 5.2}, "6271": {"rs_rating": 59, "mom_trend": "維持", "rsi14_3d": "83→86→80", "ret_3d_pct": 12.4}, "2603": {"rs_rating": 16, "mom_trend": "轉弱", "rsi14_3d": "57→54→54", "ret_3d_pct": -3.4}, "6415": {"rs_rating": 94, "mom_trend": "加速", "rsi14_3d": "77→78→80", "ret_3d_pct": 18.3}, "6282": {"rs_rating": 29, "mom_trend": "轉弱", "rsi14_3d": "74→72→64", "ret_3d_pct": 3.5}, "8996": {"rs_rating": 50, "mom_trend": "維持", "rsi14_3d": "55→62→60", "ret_3d_pct": 3.8}, "2002": {"rs_rating": 10, "mom_trend": "維持", "rsi14_3d": "67→59→53", "ret_3d_pct": 5.2}, "1513": {"rs_rating": 13, "mom_trend": "加速", "rsi14_3d": "61→67→71", "ret_3d_pct": 8.0}, "6451": {"rs_rating": 97, "mom_trend": "加速", "rsi14_3d": "64→68→64", "ret_3d_pct": 14.9}, "6213": {"rs_rating": 86, "mom_trend": "加速", "rsi14_3d": "55→58→59", "ret_3d_pct": 5.5}, "2455": {"rs_rating": 76, "mom_trend": "轉弱", "rsi14_3d": "71→64→63", "ret_3d_pct": -1.5}, "3006": {"rs_rating": 53, "mom_trend": "維持", "rsi14_3d": "60→61→64", "ret_3d_pct": 1.5}, "6278": {"rs_rating": 92, "mom_trend": "轉弱", "rsi14_3d": "69→71→65", "ret_3d_pct": -3.9}, "3231": {"rs_rating": 22, "mom_trend": "維持", "rsi14_3d": "64→59→57", "ret_3d_pct": 0.3}, "6139": {"rs_rating": 57, "mom_trend": "維持", "rsi14_3d": "67→69→66", "ret_3d_pct": 5.5}, "2882": {"rs_rating": 24, "mom_trend": "加速", "rsi14_3d": "67→70→74", "ret_3d_pct": 7.2}, "2472": {"rs_rating": 96, "mom_trend": "加速", "rsi14_3d": "79→83→86", "ret_3d_pct": 29.8}, "2441": {"rs_rating": 56, "mom_trend": "加速", "rsi14_3d": "79→82→82", "ret_3d_pct": 16.2}, "3035": {"rs_rating": 33, "mom_trend": "轉弱", "rsi14_3d": "69→61→58", "ret_3d_pct": -4.0}, "2492": {"rs_rating": 94, "mom_trend": "加速", "rsi14_3d": "88→88→90", "ret_3d_pct": 23.4}, "8028": {"rs_rating": 72, "mom_trend": "維持", "rsi14_3d": "73→73→71", "ret_3d_pct": 4.8}, "6805": {"rs_rating": 15, "mom_trend": "維持", "rsi14_3d": "43→46→43", "ret_3d_pct": -3.1}, "3008": {"rs_rating": 57, "mom_trend": "轉弱", "rsi14_3d": "77→69→64", "ret_3d_pct": -1.0}, "2049": {"rs_rating": 69, "mom_trend": "加速", "rsi14_3d": "73→76→75", "ret_3d_pct": 8.6}, "5269": {"rs_rating": 30, "mom_trend": "維持", "rsi14_3d": "65→66→60", "ret_3d_pct": 1.0}, "2353": {"rs_rating": 29, "mom_trend": "加速", "rsi14_3d": "77→72→67", "ret_3d_pct": 6.3}, "8150": {"rs_rating": 49, "mom_trend": "加速", "rsi14_3d": "60→58→65", "ret_3d_pct": 18.7}, "3715": {"rs_rating": 31, "mom_trend": "維持", "rsi14_3d": "52→56→51", "ret_3d_pct": 2.6}, "2486": {"rs_rating": 84, "mom_trend": "維持", "rsi14_3d": "68→64→59", "ret_3d_pct": 2.0}, "2887": {"rs_rating": 9, "mom_trend": "轉弱", "rsi14_3d": "44→48→44", "ret_3d_pct": -2.1}, "2376": {"rs_rating": 52, "mom_trend": "轉弱", "rsi14_3d": "67→67→65", "ret_3d_pct": 3.1}, "2377": {"rs_rating": 39, "mom_trend": "維持", "rsi14_3d": "74→73→73", "ret_3d_pct": 2.0}, "2367": {"rs_rating": 10, "mom_trend": "維持", "rsi14_3d": "60→53→54", "ret_3d_pct": 0.4}, "6257": {"rs_rating": 74, "mom_trend": "維持", "rsi14_3d": "74→76→72", "ret_3d_pct": 5.2}, "3665": {"rs_rating": 51, "mom_trend": "維持", "rsi14_3d": "51→47→43", "ret_3d_pct": -4.9}, "6196": {"rs_rating": 72, "mom_trend": "加速", "rsi14_3d": "75→78→75", "ret_3d_pct": 13.1}, "2357": {"rs_rating": 43, "mom_trend": "轉弱", "rsi14_3d": "71→67→68", "ret_3d_pct": 2.8}, "6446": {"rs_rating": 37, "mom_trend": "加速", "rsi14_3d": "74→78→77", "ret_3d_pct": 8.3}, "1519": {"rs_rating": 4, "mom_trend": "維持", "rsi14_3d": "45→49→54", "ret_3d_pct": 6.3}, "2464": {"rs_rating": 92, "mom_trend": "加速", "rsi14_3d": "75→79→80", "ret_3d_pct": 22.9}, "3714": {"rs_rating": 80, "mom_trend": "轉弱", "rsi14_3d": "64→63→55", "ret_3d_pct": -8.7}, "2891": {"rs_rating": 25, "mom_trend": "加速", "rsi14_3d": "64→65→70", "ret_3d_pct": 2.8}, "2467": {"rs_rating": 79, "mom_trend": "加速", "rsi14_3d": "64→65→63", "ret_3d_pct": 9.0}, "3016": {"rs_rating": 86, "mom_trend": "維持", "rsi14_3d": "72→66→66", "ret_3d_pct": 4.1}, "6830": {"rs_rating": 91, "mom_trend": "維持", "rsi14_3d": "55→54→48", "ret_3d_pct": 0.6}, "6515": {"rs_rating": 85, "mom_trend": "維持", "rsi14_3d": "45→45→54", "ret_3d_pct": 12.6}, "6706": {"rs_rating": 70, "mom_trend": "加速", "rsi14_3d": "60→66→72", "ret_3d_pct": 17.0}, "8261": {"rs_rating": 82, "mom_trend": "加速", "rsi14_3d": "83→87→87", "ret_3d_pct": 21.9}, "3305": {"rs_rating": 48, "mom_trend": "維持", "rsi14_3d": "79→80→75", "ret_3d_pct": 9.6}, "1717": {"rs_rating": 36, "mom_trend": "加速", "rsi14_3d": "59→60→62", "ret_3d_pct": 1.8}, "3149": {"rs_rating": 34, "mom_trend": "維持", "rsi14_3d": "73→75→69", "ret_3d_pct": 10.7}, "3653": {"rs_rating": 32, "mom_trend": "維持", "rsi14_3d": "47→46→46", "ret_3d_pct": 0.3}, "6781": {"rs_rating": 18, "mom_trend": "維持", "rsi14_3d": "60→58→54", "ret_3d_pct": -0.4}, "2474": {"rs_rating": 24, "mom_trend": "加速", "rsi14_3d": "39→48→59", "ret_3d_pct": 11.2}, "3036": {"rs_rating": 68, "mom_trend": "轉弱", "rsi14_3d": "75→69→70", "ret_3d_pct": 2.4}, "3045": {"rs_rating": 17, "mom_trend": "轉弱", "rsi14_3d": "48→44→42", "ret_3d_pct": -1.8}, "2912": {"rs_rating": 9, "mom_trend": "轉弱", "rsi14_3d": "31→28→26", "ret_3d_pct": -6.1}, "2412": {"rs_rating": 14, "mom_trend": "維持", "rsi14_3d": "49→47→51", "ret_3d_pct": 0.0}, "2880": {"rs_rating": 3, "mom_trend": "轉弱", "rsi14_3d": "27→25→24", "ret_3d_pct": -6.3}, "2484": {"rs_rating": 75, "mom_trend": "維持", "rsi14_3d": "72→74→66", "ret_3d_pct": 6.7}, "56": {"rs_rating": 38, "mom_trend": "加速", "rsi14_3d": "81→80→83", "ret_3d_pct": 7.1}, "2618": {"rs_rating": 11, "mom_trend": "轉弱", "rsi14_3d": "56→54→50", "ret_3d_pct": -2.0}, "2316": {"rs_rating": 66, "mom_trend": "維持", "rsi14_3d": "76→77→73", "ret_3d_pct": 9.4}, "8110": {"rs_rating": 11, "mom_trend": "加速", "rsi14_3d": "52→61→69", "ret_3d_pct": 23.3}, "3044": {"rs_rating": 47, "mom_trend": "加速", "rsi14_3d": "59→63→66", "ret_3d_pct": 6.8}, "7769": {"rs_rating": 77, "mom_trend": "維持", "rsi14_3d": "73→75→73", "ret_3d_pct": 0.9}, "2485": {"rs_rating": 60, "mom_trend": "維持", "rsi14_3d": "61→58→57", "ret_3d_pct": 1.5}, "2375": {"rs_rating": 67, "mom_trend": "維持", "rsi14_3d": "86→80→84", "ret_3d_pct": 9.3}, "3673": {"rs_rating": 87, "mom_trend": "加速", "rsi14_3d": "73→78→78", "ret_3d_pct": 14.2}, "3450": {"rs_rating": 71, "mom_trend": "轉弱", "rsi14_3d": "70→73→66", "ret_3d_pct": 9.0}, "4927": {"rs_rating": 37, "mom_trend": "維持", "rsi14_3d": "65→64→59", "ret_3d_pct": 4.1}, "6719": {"rs_rating": 46, "mom_trend": "轉弱", "rsi14_3d": "79→82→70", "ret_3d_pct": 9.9}, "2369": {"rs_rating": 51, "mom_trend": "加速", "rsi14_3d": "63→70→74", "ret_3d_pct": 25.3}, "7750": {"rs_rating": 83, "mom_trend": "維持", "rsi14_3d": "57→60→55", "ret_3d_pct": 5.0}, "3645": {"rs_rating": 69, "mom_trend": "維持", "rsi14_3d": "65→65→56", "ret_3d_pct": 0.9}, "4576": {"rs_rating": 88, "mom_trend": "轉弱", "rsi14_3d": "68→70→65", "ret_3d_pct": 4.4}, "3034": {"rs_rating": 35, "mom_trend": "維持", "rsi14_3d": "66→66→63", "ret_3d_pct": -0.1}, "2885": {"rs_rating": 36, "mom_trend": "加速", "rsi14_3d": "66→70→76", "ret_3d_pct": 8.0}, "5243": {"rs_rating": 62, "mom_trend": "加速", "rsi14_3d": "70→67→62", "ret_3d_pct": 3.3}, "2493": {"rs_rating": 50, "mom_trend": "加速", "rsi14_3d": "64→71→66", "ret_3d_pct": 14.9}, "8210": {"rs_rating": 60, "mom_trend": "維持", "rsi14_3d": "64→64→59", "ret_3d_pct": 3.7}, "4989": {"rs_rating": 60, "mom_trend": "加速", "rsi14_3d": "56→59→62", "ret_3d_pct": 6.1}, "8039": {"rs_rating": 61, "mom_trend": "加速", "rsi14_3d": "59→62→64", "ret_3d_pct": 6.0}, "6197": {"rs_rating": 78, "mom_trend": "加速", "rsi14_3d": "76→77→77", "ret_3d_pct": 10.0}, "2395": {"rs_rating": 61, "mom_trend": "加速", "rsi14_3d": "77→79→78", "ret_3d_pct": 8.5}, "3533": {"rs_rating": 65, "mom_trend": "維持", "rsi14_3d": "55→57→56", "ret_3d_pct": 2.7}, "6789": {"rs_rating": 55, "mom_trend": "轉弱", "rsi14_3d": "59→56→53", "ret_3d_pct": -2.3}, "1597": {"rs_rating": 94, "mom_trend": "轉弱", "rsi14_3d": "71→76→64", "ret_3d_pct": 8.7}, "6456": {"rs_rating": 61, "mom_trend": "維持", "rsi14_3d": "56→63→59", "ret_3d_pct": 3.8}, "4906": {"rs_rating": 70, "mom_trend": "加速", "rsi14_3d": "69→63→67", "ret_3d_pct": 11.0}, "6443": {"rs_rating": 3, "mom_trend": "維持", "rsi14_3d": "61→57→53", "ret_3d_pct": 2.5}, "3090": {"rs_rating": 93, "mom_trend": "轉弱", "rsi14_3d": "93→90→89", "ret_3d_pct": 7.4}, "2421": {"rs_rating": 20, "mom_trend": "加速", "rsi14_3d": "68→70→65", "ret_3d_pct": 2.2}, "3026": {"rs_rating": 99, "mom_trend": "加速", "rsi14_3d": "86→88→89", "ret_3d_pct": 27.6}, "2351": {"rs_rating": 96, "mom_trend": "加速", "rsi14_3d": "71→77→80", "ret_3d_pct": 22.8}, "2402": {"rs_rating": 27, "mom_trend": "維持", "rsi14_3d": "54→58→55", "ret_3d_pct": 4.2}, "6672": {"rs_rating": 89, "mom_trend": "加速", "rsi14_3d": "62→64→62", "ret_3d_pct": 9.6}, "3706": {"rs_rating": 21, "mom_trend": "轉弱", "rsi14_3d": "64→61→52", "ret_3d_pct": -4.1}, "2379": {"rs_rating": 37, "mom_trend": "加速", "rsi14_3d": "60→61→64", "ret_3d_pct": 4.7}, "2388": {"rs_rating": 63, "mom_trend": "轉弱", "rsi14_3d": "63→54→51", "ret_3d_pct": -13.7}, "3030": {"rs_rating": 70, "mom_trend": "轉弱", "rsi14_3d": "63→61→57", "ret_3d_pct": -4.8}, "2363": {"rs_rating": 34, "mom_trend": "維持", "rsi14_3d": "71→67→65", "ret_3d_pct": 0.1}, "4967": {"rs_rating": 41, "mom_trend": "維持", "rsi14_3d": "53→52→50", "ret_3d_pct": -1.3}, "1560": {"rs_rating": 54, "mom_trend": "維持", "rsi14_3d": "72→74→70", "ret_3d_pct": 5.7}, "3013": {"rs_rating": 23, "mom_trend": "加速", "rsi14_3d": "66→67→61", "ret_3d_pct": 8.1}, "6526": {"rs_rating": 34, "mom_trend": "轉弱", "rsi14_3d": "67→57→55", "ret_3d_pct": -5.9}, "52": {"rs_rating": 40, "mom_trend": "加速", "rsi14_3d": "73→71→74", "ret_3d_pct": 4.9}, "3583": {"rs_rating": 92, "mom_trend": "維持", "rsi14_3d": "63→62→57", "ret_3d_pct": 0.1}, "1514": {"rs_rating": 17, "mom_trend": "加速", "rsi14_3d": "60→62→63", "ret_3d_pct": 2.0}, "2027": {"rs_rating": 29, "mom_trend": "轉弱", "rsi14_3d": "73→58→62", "ret_3d_pct": 1.2}, "2476": {"rs_rating": 64, "mom_trend": "加速", "rsi14_3d": "64→70→66", "ret_3d_pct": 6.6}, "2059": {"rs_rating": 55, "mom_trend": "轉弱", "rsi14_3d": "60→61→58", "ret_3d_pct": -3.3}, "1605": {"rs_rating": 18, "mom_trend": "加速", "rsi14_3d": "66→62→63", "ret_3d_pct": 2.7}, "2451": {"rs_rating": 58, "mom_trend": "維持", "rsi14_3d": "55→57→59", "ret_3d_pct": 1.4}, "2884": {"rs_rating": 6, "mom_trend": "維持", "rsi14_3d": "34→39→39", "ret_3d_pct": -0.5}, "2883": {"rs_rating": 20, "mom_trend": "加速", "rsi14_3d": "52→51→59", "ret_3d_pct": 2.8}, "2355": {"rs_rating": 57, "mom_trend": "轉弱", "rsi14_3d": "71→66→61", "ret_3d_pct": -4.0}, "1503": {"rs_rating": 12, "mom_trend": "加速", "rsi14_3d": "57→58→69", "ret_3d_pct": 12.2}, "6209": {"rs_rating": 44, "mom_trend": "轉弱", "rsi14_3d": "73→64→64", "ret_3d_pct": -4.5}, "1504": {"rs_rating": 5, "mom_trend": "轉弱", "rsi14_3d": "60→61→55", "ret_3d_pct": -1.8}, "2233": {"rs_rating": 65, "mom_trend": "維持", "rsi14_3d": "77→75→69", "ret_3d_pct": 5.2}, "2399": {"rs_rating": 85, "mom_trend": "維持", "rsi14_3d": "62→67→60", "ret_3d_pct": 3.1}, "4977": {"rs_rating": 37, "mom_trend": "維持", "rsi14_3d": "55→56→51", "ret_3d_pct": 0.7}, "1402": {"rs_rating": 3, "mom_trend": "轉弱", "rsi14_3d": "61→45→27", "ret_3d_pct": -13.1}, "3563": {"rs_rating": 45, "mom_trend": "轉弱", "rsi14_3d": "56→55→47", "ret_3d_pct": -6.0}, "2892": {"rs_rating": 9, "mom_trend": "維持", "rsi14_3d": "35→37→36", "ret_3d_pct": 0.2}, "1727": {"rs_rating": 83, "mom_trend": "轉弱", "rsi14_3d": "80→68→67", "ret_3d_pct": -5.4}, "3413": {"rs_rating": 20, "mom_trend": "維持", "rsi14_3d": "67→65→52", "ret_3d_pct": -0.1}, "3019": {"rs_rating": 13, "mom_trend": "轉弱", "rsi14_3d": "68→63→57", "ret_3d_pct": -2.6}, "1216": {"rs_rating": 10, "mom_trend": "轉弱", "rsi14_3d": "44→42→40", "ret_3d_pct": -1.8}, "2886": {"rs_rating": 13, "mom_trend": "轉弱", "rsi14_3d": "48→47→47", "ret_3d_pct": -1.1}, "2426": {"rs_rating": 99, "mom_trend": "轉弱", "rsi14_3d": "66→66→65", "ret_3d_pct": -6.4}, "8021": {"rs_rating": 74, "mom_trend": "維持", "rsi14_3d": "59→59→54", "ret_3d_pct": 3.3}, "3702": {"rs_rating": 77, "mom_trend": "維持", "rsi14_3d": "70→66→65", "ret_3d_pct": 2.1}, "8926": {"rs_rating": 63, "mom_trend": "加速", "rsi14_3d": "77→83→85", "ret_3d_pct": 18.7}, "6861": {"rs_rating": 98, "mom_trend": "轉弱", "rsi14_3d": "65→68→70", "ret_3d_pct": 2.9}, "4526": {"rs_rating": 30, "mom_trend": "轉弱", "rsi14_3d": "63→71→57", "ret_3d_pct": 1.3}, "5871": {"rs_rating": 19, "mom_trend": "轉弱", "rsi14_3d": "43→39→39", "ret_3d_pct": -3.6}, "4764": {"rs_rating": 93, "mom_trend": "轉弱", "rsi14_3d": "70→65→60", "ret_3d_pct": 0.3}, "3048": {"rs_rating": 78, "mom_trend": "轉弱", "rsi14_3d": "87→86→78", "ret_3d_pct": -6.0}, "3532": {"rs_rating": 88, "mom_trend": "加速", "rsi14_3d": "68→73→69", "ret_3d_pct": 16.9}, "2890": {"rs_rating": 7, "mom_trend": "維持", "rsi14_3d": "24→36→38", "ret_3d_pct": 1.9}, "2329": {"rs_rating": 19, "mom_trend": "維持", "rsi14_3d": "50→54→54", "ret_3d_pct": 7.1}, "3376": {"rs_rating": 13, "mom_trend": "維持", "rsi14_3d": "60→59→53", "ret_3d_pct": 1.0}, "2374": {"rs_rating": 18, "mom_trend": "轉弱", "rsi14_3d": "63→59→55", "ret_3d_pct": -3.1}, "8112": {"rs_rating": 32, "mom_trend": "維持", "rsi14_3d": "49→49→54", "ret_3d_pct": -0.2}, "2439": {"rs_rating": 15, "mom_trend": "加速", "rsi14_3d": "56→67→61", "ret_3d_pct": 2.7}, "1301": {"rs_rating": 6, "mom_trend": "維持", "rsi14_3d": "34→34→39", "ret_3d_pct": 0.4}, "1582": {"rs_rating": 58, "mom_trend": "轉弱", "rsi14_3d": "62→60→58", "ret_3d_pct": -4.3}, "2436": {"rs_rating": 41, "mom_trend": "維持", "rsi14_3d": "64→63→59", "ret_3d_pct": 0.6}, "2359": {"rs_rating": 24, "mom_trend": "維持", "rsi14_3d": "65→67→67", "ret_3d_pct": 2.5}, "1590": {"rs_rating": 29, "mom_trend": "維持", "rsi14_3d": "59→61→56", "ret_3d_pct": 1.8}, "2338": {"rs_rating": 19, "mom_trend": "維持", "rsi14_3d": "67→62→63", "ret_3d_pct": 3.3}, "5285": {"rs_rating": 78, "mom_trend": "加速", "rsi14_3d": "79→84→85", "ret_3d_pct": 13.8}, "2342": {"rs_rating": 45, "mom_trend": "加速", "rsi14_3d": "64→65→66", "ret_3d_pct": 6.4}, "2606": {"rs_rating": 22, "mom_trend": "加速", "rsi14_3d": "69→74→78", "ret_3d_pct": 10.9}, "3033": {"rs_rating": 68, "mom_trend": "轉弱", "rsi14_3d": "67→69→69", "ret_3d_pct": -5.9}, "6426": {"rs_rating": 66, "mom_trend": "轉弱", "rsi14_3d": "62→65→62", "ret_3d_pct": 4.7}, "2615": {"rs_rating": 18, "mom_trend": "轉弱", "rsi14_3d": "65→59→60", "ret_3d_pct": -3.0}, "4770": {"rs_rating": 25, "mom_trend": "加速", "rsi14_3d": "63→69→67", "ret_3d_pct": 15.3}, "6944": {"rs_rating": 39, "mom_trend": "維持", "rsi14_3d": "54→58→55", "ret_3d_pct": 1.3}, "4904": {"rs_rating": 14, "mom_trend": "轉弱", "rsi14_3d": "44→43→39", "ret_3d_pct": -2.7}, "3576": {"rs_rating": 2, "mom_trend": "維持", "rsi14_3d": "58→55→56", "ret_3d_pct": 4.7}, "6695": {"rs_rating": 54, "mom_trend": "維持", "rsi14_3d": "75→77→69", "ret_3d_pct": 7.6}, "2495": {"rs_rating": 68, "mom_trend": "加速", "rsi14_3d": "67→67→73", "ret_3d_pct": 14.5}, "3406": {"rs_rating": 45, "mom_trend": "維持", "rsi14_3d": "66→65→64", "ret_3d_pct": 1.6}, "2406": {"rs_rating": 11, "mom_trend": "加速", "rsi14_3d": "56→57→58", "ret_3d_pct": 9.9}, "1711": {"rs_rating": 80, "mom_trend": "維持", "rsi14_3d": "52→51→51", "ret_3d_pct": -0.2}, "2305": {"rs_rating": 73, "mom_trend": "加速", "rsi14_3d": "71→72→77", "ret_3d_pct": 21.5}, "2609": {"rs_rating": 4, "mom_trend": "維持", "rsi14_3d": "56→57→59", "ret_3d_pct": -0.8}, "2428": {"rs_rating": 53, "mom_trend": "加速", "rsi14_3d": "84→86→88", "ret_3d_pct": 9.7}, "6409": {"rs_rating": 2, "mom_trend": "維持", "rsi14_3d": "45→42→45", "ret_3d_pct": 4.4}, "1101": {"rs_rating": 7, "mom_trend": "維持", "rsi14_3d": "47→42→41", "ret_3d_pct": -1.0}, "4949": {"rs_rating": 87, "mom_trend": "維持", "rsi14_3d": "67→63→60", "ret_3d_pct": 3.9}, "3167": {"rs_rating": 95, "mom_trend": "維持", "rsi14_3d": "66→60→59", "ret_3d_pct": -1.3}, "8271": {"rs_rating": 81, "mom_trend": "維持", "rsi14_3d": "55→55→56", "ret_3d_pct": 3.6}, "4540": {"rs_rating": 43, "mom_trend": "轉弱", "rsi14_3d": "63→61→53", "ret_3d_pct": -7.4}, "2498": {"rs_rating": 16, "mom_trend": "轉弱", "rsi14_3d": "66→56→57", "ret_3d_pct": -3.8}, "6176": {"rs_rating": 8, "mom_trend": "轉弱", "rsi14_3d": "63→57→49", "ret_3d_pct": -5.6}, "1326": {"rs_rating": 9, "mom_trend": "維持", "rsi14_3d": "41→40→44", "ret_3d_pct": -0.2}, "1476": {"rs_rating": 3, "mom_trend": "轉弱", "rsi14_3d": "47→47→45", "ret_3d_pct": -3.4}, "2328": {"rs_rating": 20, "mom_trend": "轉弱", "rsi14_3d": "66→59→57", "ret_3d_pct": -1.8}, "4938": {"rs_rating": 28, "mom_trend": "加速", "rsi14_3d": "54→55→57", "ret_3d_pct": 1.7}, "2401": {"rs_rating": 49, "mom_trend": "轉弱", "rsi14_3d": "70→72→74", "ret_3d_pct": 1.0}, "2610": {"rs_rating": 8, "mom_trend": "維持", "rsi14_3d": "57→53→49", "ret_3d_pct": -0.5}, "6691": {"rs_rating": 15, "mom_trend": "加速", "rsi14_3d": "55→56→63", "ret_3d_pct": 7.3}, "3209": {"rs_rating": 91, "mom_trend": "轉弱", "rsi14_3d": "70→76→76", "ret_3d_pct": 4.4}, "2014": {"rs_rating": 15, "mom_trend": "維持", "rsi14_3d": "62→53→52", "ret_3d_pct": 5.0}, "6919": {"rs_rating": 1, "mom_trend": "轉弱", "rsi14_3d": "55→49→45", "ret_3d_pct": -5.3}, "2302": {"rs_rating": 76, "mom_trend": "維持", "rsi14_3d": "82→86→79", "ret_3d_pct": 16.4}, "3708": {"rs_rating": 22, "mom_trend": "加速", "rsi14_3d": "57→64→63", "ret_3d_pct": 4.0}, "6215": {"rs_rating": 25, "mom_trend": "轉弱", "rsi14_3d": "67→64→61", "ret_3d_pct": -3.0}, "2371": {"rs_rating": 2, "mom_trend": "維持", "rsi14_3d": "52→48→45", "ret_3d_pct": -0.3}, "2354": {"rs_rating": 17, "mom_trend": "維持", "rsi14_3d": "62→59→56", "ret_3d_pct": -0.8}, "3535": {"rs_rating": 5, "mom_trend": "維持", "rsi14_3d": "54→52→48", "ret_3d_pct": -3.1}, "5434": {"rs_rating": 52, "mom_trend": "加速", "rsi14_3d": "75→73→69", "ret_3d_pct": 5.3}, "3135": {"rs_rating": 80, "mom_trend": "加速", "rsi14_3d": "69→72→76", "ret_3d_pct": 14.4}, "3025": {"rs_rating": 43, "mom_trend": "加速", "rsi14_3d": "77→78→73", "ret_3d_pct": 8.7}, "5876": {"rs_rating": 16, "mom_trend": "轉弱", "rsi14_3d": "51→47→47", "ret_3d_pct": -1.5}, "1477": {"rs_rating": 1, "mom_trend": "維持", "rsi14_3d": "44→41→45", "ret_3d_pct": -1.6}, "6525": {"rs_rating": 65, "mom_trend": "加速", "rsi14_3d": "71→77→71", "ret_3d_pct": 11.6}, "6414": {"rs_rating": 39, "mom_trend": "維持", "rsi14_3d": "66→61→63", "ret_3d_pct": 2.7}, "8081": {"rs_rating": 32, "mom_trend": "維持", "rsi14_3d": "69→70→67", "ret_3d_pct": 3.0}, "6405": {"rs_rating": 93, "mom_trend": "加速", "rsi14_3d": "72→76→79", "ret_3d_pct": 29.0}, "2385": {"rs_rating": 22, "mom_trend": "加速", "rsi14_3d": "55→59→63", "ret_3d_pct": 3.0}, "8070": {"rs_rating": 31, "mom_trend": "加速", "rsi14_3d": "52→63→65", "ret_3d_pct": 12.0}, "4916": {"rs_rating": 66, "mom_trend": "轉弱", "rsi14_3d": "84→82→80", "ret_3d_pct": 1.1}, "4956": {"rs_rating": 79, "mom_trend": "維持", "rsi14_3d": "61→60→55", "ret_3d_pct": -0.9}, "7822": {"rs_rating": 4, "mom_trend": "維持", "rsi14_3d": "44→44→42", "ret_3d_pct": 7.0}, "5284": {"rs_rating": 71, "mom_trend": "加速", "rsi14_3d": "67→64→72", "ret_3d_pct": 7.8}, "3005": {"rs_rating": 5, "mom_trend": "維持", "rsi14_3d": "57→58→55", "ret_3d_pct": -1.0}, "6937": {"rs_rating": 40, "mom_trend": "轉弱", "rsi14_3d": "68→62→55", "ret_3d_pct": -1.4}, "1102": {"rs_rating": 8, "mom_trend": "轉弱", "rsi14_3d": "36→34→32", "ret_3d_pct": -4.1}, "8249": {"rs_rating": 10, "mom_trend": "加速", "rsi14_3d": "59→70→64", "ret_3d_pct": 7.0}, "6658": {"rs_rating": 98, "mom_trend": "加速", "rsi14_3d": "71→75→73", "ret_3d_pct": 19.4}, "3055": {"rs_rating": 68, "mom_trend": "轉弱", "rsi14_3d": "69→69→62", "ret_3d_pct": -4.7}, "6491": {"rs_rating": 26, "mom_trend": "加速", "rsi14_3d": "69→79→79", "ret_3d_pct": 5.5}, "3592": {"rs_rating": 34, "mom_trend": "加速", "rsi14_3d": "71→71→68", "ret_3d_pct": 5.8}, "6472": {"rs_rating": 2, "mom_trend": "轉弱", "rsi14_3d": "37→35→32", "ret_3d_pct": -8.7}, "5234": {"rs_rating": 26, "mom_trend": "轉弱", "rsi14_3d": "61→57→52", "ret_3d_pct": -3.9}, "2458": {"rs_rating": 50, "mom_trend": "維持", "rsi14_3d": "71→73→70", "ret_3d_pct": 1.5}, "2731": {"rs_rating": 12, "mom_trend": "加速", "rsi14_3d": "48→66→60", "ret_3d_pct": 3.8}, "3312": {"rs_rating": 44, "mom_trend": "轉弱", "rsi14_3d": "70→74→63", "ret_3d_pct": 4.7}, "6202": {"rs_rating": 12, "mom_trend": "維持", "rsi14_3d": "62→62→59", "ret_3d_pct": -0.7}, "2478": {"rs_rating": 72, "mom_trend": "轉弱", "rsi14_3d": "79→78→78", "ret_3d_pct": -5.9}, "6191": {"rs_rating": 7, "mom_trend": "維持", "rsi14_3d": "51→48→51", "ret_3d_pct": 1.2}, "3014": {"rs_rating": 35, "mom_trend": "維持", "rsi14_3d": "76→77→79", "ret_3d_pct": 3.4}, "3704": {"rs_rating": 43, "mom_trend": "維持", "rsi14_3d": "76→79→79", "ret_3d_pct": 2.8}, "3062": {"rs_rating": 23, "mom_trend": "維持", "rsi14_3d": "65→58→54", "ret_3d_pct": -0.5}, "6166": {"rs_rating": 87, "mom_trend": "維持", "rsi14_3d": "88→89→90", "ret_3d_pct": 7.1}, "2633": {"rs_rating": 8, "mom_trend": "轉弱", "rsi14_3d": "33→30→35", "ret_3d_pct": -2.1}, "2801": {"rs_rating": 12, "mom_trend": "維持", "rsi14_3d": "36→34→34", "ret_3d_pct": -0.7}, "8131": {"rs_rating": 14, "mom_trend": "加速", "rsi14_3d": "52→55→58", "ret_3d_pct": 6.5}, "6206": {"rs_rating": 58, "mom_trend": "轉弱", "rsi14_3d": "77→70→67", "ret_3d_pct": -1.1}, "2548": {"rs_rating": 21, "mom_trend": "維持", "rsi14_3d": "43→41→43", "ret_3d_pct": -1.6}, "4739": {"rs_rating": 42, "mom_trend": "維持", "rsi14_3d": "65→63→62", "ret_3d_pct": 3.0}, "1795": {"rs_rating": 1, "mom_trend": "轉弱", "rsi14_3d": "38→36→35", "ret_3d_pct": -4.7}, "6505": {"rs_rating": 6, "mom_trend": "維持", "rsi14_3d": "36→35→40", "ret_3d_pct": -1.8}, "3105": {"rs_rating": 73, "mom_trend": "加速", "rsi14_3d": "60→63→62", "ret_3d_pct": 5.5}, "8299": {"rs_rating": 40, "mom_trend": "維持", "rsi14_3d": "57→57→57", "ret_3d_pct": 2.1}, "6147": {"rs_rating": 99, "mom_trend": "加速", "rsi14_3d": "78→82→82", "ret_3d_pct": 23.0}, "6488": {"rs_rating": 87, "mom_trend": "加速", "rsi14_3d": "63→68→72", "ret_3d_pct": 29.7}, "6182": {"rs_rating": 95, "mom_trend": "加速", "rsi14_3d": "85→87→89", "ret_3d_pct": 29.0}, "6274": {"rs_rating": 98, "mom_trend": "加速", "rsi14_3d": "74→72→74", "ret_3d_pct": 12.0}, "4979": {"rs_rating": 48, "mom_trend": "維持", "rsi14_3d": "59→61→54", "ret_3d_pct": -0.3}, "3081": {"rs_rating": 86, "mom_trend": "維持", "rsi14_3d": "60→64→56", "ret_3d_pct": 6.5}, "3211": {"rs_rating": 59, "mom_trend": "加速", "rsi14_3d": "65→72→70", "ret_3d_pct": 19.6}, "3260": {"rs_rating": 57, "mom_trend": "維持", "rsi14_3d": "48→48→49", "ret_3d_pct": -1.2}, "5425": {"rs_rating": 73, "mom_trend": "加速", "rsi14_3d": "72→77→79", "ret_3d_pct": 20.0}, "5289": {"rs_rating": 83, "mom_trend": "維持", "rsi14_3d": "60→60→61", "ret_3d_pct": -1.4}, "3163": {"rs_rating": 48, "mom_trend": "轉弱", "rsi14_3d": "61→61→52", "ret_3d_pct": -3.9}, "5347": {"rs_rating": 39, "mom_trend": "維持", "rsi14_3d": "59→56→57", "ret_3d_pct": 2.5}, "6223": {"rs_rating": 91, "mom_trend": "加速", "rsi14_3d": "68→68→70", "ret_3d_pct": 5.9}, "5483": {"rs_rating": 51, "mom_trend": "加速", "rsi14_3d": "61→66→64", "ret_3d_pct": 9.8}, "5274": {"rs_rating": 80, "mom_trend": "加速", "rsi14_3d": "61→57→62", "ret_3d_pct": 2.5}, "3529": {"rs_rating": 41, "mom_trend": "轉弱", "rsi14_3d": "50→45→41", "ret_3d_pct": -9.1}, "6510": {"rs_rating": 5, "mom_trend": "轉弱", "rsi14_3d": "46→45→40", "ret_3d_pct": -6.2}, "4991": {"rs_rating": 86, "mom_trend": "轉弱", "rsi14_3d": "67→69→58", "ret_3d_pct": -3.8}, "5536": {"rs_rating": 67, "mom_trend": "加速", "rsi14_3d": "58→67→72", "ret_3d_pct": 19.7}, "3707": {"rs_rating": 60, "mom_trend": "維持", "rsi14_3d": "69→64→69", "ret_3d_pct": 6.9}, "6290": {"rs_rating": 64, "mom_trend": "加速", "rsi14_3d": "65→73→71", "ret_3d_pct": 18.2}, "3293": {"rs_rating": 23, "mom_trend": "維持", "rsi14_3d": "51→48→57", "ret_3d_pct": 1.1}, "6187": {"rs_rating": 83, "mom_trend": "維持", "rsi14_3d": "57→52→51", "ret_3d_pct": -0.9}, "1785": {"rs_rating": 91, "mom_trend": "維持", "rsi14_3d": "54→52→48", "ret_3d_pct": -0.7}, "3363": {"rs_rating": 46, "mom_trend": "維持", "rsi14_3d": "54→57→53", "ret_3d_pct": -0.6}, "1815": {"rs_rating": 11, "mom_trend": "轉弱", "rsi14_3d": "52→51→46", "ret_3d_pct": -3.3}, "4966": {"rs_rating": 71, "mom_trend": "加速", "rsi14_3d": "71→68→74", "ret_3d_pct": 9.4}, "3357": {"rs_rating": 53, "mom_trend": "維持", "rsi14_3d": "77→74→77", "ret_3d_pct": 2.3}, "3374": {"rs_rating": 42, "mom_trend": "維持", "rsi14_3d": "62→61→59", "ret_3d_pct": -1.0}, "3324": {"rs_rating": 7, "mom_trend": "維持", "rsi14_3d": "46→50→50", "ret_3d_pct": 2.5}, "4749": {"rs_rating": 33, "mom_trend": "轉弱", "rsi14_3d": "62→60→57", "ret_3d_pct": -4.7}, "8086": {"rs_rating": 49, "mom_trend": "加速", "rsi14_3d": "63→71→66", "ret_3d_pct": 8.8}, "6683": {"rs_rating": 85, "mom_trend": "維持", "rsi14_3d": "49→48→47", "ret_3d_pct": 7.9}, "4931": {"rs_rating": 52, "mom_trend": "轉弱", "rsi14_3d": "74→68→63", "ret_3d_pct": -2.4}, "8358": {"rs_rating": 82, "mom_trend": "維持", "rsi14_3d": "73→70→72", "ret_3d_pct": 7.3}, "5351": {"rs_rating": 53, "mom_trend": "維持", "rsi14_3d": "57→57→57", "ret_3d_pct": 2.6}, "6207": {"rs_rating": 79, "mom_trend": "維持", "rsi14_3d": "81→85→77", "ret_3d_pct": 15.1}, "6127": {"rs_rating": 56, "mom_trend": "加速", "rsi14_3d": "61→69→68", "ret_3d_pct": 8.4}, "8043": {"rs_rating": 76, "mom_trend": "轉弱", "rsi14_3d": "71→64→69", "ret_3d_pct": 1.1}, "3680": {"rs_rating": 47, "mom_trend": "維持", "rsi14_3d": "63→61→55", "ret_3d_pct": -1.1}, "3264": {"rs_rating": 63, "mom_trend": "維持", "rsi14_3d": "56→59→58", "ret_3d_pct": 3.6}, "5386": {"rs_rating": 97, "mom_trend": "加速", "rsi14_3d": "68→68→72", "ret_3d_pct": 18.1}, "6548": {"rs_rating": 41, "mom_trend": "加速", "rsi14_3d": "60→70→71", "ret_3d_pct": 17.7}, "8064": {"rs_rating": 97, "mom_trend": "轉弱", "rsi14_3d": "70→71→66", "ret_3d_pct": 7.9}, "8069": {"rs_rating": 47, "mom_trend": "加速", "rsi14_3d": "75→75→78", "ret_3d_pct": 11.2}, "4768": {"rs_rating": 14, "mom_trend": "加速", "rsi14_3d": "48→57→58", "ret_3d_pct": 10.8}, "7734": {"rs_rating": 88, "mom_trend": "加速", "rsi14_3d": "53→56→60", "ret_3d_pct": 13.4}, "5475": {"rs_rating": 47, "mom_trend": "維持", "rsi14_3d": "44→49→44", "ret_3d_pct": -3.5}, "6727": {"rs_rating": 97, "mom_trend": "維持", "rsi14_3d": "75→73→69", "ret_3d_pct": 4.8}, "8255": {"rs_rating": 55, "mom_trend": "加速", "rsi14_3d": "76→82→80", "ret_3d_pct": 18.2}, "8096": {"rs_rating": 74, "mom_trend": "轉弱", "rsi14_3d": "80→71→72", "ret_3d_pct": 2.1}, "6265": {"rs_rating": 54, "mom_trend": "加速", "rsi14_3d": "67→67→70", "ret_3d_pct": 14.3}, "4908": {"rs_rating": 96, "mom_trend": "轉弱", "rsi14_3d": "77→74→61", "ret_3d_pct": -2.8}, "6291": {"rs_rating": 90, "mom_trend": "加速", "rsi14_3d": "62→68→73", "ret_3d_pct": 19.2}, "4939": {"rs_rating": 33, "mom_trend": "加速", "rsi14_3d": "53→65→63", "ret_3d_pct": 9.1}, "5439": {"rs_rating": 46, "mom_trend": "維持", "rsi14_3d": "52→54→52", "ret_3d_pct": -0.5}, "3491": {"rs_rating": 32, "mom_trend": "加速", "rsi14_3d": "68→67→67", "ret_3d_pct": 7.8}, "5328": {"rs_rating": 35, "mom_trend": "維持", "rsi14_3d": "75→72→72", "ret_3d_pct": 0.1}, "6425": {"rs_rating": 44, "mom_trend": "加速", "rsi14_3d": "62→70→71", "ret_3d_pct": 13.4}, "3131": {"rs_rating": 82, "mom_trend": "加速", "rsi14_3d": "51→57→65", "ret_3d_pct": 21.5}, "8088": {"rs_rating": 30, "mom_trend": "加速", "rsi14_3d": "62→63→64", "ret_3d_pct": 7.2}, "6138": {"rs_rating": 62, "mom_trend": "維持", "rsi14_3d": "75→77→71", "ret_3d_pct": 11.6}, "5309": {"rs_rating": 17, "mom_trend": "轉弱", "rsi14_3d": "66→60→61", "ret_3d_pct": -1.2}, "6175": {"rs_rating": 85, "mom_trend": "維持", "rsi14_3d": "88→84→86", "ret_3d_pct": 10.3}, "6462": {"rs_rating": 28, "mom_trend": "轉弱", "rsi14_3d": "74→64→52", "ret_3d_pct": -8.0}, "7828": {"rs_rating": 44, "mom_trend": "加速", "rsi14_3d": "53→59→63", "ret_3d_pct": 29.2}, "3689": {"rs_rating": 27, "mom_trend": "加速", "rsi14_3d": "50→49→57", "ret_3d_pct": 5.7}, "2070": {"rs_rating": 84, "mom_trend": "加速", "rsi14_3d": "68→75→80", "ret_3d_pct": 23.4}, "3691": {"rs_rating": 29, "mom_trend": "加速", "rsi14_3d": "57→64→63", "ret_3d_pct": 8.4}, "4772": {"rs_rating": 6, "mom_trend": "維持", "rsi14_3d": "49→48→48", "ret_3d_pct": -1.3}, "6284": {"rs_rating": 43, "mom_trend": "維持", "rsi14_3d": "85→87→78", "ret_3d_pct": 10.2}, "3455": {"rs_rating": 89, "mom_trend": "轉弱", "rsi14_3d": "56→55→50", "ret_3d_pct": -12.8}, "3236": {"rs_rating": 75, "mom_trend": "維持", "rsi14_3d": "86→86→82", "ret_3d_pct": 7.4}, "3402": {"rs_rating": 27, "mom_trend": "加速", "rsi14_3d": "61→70→70", "ret_3d_pct": 10.4}, "3581": {"rs_rating": 98, "mom_trend": "轉弱", "rsi14_3d": "78→79→65", "ret_3d_pct": 1.6}, "6435": {"rs_rating": 82, "mom_trend": "加速", "rsi14_3d": "68→74→76", "ret_3d_pct": 25.5}, "6821": {"rs_rating": 81, "mom_trend": "加速", "rsi14_3d": "67→73→75", "ret_3d_pct": 25.3}, "8050": {"rs_rating": 49, "mom_trend": "維持", "rsi14_3d": "81→87→77", "ret_3d_pct": 7.6}, "8155": {"rs_rating": 84, "mom_trend": "轉弱", "rsi14_3d": "59→58→52", "ret_3d_pct": -3.1}, "6761": {"rs_rating": 52, "mom_trend": "加速", "rsi14_3d": "59→67→63", "ret_3d_pct": 10.9}, "6190": {"rs_rating": 62, "mom_trend": "維持", "rsi14_3d": "67→61→66", "ret_3d_pct": 0.5}, "4760": {"rs_rating": 85, "mom_trend": "加速", "rsi14_3d": "74→77→74", "ret_3d_pct": 13.5}, "3162": {"rs_rating": 51, "mom_trend": "轉弱", "rsi14_3d": "59→63→52", "ret_3d_pct": -4.6}, "3317": {"rs_rating": 71, "mom_trend": "維持", "rsi14_3d": "78→78→75", "ret_3d_pct": 8.1}, "5299": {"rs_rating": 64, "mom_trend": "維持", "rsi14_3d": "80→85→71", "ret_3d_pct": 11.2}, "6016": {"rs_rating": 64, "mom_trend": "加速", "rsi14_3d": "72→75→82", "ret_3d_pct": 16.6}, "5443": {"rs_rating": 48, "mom_trend": "維持", "rsi14_3d": "59→57→54", "ret_3d_pct": 4.1}, "8227": {"rs_rating": 70, "mom_trend": "轉弱", "rsi14_3d": "75→62→62", "ret_3d_pct": -1.1}, "3693": {"rs_rating": 38, "mom_trend": "維持", "rsi14_3d": "56→53→50", "ret_3d_pct": -0.3}, "3227": {"rs_rating": 27, "mom_trend": "轉弱", "rsi14_3d": "65→68→57", "ret_3d_pct": -2.8}, "6664": {"rs_rating": 65, "mom_trend": "維持", "rsi14_3d": "57→61→58", "ret_3d_pct": 5.1}, "3675": {"rs_rating": 84, "mom_trend": "加速", "rsi14_3d": "78→78→82", "ret_3d_pct": 14.2}, "6234": {"rs_rating": 81, "mom_trend": "加速", "rsi14_3d": "54→61→59", "ret_3d_pct": 10.6}, "6643": {"rs_rating": 42, "mom_trend": "維持", "rsi14_3d": "54→55→52", "ret_3d_pct": -0.5}, "7712": {"rs_rating": 69, "mom_trend": "轉弱", "rsi14_3d": "67→73→62", "ret_3d_pct": 1.2}, "3624": {"rs_rating": 62, "mom_trend": "維持", "rsi14_3d": "87→85→86", "ret_3d_pct": 2.7}, "8040": {"rs_rating": 89, "mom_trend": "轉弱", "rsi14_3d": "83→77→71", "ret_3d_pct": -5.0}, "3587": {"rs_rating": 61, "mom_trend": "維持", "rsi14_3d": "54→53→50", "ret_3d_pct": -3.2}, "3221": {"rs_rating": 71, "mom_trend": "轉弱", "rsi14_3d": "74→72→65", "ret_3d_pct": 0.0}, "6903": {"rs_rating": 54, "mom_trend": "加速", "rsi14_3d": "58→63→58", "ret_3d_pct": 7.4}, "5498": {"rs_rating": 21, "mom_trend": "維持", "rsi14_3d": "50→52→50", "ret_3d_pct": 3.0}, "3217": {"rs_rating": 36, "mom_trend": "轉弱", "rsi14_3d": "67→60→63", "ret_3d_pct": -4.6}, "3615": {"rs_rating": 57, "mom_trend": "轉弱", "rsi14_3d": "80→76→65", "ret_3d_pct": -0.5}, "5864": {"rs_rating": 56, "mom_trend": "加速", "rsi14_3d": "66→69→76", "ret_3d_pct": 16.3}, "6261": {"rs_rating": 67, "mom_trend": "轉弱", "rsi14_3d": "64→65→59", "ret_3d_pct": -4.8}, "6584": {"rs_rating": 69, "mom_trend": "維持", "rsi14_3d": "54→55→54", "ret_3d_pct": 1.0}, "3663": {"rs_rating": 56, "mom_trend": "維持", "rsi14_3d": "70→69→67", "ret_3d_pct": 3.5}, "6411": {"rs_rating": 28, "mom_trend": "加速", "rsi14_3d": "73→77→77", "ret_3d_pct": 6.4}, "3152": {"rs_rating": 38, "mom_trend": "加速", "rsi14_3d": "67→68→65", "ret_3d_pct": 9.4}, "3088": {"rs_rating": 78, "mom_trend": "維持", "rsi14_3d": "82→82→84", "ret_3d_pct": 1.8}, "6640": {"rs_rating": 76, "mom_trend": "維持", "rsi14_3d": "55→55→52", "ret_3d_pct": 4.8}, "3479": {"rs_rating": 59, "mom_trend": "維持", "rsi14_3d": "87→88→89", "ret_3d_pct": 9.2}, "3537": {"rs_rating": 55, "mom_trend": "轉弱", "rsi14_3d": "90→72→68", "ret_3d_pct": -3.7}, "3551": {"rs_rating": 26, "mom_trend": "維持", "rsi14_3d": "51→51→55", "ret_3d_pct": 2.5}, "1595": {"rs_rating": 89, "mom_trend": "轉弱", "rsi14_3d": "68→71→59", "ret_3d_pct": -6.6}};
 const _QUOTES_DATA = {"6278": {"z": "222.5", "y": "235.5", "o": "234.5", "h": "238.5", "l": "220.5", "v": "13370", "u": "259.0", "ex": "tse"}, "6166": {"z": "129.5", "y": "136.0", "o": "140.5", "h": "145.0", "l": "128.5", "v": "4495", "u": "149.5", "ex": "tse"}, "6727": {"z": "578.0", "y": "629.0", "o": "630.0", "h": "645.0", "l": "570.0", "v": "4571", "u": "691.0", "ex": "otc"}, "8040": {"z": "109.5", "y": "113.0", "o": "113.5", "h": "120.0", "l": "107.0", "v": "3668", "u": "124.0", "ex": "otc"}, "3088": {"z": "140.0", "y": "144.5", "o": "146.0", "h": "149.0", "l": "137.5", "v": "2746", "u": "158.5", "ex": "otc"}, "8227": {"z": "212.5", "y": "224.5", "o": "224.5", "h": "228.0", "l": "206.0", "v": "2094", "u": "246.5", "ex": "otc"}, "2476": {"z": "122.0", "y": "129.0", "o": "130.0", "h": "132.0", "l": "119.5", "v": "9024", "u": "141.5", "ex": "tse"}, "6425": {"z": "95.0", "y": "102.5", "o": "100.0", "h": "101.0", "l": "93.5", "v": "5813", "u": "112.5", "ex": "otc"}, "3033": {"z": "50.1", "y": "50.7", "o": "51.1", "h": "51.7", "l": "49.8", "v": "12114", "u": "55.7", "ex": "tse"}, "4764": {"z": "312.0", "y": "321.0", "o": "328.0", "h": "333.5", "l": "309.0", "v": "2647", "u": "353.0", "ex": "tse"}, "4576": {"z": "255.5", "y": "273.0", "o": "270.5", "h": "273.5", "l": "250.5", "v": "4441", "u": "300.0", "ex": "tse"}, "8064": {"z": "133.0", "y": "143.0", "o": "143.0", "h": "146.0", "l": "130.0", "v": "12516", "u": "157.0", "ex": "otc"}, "4908": {"z": "239.0", "y": "259.5", "o": "260.5", "h": "260.5", "l": "234.5", "v": "4761", "u": "285.0", "ex": "otc"}, "1597": {"z": "180.5", "y": "199.0", "o": "199.0", "h": "199.0", "l": "179.5", "v": "7357", "u": "218.5", "ex": "tse"}, "6257": {"z": "229.0", "y": "233.5", "o": "233.5", "h": "240.5", "l": "228.0", "v": "12353", "u": "256.5", "ex": "tse"}, "6861": {"z": "416.0", "y": "462.0", "o": "463.5", "h": "470.0", "l": "416.0", "v": "1527", "u": "508.0", "ex": "tse"}, "1727": {"z": "94.2", "y": "96.5", "o": "96.8", "h": "98.0", "l": "92.3", "v": "8214", "u": "106.0", "ex": "tse"}, "6147": {"z": "278.0", "y": "265.0", "o": "267.5", "h": "291.5", "l": "261.5", "v": "96567", "u": "291.5", "ex": "otc"}, "6274": {"z": "1540.0", "y": "1630.0", "o": "1615.0", "h": "1695.0", "l": "1525.0", "v": "8231", "u": "1790.0", "ex": "otc"}, "3016": {"z": "134.5", "y": "126.0", "o": "126.0", "h": "138.5", "l": "125.0", "v": "16855", "u": "138.5", "ex": "tse"}, "4958": {"z": "486.0", "y": "532.0", "o": "521.0", "h": "522.0", "l": "479.0", "v": "18741", "u": "585.0", "ex": "tse"}, "4966": {"z": "845.0", "y": "870.0", "o": "897.0", "h": "922.0", "l": "830.0", "v": "2961", "u": "957.0", "ex": "otc"}, "2327": {"z": "742.0", "y": "701.0", "o": "709.0", "h": "769.0", "l": "709.0", "v": "23384", "u": "771.0", "ex": "tse"}, "1560": {"z": "717.0", "y": "727.0", "o": "736.0", "h": "741.0", "l": "708.0", "v": "1614", "u": "799.0", "ex": "tse"}, "8028": {"z": "334.5", "y": "308.0", "o": "310.5", "h": "338.5", "l": "306.5", "v": "19796", "u": "338.5", "ex": "tse"}, "3026": {"z": "605.0", "y": "608.0", "o": "608.0", "h": "635.0", "l": "585.0", "v": "2397", "u": "668.0", "ex": "tse"}, "2426": {"z": "80.9", "y": "77.8", "o": "78.9", "h": "85.5", "l": "78.5", "v": "37604", "u": "85.5", "ex": "tse"}, "4919": {"z": "188.5", "y": "206.5", "o": "199.0", "h": "199.0", "l": "188.5", "v": "5431", "u": "227.0", "ex": "tse"}, "7769": {"z": "7700.0", "y": "7800.0", "o": "7945.0", "h": "8435.0", "l": "7605.0", "v": "1311", "u": "8580.0", "ex": "tse"}, "3450": {"z": "481.0", "y": "501.0", "o": "510.0", "h": "527.0", "l": "471.5", "v": "15142", "u": "551.0", "ex": "tse"}, "6451": {"z": "569.0", "y": "602.0", "o": "602.0", "h": "617.0", "l": "563.0", "v": "5105", "u": "662.0", "ex": "tse"}, "6285": {"z": "304.0", "y": "311.5", "o": "324.0", "h": "336.5", "l": "302.0", "v": "30109", "u": "342.5", "ex": "tse"}, "6223": {"z": "5915.0", "y": "6390.0", "o": "6390.0", "h": "6450.0", "l": "5855.0", "v": "951", "u": "7025.0", "ex": "otc"}, "3209": {"z": "78.5", "y": "81.4", "o": "81.8", "h": "82.2", "l": "78.1", "v": "3862", "u": "89.5", "ex": "tse"}, "2049": {"z": "388.0", "y": "409.0", "o": "418.0", "h": "418.0", "l": "383.0", "v": "9304", "u": "449.5", "ex": "tse"}, "2455": {"z": "391.5", "y": "418.5", "o": "413.0", "h": "420.0", "l": "391.5", "v": "2125", "u": "460.0", "ex": "tse"}, "3624": {"z": "100.0", "y": "94.0", "o": "95.0", "h": "103.0", "l": "95.0", "v": "6820", "u": "103.0", "ex": "otc"}, "2478": {"z": "127.0", "y": "120.0", "o": "118.5", "h": "129.5", "l": "118.5", "v": "5808", "u": "132.0", "ex": "tse"}, "6531": {"z": "1095.0", "y": "1080.0", "o": "1085.0", "h": "1185.0", "l": "1070.0", "v": "14425", "u": "1185.0", "ex": "tse"}, "3167": {"z": "795.0", "y": "820.0", "o": "835.0", "h": "835.0", "l": "784.0", "v": "441", "u": "902.0", "ex": "tse"}, "8358": {"z": "553.0", "y": "560.0", "o": "555.0", "h": "578.0", "l": "550.0", "v": "4634", "u": "616.0", "ex": "otc"}, "3135": {"z": "250.0", "y": "242.0", "o": "252.0", "h": "256.0", "l": "245.0", "v": "3532", "u": "266.0", "ex": "tse"}, "3037": {"z": "1025.0", "y": "1080.0", "o": "1125.0", "h": "1130.0", "l": "1000.0", "v": "23650", "u": "1185.0", "ex": "tse"}, "3532": {"z": "290.0", "y": "290.5", "o": "290.5", "h": "316.5", "l": "281.0", "v": "10786", "u": "319.5", "ex": "tse"}, "6488": {"z": "927.0", "y": "930.0", "o": "935.0", "h": "1020.0", "l": "914.0", "v": "21121", "u": "1020.0", "ex": "otc"}, "2351": {"z": "220.0", "y": "229.0", "o": "227.0", "h": "232.0", "l": "214.5", "v": "8120", "u": "251.5", "ex": "tse"}, "2303": {"z": "142.0", "y": "143.5", "o": "145.0", "h": "151.0", "l": "137.0", "v": "413026", "u": "157.5", "ex": "tse"}, "2472": {"z": "371.0", "y": "337.5", "o": "352.0", "h": "371.0", "l": "352.0", "v": "9182", "u": "371.0", "ex": "tse"}, "2464": {"z": "168.0", "y": "177.0", "o": "177.0", "h": "177.0", "l": "163.5", "v": "17213", "u": "194.5", "ex": "tse"}, "6415": {"z": "620.0", "y": "665.0", "o": "667.0", "h": "680.0", "l": "600.0", "v": "11433", "u": "731.0", "ex": "tse"}, "2492": {"z": "390.0", "y": "361.0", "o": "355.0", "h": "397.0", "l": "355.0", "v": "5815", "u": "397.0", "ex": "tse"}, "2345": {"z": "2435.0", "y": "2620.0", "o": "2575.0", "h": "2580.0", "l": "2395.0", "v": "4505", "u": "2880.0", "ex": "tse"}, "2360": {"z": "2570.0", "y": "2625.0", "o": "2560.0", "h": "2795.0", "l": "2530.0", "v": "3856", "u": "2885.0", "ex": "tse"}, "3707": {"z": "87.1", "y": "89.3", "o": "88.6", "h": "96.9", "l": "86.2", "v": "55616", "u": "98.2", "ex": "otc"}, "4931": {"z": "209.0", "y": "207.0", "o": "210.0", "h": "222.0", "l": "207.0", "v": "11054", "u": "227.5", "ex": "otc"}, "3481": {"z": "46.4", "y": "50.2", "o": "50.2", "h": "52.2", "l": "46.2", "v": "1249001", "u": "55.2", "ex": "tse"}, "8043": {"z": "128.5", "y": "132.0", "o": "130.5", "h": "144.0", "l": "126.5", "v": "31077", "u": "145.0", "ex": "otc"}, "5243": {"z": "120.5", "y": "127.0", "o": "128.0", "h": "133.5", "l": "118.5", "v": "10526", "u": "139.5", "ex": "tse"}, "3152": {"z": "197.0", "y": "198.5", "o": "202.0", "h": "213.0", "l": "194.0", "v": "3359", "u": "218.0", "ex": "otc"}, "4739": {"z": "98.2", "y": "104.0", "o": "104.5", "h": "105.5", "l": "97.6", "v": "4775", "u": "114.0", "ex": "tse"}, "2312": {"z": "37.7", "y": "37.35", "o": "38.0", "h": "41.05", "l": "37.3", "v": "160554", "u": "41.05", "ex": "tse"}, "5386": {"z": "575.0", "y": "587.0", "o": "585.0", "h": "628.0", "l": "568.0", "v": "4040", "u": "645.0", "ex": "otc"}, "4991": {"z": "705.0", "y": "783.0", "o": "765.0", "h": "766.0", "l": "705.0", "v": "6458", "u": "861.0", "ex": "otc"}, "6261": {"z": "118.0", "y": "118.0", "o": "119.0", "h": "123.0", "l": "117.5", "v": "3980", "u": "129.5", "ex": "otc"}, "3189": {"z": "681.0", "y": "702.0", "o": "702.0", "h": "702.0", "l": "654.0", "v": "7261", "u": "772.0", "ex": "tse"}, "3711": {"z": "627.0", "y": "642.0", "o": "626.0", "h": "668.0", "l": "617.0", "v": "33458", "u": "706.0", "ex": "tse"}, "2451": {"z": "322.0", "y": "321.0", "o": "325.0", "h": "337.0", "l": "319.0", "v": "8644", "u": "353.0", "ex": "tse"}, "5347": {"z": "161.5", "y": "166.0", "o": "167.5", "h": "170.5", "l": "160.0", "v": "30895", "u": "182.5", "ex": "otc"}, "6291": {"z": "654.0", "y": "645.0", "o": "650.0", "h": "697.0", "l": "621.0", "v": "7075", "u": "709.0", "ex": "otc"}, "3264": {"z": "235.5", "y": "229.5", "o": "231.0", "h": "249.0", "l": "227.5", "v": "16313", "u": "252.0", "ex": "otc"}, "2395": {"z": "490.5", "y": "509.0", "o": "509.0", "h": "523.0", "l": "488.5", "v": "4421", "u": "559.0", "ex": "tse"}, "8069": {"z": "233.0", "y": "249.0", "o": "245.0", "h": "251.0", "l": "228.5", "v": "5892", "u": "273.5", "ex": "otc"}, "6175": {"z": "107.0", "y": "97.4", "o": "96.2", "h": "107.0", "l": "96.1", "v": "16822", "u": "107.0", "ex": "otc"}, "5284": {"z": "460.0", "y": "442.0", "o": "478.0", "h": "480.0", "l": "453.0", "v": "2879", "u": "486.0", "ex": "tse"}, "3673": {"z": "81.0", "y": "87.9", "o": "89.6", "h": "90.3", "l": "80.0", "v": "41064", "u": "96.6", "ex": "tse"}, "2376": {"z": "337.5", "y": "332.5", "o": "336.0", "h": "350.0", "l": "331.0", "v": "16778", "u": "365.5", "ex": "tse"}, "3675": {"z": "384.0", "y": "365.0", "o": "369.5", "h": "401.5", "l": "367.0", "v": "1949", "u": "401.5", "ex": "otc"}, "8086": {"z": "165.5", "y": "173.5", "o": "174.5", "h": "175.5", "l": "161.0", "v": "9567", "u": "190.5", "ex": "otc"}, "2363": {"z": "64.7", "y": "66.8", "o": "67.3", "h": "68.0", "l": "64.5", "v": "18078", "u": "73.4", "ex": "tse"}, "3317": {"z": "82.8", "y": "82.3", "o": "82.9", "h": "86.0", "l": "80.7", "v": "6256", "u": "90.5", "ex": "otc"}, "2493": {"z": "163.0", "y": "158.0", "o": "162.5", "h": "173.5", "l": "162.0", "v": "9416", "u": "173.5", "ex": "tse"}, "8039": {"z": "153.5", "y": "160.0", "o": "162.0", "h": "162.0", "l": "150.0", "v": "20879", "u": "176.0", "ex": "tse"}, "6426": {"z": "260.5", "y": "280.5", "o": "279.0", "h": "282.5", "l": "258.5", "v": "1756", "u": "308.5", "ex": "tse"}, "8021": {"z": "418.0", "y": "436.0", "o": "442.5", "h": "453.0", "l": "418.0", "v": "1250", "u": "479.5", "ex": "tse"}, "6182": {"z": "90.7", "y": "90.2", "o": "90.2", "h": "99.2", "l": "89.5", "v": "16939", "u": "99.2", "ex": "otc"}, "2383": {"z": "5055.0", "y": "5305.0", "o": "5300.0", "h": "5515.0", "l": "5025.0", "v": "1862", "u": "5835.0", "ex": "tse"}, "8210": {"z": "1325.0", "y": "1395.0", "o": "1400.0", "h": "1420.0", "l": "1315.0", "v": "1531", "u": "1530.0", "ex": "tse"}, "6435": {"z": "278.0", "y": "290.0", "o": "288.0", "h": "295.5", "l": "274.5", "v": "1883", "u": "319.0", "ex": "otc"}, "4760": {"z": "425.5", "y": "387.0", "o": "390.5", "h": "425.5", "l": "390.5", "v": "2860", "u": "425.5", "ex": "otc"}, "2484": {"z": "55.2", "y": "52.6", "o": "52.6", "h": "57.8", "l": "52.5", "v": "42908", "u": "57.8", "ex": "tse"}, "2233": {"z": "351.5", "y": "365.0", "o": "365.5", "h": "377.0", "l": "345.0", "v": "2288", "u": "401.5", "ex": "tse"}, "3221": {"z": "60.2", "y": "56.4", "o": "56.9", "h": "62.0", "l": "56.9", "v": "21057", "u": "62.0", "ex": "otc"}, "3006": {"z": "242.5", "y": "241.0", "o": "243.0", "h": "253.0", "l": "236.0", "v": "28834", "u": "265.0", "ex": "tse"}, "6209": {"z": "80.7", "y": "81.9", "o": "82.5", "h": "84.4", "l": "79.4", "v": "13424", "u": "90.0", "ex": "tse"}, "8261": {"z": "190.0", "y": "195.0", "o": "190.0", "h": "198.0", "l": "183.5", "v": "16360", "u": "214.5", "ex": "tse"}, "2481": {"z": "148.0", "y": "147.5", "o": "146.5", "h": "160.5", "l": "143.0", "v": "85743", "u": "162.0", "ex": "tse"}, "6139": {"z": "772.0", "y": "811.0", "o": "816.0", "h": "816.0", "l": "765.0", "v": "5031", "u": "892.0", "ex": "tse"}, "6138": {"z": "343.0", "y": "355.5", "o": "361.0", "h": "365.5", "l": "331.0", "v": "1909", "u": "391.0", "ex": "otc"}, "3149": {"z": "67.1", "y": "65.4", "o": "65.9", "h": "71.8", "l": "65.7", "v": "33848", "u": "71.9", "ex": "tse"}, "2454": {"z": "4410.0", "y": "4640.0", "o": "4620.0", "h": "4685.0", "l": "4270.0", "v": "14384", "u": "5100.0", "ex": "tse"}};
 const _MARKET_STATE = {"cat": "bull", "icon": "✓", "text": "大盤多頭環境（加權 43,636｜10MA 42,096 > 20MA 41,643｜多頭　‖　櫃買 440.19｜10MA 418.95 > 20MA 413.35｜多頭）"};
-const _PHASE_KEY    = "after_close";
+const _PHASE_KEY    = "closed";
 const _RISK_DATA   = {"050328": {"level": 3, "tag": "處置", "detail": "第一次處置 最近十個營業日已有六次 115/05/28～115/06/10"}, "058462": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/25～115/06/05"}, "2327": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/26～115/06/08"}, "2424": {"level": 3, "tag": "處置", "detail": "人工管制撮合 連續三次 115/05/26～115/06/08"}, "2455": {"level": 3, "tag": "處置", "detail": "第二次處置 連續五次 115/05/27～115/06/09"}, "2478": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/26～115/06/08"}, "2492": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/27～115/06/09"}, "2911": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/28～115/06/10"}, "3008": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/20～115/06/02"}, "3026": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/26～115/06/08"}, "3090": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/27～115/06/09"}, "3135": {"level": 3, "tag": "處置", "detail": "第一次處置 連續五次 115/05/18～115/05/29"}, "3167": {"level": 3, "tag": "處置", "detail": "第二次處置 連續五次 115/05/26～115/06/08"}, "3189": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/28～115/06/10"}, "3665": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/20～115/06/02"}, "4722": {"level": 3, "tag": "處置", "detail": "第一次處置 最近十個營業日已有六次 115/05/26～115/06/08"}, "4916": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/26～115/06/08"}, "4919": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/28～115/06/10"}, "4958": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/28～115/06/10"}, "6271": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/28～115/06/10"}, "6449": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/22～115/06/04"}, "6742": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/25～115/06/05"}, "6806": {"level": 3, "tag": "處置", "detail": "人工管制撮合 連續三次 115/05/26～115/06/08"}, "6831": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/15～115/05/28"}, "6834": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/28～115/06/10"}, "6906": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/28～115/06/10"}, "6924": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/20～115/06/02"}, "7610": {"level": 3, "tag": "處置", "detail": "第二次處置 連續三次 115/05/25～115/06/05"}, "8021": {"level": 3, "tag": "處置", "detail": "第二次處置 最近十個營業日已有六次 115/05/26～115/06/08"}, "8114": {"level": 3, "tag": "處置", "detail": "第一次處置 連續三次 115/05/15～115/05/28"}, "2061": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "3236": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "45421": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "5321": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "53211": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150528~1150610"}, "6173": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "6182": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "61827": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150528~1150610"}, "61828": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "6570": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "8042": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "80426": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "8291": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150528~1150610"}, "24552": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150527~1150609"}, "24553": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150527~1150609"}, "4127": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150527~1150609"}, "31672": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150526~1150608"}, "3491": {"level": 3, "tag": "處置", "detail": "最近30個營業日內有12個營業日 1150526~1150608"}, "47223": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150526~1150608"}, "49165": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150526~1150608"}, "68061": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150526~1150608"}, "722723": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150526~1150608"}, "80212": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150526~1150608"}, "3675": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150525~1150605"}, "6538": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150525~1150605"}, "65381": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150525~1150605"}, "72381U": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150525~1150605"}, "76101": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150525~1150605"}, "8027": {"level": 3, "tag": "處置", "detail": "最近10個營業日內有6個營業日 1150525~1150605"}, "80273": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150525~1150605"}, "1591": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150521~1150603"}, "3624": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150521~1150603"}, "724481": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150521~1150603"}, "80914": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150521~1150603"}, "8455": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150521~1150603"}, "6217": {"level": 3, "tag": "處置", "detail": "連續5個營業日 1150520~1150602"}, "8091": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150520~1150602"}, "3498": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150519~1150601"}, "4971": {"level": 3, "tag": "處置", "detail": "連續5個營業日 1150519~1150601"}, "725744": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150519~1150601"}, "31351": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150518~1150529"}, "31352": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150518~1150529"}, "5228": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150518~1150529"}, "6829": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150518~1150529"}, "7751": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150518~1150529"}, "8444": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150518~1150529"}, "4966": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150515~1150528"}, "6263": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150515~1150528"}, "8069": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150515~1150528"}, "8358": {"level": 3, "tag": "處置", "detail": "最近10個營業日內有6個營業日 1150515~1150528"}, "5464": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150514~1150527"}, "3664": {"level": 3, "tag": "處置", "detail": "因連續3個營業日達本中心作業要點第四條第一項第一款 1150513~1150526"}, "4979": {"level": 3, "tag": "處置", "detail": "連續5個營業日 1150513~1150526"}, "49793": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150513~1150526"}, "49794": {"level": 3, "tag": "處置", "detail": "轉(交)換公司債之標的證券經本中心或臺灣證券交易所發布處置 1150513~1150526"}, "67152": {"level": 3, "tag": "處置", "detail": "最近10個營業日內有6個營業日 1150513~1150526"}, "2484": {"level": 2, "tag": "將處置", "detail": "115年5月22日至115年5月27日連續四次"}, "3037": {"level": 2, "tag": "將處置", "detail": "115年5月26日至115年5月27日連續二次"}, "3450": {"level": 2, "tag": "將處置", "detail": "115年5月26日至115年5月27日連續二次"}, "3532": {"level": 2, "tag": "將處置", "detail": "115年5月26日至115年5月27日連續二次"}, "3535": {"level": 2, "tag": "將處置", "detail": "115年5月15日至115年5月27日等九個營業日已有五次"}, "6239": {"level": 2, "tag": "將處置", "detail": "115年5月26日至115年5月27日連續二次"}, "6405": {"level": 2, "tag": "將處置", "detail": "115年5月26日至115年5月27日連續二次"}, "8261": {"level": 2, "tag": "將處置", "detail": "115年5月26日至115年5月27日連續二次"}, "30371": {"level": 2, "tag": "將處置", "detail": "115年05月26日至115年05月27日連續二次"}, "3191": {"level": 2, "tag": "將處置", "detail": "115年05月26日至115年05月27日連續二次"}, "6683": {"level": 2, "tag": "將處置", "detail": "115年05月15日至115年05月27日等九個營業日已有五次"}, "6821": {"level": 2, "tag": "將處置", "detail": "115年05月26日至115年05月27日連續二次"}, "68211": {"level": 2, "tag": "將處置", "detail": "115年05月26日至115年05月27日連續二次"}, "1570": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達33.25%(第一款)元大證券公司當日受託賣出該有價證券之成交量占當日該有價證券總成交量之比率為32.17%(第五款)"}, "23511": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達29.6%且最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣69元(第一款)最近六十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達148.04%(第二款)"}, "24642": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達29.2%且最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣65元(第一款)"}, "3131": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達29.25%且最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣845元(第一款)"}, "31311": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達29.33%且最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣49元(第一款)"}, "31312": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達30.94%(第一款)"}, "3163": {"level": 1, "tag": "注意", "detail": "當日本益比為127.31、股價淨值比為27.75且為其所屬產業類別股價淨值比之3.54倍、當日週轉率達7.28%、單一投資人當日賣出該有價證券之成交金額達6.81億元，且占當日該有價證券之總成交金額10.09%(第六款)"}, "3357": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達32.29%(第一款)當日週轉率達8.9%(第四款)"}, "33571": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達31.55%(第一款)"}, "3479": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達31.96%(第一款)"}, "3581": {"level": 1, "tag": "注意", "detail": "當日本益比為188.06、股價淨值比為14.2且為其所屬產業類別股價淨值比之2.49倍、當日週轉率達6.21%(第六款)"}, "4768": {"level": 1, "tag": "注意", "detail": "當日本益比為N/A、股價淨值比為16.17且為其所屬產業類別股價淨值比之5.13倍、當日週轉率達6.93%、單一投資人當日買進該有價證券之成交金額達1.81億元，且占當日該有價證券之總成交金額10.6%(第六款)最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣98.5元(第十一款)"}, "4923": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達34.45%(第一款)凱基證券公司當日受託買進該有價證券之成交量占當日該有價證券總成交量之比率為55.69%(第五款)"}, "49231": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達33.74%(第一款)"}, "5274": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣2670元(第十一款)"}, "5386": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達34.72%(第一款)最近六十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達189.87%(第二款)最近九十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達596.32%(第二款)當日週轉率達8.83%(第四款)"}, "5536": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣194元(第十一款)"}, "6147": {"level": 1, "tag": "注意", "detail": "最近三十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達150%(第二款)最近六十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達383.57%(第二款)最近九十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達378.33%(第二款)"}, "6274": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達30%且最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣425元(第一款)最近六十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達203.24%(第二款)最近九十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達252.15%(第二款)最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣425元(第十一款)"}, "62745": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達31.27%(第一款)最近六十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達186.38%(第二款)最近九十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達215.55%(第二款)"}, "6291": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達32.82%(第一款)最近九十個營業日(含當日)起迄兩個營業日之最後成交價漲幅達248.12%(第二款)"}, "6488": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達35.27%(第一款)"}, "6654": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達29.23%，當日之成交量較最近六十個營業日日平均成交量放大10.67倍(第三款)"}, "702511": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣75元(第十一款)"}, "705031": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達37.95%(第一款)"}, "708328": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達30.59%(第一款)"}, "708484": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達30.06%(第一款)元大證券公司當日受託賣出該有價證券之成交量占當日該有價證券總成交量之比率為100%，永豐金證券公司當日受託買進該有價證券之成交量占當日該有價證券總成交量之比率為90.46%(第五款)"}, "7734": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣495元(第十一款)"}, "7828": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達33%(第一款)最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣440元(第十一款)"}, "8043": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)之累積週轉率為182.45%，當日週轉率達22%(第十款)"}, "8088": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)之累積週轉率為82.75%，當日週轉率達27.72%(第十款)"}, "3211": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣110元(第十一款)"}, "3221": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達29.58%，當日週轉率達14.58%(第四款)"}, "3363": {"level": 1, "tag": "注意", "detail": "最近六個營業日(自當日之前一個營業日起)之借券賣出成交量占總成交量比率達10.3%，當日之前一個營業日借券賣出成交量較最近六十個營業日(自當日之前一個營業日起)之日平均借券賣出成交量放大為6倍(第十二款)"}, "4128": {"level": 1, "tag": "注意", "detail": "最近六個營業日(自當日之前一個營業日起)之借券賣出成交量占總成交量比率達10.39%，當日之前一個營業日借券賣出成交量較最近六十個營業日(自當日之前一個營業日起)之日平均借券賣出成交量放大為5倍(第十二款)"}, "4174": {"level": 1, "tag": "注意", "detail": "最近六個營業日(自當日之前一個營業日起)之借券賣出成交量占總成交量比率達11.21%，當日之前一個營業日借券賣出成交量較最近六十個營業日(自當日之前一個營業日起)之日平均借券賣出成交量放大為5倍(第十二款)"}, "4760": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達28.11%且最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣92元(第一款)當日週轉率達12.72%(第四款)最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣92元(第十一款)"}, "6138": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣87.5元(第十一款)"}, "6161": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達28.45%，當日之成交量較最近六十個營業日日平均成交量放大15.23倍(第三款)當日週轉率達10.09%(第四款)"}, "6284": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達33.46%(第一款)當日之成交量較最近六十個營業日日平均成交量放大7.19倍(第三款)當日週轉率達10.74%(第四款)元大證券公司當日受託賣出該有價證券之成交量占當日該有價證券總成交量之比率為37.84%(第五款)"}, "6651": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達31.2%(第一款)"}, "6739": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)起迄兩個營業日之最後成交價價差達新臺幣145元(第十一款)"}, "8255": {"level": 1, "tag": "注意", "detail": "最近六個營業日(含當日)累積之最後成交價漲幅達27.91%，當日之成交量較最近六十個營業日日平均成交量放大6.87倍(第三款)當日週轉率達6.36%(第四款)凱基證券公司當日受託買進該有價證券之成交量占當日該有價證券總成交量之比率為30.71%(第五款)"}};
 const _AGENT_VOTES = {};
 let _secs = 300;
@@ -1492,6 +1518,110 @@ function sortPositions(col) {
   renderPositions(_getCached());
 }
 
+// 展開「討論細節」的代號集合（per-session，不持久化）
+const _posExpanded = new Set();
+function togglePosDetail(code) {
+  if (_posExpanded.has(code)) _posExpanded.delete(code);
+  else _posExpanded.add(code);
+  renderPositions(_getCached());
+}
+
+// HTML escape（reasons 是文字、可能含 < > & 等字元）
+function _esc(s) {
+  if (s == null) return '';
+  return String(s).replace(/[&<>"']/g, m => (
+    {'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[m]
+  ));
+}
+function _verdictTag(v) {
+  if (!v) return '';
+  const cls = v === 'go' ? 'v-go' : v === 'skip' ? 'v-skip' : 'v-wait';
+  const lbl = v === 'go' ? '✅ go' : v === 'skip' ? '🛑 skip' : '⏸ wait';
+  return `<span class="verdict-tag ${cls}">${lbl}</span>`;
+}
+function _voteDetailHtml(p) {
+  // 即時 agent 投票（_AGENT_VOTES 是這輪 server-side 嵌入；若 voteSnapshot 在進場時封存就優先用 snapshot）
+  const vs = p.voteSnapshot || null;
+  const liveVote = (typeof _AGENT_VOTES !== 'undefined' && _AGENT_VOTES) ? _AGENT_VOTES[p.code] : null;
+
+  if (!vs && !liveVote) {
+    if (p.auto) return '<div class="vote-detail-empty">⚠ auto=true 但找不到 voteSnapshot（舊紀錄或快取已過期）</div>';
+    const liveHint = '<div class="vote-detail-empty">手動進場 — 無 agent 進場討論紀錄。若仍在今日掃描候選中、agent 投票快取仍有資料，將顯示於下方。</div>';
+    return liveHint;
+  }
+
+  const parts = [];
+
+  if (vs) {
+    // 進場時封存的 snapshot（這是 agent 持倉的主要資料來源）
+    const headTxt = vs.headReason || (vs.verdict ? `verdict=${vs.verdict}` : '');
+    parts.push(`<div class="vote-detail-head">📋 進場時 agent 討論 ${_verdictTag(vs.verdict)}${headTxt ? '<span style="margin-left:8px;color:#c9d1d9">' + _esc(headTxt) + '</span>' : ''}</div>`);
+
+    const scoreBits = [];
+    if (vs.score != null) scoreBits.push(`<span><b>綜合</b> ${vs.score}</span>`);
+    if (vs.context && vs.context.score != null) scoreBits.push(`<span><b>脈絡</b> ${vs.context.score} ${_verdictTag(vs.context.verdict)}</span>`);
+    if (vs.ta && vs.ta.score != null) scoreBits.push(`<span><b>TA</b> ${vs.ta.score} ${_verdictTag(vs.ta.verdict)}</span>`);
+    if (vs.bear && vs.bear.score != null) scoreBits.push(`<span><b>空方</b> ${vs.bear.score} ${_verdictTag(vs.bear.verdict)}</span>`);
+    if (vs.pm && vs.pm.confidence != null) scoreBits.push(`<span><b>PM 信心</b> ${vs.pm.confidence}</span>`);
+    if (vs.slv != null) scoreBits.push(`<span><b>訊號</b> ${['','🔵','🟠','🟡','🟢'][vs.slv] || ('slv=' + vs.slv)}</span>`);
+    if (vs.ext_pct != null) scoreBits.push(`<span><b>距 10MA</b> ${Number(vs.ext_pct).toFixed(2)}%</span>`);
+    if (vs.adr_pct != null) scoreBits.push(`<span><b>ADR</b> ${Number(vs.adr_pct).toFixed(2)}%</span>`);
+    if (scoreBits.length) parts.push(`<div class="vote-detail-scores">${scoreBits.join('')}</div>`);
+
+    if (vs.contextReasons && vs.contextReasons.length) {
+      parts.push(`<div class="vote-detail-section"><span class="agent-label">🧭 康提（脈絡）：</span><ul>${vs.contextReasons.map(t => '<li>' + _esc(t) + '</li>').join('')}</ul></div>`);
+    }
+    if (vs.taReasons && vs.taReasons.length) {
+      parts.push(`<div class="vote-detail-section"><span class="agent-label">📈 泰艾（TA）：</span><ul>${vs.taReasons.map(t => '<li>' + _esc(t) + '</li>').join('')}</ul></div>`);
+    }
+    if (vs.bear) {
+      const bReasons = vs.bear.reasons || [];
+      if (bReasons.length) {
+        parts.push(`<div class="vote-detail-section"><span class="agent-label">🐻 培爾（空方）：</span><ul>${bReasons.map(t => '<li>' + _esc(t) + '</li>').join('')}</ul></div>`);
+      }
+    }
+    if (vs.pm) {
+      const pmBits = [];
+      if (vs.pm.verdict) pmBits.push('裁定 ' + vs.pm.verdict);
+      if (vs.pm.reason)  pmBits.push(_esc(vs.pm.reason));
+      if (pmBits.length) parts.push(`<div class="vote-detail-section"><span class="agent-label">🎯 歐西（PM）：</span>${pmBits.join(' · ')}</div>`);
+    }
+    if (vs.resonance) {
+      try {
+        const rText = (typeof vs.resonance === 'string') ? vs.resonance : (vs.resonance.note || JSON.stringify(vs.resonance));
+        parts.push(`<div class="vote-detail-section"><span class="agent-label">🔔 共鳴：</span>${_esc(rText)}</div>`);
+      } catch(e) {}
+    }
+    if (vs.entryPlanStop != null) {
+      parts.push(`<div class="vote-detail-section"><span class="agent-label">🛡 TA 建議停損：</span>${Number(vs.entryPlanStop).toFixed(2)}</div>`);
+    }
+
+    const metaBits = [];
+    if (vs.marketState && (vs.marketState.cat || vs.marketState.note)) {
+      metaBits.push('<span>📊 市場狀態：' + _esc(vs.marketState.cat || '') + (vs.marketState.note ? '（' + _esc(vs.marketState.note) + '）' : '') + '</span>');
+    }
+    metaBits.push(`<span>進場日：${_esc(p.entryDate)}</span>`);
+    metaBits.push(`<span>進場價：${Number(p.entryPrice).toFixed(2)}</span>`);
+    if (p.stopPrice) metaBits.push(`<span>停損價：${Number(p.stopPrice).toFixed(2)}</span>`);
+    if (metaBits.length) parts.push(`<div class="vote-detail-meta">${metaBits.join('')}</div>`);
+  }
+
+  if (liveVote) {
+    // 額外顯示「現在」這輪 agent 怎麼看（讓持倉中可看出風向是否變化）
+    parts.push('<div style="margin-top:10px;padding-top:8px;border-top:1px dashed #30363d;color:#8b949e;font-size:11px">🔄 本輪 agent 即時投票（不影響已建立部位）</div>');
+    parts.push(`<div class="vote-detail-head" style="font-size:12px">本輪裁定 ${_verdictTag(liveVote.verdict)}<span style="margin-left:8px;color:#c9d1d9">${_esc((liveVote.reasons || [])[0] || '')}</span></div>`);
+    const lvBits = [];
+    if (liveVote.score != null) lvBits.push(`<span><b>綜合</b> ${liveVote.score}</span>`);
+    if (liveVote.context) lvBits.push(`<span><b>脈絡</b> ${liveVote.context.score} ${_verdictTag(liveVote.context.verdict)}</span>`);
+    if (liveVote.ta)      lvBits.push(`<span><b>TA</b> ${liveVote.ta.score} ${_verdictTag(liveVote.ta.verdict)}</span>`);
+    if (lvBits.length) parts.push(`<div class="vote-detail-scores">${lvBits.join('')}</div>`);
+    const lvReasons = (liveVote.reasons || []).slice(0, 6);
+    if (lvReasons.length) parts.push(`<div class="vote-detail-section"><ul>${lvReasons.map(t => '<li>' + _esc(t) + '</li>').join('')}</ul></div>`);
+  }
+
+  return parts.join('');
+}
+
 async function renderPositions(ps, opts) {
   opts = opts || {};
   if (opts.autoClose) {
@@ -1502,8 +1632,7 @@ async function renderPositions(ps, opts) {
   if(!sec) return;
   if(!ps||!ps.length) { sec.innerHTML=''; return; }
 
-  // 富集 + 統計
-  let simSum=0, simN=0, actSum=0, actN=0, pnlAmtSum=0, pnlAmtN=0;
+  // 富集（純資料；統計改在分組後計算）
   const enriched = ps.map((p, origIdx) => {
     const cur = _curPrice(p.code);
     const prev = _prevPrice(p.code);
@@ -1513,10 +1642,6 @@ async function renderPositions(ps, opts) {
     const twoRPrice = (oneR && oneR>0) ? (base + 2*oneR) : null;
     let pnl = null, dayChange = null, riskPct = null, pnlAmt = null, pnlRealized = null, pnlUnreal = null;
     if (cur !== null) {
-      simSum += (cur - p.entryPrice) / p.entryPrice * 100; simN++;
-      if (p.actualPrice && p.actualPrice>0) {
-        actSum += (cur - p.actualPrice) / p.actualPrice * 100; actN++;
-      }
       pnl = (cur - base) / base * 100;
       if (p.shares && p.shares>0) {
         if (p.halfOut) {
@@ -1530,7 +1655,6 @@ async function renderPositions(ps, opts) {
         } else {
           pnlAmt = (cur - base) * p.shares;
         }
-        pnlAmtSum += pnlAmt; pnlAmtN++;
       }
       if (prev !== null && prev > 0) dayChange = (cur - prev) / prev * 100;
       if (effStop) riskPct = (cur - effStop) / cur * 100;
@@ -1570,9 +1694,16 @@ async function renderPositions(ps, opts) {
     }
   }
 
-  // 渲染列
-  let rows = '';
-  enriched.forEach(r => {
+  // 可排序表頭（兩個分組共用同一個 sort key；新增「詳細」欄）
+  const sortInd = c => _sortPos.col === c ? `<span class="sort-ind">${_sortPos.dir==='asc'?'▲':'▼'}</span>` : '';
+  const activeCls = c => _sortPos.col === c ? ' active' : '';
+  const sortH = (c, label) => `<th class="sortable${activeCls(c)}" onclick="sortPositions('${c}')">${label}${sortInd(c)}</th>`;
+  const head = `<tr>${sortH('code','代號')}${sortH('name','名稱')}${sortH('type','型態')}${sortH('entryDate','進場日')}${sortH('days','天數')}${sortH('entryPrice','進場價')}${sortH('actualPrice','平均成本')}${sortH('shares','持有數量')}${sortH('cur','現價')}${sortH('dayChange','今日漲幅')}${sortH('pnl','損益%')}${sortH('pnlAmt','報酬')}${sortH('stop','停損')}<th>移動停損</th>${sortH('twoR','2R 目標')}<th>RS評分</th><th>近3日動能</th><th>警示</th><th>動作建議</th><th>討論</th><th></th></tr>`;
+  const COLSPAN = 21;
+  const posNote = `<div class="pos-note grey xsm">移動停損：快速股(ADR≥5)貼 10MA、波段股貼 20MA，收盤跌破才動作 ｜ 動作建議：🛑出場 ✂️減碼/收緊 🎯出半倉 🟢續抱（盤中跌破均線先看收盤確認，不追盤中波動）</div>`;
+
+  // 渲染單列 HTML（含可選的展開詳細列）
+  function renderRow(r) {
     const p = r.p, origIdx = r.origIdx, cur = r.cur, base = r.base;
     const oneR = r.oneR, twoRPrice = r.twoRPrice, pnl = r.pnl, effStop = r.effStop;
     let pnlH = '<span class="na">-</span>';
@@ -1669,41 +1800,65 @@ async function renderPositions(ps, opts) {
     else if (p.halfOut)                     { actTxt = '🟢 抱剩餘·守停損';        actCls = 'act-hold'; }
     const actionH = `<span class="act-badge ${actCls}">${actTxt}</span>`;
 
-    rows += `<tr data-pos-idx="${origIdx}" ${hit?'class="stop-hit-row"':''}><td class="num bold" style="color:#58a6ff">${p.code}</td><td>${p.name}</td><td><span class="badge ${p.type==='EP'?'ep':p.type==='VCP'?'vcp':'watch'}">${p.type}</span></td><td class="grey xsm">${p.entryDate}</td><td class="num grey xsm">${r.days}天</td><td class="num entry-col">${p.entryPrice.toFixed(2)}</td><td class="num actual-col" onclick="editActual(${origIdx})" title="點擊輸入平均成本">${actH}</td><td class="num shares-col" onclick="editShares(${origIdx})" title="點擊輸入持有股數">${sharesH}</td><td class="num">${curH}</td><td class="num bold">${dayH}</td><td class="num bold">${pnlH}</td><td class="num bold">${pnlAmtH}</td><td class="num">${stopH}</td><td class="num">${trailH}</td><td class="num">${twoRH}</td><td class="num">${rsrH}</td><td>${momH}</td><td>${warnH}</td><td>${actionH}</td><td><button class="close-btn" onclick="closePosition(${origIdx})">平倉</button></td></tr>`;
-  });
+    const expanded = _posExpanded.has(p.code);
+    const detailBtnCls = expanded ? 'detail-btn open' : 'detail-btn';
+    const detailLbl = expanded ? '▼ 收起' : '▶ 細節';
+    const detailBtnH = `<button class="${detailBtnCls}" onclick="togglePosDetail('${p.code}')">${detailLbl}</button>`;
 
-  // 表頭統計
-  let statH = '';
-  if (simN > 0) {
-    const simAvg = simSum / simN;
-    const simCls = simAvg>=0?'pnl-pos':'pnl-neg';
-    statH += `<span class="pos-stat">全部模擬均 <span class="${simCls}">${simAvg>=0?'+':''}${simAvg.toFixed(2)}%</span> <span class="grey xsm">(${simN}檔)</span></span>`;
+    let html = `<tr data-pos-idx="${origIdx}" ${hit?'class="stop-hit-row"':''}><td class="num bold" style="color:#58a6ff">${p.code}</td><td>${p.name}</td><td><span class="badge ${p.type==='EP'?'ep':p.type==='VCP'?'vcp':'watch'}">${p.type}</span></td><td class="grey xsm">${p.entryDate}</td><td class="num grey xsm">${r.days}天</td><td class="num entry-col">${p.entryPrice.toFixed(2)}</td><td class="num actual-col" onclick="editActual(${origIdx})" title="點擊輸入平均成本">${actH}</td><td class="num shares-col" onclick="editShares(${origIdx})" title="點擊輸入持有股數">${sharesH}</td><td class="num">${curH}</td><td class="num bold">${dayH}</td><td class="num bold">${pnlH}</td><td class="num bold">${pnlAmtH}</td><td class="num">${stopH}</td><td class="num">${trailH}</td><td class="num">${twoRH}</td><td class="num">${rsrH}</td><td>${momH}</td><td>${warnH}</td><td>${actionH}</td><td>${detailBtnH}</td><td><button class="close-btn" onclick="closePosition(${origIdx})">平倉</button></td></tr>`;
+    if (expanded) {
+      html += `<tr class="vote-detail-row"><td colspan="${COLSPAN}"><div class="vote-detail-box">${_voteDetailHtml(p)}</div></td></tr>`;
+    }
+    return html;
   }
-  if (actN > 0) {
-    const actAvg = actSum / actN;
-    const actCls = actAvg>=0?'pnl-pos':'pnl-neg';
-    let diffH = '';
+
+  // 渲染單一群組（連同表頭、統計）
+  function renderGroup(group, titleLabel, kindCls) {
+    if (!group.length) return '';
+    let simSum=0, simN=0, actSum=0, actN=0, pnlAmtSum=0, pnlAmtN=0;
+    group.forEach(r => {
+      if (r.cur === null) return;
+      simSum += (r.cur - r.p.entryPrice) / r.p.entryPrice * 100; simN++;
+      if (r.p.actualPrice && r.p.actualPrice>0) {
+        actSum += (r.cur - r.p.actualPrice) / r.p.actualPrice * 100; actN++;
+      }
+      if (r.pnlAmt !== null) { pnlAmtSum += r.pnlAmt; pnlAmtN++; }
+    });
+    let statH = '';
     if (simN > 0) {
       const simAvg = simSum / simN;
-      const diff = actAvg - simAvg;
-      const diffCls = diff>=0?'pnl-pos':'pnl-neg';
-      diffH = ` <span class="grey xsm">vs 全部</span> <span class="${diffCls}">${diff>=0?'+':''}${diff.toFixed(2)}%</span>`;
+      const simCls = simAvg>=0?'pnl-pos':'pnl-neg';
+      statH += `<span class="pos-stat">模擬均 <span class="${simCls}">${simAvg>=0?'+':''}${simAvg.toFixed(2)}%</span> <span class="grey xsm">(${simN}檔)</span></span>`;
     }
-    statH += `<span class="pos-stat">實際均 <span class="${actCls}">${actAvg>=0?'+':''}${actAvg.toFixed(2)}%</span> <span class="grey xsm">(${actN}檔)</span>${diffH}</span>`;
-  }
-  if (pnlAmtN > 0) {
-    const tCls = pnlAmtSum>=0?'pnl-pos':'pnl-neg';
-    statH += `<span class="pos-stat">總報酬 <span class="${tCls}">${pnlAmtSum>=0?'+':'-'}$${Math.abs(Math.round(pnlAmtSum)).toLocaleString()}</span> <span class="grey xsm">(${pnlAmtN}檔)</span></span>`;
+    if (actN > 0) {
+      const actAvg = actSum / actN;
+      const actCls = actAvg>=0?'pnl-pos':'pnl-neg';
+      let diffH = '';
+      if (simN > 0) {
+        const simAvg = simSum / simN;
+        const diff = actAvg - simAvg;
+        const diffCls = diff>=0?'pnl-pos':'pnl-neg';
+        diffH = ` <span class="grey xsm">vs 模擬</span> <span class="${diffCls}">${diff>=0?'+':''}${diff.toFixed(2)}%</span>`;
+      }
+      statH += `<span class="pos-stat">實際均 <span class="${actCls}">${actAvg>=0?'+':''}${actAvg.toFixed(2)}%</span> <span class="grey xsm">(${actN}檔)</span>${diffH}</span>`;
+    }
+    if (pnlAmtN > 0) {
+      const tCls = pnlAmtSum>=0?'pnl-pos':'pnl-neg';
+      statH += `<span class="pos-stat">總報酬 <span class="${tCls}">${pnlAmtSum>=0?'+':'-'}$${Math.abs(Math.round(pnlAmtSum)).toLocaleString()}</span> <span class="grey xsm">(${pnlAmtN}檔)</span></span>`;
+    }
+    const rows = group.map(renderRow).join('');
+    const tag = `<span class="pos-group-tag ${kindCls}">${kindCls==='agent' ? 'auto' : '手動'}</span>`;
+    return `<div class="section" style="margin-bottom:14px"><div class="pos-header"><span>${titleLabel}${tag}（${group.length}）</span>${statH}</div><table><thead>${head}</thead><tbody>${rows}</tbody></table>${posNote}</div>`;
   }
 
-  // 可排序表頭
-  const sortInd = c => _sortPos.col === c ? `<span class="sort-ind">${_sortPos.dir==='asc'?'▲':'▼'}</span>` : '';
-  const activeCls = c => _sortPos.col === c ? ' active' : '';
-  const sortH = (c, label) => `<th class="sortable${activeCls(c)}" onclick="sortPositions('${c}')">${label}${sortInd(c)}</th>`;
-  const head = `<tr>${sortH('code','代號')}${sortH('name','名稱')}${sortH('type','型態')}${sortH('entryDate','進場日')}${sortH('days','天數')}${sortH('entryPrice','進場價')}${sortH('actualPrice','平均成本')}${sortH('shares','持有數量')}${sortH('cur','現價')}${sortH('dayChange','今日漲幅')}${sortH('pnl','損益%')}${sortH('pnlAmt','報酬')}${sortH('stop','停損')}<th>移動停損</th>${sortH('twoR','2R 目標')}<th>RS評分</th><th>近3日動能</th><th>警示</th><th>動作建議</th><th></th></tr>`;
+  // 拆分：我的持倉 vs Agent 持倉（auto=true 視為 agent）
+  const userEnr  = enriched.filter(r => !r.p.auto);
+  const agentEnr = enriched.filter(r =>  r.p.auto);
 
-  const posNote = `<div class="pos-note grey xsm">移動停損：快速股(ADR≥5)貼 10MA、波段股貼 20MA，收盤跌破才動作 ｜ 動作建議：🛑出場 ✂️減碼/收緊 🎯出半倉 🟢續抱（盤中跌破均線先看收盤確認，不追盤中波動）</div>`;
-  sec.innerHTML = `<div class="section" style="margin-bottom:14px"><div class="pos-header"><span>📊 模擬持倉（${ps.length}）</span>${statH}</div><table><thead>${head}</thead><tbody>${rows}</tbody></table>${posNote}</div>`;
+  let html = '';
+  html += renderGroup(userEnr,  '📊 我的持倉',         'user');
+  html += renderGroup(agentEnr, '🤖 Agent 模擬持倉',   'agent');
+  sec.innerHTML = html;
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -2023,7 +2178,7 @@ async function _qosUpdate() {
 
 <div class="top-bar">
   <span class="chip mkt">已收盤</span>
-  <span class="chip" id="live-clock">更新 13:40:34</span>
+  <span class="chip" id="live-clock">更新 13:45:32</span>
   <div class="taiex-card">
     <div class="taiex-label">加權指數 TAIEX</div>
     <div class="taiex-val"><span class='dn'>43,636（-620 / -1.40%）</span></div>
@@ -2040,7 +2195,7 @@ async function _qosUpdate() {
   </div>
 </div>
 
-<div class='phase-bar phase-info' title='依當下時間自動切換'><span class='phase-ic'>⏱</span><span class='phase-time'>13:30–13:45 收盤後｜台積電公告／期貨延伸戰</span><span class='phase-hint'>台積電常在 13:30 公告營收／基本資料；期貨還能反應到 13:45</span></div>
+<div class='phase-bar phase-info' title='依當下時間自動切換'><span class='phase-ic'>⏱</span><span class='phase-time'>盤後｜等夜盤</span><span class='phase-hint'>15:00 夜盤開盤；可整理今日操作筆記</span></div>
 <div class='ma-ok'>✓ 大盤多頭環境（加權 43,636｜10MA 42,096 > 20MA 41,643｜多頭　‖　櫃買 440.19｜10MA 418.95 > 20MA 413.35｜多頭）</div>
 <div class='mm-bar'><span class='grey'>大盤近3日動能</span> <b style='color:#f85149'>▼ 轉弱</b> ｜ 加權 43,525→44,257→43,636（近3日 +-0.0%）· RSI14 68 ｜ 強勢股 加速 <b style='color:#3fb950'>42</b> · 維持 33 · 轉弱 <b style='color:#f85149'>25</b></div>
 <div class='warn-bar'>⚠️ 大盤今日走弱，個股突破成功率降低，謹慎操作</div>
@@ -2115,7 +2270,7 @@ async function _qosUpdate() {
           <td><span class='up'>+9.86%</span></td>
           <td class="entry-col">98.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+8.6%</span></td>
-          <td><span class='vp-strong'>163%</span></td>
+          <td><span class='vp-strong'>160%</span></td>
           <td class="num grey xsm">16,822張 / <span class='grey'>9,935張</span></td>
           <td class="num grey">96.10 <span class='grey'>(10.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2144,7 +2299,7 @@ async function _qosUpdate() {
           <td><span class='up'>+1.40%</span></td>
           <td class="entry-col">645.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+1.4%</span></td>
-          <td><span class='vp-strong'>336%</span></td>
+          <td><span class='vp-strong'>330%</span></td>
           <td class="num grey xsm">7,075張 / <span class='grey'>2,027張</span></td>
           <td class="num grey">621.00 <span class='grey'>(5.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2173,7 +2328,7 @@ async function _qosUpdate() {
           <td><span class='up'>+4.07%</span></td>
           <td class="entry-col">442.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+4.1%</span></td>
-          <td><span class='vp-ok'>133%</span></td>
+          <td><span class='vp-ok'>131%</span></td>
           <td class="num grey xsm">2,879張 / <span class='grey'>2,078張</span></td>
           <td class="num grey">453.00 <span class='grey'>(1.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2202,7 +2357,7 @@ async function _qosUpdate() {
           <td><span class='up'>+9.95%</span></td>
           <td class="entry-col">414.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+2.8%</span></td>
-          <td><span class='vp-ok'>140%</span></td>
+          <td><span class='vp-ok'>137%</span></td>
           <td class="num grey xsm">2,860張 / <span class='grey'>1,968張</span></td>
           <td class="num grey">390.50 <span class='grey'>(8.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2231,7 +2386,7 @@ async function _qosUpdate() {
           <td><span class='up'>+6.38%</span></td>
           <td class="entry-col">100.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-weak'>52%</span></td>
+          <td><span class='vp-weak'>51%</span></td>
           <td class="num grey xsm">6,820張 / <span class='grey'>12,643張</span></td>
           <td class="num grey">95.00 <span class='grey'>(5.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2260,7 +2415,7 @@ async function _qosUpdate() {
           <td><span class='up'>+3.31%</span></td>
           <td class="entry-col">245.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='trig'>+2.0%</span></td>
-          <td><span class='vp-weak'>47%</span></td>
+          <td><span class='vp-weak'>46%</span></td>
           <td class="num grey xsm">3,532張 / <span class='grey'>7,244張</span></td>
           <td class="num grey">245.00 <span class='grey'>(2.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2289,7 +2444,7 @@ async function _qosUpdate() {
           <td><span class='up'>+9.93%</span></td>
           <td class="entry-col">337.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+9.9%</span></td>
-          <td><span class='vp-weak'>72%</span></td>
+          <td><span class='vp-weak'>71%</span></td>
           <td class="num grey xsm">9,182張 / <span class='grey'>12,261張</span></td>
           <td class="num grey">352.00 <span class='grey'>(5.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2318,7 +2473,7 @@ async function _qosUpdate() {
           <td><span class='up'>+8.03%</span></td>
           <td class="entry-col">361.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+8.0%</span></td>
-          <td><span class='vp-weak'>29%</span></td>
+          <td><span class='vp-weak'>28%</span></td>
           <td class="num grey xsm">5,815張 / <span class='grey'>19,353張</span></td>
           <td class="num grey">355.00 <span class='grey'>(9.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2347,7 +2502,7 @@ async function _qosUpdate() {
           <td><span class='up'>+5.21%</span></td>
           <td class="entry-col">367.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+4.6%</span></td>
-          <td><span class='vp-weak'>87%</span></td>
+          <td><span class='vp-weak'>85%</span></td>
           <td class="num grey xsm">1,949張 / <span class='grey'>2,161張</span></td>
           <td class="num grey">367.00 <span class='grey'>(4.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2405,7 +2560,7 @@ async function _qosUpdate() {
           <td><span class='up'>+8.60%</span></td>
           <td class="entry-col">335.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-0.1%</span></td>
-          <td><span class='vp-ok'>125%</span></td>
+          <td><span class='vp-ok'>123%</span></td>
           <td class="num grey xsm">19,796張 / <span class='grey'>15,182張</span></td>
           <td class="num grey">263.50 <span class='grey'>(21.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2434,7 +2589,7 @@ async function _qosUpdate() {
           <td><span class='up'>+4.91%</span></td>
           <td class="entry-col">281.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.1%</span></td>
-          <td><span class='vp-ok'>147%</span></td>
+          <td><span class='vp-ok'>145%</span></td>
           <td class="num grey xsm">96,567張 / <span class='grey'>63,090張</span></td>
           <td class="num grey">213.00 <span class='grey'>(23.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2463,7 +2618,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.05%</span></td>
           <td class="entry-col">143.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='near-txt'>-1.0%</span></td>
-          <td><span class='vp-ok'>148%</span></td>
+          <td><span class='vp-ok'>145%</span></td>
           <td class="num grey xsm">413,026張 / <span class='grey'>268,572張</span></td>
           <td class="num grey">111.50 <span class='grey'>(21.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2510,7 +2665,7 @@ async function _qosUpdate() {
           <td><span class='up'>+2.60%</span></td>
           <td class="entry-col">69.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.8%</span></td>
-          <td><span class='vp-ok'>135%</span></td>
+          <td><span class='vp-ok'>133%</span></td>
           <td class="num grey xsm">33,848張 / <span class='grey'>24,133張</span></td>
           <td class="num grey">56.10 <span class='grey'>(16.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2539,7 +2694,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.18%</span></td>
           <td class="entry-col">51.70 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-3.1%</span></td>
-          <td><span class='vp-weak'>48%</span></td>
+          <td><span class='vp-weak'>47%</span></td>
           <td class="num grey xsm">12,114張 / <span class='grey'>24,492張</span></td>
           <td class="num grey">48.85 <span class='grey'>(2.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2568,7 +2723,7 @@ async function _qosUpdate() {
           <td><span class='up'>+1.50%</span></td>
           <td class="entry-col">351.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-3.8%</span></td>
-          <td><span class='vp-ok'>100%</span></td>
+          <td><span class='vp-weak'>98%</span></td>
           <td class="num grey xsm">16,778張 / <span class='grey'>16,155張</span></td>
           <td class="num grey">305.00 <span class='grey'>(9.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2597,7 +2752,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.41%</span></td>
           <td class="entry-col">320.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.0%</span></td>
-          <td><span class='vp-weak'>92%</span></td>
+          <td><span class='vp-weak'>91%</span></td>
           <td class="num grey xsm">30,109張 / <span class='grey'>31,364張</span></td>
           <td class="num grey">276.00 <span class='grey'>(9.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2626,7 +2781,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.93%</span></td>
           <td class="entry-col">242.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-5.4%</span></td>
-          <td><span class='vp-weak'>80%</span></td>
+          <td><span class='vp-weak'>79%</span></td>
           <td class="num grey xsm">12,353張 / <span class='grey'>14,819張</span></td>
           <td class="num grey">212.50 <span class='grey'>(7.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2655,7 +2810,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.61%</span></td>
           <td class="entry-col">87.70 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.6%</span></td>
-          <td><span class='vp-weak'>73%</span></td>
+          <td><span class='vp-weak'>71%</span></td>
           <td class="num grey xsm">6,256張 / <span class='grey'>8,297張</span></td>
           <td class="num grey">73.00 <span class='grey'>(11.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2684,7 +2839,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.11%</span></td>
           <td class="entry-col">149.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-6.0%</span></td>
-          <td><span class='vp-ok'>110%</span></td>
+          <td><span class='vp-ok'>108%</span></td>
           <td class="num grey xsm">2,746張 / <span class='grey'>2,396張</span></td>
           <td class="num grey">134.50 <span class='grey'>(3.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2713,7 +2868,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.56%</span></td>
           <td class="entry-col">83.70 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.2%</span></td>
-          <td><span class='vp-weak'>57%</span></td>
+          <td><span class='vp-weak'>56%</span></td>
           <td class="num grey xsm">3,862張 / <span class='grey'>6,469張</span></td>
           <td class="num grey">73.10 <span class='grey'>(6.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2742,7 +2897,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.52%</span></td>
           <td class="entry-col">238.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-6.7%</span></td>
-          <td><span class='vp-weak'>62%</span></td>
+          <td><span class='vp-weak'>61%</span></td>
           <td class="num grey xsm">13,370張 / <span class='grey'>20,797張</span></td>
           <td class="num grey">212.00 <span class='grey'>(4.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2771,7 +2926,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.46%</span></td>
           <td class="entry-col">93.40 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.7%</span></td>
-          <td><span class='vp-strong'>177%</span></td>
+          <td><span class='vp-strong'>174%</span></td>
           <td class="num grey xsm">55,616張 / <span class='grey'>30,169張</span></td>
           <td class="num grey">75.60 <span class='grey'>(13.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2800,7 +2955,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.58%</span></td>
           <td class="entry-col">105.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-6.9%</span></td>
-          <td><span class='vp-weak'>93%</span></td>
+          <td><span class='vp-weak'>91%</span></td>
           <td class="num grey xsm">4,775張 / <span class='grey'>4,945張</span></td>
           <td class="num grey">93.00 <span class='grey'>(5.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2829,7 +2984,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.62%</span></td>
           <td class="entry-col">261.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.1%</span></td>
-          <td><span class='vp-weak'>90%</span></td>
+          <td><span class='vp-weak'>89%</span></td>
           <td class="num grey xsm">28,834張 / <span class='grey'>30,792張</span></td>
           <td class="num grey">219.00 <span class='grey'>(9.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2858,7 +3013,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.65%</span></td>
           <td class="entry-col">138.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.2%</span></td>
-          <td><span class='vp-strong'>179%</span></td>
+          <td><span class='vp-strong'>176%</span></td>
           <td class="num grey xsm">31,077張 / <span class='grey'>16,687張</span></td>
           <td class="num grey">117.00 <span class='grey'>(8.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2887,7 +3042,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.43%</span></td>
           <td class="entry-col">132.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-7.6%</span></td>
-          <td><span class='vp-ok'>148%</span></td>
+          <td><span class='vp-ok'>146%</span></td>
           <td class="num grey xsm">9,024張 / <span class='grey'>5,849張</span></td>
           <td class="num grey">116.00 <span class='grey'>(4.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2916,7 +3071,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.34%</span></td>
           <td class="entry-col">161.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-strong'>186%</span></td>
+          <td><span class='vp-strong'>182%</span></td>
           <td class="num grey xsm">85,743張 / <span class='grey'>44,449張</span></td>
           <td class="num grey">129.50 <span class='grey'>(12.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2945,7 +3100,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.10%</span></td>
           <td class="entry-col">120.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.8%</span></td>
-          <td><span class='vp-weak'>81%</span></td>
+          <td><span class='vp-weak'>80%</span></td>
           <td class="num grey xsm">3,668張 / <span class='grey'>4,347張</span></td>
           <td class="num grey">96.30 <span class='grey'>(12.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -2974,7 +3129,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.13%</span></td>
           <td class="entry-col">426.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.9%</span></td>
-          <td><span class='vp-ok'>104%</span></td>
+          <td><span class='vp-ok'>102%</span></td>
           <td class="num grey xsm">9,304張 / <span class='grey'>8,600張</span></td>
           <td class="num grey">362.50 <span class='grey'>(6.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3003,7 +3158,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.81%</span></td>
           <td class="entry-col">853.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.5%</span></td>
-          <td><span class='vp-ok'>101%</span></td>
+          <td><span class='vp-weak'>99%</span></td>
           <td class="num grey xsm">5,031張 / <span class='grey'>4,814張</span></td>
           <td class="num grey">728.00 <span class='grey'>(5.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3032,7 +3187,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-7.06%</span></td>
           <td class="entry-col">2695.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-9.6%</span></td>
-          <td><span class='vp-weak'>91%</span></td>
+          <td><span class='vp-weak'>89%</span></td>
           <td class="num grey xsm">4,505張 / <span class='grey'>4,773張</span></td>
           <td class="num grey">2450.00 <span class='grey'>(-0.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3061,7 +3216,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.14%</span></td>
           <td class="entry-col">72.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.1%</span></td>
-          <td><span class='vp-weak'>72%</span></td>
+          <td><span class='vp-weak'>71%</span></td>
           <td class="num grey xsm">18,078張 / <span class='grey'>24,115張</span></td>
           <td class="num grey">61.30 <span class='grey'>(5.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3090,7 +3245,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-7.43%</span></td>
           <td class="entry-col">6665.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.3%</span></td>
-          <td><span class='vp-weak'>72%</span></td>
+          <td><span class='vp-weak'>70%</span></td>
           <td class="num grey xsm">951張 / <span class='grey'>1,276張</span></td>
           <td class="num grey">5530.00 <span class='grey'>(6.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3119,7 +3274,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-6.41%</span></td>
           <td class="entry-col">291.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-12.2%</span></td>
-          <td><span class='vp-weak'>62%</span></td>
+          <td><span class='vp-weak'>61%</span></td>
           <td class="num grey xsm">4,441張 / <span class='grey'>6,921張</span></td>
           <td class="num grey">237.50 <span class='grey'>(7.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3148,7 +3303,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-6.99%</span></td>
           <td class="entry-col">153.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-13.4%</span></td>
-          <td><span class='vp-ok'>123%</span></td>
+          <td><span class='vp-ok'>121%</span></td>
           <td class="num grey xsm">12,516張 / <span class='grey'>9,763張</span></td>
           <td class="num grey">117.00 <span class='grey'>(12.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3206,7 +3361,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-9.96%</span></td>
           <td class="entry-col">490.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-15.1%</span></td>
-          <td><span class='vp-strong'>150%</span></td>
+          <td><span class='vp-ok'>147%</span></td>
           <td class="num grey xsm">1,527張 / <span class='grey'>980張</span></td>
           <td class="num grey">397.00 <span class='grey'>(4.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3235,7 +3390,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.38%</span></td>
           <td class="entry-col">112.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-15.9%</span></td>
-          <td><span class='vp-weak'>49%</span></td>
+          <td><span class='vp-weak'>48%</span></td>
           <td class="num grey xsm">8,214張 / <span class='grey'>16,246張</span></td>
           <td class="num grey">85.10 <span class='grey'>(9.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3264,7 +3419,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.12%</span></td>
           <td class="entry-col">143.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-16.0%</span></td>
-          <td><span class='vp-ok'>138%</span></td>
+          <td><span class='vp-ok'>136%</span></td>
           <td class="num grey xsm">10,526張 / <span class='grey'>7,322張</span></td>
           <td class="num grey">104.50 <span class='grey'>(13.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3293,7 +3448,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-9.30%</span></td>
           <td class="entry-col">221.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-18.3%</span></td>
-          <td><span class='vp-strong'>157%</span></td>
+          <td><span class='vp-strong'>154%</span></td>
           <td class="num grey xsm">7,357張 / <span class='grey'>4,511張</span></td>
           <td class="num grey">161.50 <span class='grey'>(10.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3322,7 +3477,7 @@ async function _qosUpdate() {
           <td><span class='up'>+2.61%</span></td>
           <td class="entry-col">241.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.3%</span></td>
-          <td><span class='vp-ok'>134%</span></td>
+          <td><span class='vp-ok'>132%</span></td>
           <td class="num grey xsm">16,313張 / <span class='grey'>11,694張</span></td>
           <td class="num grey">212.00 <span class='grey'>(10.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3351,7 +3506,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.25%</span></td>
           <td class="entry-col">566.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.3%</span></td>
-          <td><span class='vp-weak'>37%</span></td>
+          <td><span class='vp-weak'>36%</span></td>
           <td class="num grey xsm">4,634張 / <span class='grey'>12,058張</span></td>
           <td class="num grey">480.00 <span class='grey'>(13.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3380,7 +3535,7 @@ async function _qosUpdate() {
           <td><span class='up'>+4.94%</span></td>
           <td class="entry-col">56.80 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.8%</span></td>
-          <td><span class='vp-strong'>243%</span></td>
+          <td><span class='vp-strong'>238%</span></td>
           <td class="num grey xsm">42,908張 / <span class='grey'>17,021張</span></td>
           <td class="num grey">44.10 <span class='grey'>(20.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3409,7 +3564,7 @@ async function _qosUpdate() {
           <td><span class='up'>+6.74%</span></td>
           <td class="entry-col">62.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.9%</span></td>
-          <td><span class='vp-strong'>222%</span></td>
+          <td><span class='vp-strong'>219%</span></td>
           <td class="num grey xsm">21,057張 / <span class='grey'>9,109張</span></td>
           <td class="num grey">50.00 <span class='grey'>(16.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3438,7 +3593,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.10%</span></td>
           <td class="entry-col">2680.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.1%</span></td>
-          <td><span class='vp-ok'>108%</span></td>
+          <td><span class='vp-ok'>106%</span></td>
           <td class="num grey xsm">3,856張 / <span class='grey'>3,442張</span></td>
           <td class="num grey">2190.00 <span class='grey'>(14.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3467,7 +3622,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.28%</span></td>
           <td class="entry-col">8045.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-4.3%</span></td>
-          <td><span class='vp-ok'>125%</span></td>
+          <td><span class='vp-ok'>123%</span></td>
           <td class="num grey xsm">1,311張 / <span class='grey'>1,008張</span></td>
           <td class="num grey">7205.00 <span class='grey'>(6.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3496,7 +3651,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.38%</span></td>
           <td class="entry-col">750.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-4.4%</span></td>
-          <td><span class='vp-weak'>54%</span></td>
+          <td><span class='vp-weak'>53%</span></td>
           <td class="num grey xsm">1,614張 / <span class='grey'>2,888張</span></td>
           <td class="num grey">634.00 <span class='grey'>(11.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3525,7 +3680,7 @@ async function _qosUpdate() {
           <td><span class='up'>+1.39%</span></td>
           <td class="entry-col">1150.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.8%</span></td>
-          <td><span class='vp-strong'>218%</span></td>
+          <td><span class='vp-strong'>214%</span></td>
           <td class="num grey xsm">14,425張 / <span class='grey'>6,376張</span></td>
           <td class="num grey">876.00 <span class='grey'>(20.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3554,7 +3709,7 @@ async function _qosUpdate() {
           <td><span class='up'>+3.16%</span></td>
           <td class="entry-col">171.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.0%</span></td>
-          <td><span class='vp-strong'>220%</span></td>
+          <td><span class='vp-strong'>216%</span></td>
           <td class="num grey xsm">9,416張 / <span class='grey'>4,121張</span></td>
           <td class="num grey">131.00 <span class='grey'>(19.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3583,7 +3738,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-0.76%</span></td>
           <td class="entry-col">207.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.1%</span></td>
-          <td><span class='vp-ok'>146%</span></td>
+          <td><span class='vp-ok'>144%</span></td>
           <td class="num grey xsm">3,359張 / <span class='grey'>2,212張</span></td>
           <td class="num grey">167.50 <span class='grey'>(15.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3612,7 +3767,7 @@ async function _qosUpdate() {
           <td><span class='up'>+5.83%</span></td>
           <td class="entry-col">134.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.2%</span></td>
-          <td><span class='vp-weak'>67%</span></td>
+          <td><span class='vp-weak'>66%</span></td>
           <td class="num grey xsm">5,808張 / <span class='grey'>8,327張</span></td>
           <td class="num grey">112.00 <span class='grey'>(11.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3641,7 +3796,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-7.32%</span></td>
           <td class="entry-col">101.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-5.9%</span></td>
-          <td><span class='vp-ok'>132%</span></td>
+          <td><span class='vp-ok'>130%</span></td>
           <td class="num grey xsm">5,813張 / <span class='grey'>4,230張</span></td>
           <td class="num grey">87.40 <span class='grey'>(8.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3670,7 +3825,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.35%</span></td>
           <td class="entry-col">228.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-6.8%</span></td>
-          <td><span class='vp-weak'>93%</span></td>
+          <td><span class='vp-weak'>91%</span></td>
           <td class="num grey xsm">2,094張 / <span class='grey'>2,170張</span></td>
           <td class="num grey">201.50 <span class='grey'>(5.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3699,7 +3854,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-6.43%</span></td>
           <td class="entry-col">251.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-7.2%</span></td>
-          <td><span class='vp-weak'>39%</span></td>
+          <td><span class='vp-weak'>38%</span></td>
           <td class="num grey xsm">5,892張 / <span class='grey'>14,607張</span></td>
           <td class="num grey">222.00 <span class='grey'>(4.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3728,7 +3883,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.63%</span></td>
           <td class="entry-col">530.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.5%</span></td>
-          <td><span class='vp-weak'>83%</span></td>
+          <td><span class='vp-weak'>82%</span></td>
           <td class="num grey xsm">4,421張 / <span class='grey'>5,103張</span></td>
           <td class="num grey">458.50 <span class='grey'>(6.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3757,7 +3912,7 @@ async function _qosUpdate() {
           <td><span class='up'>+6.75%</span></td>
           <td class="entry-col">145.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.6%</span></td>
-          <td><span class='vp-strong'>275%</span></td>
+          <td><span class='vp-strong'>271%</span></td>
           <td class="num grey xsm">16,855張 / <span class='grey'>5,885張</span></td>
           <td class="num grey">112.00 <span class='grey'>(16.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3786,7 +3941,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.06%</span></td>
           <td class="entry-col">166.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.8%</span></td>
-          <td><span class='vp-ok'>138%</span></td>
+          <td><span class='vp-ok'>135%</span></td>
           <td class="num grey xsm">20,879張 / <span class='grey'>14,602張</span></td>
           <td class="num grey">129.50 <span class='grey'>(15.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3815,7 +3970,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.87%</span></td>
           <td class="entry-col">922.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-weak'>76%</span></td>
+          <td><span class='vp-weak'>75%</span></td>
           <td class="num grey xsm">2,961張 / <span class='grey'>3,724張</span></td>
           <td class="num grey">760.00 <span class='grey'>(10.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3844,7 +3999,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.31%</span></td>
           <td class="entry-col">351.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-weak'>77%</span></td>
+          <td><span class='vp-weak'>76%</span></td>
           <td class="num grey xsm">8,644張 / <span class='grey'>10,783張</span></td>
           <td class="num grey">304.00 <span class='grey'>(5.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3873,7 +4028,7 @@ async function _qosUpdate() {
           <td><span class=''>+0.00%</span></td>
           <td class="entry-col">129.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.5%</span></td>
-          <td><span class='vp-weak'>50%</span></td>
+          <td><span class='vp-weak'>49%</span></td>
           <td class="num grey xsm">3,980張 / <span class='grey'>7,661張</span></td>
           <td class="num grey">112.50 <span class='grey'>(4.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3902,7 +4057,7 @@ async function _qosUpdate() {
           <td><span class='up'>+3.98%</span></td>
           <td class="entry-col">88.80 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.9%</span></td>
-          <td><span class='vp-strong'>201%</span></td>
+          <td><span class='vp-strong'>198%</span></td>
           <td class="num grey xsm">37,604張 / <span class='grey'>17,979張</span></td>
           <td class="num grey">69.92 <span class='grey'>(13.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3931,7 +4086,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.61%</span></td>
           <td class="entry-col">183.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.6%</span></td>
-          <td><span class='vp-weak'>99%</span></td>
+          <td><span class='vp-weak'>97%</span></td>
           <td class="num grey xsm">9,567張 / <span class='grey'>9,307張</span></td>
           <td class="num grey">145.00 <span class='grey'>(12.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3960,7 +4115,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.71%</span></td>
           <td class="entry-col">5635.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.3%</span></td>
-          <td><span class='vp-weak'>73%</span></td>
+          <td><span class='vp-weak'>72%</span></td>
           <td class="num grey xsm">1,862張 / <span class='grey'>2,458張</span></td>
           <td class="num grey">4555.00 <span class='grey'>(9.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3989,7 +4144,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-8.11%</span></td>
           <td class="entry-col">645.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-10.4%</span></td>
-          <td><span class='vp-strong'>152%</span></td>
+          <td><span class='vp-ok'>149%</span></td>
           <td class="num grey xsm">4,571張 / <span class='grey'>2,898張</span></td>
           <td class="num grey">511.00 <span class='grey'>(11.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4018,7 +4173,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.52%</span></td>
           <td class="entry-col">383.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.6%</span></td>
-          <td><span class='vp-weak'>87%</span></td>
+          <td><span class='vp-weak'>85%</span></td>
           <td class="num grey xsm">1,909張 / <span class='grey'>2,112張</span></td>
           <td class="num grey">298.00 <span class='grey'>(13.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4047,7 +4202,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.99%</span></td>
           <td class="entry-col">538.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.6%</span></td>
-          <td><span class='vp-ok'>106%</span></td>
+          <td><span class='vp-ok'>104%</span></td>
           <td class="num grey xsm">15,142張 / <span class='grey'>13,782張</span></td>
           <td class="num grey">429.50 <span class='grey'>(10.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4076,7 +4231,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.78%</span></td>
           <td class="entry-col">145.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-10.7%</span></td>
-          <td><span class='vp-weak'>94%</span></td>
+          <td><span class='vp-weak'>92%</span></td>
           <td class="num grey xsm">4,495張 / <span class='grey'>4,598張</span></td>
           <td class="num grey">113.50 <span class='grey'>(12.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4105,7 +4260,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.70%</span></td>
           <td class="entry-col">394.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.8%</span></td>
-          <td><span class='vp-weak'>90%</span></td>
+          <td><span class='vp-weak'>88%</span></td>
           <td class="num grey xsm">2,288張 / <span class='grey'>2,459張</span></td>
           <td class="num grey">327.50 <span class='grey'>(6.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4134,7 +4289,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-1.47%</span></td>
           <td class="entry-col">90.90 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.2%</span></td>
-          <td><span class='vp-weak'>78%</span></td>
+          <td><span class='vp-weak'>77%</span></td>
           <td class="num grey xsm">13,424張 / <span class='grey'>16,468張</span></td>
           <td class="num grey">78.00 <span class='grey'>(3.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4192,7 +4347,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.71%</span></td>
           <td class="entry-col">183.50 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-12.0%</span></td>
-          <td><span class='vp-weak'>71%</span></td>
+          <td><span class='vp-weak'>70%</span></td>
           <td class="num grey xsm">30,895張 / <span class='grey'>41,721張</span></td>
           <td class="num grey">158.00 <span class='grey'>(2.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4221,7 +4376,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.97%</span></td>
           <td class="entry-col">238.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-12.2%</span></td>
-          <td><span class='vp-weak'>82%</span></td>
+          <td><span class='vp-weak'>81%</span></td>
           <td class="num grey xsm">11,054張 / <span class='grey'>12,889張</span></td>
           <td class="num grey">191.50 <span class='grey'>(8.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4250,7 +4405,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.48%</span></td>
           <td class="entry-col">653.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-12.9%</span></td>
-          <td><span class='vp-weak'>84%</span></td>
+          <td><span class='vp-weak'>83%</span></td>
           <td class="num grey xsm">5,105張 / <span class='grey'>5,812張</span></td>
           <td class="num grey">492.50 <span class='grey'>(13.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4308,7 +4463,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-8.65%</span></td>
           <td class="entry-col">568.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-14.4%</span></td>
-          <td><span class='vp-weak'>36%</span></td>
+          <td><span class='vp-weak'>35%</span></td>
           <td class="num grey xsm">18,741張 / <span class='grey'>50,303張</span></td>
           <td class="num grey">458.50 <span class='grey'>(5.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4337,7 +4492,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.13%</span></td>
           <td class="entry-col">490.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-14.8%</span></td>
-          <td><span class='vp-weak'>19%</span></td>
+          <td><span class='vp-weak'>18%</span></td>
           <td class="num grey xsm">1,250張 / <span class='grey'>6,473張</span></td>
           <td class="num grey">372.50 <span class='grey'>(10.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4366,7 +4521,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.80%</span></td>
           <td class="entry-col">366.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-14.9%</span></td>
-          <td><span class='vp-strong'>167%</span></td>
+          <td><span class='vp-strong'>164%</span></td>
           <td class="num grey xsm">2,647張 / <span class='grey'>1,525張</span></td>
           <td class="num grey">307.50 <span class='grey'>(1.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4395,7 +4550,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.02%</span></td>
           <td class="entry-col">1560.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-15.1%</span></td>
-          <td><span class='vp-weak'>56%</span></td>
+          <td><span class='vp-weak'>55%</span></td>
           <td class="num grey xsm">1,531張 / <span class='grey'>2,644張</span></td>
           <td class="num grey">1295.00 <span class='grey'>(2.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4424,7 +4579,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-8.72%</span></td>
           <td class="entry-col">230.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-18.0%</span></td>
-          <td><span class='vp-weak'>17%</span></td>
+          <td><span class='vp-weak'>16%</span></td>
           <td class="num grey xsm">5,431張 / <span class='grey'>31,213張</span></td>
           <td class="num grey">166.00 <span class='grey'>(11.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4453,7 +4608,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-9.96%</span></td>
           <td class="entry-col">895.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-21.2%</span></td>
-          <td><span class='vp-strong'>159%</span></td>
+          <td><span class='vp-strong'>156%</span></td>
           <td class="num grey xsm">6,458張 / <span class='grey'>3,919張</span></td>
           <td class="num grey">720.00 <span class='grey'>(-2.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4482,7 +4637,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-7.90%</span></td>
           <td class="entry-col">312.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-23.5%</span></td>
-          <td><span class='vp-strong'>228%</span></td>
+          <td><span class='vp-strong'>224%</span></td>
           <td class="num grey xsm">4,761張 / <span class='grey'>2,011張</span></td>
           <td class="num grey">231.00 <span class='grey'>(3.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4511,7 +4666,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.55%</span></td>
           <td class="entry-col">92.80 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.3%</span></td>
-          <td><span class='vp-weak'>31%</span></td>
+          <td><span class='vp-weak'>30%</span></td>
           <td class="num grey xsm">16,939張 / <span class='grey'>52,851張</span></td>
           <td class="num grey">61.50 <span class='grey'>(32.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4540,7 +4695,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-0.32%</span></td>
           <td class="entry-col">949.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.3%</span></td>
-          <td><span class='vp-strong'>221%</span></td>
+          <td><span class='vp-strong'>217%</span></td>
           <td class="num grey xsm">21,121張 / <span class='grey'>9,193張</span></td>
           <td class="num grey">701.00 <span class='grey'>(24.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4569,7 +4724,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-0.49%</span></td>
           <td class="entry-col">620.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.4%</span></td>
-          <td><span class='vp-weak'>27%</span></td>
+          <td><span class='vp-weak'>26%</span></td>
           <td class="num grey xsm">2,397張 / <span class='grey'>8,669張</span></td>
           <td class="num grey">427.00 <span class='grey'>(29.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4598,7 +4753,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.04%</span></td>
           <td class="entry-col">603.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-4.6%</span></td>
-          <td><span class='vp-strong'>191%</span></td>
+          <td><span class='vp-strong'>188%</span></td>
           <td class="num grey xsm">4,040張 / <span class='grey'>2,035張</span></td>
           <td class="num grey">447.00 <span class='grey'>(22.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4627,7 +4782,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-3.93%</span></td>
           <td class="entry-col">232.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.2%</span></td>
-          <td><span class='vp-weak'>84%</span></td>
+          <td><span class='vp-weak'>83%</span></td>
           <td class="num grey xsm">8,120張 / <span class='grey'>9,256張</span></td>
           <td class="num grey">182.50 <span class='grey'>(17.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4656,7 +4811,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.96%</span></td>
           <td class="entry-col">4690.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.0%</span></td>
-          <td><span class='vp-ok'>125%</span></td>
+          <td><span class='vp-ok'>123%</span></td>
           <td class="num grey xsm">14,384張 / <span class='grey'>11,035張</span></td>
           <td class="num grey">3405.00 <span class='grey'>(22.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4685,7 +4840,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.34%</span></td>
           <td class="entry-col">669.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.3%</span></td>
-          <td><span class='vp-ok'>123%</span></td>
+          <td><span class='vp-ok'>120%</span></td>
           <td class="num grey xsm">33,458張 / <span class='grey'>26,249張</span></td>
           <td class="num grey">496.50 <span class='grey'>(20.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4714,7 +4869,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.09%</span></td>
           <td class="entry-col">1110.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-7.7%</span></td>
-          <td><span class='vp-weak'>79%</span></td>
+          <td><span class='vp-weak'>77%</span></td>
           <td class="num grey xsm">23,650張 / <span class='grey'>28,908張</span></td>
           <td class="num grey">868.00 <span class='grey'>(15.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4743,7 +4898,7 @@ async function _qosUpdate() {
           <td><span class='up'>+0.94%</span></td>
           <td class="entry-col">41.05 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.2%</span></td>
-          <td><span class='vp-strong'>232%</span></td>
+          <td><span class='vp-strong'>228%</span></td>
           <td class="num grey xsm">160,554張 / <span class='grey'>66,664張</span></td>
           <td class="num grey">28.60 <span class='grey'>(24.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4772,7 +4927,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-0.17%</span></td>
           <td class="entry-col">316.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-strong'>215%</span></td>
+          <td><span class='vp-strong'>211%</span></td>
           <td class="num grey xsm">10,786張 / <span class='grey'>4,825張</span></td>
           <td class="num grey">222.00 <span class='grey'>(23.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4801,7 +4956,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.08%</span></td>
           <td class="entry-col">184.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.7%</span></td>
-          <td><span class='vp-weak'>59%</span></td>
+          <td><span class='vp-weak'>58%</span></td>
           <td class="num grey xsm">17,213張 / <span class='grey'>27,846張</span></td>
           <td class="num grey">124.50 <span class='grey'>(25.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4830,7 +4985,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-4.14%</span></td>
           <td class="entry-col">306.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.3%</span></td>
-          <td><span class='vp-ok'>141%</span></td>
+          <td><span class='vp-ok'>139%</span></td>
           <td class="num grey xsm">1,883張 / <span class='grey'>1,284張</span></td>
           <td class="num grey">224.00 <span class='grey'>(19.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4859,7 +5014,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-6.77%</span></td>
           <td class="entry-col">693.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.5%</span></td>
-          <td><span class='vp-strong'>154%</span></td>
+          <td><span class='vp-strong'>151%</span></td>
           <td class="num grey xsm">11,433張 / <span class='grey'>7,147張</span></td>
           <td class="num grey">520.00 <span class='grey'>(16.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4888,7 +5043,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-2.56%</span></td>
           <td class="entry-col">212.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.6%</span></td>
-          <td><span class='vp-strong'>187%</span></td>
+          <td><span class='vp-strong'>184%</span></td>
           <td class="num grey xsm">16,360張 / <span class='grey'>8,405張</span></td>
           <td class="num grey">143.50 <span class='grey'>(24.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4946,7 +5101,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-7.57%</span></td>
           <td class="entry-col">52.20 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.1%</span></td>
-          <td><span class='vp-strong'>172%</span></td>
+          <td><span class='vp-strong'>169%</span></td>
           <td class="num grey xsm">1,249,001張 / <span class='grey'>696,683張</span></td>
           <td class="num grey">38.00 <span class='grey'>(18.1%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4975,7 +5130,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-5.52%</span></td>
           <td class="entry-col">1735.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-11.2%</span></td>
-          <td><span class='vp-strong'>163%</span></td>
+          <td><span class='vp-strong'>160%</span></td>
           <td class="num grey xsm">8,231張 / <span class='grey'>4,857張</span></td>
           <td class="num grey">1325.00 <span class='grey'>(14.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -5004,7 +5159,7 @@ async function _qosUpdate() {
           <td><span class='dn'>-7.85%</span></td>
           <td class="entry-col">93.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-12.9%</span></td>
-          <td><span class='vp-strong'>154%</span></td>
+          <td><span class='vp-strong'>151%</span></td>
           <td class="num grey xsm">41,064張 / <span class='grey'>25,724張</span></td>
           <td class="num grey">71.10 <span class='grey'>(12.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -5107,7 +5262,7 @@ async function _qosUpdate() {
   <!-- /qts-office-strip -->
   <script>if(typeof _qosUpdate==='function'){_qosUpdate();if(!window.__qosTimer){window.__qosTimer=setInterval(_qosUpdate,30000);}}</script>
 
-  <div class='buy-gate buy-gate-info'><span class='bg-time'>現貨已收盤</span><span class='bg-hint'>台積電公告日請看 13:30–13:45 期貨；其餘明日再進</span></div>
+  <div class='buy-gate buy-gate-info'><span class='bg-time'>已收盤</span><span class='bg-hint'>今日交易結束，明日再進</span></div>
   <div class="auto-trade-bar">
     <label class="at-switch">
       <input type="checkbox" id="at-enabled" onchange="_atToggle(this.checked)">
