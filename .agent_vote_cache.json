@@ -1,0 +1,158 @@
+{
+  "2330": {
+    "verdict": "wait",
+    "score": 36,
+    "context": {
+      "score": 72,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜大盤bull、TAIEX +1.4%，系統性風險低，多頭氛圍有利突破延續",
+      "脈絡｜訊號強度slv=4強量突破，技術面確認度高，評分85屬強訊號",
+      "TA｜ta_agent 失敗: APITimeoutError"
+    ],
+    "_usage": {
+      "in": 875,
+      "out": 152,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1779934187.726804,
+    "last_at_vote": 1254.5399999999997
+  },
+  "6531": {
+    "verdict": "wait",
+    "score": 26,
+    "context": {
+      "score": 52,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以判斷是否有實質催化劑",
+      "脈絡｜現價距進場點已延伸4.7%，追高風險偏高，建議等待回測進場區間",
+      "TA｜ta_agent 失敗: APITimeoutError"
+    ],
+    "_usage": {
+      "in": 872,
+      "out": 159,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1779934188.177906,
+    "last_at_vote": 1202.2675
+  },
+  "4760": {
+    "verdict": "wait",
+    "score": 26,
+    "context": {
+      "score": 52,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜大盤加權與櫃買均呈多頭排列，系統性環境有利",
+      "脈絡｜無任何新聞題材支撐，純技術突破訊號，催化劑不明",
+      "TA｜ta_agent 失敗: APITimeoutError"
+    ],
+    "resonance": {},
+    "triggers": [],
+    "_usage": {
+      "in": 1003,
+      "out": 142,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1779953434.784661,
+    "last_at_vote": 425.5
+  },
+  "6291": {
+    "verdict": "skip",
+    "score": 32,
+    "context": {
+      "score": 52,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 12,
+      "verdict": "skip"
+    },
+    "entry_plan": {
+      "entry": null,
+      "stop": null,
+      "stop_basis": "不進場，無需設定停損"
+    },
+    "reasons": [
+      "至少一方否決",
+      "脈絡｜無任何新聞題材支撐，純技術突破，持續性待觀察",
+      "脈絡｜距 EMA10 已延伸 19.6%，追高風險偏高，等回踩確認較佳",
+      "TA｜距 EMA10 延伸 19.6%，嚴重超過 5% 上限，追高風險極高",
+      "TA｜外資當日賣超 -106,054 股、投信零買，法人籌碼淨流出，不支持突破延續"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": -2,
+      "volume": 1,
+      "structure": -2,
+      "total": -2
+    },
+    "_usage": {
+      "in": 1533,
+      "out": 856,
+      "cw": 33393,
+      "cr": 65050
+    },
+    "_short_circuit": false,
+    "ts": 1779945484.109012,
+    "last_at_vote": 663.0
+  },
+  "6175": {
+    "verdict": "skip",
+    "score": 19,
+    "context": {
+      "score": 38,
+      "verdict": "skip"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "skip"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "至少一方否決",
+      "脈絡｜距 EMA10 延伸達 21.1%，追高風險極高，非理想進場位置",
+      "脈絡｜無任何新聞題材支撐，突破缺乏基本面催化劑",
+      "TA｜(context 已 skip，省略 TA 呼叫)"
+    ],
+    "resonance": {},
+    "triggers": [],
+    "_usage": {
+      "in": 1002,
+      "out": 136,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": true,
+    "ts": 1779956829.179805,
+    "last_at_vote": 107.0
+  }
+}
