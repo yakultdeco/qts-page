@@ -621,6 +621,29 @@
     display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
     font-family: ui-monospace, 'SF Mono', monospace; font-size: 11px;
   }
+  .turn .preview-clean { margin-top: 4px; font-size: 11px; color: var(--text); line-height: 1.55; }
+  .turn .preview-clean .sum-line { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 4px; }
+  .turn .preview-clean .sum-pill {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    font-size: 10px; padding: 1px 6px; border-radius: 3px;
+    border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+    color: var(--text); font-family: ui-monospace, 'SF Mono', monospace;
+  }
+  .turn .preview-clean .sum-pill i {
+    color: var(--muted); font-style: normal; font-weight: 600;
+    font-size: 9px; letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .turn .preview-clean .sum-pill.dim { color: var(--muted); }
+  .turn .preview-clean .sum-list { margin: 0; padding-left: 0; list-style: none; }
+  .turn .preview-clean .sum-list li {
+    position: relative; padding-left: 12px; margin-top: 2px;
+  }
+  .turn .preview-clean .sum-list li::before {
+    content: '·'; position: absolute; left: 3px; color: var(--muted);
+  }
+  .turn .preview-clean .sum-rationale { color: var(--text); }
+  .turn .preview-clean .sum-empty { color: var(--muted); font-style: italic; }
+  .turn.expanded .preview-clean { display: none; }
   .turn .full {
     margin-top: 6px; display: none;
     background: var(--bg);
@@ -1385,6 +1408,78 @@ function escapeHtml(s) {
   }[c]));
 }
 
+function tryParseAgentJSON(text) {
+  if (!text) return null;
+  let s = String(text).trim();
+  const fence = s.match(/^```(?:json)?\s*\n?([\s\S]*?)\n?```\s*$/);
+  if (fence) s = fence[1].trim();
+  if (s[0] !== '{') {
+    const i = s.indexOf('{');
+    const j = s.lastIndexOf('}');
+    if (i >= 0 && j > i) s = s.slice(i, j + 1);
+  }
+  try { return JSON.parse(s); } catch { return null; }
+}
+
+function bulletsFrom(arr, max = 3) {
+  if (!Array.isArray(arr) || !arr.length) return '';
+  const items = arr.slice(0, max).map(r => {
+    let s = '';
+    if (typeof r === 'string') s = r;
+    else if (r && typeof r === 'object') {
+      if (r.outcome && r.trigger) s = `${r.trigger} → ${r.outcome}`;
+      else s = r.outcome || r.trigger || r.point || r.text || JSON.stringify(r);
+    }
+    return `<li>${escapeHtml(String(s))}</li>`;
+  }).join('');
+  return `<ul class="sum-list">${items}</ul>`;
+}
+
+function renderAgentSummary(agent, response) {
+  const obj = tryParseAgentJSON(response);
+  if (!obj) {
+    const text = String(response || '').trim();
+    if (!text) return '<span class="sum-empty">（無回應）</span>';
+    const t = text.length > 240 ? text.slice(0, 240) + '…' : text;
+    return `<div class="sum-rationale">${escapeHtml(t)}</div>`;
+  }
+  const out = [];
+  const pills = [];
+
+  if (agent === 'pm') {
+    if (obj.confidence != null) pills.push(`<span class="sum-pill"><i>信心</i>${escapeHtml(obj.confidence)}</span>`);
+    if (obj.final_score != null) pills.push(`<span class="sum-pill"><i>終分</i>${escapeHtml(obj.final_score)}</span>`);
+    if (obj.reliability) {
+      const r = obj.reliability;
+      pills.push(`<span class="sum-pill dim"><i>信賴</i>ctx${r.context ?? '-'}·ta${r.ta ?? '-'}·bear${r.bear ?? '-'}</span>`);
+    }
+    if (pills.length) out.push(`<div class="sum-line">${pills.join('')}</div>`);
+    if (obj.rationale) out.push(`<div class="sum-rationale">${escapeHtml(obj.rationale)}</div>`);
+    return out.join('') || '<span class="sum-empty">（空）</span>';
+  }
+
+  if (agent === 'bear') {
+    if (obj.bear_score != null) pills.push(`<span class="sum-pill"><i>bear</i>${escapeHtml(obj.bear_score)}</span>`);
+    if (pills.length) out.push(`<div class="sum-line">${pills.join('')}</div>`);
+    const reasons = (Array.isArray(obj.invalidations) && obj.invalidations.length)
+      ? obj.invalidations
+      : (obj.stop_concerns || obj.downside_scenarios || []);
+    const b = bulletsFrom(reasons);
+    if (b) out.push(b);
+    return out.join('') || '<span class="sum-empty">（空）</span>';
+  }
+
+  const score = obj.score ?? obj.ta_score ?? obj.confidence;
+  if (score != null) pills.push(`<span class="sum-pill"><i>分數</i>${escapeHtml(score)}</span>`);
+  if (pills.length) out.push(`<div class="sum-line">${pills.join('')}</div>`);
+  const reasons = obj.reasons || obj.signals || obj.notes || obj.points || obj.observations || [];
+  const b = bulletsFrom(reasons);
+  if (b) out.push(b);
+  else if (obj.rationale) out.push(`<div class="sum-rationale">${escapeHtml(obj.rationale)}</div>`);
+  if (!out.length) out.push(`<div class="sum-rationale">${escapeHtml(JSON.stringify(obj).slice(0, 200))}</div>`);
+  return out.join('');
+}
+
 function fmtTs(ts) {
   const d = new Date(ts * 1000);
   const hh = String(d.getHours()).padStart(2,'0');
@@ -1451,7 +1546,9 @@ function renderChatLog() {
         : (t.usage && (t.usage.in || t.usage.out)
             ? `<span class="tok">in ${t.usage.in||0} · out ${t.usage.out||0}${t.usage.cr ? ' · cache '+t.usage.cr : ''}</span>`
             : '');
-      const preview = t.response || '（無回應）';
+      const previewHTML = t.error
+        ? `<span class="sum-empty">（無回應）</span>`
+        : renderAgentSummary(t.agent, t.response);
       return `
         <div class="turn ${t.agent} ${expanded ? 'expanded' : ''}" data-turn-id="${turnId}">
           <div class="avatar">
@@ -1464,7 +1561,7 @@ function renderChatLog() {
               ${t.verdict ? `<span class="v-pill ${vCls}">${escapeHtml(t.verdict)}</span>` : ''}
               ${tok}
             </div>
-            <div class="preview">${escapeHtml(preview)}</div>
+            <div class="preview-clean">${previewHTML}</div>
             <div class="full">
               <div class="full-label">📤 USER MESSAGE</div>
               <pre>${escapeHtml(t.user_msg || '')}</pre>
