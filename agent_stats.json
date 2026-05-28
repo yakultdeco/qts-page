@@ -1,63 +1,112 @@
 {
-  "ts": 1779944001.880515,
-  "total": 2,
+  "ts": 1779945732.663615,
+  "total": 5,
   "by_verdict": {
     "go": 0,
-    "wait": 2,
-    "skip": 0
+    "wait": 3,
+    "skip": 2
   },
-  "short_circuits": 0,
-  "cache_reads_tokens": 0,
-  "input_tokens": 1747,
-  "llm_calls": 2,
-  "cost_usd": 0.0099,
+  "short_circuits": 1,
+  "cache_reads_tokens": 65050,
+  "input_tokens": 5285,
+  "llm_calls": 5,
+  "cost_usd": 0.1828,
   "agents": {
     "conti": {
-      "calls": 2,
+      "calls": 5,
       "go": 1,
-      "wait": 1,
-      "skip": 0,
+      "wait": 3,
+      "skip": 1,
       "last": {
-        "code": "6531",
+        "code": "4760",
         "verdict": "wait",
-        "ts": 1779934188.177906
+        "ts": 1779945730.9365141
       }
     },
     "tai": {
-      "calls": 2,
+      "calls": 4,
       "go": 0,
-      "wait": 2,
-      "skip": 0,
+      "wait": 3,
+      "skip": 1,
       "last": {
-        "code": "6531",
+        "code": "4760",
         "verdict": "wait",
-        "ts": 1779934188.177906
+        "ts": 1779945730.9365141
       }
     },
     "combo": {
-      "calls": 2,
+      "calls": 5,
       "go": 0,
-      "wait": 2,
-      "skip": 0,
+      "wait": 3,
+      "skip": 2,
       "last": {
-        "code": "6531",
+        "code": "4760",
         "verdict": "wait",
-        "ts": 1779934188.177906
+        "ts": 1779945730.9365141
       }
     },
     "ortho": {
-      "calls": 2,
+      "calls": 5,
       "go": 0,
-      "wait": 2,
-      "skip": 0,
+      "wait": 3,
+      "skip": 3,
       "last": {
-        "code": "6531",
+        "code": "4760",
         "verdict": "wait",
-        "ts": 1779934188.177906
+        "ts": 1779945730.9365141
       }
     }
   },
   "recent": [
+    {
+      "code": "4760",
+      "ts": 1779945730.9365141,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以排除假突破風險",
+        "脈絡｜距 EMA10 已延伸 17.2%，追高空間壓縮，建議等回測 EMA10 附近再評估"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: APITimeoutError"
+      ]
+    },
+    {
+      "code": "6291",
+      "ts": 1779945484.109012,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，純技術突破，持續性待觀察",
+        "脈絡｜距 EMA10 已延伸 19.6%，追高風險偏高，等回踩確認較佳"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 19.6%，嚴重超過 5% 上限，追高風險極高",
+        "TA｜外資當日賣超 -106,054 股、投信零買，法人籌碼淨流出，不支持突破延續"
+      ]
+    },
+    {
+      "code": "6175",
+      "ts": 1779945459.71668,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜距 EMA10 延伸達 21.1%，追高風險極高，Qullamaggie 原則建議延伸 > 10% 即不追",
+        "脈絡｜無任何新聞題材支撐，訊號純屬技術面，缺乏基本面催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
     {
       "code": "6531",
       "ts": 1779934188.177906,
