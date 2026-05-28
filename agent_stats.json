@@ -1,5 +1,5 @@
 {
-  "ts": 1779954945.984216,
+  "ts": 1779955022.3338938,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -10,7 +10,7 @@
   "cache_reads_tokens": 65050,
   "input_tokens": 5285,
   "llm_calls": 5,
-  "cost_usd": 0.1824,
+  "cost_usd": 0.1822,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 3,
       "skip": 1,
       "last": {
-        "code": "4760",
-        "verdict": "wait",
-        "ts": 1779953434.784661
+        "code": "6175",
+        "verdict": "skip",
+        "ts": 1779955021.8098712
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 3,
       "skip": 1,
       "last": {
-        "code": "4760",
-        "verdict": "wait",
-        "ts": 1779953434.784661
+        "code": "6175",
+        "verdict": "skip",
+        "ts": 1779955021.8098712
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 3,
       "skip": 2,
       "last": {
-        "code": "4760",
-        "verdict": "wait",
-        "ts": 1779953434.784661
+        "code": "6175",
+        "verdict": "skip",
+        "ts": 1779955021.8098712
       }
     },
     "ortho": {
@@ -51,13 +51,29 @@
       "wait": 3,
       "skip": 3,
       "last": {
-        "code": "4760",
-        "verdict": "wait",
-        "ts": 1779953434.784661
+        "code": "6175",
+        "verdict": "skip",
+        "ts": 1779955021.8098712
       }
     }
   },
   "recent": [
+    {
+      "code": "6175",
+      "ts": 1779955021.8098712,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜距 EMA10 延伸達 21.1%，嚴重過熱，追高風險極高",
+        "脈絡｜無任何新聞題材支撐，突破缺乏基本面催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
     {
       "code": "4760",
       "ts": 1779953434.784661,
@@ -72,22 +88,6 @@
       ],
       "ta_reasons": [
         "TA｜ta_agent 失敗: APITimeoutError"
-      ]
-    },
-    {
-      "code": "6175",
-      "ts": 1779953164.7928782,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜距 EMA10 延伸達 21.1%，追高風險極高，非 Qullamaggie 理想進場點（建議 ≤ 5%）",
-        "脈絡｜無任何新聞題材支撐，突破缺乏基本面催化劑"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
       ]
     },
     {
