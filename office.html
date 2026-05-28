@@ -520,6 +520,139 @@
     grid-column: 1 / -1; background: var(--panel); border: 1px solid var(--border);
     border-radius: 12px; padding: 14px; margin-top: 16px;
   }
+
+  /* ─── 💬 LLM 對話紀錄 ─── */
+  .chat-log {
+    grid-column: 1 / -1;
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; margin-top: 16px;
+  }
+  .chat-head {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; gap: 10px; flex-wrap: wrap;
+  }
+  .chat-head h3 { font-size: 13px; color: #f0f6fc; }
+  .chat-head .chat-meta { font-size: 11px; color: var(--dim); }
+  .chat-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    font-size: 10px; padding: 2px 8px; border-radius: 10px;
+    border: 1px solid var(--border); color: var(--muted);
+    cursor: pointer; user-select: none; background: var(--bg);
+  }
+  .chip.active { color: var(--accent); border-color: var(--accent); background: rgba(88,166,255,0.08); }
+
+  .chat-empty { color: var(--dim); font-size: 12px; text-align: center; padding: 30px 8px; }
+  .chat-empty code {
+    background: var(--bg); border: 1px solid var(--border);
+    padding: 1px 6px; border-radius: 4px; color: var(--accent);
+    font-family: ui-monospace, monospace; font-size: 11px;
+  }
+
+  /* 一檔候選 = 一個對話卡 */
+  .convo {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 8px; padding: 10px 12px; margin-bottom: 12px;
+  }
+  .convo:last-child { margin-bottom: 0; }
+  .convo-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    cursor: pointer; user-select: none;
+  }
+  .convo-head .code-tag {
+    font-family: ui-monospace, monospace; font-weight: 700;
+    color: var(--accent); font-size: 13px; min-width: 48px;
+  }
+  .convo-head .verdict-tag {
+    font-size: 10px; padding: 1px 7px; border-radius: 6px; border: 1px solid;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+  .verdict-tag.go   { color: var(--green); border-color: var(--green); background: rgba(63,185,80,0.08); }
+  .verdict-tag.wait { color: var(--muted); border-color: var(--border); }
+  .verdict-tag.skip { color: var(--amber); border-color: var(--amber); background: rgba(210,153,34,0.08); }
+  .convo-head .ts   { font-size: 10px; color: var(--dim); margin-left: auto; }
+  .convo-head .toggle { color: var(--dim); font-size: 11px; }
+
+  .turn { display: flex; gap: 8px; margin-top: 8px; align-items: flex-start; }
+  .turn .avatar {
+    flex-shrink: 0;
+    width: 28px; height: 42px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
+    image-rendering: pixelated; position: relative; overflow: hidden;
+  }
+  .turn .avatar .sprite-img {
+    width: 24px; height: 36px;
+    margin: 2px;
+    background-repeat: no-repeat;
+    background-size: 168px 144px;
+    background-position: 0 0;
+    image-rendering: pixelated;
+  }
+  .turn .bubble {
+    flex: 1;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px 10px 10px 10px;
+    padding: 6px 10px;
+    font-size: 12px; line-height: 1.5;
+    color: var(--text);
+    min-width: 0;
+  }
+  .turn.context .bubble { border-left: 3px solid #1f6feb; }
+  .turn.ta      .bubble { border-left: 3px solid #d29922; }
+  .turn.bear    .bubble { border-left: 3px solid #f85149; }
+  .turn.pm      .bubble { border-left: 3px solid #3fb950; }
+  .turn .who {
+    font-weight: 700; color: #f0f6fc; font-size: 11px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .turn .who .role  { color: var(--muted); font-weight: 400; font-size: 10px; }
+  .turn .who .v-pill { font-size: 9px; padding: 0 5px; border-radius: 4px; border: 1px solid; font-weight: 700; }
+  .turn .who .v-pill.go { color: var(--green); border-color: var(--green); }
+  .turn .who .v-pill.wait { color: var(--muted); border-color: var(--border); }
+  .turn .who .v-pill.skip { color: var(--amber); border-color: var(--amber); }
+  .turn .who .v-pill.low_concern { color: var(--green); border-color: var(--green); }
+  .turn .who .v-pill.moderate_concern { color: var(--amber); border-color: var(--amber); }
+  .turn .who .v-pill.high_concern { color: var(--red); border-color: var(--red); }
+  .turn .who .tok { color: var(--dim); font-weight: 400; font-size: 10px; margin-left: auto; }
+  .turn .who .tok.err { color: var(--red); }
+  .turn .preview {
+    margin-top: 3px; color: var(--text);
+    overflow: hidden; text-overflow: ellipsis;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+    font-family: ui-monospace, 'SF Mono', monospace; font-size: 11px;
+  }
+  .turn .full {
+    margin-top: 6px; display: none;
+    background: var(--bg);
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 8px 10px;
+  }
+  .turn.expanded .full { display: block; }
+  .turn.expanded .preview { display: none; }
+  .turn .full pre {
+    white-space: pre-wrap; word-break: break-word;
+    font-family: ui-monospace, 'SF Mono', monospace;
+    font-size: 11px; line-height: 1.55; color: var(--text);
+    margin: 0;
+  }
+  .turn .full .full-label {
+    font-size: 10px; color: var(--dim); text-transform: uppercase;
+    letter-spacing: 0.5px; margin: 8px 0 4px;
+  }
+  .turn .full .full-label:first-child { margin-top: 0; }
+  .turn .more {
+    font-size: 10px; color: var(--accent); cursor: pointer; user-select: none;
+    margin-top: 4px; display: inline-block;
+  }
+  .turn .more:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .chat-log { padding: 12px; margin-top: 12px; }
+    .turn .avatar { width: 24px; height: 36px; }
+    .turn .avatar .sprite-img { width: 20px; height: 30px; background-size: 140px 120px; }
+    .turn .bubble { padding: 5px 8px; font-size: 11px; }
+    .turn .full pre { font-size: 10px; }
+  }
   .flow h3 { font-size: 13px; color: #f0f6fc; margin-bottom: 10px; }
   .flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
   .flow-step { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-size: 12px; color: var(--text); }
@@ -715,6 +848,27 @@
       </div>
       <div class="feed-list" id="feed-list">
         <div class="feed-empty">尚無資料（等待 agent_stats.json）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LLM 對話紀錄 -->
+  <div class="chat-log" id="chat-log">
+    <div class="chat-head">
+      <h3>💬 LLM 對話紀錄</h3>
+      <div class="chat-filters" id="chat-filters">
+        <span class="chip active" data-f="all">全部</span>
+        <span class="chip" data-f="context">康提</span>
+        <span class="chip" data-f="ta">泰艾</span>
+        <span class="chip" data-f="bear">熊方</span>
+        <span class="chip" data-f="pm">康柏(PM)</span>
+      </div>
+      <div class="chat-meta" id="chat-meta">—</div>
+    </div>
+    <div id="chat-body">
+      <div class="chat-empty">
+        尚未連線到 <code>agent_chat.jsonl</code><br/>
+        盤中監控觸發任一檔 LLM agent 後即會自動出現
       </div>
     </div>
   </div>
