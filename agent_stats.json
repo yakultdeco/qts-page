@@ -1,5 +1,5 @@
 {
-  "ts": 1779942534.118603,
+  "ts": 1779944001.880515,
   "total": 2,
   "by_verdict": {
     "go": 0,
@@ -9,6 +9,8 @@
   "short_circuits": 0,
   "cache_reads_tokens": 0,
   "input_tokens": 1747,
+  "llm_calls": 2,
+  "cost_usd": 0.0099,
   "agents": {
     "conti": {
       "calls": 2,
@@ -62,7 +64,15 @@
       "context": "wait",
       "ta": "wait",
       "final": "wait",
-      "short_circuit": false
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以判斷是否有實質催化劑",
+        "脈絡｜現價距進場點已延伸4.7%，追高風險偏高，建議等待回測進場區間"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: APITimeoutError"
+      ]
     },
     {
       "code": "2330",
@@ -70,7 +80,15 @@
       "context": "go",
       "ta": "wait",
       "final": "wait",
-      "short_circuit": false
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜大盤bull、TAIEX +1.4%，系統性風險低，多頭氛圍有利突破延續",
+        "脈絡｜訊號強度slv=4強量突破，技術面確認度高，評分85屬強訊號"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: APITimeoutError"
+      ]
     }
   ]
 }
