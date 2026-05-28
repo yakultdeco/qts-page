@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QTS 量子交易所 — Pixel Office</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117; color: #e6edf3;
+    font-family: -apple-system, 'Segoe UI', sans-serif; font-size: 13px;
+    padding: 16px; min-height: 100vh;
+  }
+  h1 { color: #f0f6fc; font-size: 20px; margin-bottom: 3px; letter-spacing: 1px; }
+  .sub { color: #8b949e; font-size: 12px; margin-bottom: 16px; }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(640px, 1fr) 320px;
+    gap: 16px;
+    max-width: 1280px;
+  }
+  @media (max-width: 980px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  /* 辦公室畫布 */
+  .office-wrap {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .office-title { font-size: 14px; color: #f0f6fc; font-weight: 600; margin-bottom: 8px; }
+  .office-hint { font-size: 11px; color: #6e7681; margin-bottom: 10px; }
+
+  .office {
+    --tile: 28px;
+    position: relative;
+    width: calc(var(--tile) * 18);
+    height: calc(var(--tile) * 12);
+    background:
+      repeating-linear-gradient(0deg,
+        #1c2128 0, #1c2128 var(--tile),
+        #21262d var(--tile), #21262d calc(var(--tile) * 2)),
+      repeating-linear-gradient(90deg,
+        rgba(110,118,129,0.08) 0, rgba(110,118,129,0.08) 1px,
+        transparent 1px, transparent var(--tile));
+    border: 4px solid #6e7681;
+    border-radius: 4px;
+    image-rendering: pixelated;
+    margin: 0 auto;
+  }
+
+  /* 牆面 */
+  .wall {
+    position: absolute;
+    background: #484f58;
+    border: 1px solid #30363d;
+  }
+  .wall.top { left: 0; right: 0; top: 0; height: 14px; }
+
+  /* 白板 */
+  .whiteboard {
+    position: absolute;
+    top: 14px; left: 14px;
+    width: calc(var(--tile) * 4);
+    height: 22px;
+    background: #f0f6fc;
+    border: 2px solid #30363d;
+    color: #0d1117;
+    font-size: 9px;
+    line-height: 18px;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  /* 桌子 */
+  .desk {
+    position: absolute;
+    background: #8b6f47;
+    border: 2px solid #5c4a30;
+    border-radius: 2px;
+    box-shadow: inset 0 -3px 0 #5c4a30;
+  }
+  .desk .screen {
+    position: absolute; top: 2px; left: 50%;
+    transform: translateX(-50%);
+    width: 60%; height: 8px;
+    background: #1f6feb;
+    border: 1px solid #0d1117;
+  }
+
+  /* 角色 sprite */
+  .agent {
+    position: absolute;
+    width: 22px; height: 26px;
+    cursor: pointer;
+    transition: transform 0.15s;
+    z-index: 5;
+  }
+  .agent:hover { transform: scale(1.25); z-index: 10; }
+  .agent.active-sprite { animation: bob 1.2s ease-in-out infinite; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-2px); }
+  }
+  .agent svg {
+    width: 100%; height: 100%;
+    shape-rendering: crispEdges;
+    image-rendering: pixelated;
+  }
+  .agent .name-tag {
+    position: absolute;
+    bottom: -12px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; color: #8b949e; white-space: nowrap;
+    pointer-events: none;
+  }
+  .agent.selected .name-tag { color: #58a6ff; font-weight: 700; }
+
+  /* 設備 */
+  .fixture {
+    position: absolute;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+  }
+  .fixture.coffee { font-size: 18px; }
+  .fixture.entry {
+    background: #0d1117;
+    border: 2px dashed #6e7681;
+    color: #6e7681;
+    font-size: 9px;
+    padding: 1px 4px;
+  }
+
+  /* 右側角色卡 */
+  .panel {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 16px;
+    position: sticky;
+    top: 16px;
+    align-self: start;
+  }
+  .panel-title { font-size: 13px; color: #8b949e; margin-bottom: 8px; }
+  .card-head {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+  }
+  .card-avatar {
+    width: 44px; height: 52px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-avatar svg { width: 32px; height: 38px; shape-rendering: crispEdges; }
+  .card-name { font-size: 16px; font-weight: 700; color: #f0f6fc; }
+  .card-role { font-size: 11px; color: #58a6ff; margin-top: 1px; }
+  .card-file {
+    font-family: ui-monospace, 'SF Mono', monospace;
+    font-size: 11px;
+    color: #6e7681;
+    margin-top: 1px;
+  }
+  .card-section { margin-top: 12px; }
+  .card-label { font-size: 11px; color: #6e7681; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .card-body { font-size: 12px; color: #e6edf3; line-height: 1.55; }
+  .card-quirk {
+    font-size: 12px; color: #d29922;
+    background: #2d2510;
+    border-left: 3px solid #d29922;
+    padding: 6px 10px;
+    margin-top: 10px;
+  }
+  .badge {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-size: 10px;
+    border: 1px solid;
+    margin-right: 4px;
+  }
+  .badge.green { color: #3fb950; border-color: #238636; background: #0f2d1a; }
+  .badge.blue  { color: #58a6ff; border-color: #1f6feb; background: #0f1620; }
+  .badge.amber { color: #d29922; border-color: #9e6a03; background: #2d2510; }
+  .badge.gray  { color: #8b949e; border-color: #30363d; background: #161b22; }
+
+  /* 預設提示 */
+  .empty-hint {
+    color: #6e7681; font-size: 12px; text-align: center;
+    padding: 28px 8px; line-height: 1.6;
+  }
+  .empty-hint .key { color: #58a6ff; }
+
+  /* 流程圖 */
+  .flow {
+    grid-column: 1 / -1;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 16px;
+  }
+  .flow h3 { font-size: 13px; color: #f0f6fc; margin-bottom: 10px; }
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  .flow-step {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 12px;
+    color: #e6edf3;
+  }
+  .flow-step .step-no {
+    display: inline-block; font-weight: 700;
+    background: #1f6feb; color: #fff;
+    width: 18px; height: 18px; border-radius: 50%;
+    text-align: center; line-height: 18px; font-size: 11px;
+    margin-right: 6px;
+  }
+  .flow-step .step-who { color: #58a6ff; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h1>🏢 QTS 量子交易所</h1>
+<div class="sub">Qullamaggie Trading Studio · 兩票一審，謹慎進場 · hover 任一角色看詳細</div>
+
+<div class="layout">
+
+  <!-- 辦公室 -->
+  <div class="office-wrap">
+    <div class="office-title">辦公室平面圖（俯視）</div>
+    <div class="office-hint">座位由上至下：白板 → 三位分析師桌 → 仲裁桌 → 檢討桌 → 入口</div>
+
+    <div class="office" id="office">
+      <div class="wall top"></div>
+
+      <!-- 白板 -->
+      <div class="whiteboard" title="今日 watchlist">📋 WATCHLIST</div>
+
+      <!-- 桌子們 -->
+      <div class="desk" style="top: 78px; left: 50px; width: 56px; height: 30px;">
+        <div class="screen"></div>
+      </div>
+      <div class="desk" style="top: 78px; left: 200px; width: 56px; height: 30px;">
+        <div class="screen"></div>
+      </div>
+      <div class="desk" style="top: 78px; left: 360px; width: 70px; height: 30px;">
+        <div class="screen"></div>
+      </div>
+      <div class="desk" style="top: 168px; left: 170px; width: 60px; height: 28px;">
+        <div class="screen"></div>
+      </div>
+      <div class="desk" style="top: 235px; left: 340px; width: 60px; height: 28px;">
+        <div class="screen"></div>
+      </div>
+
+      <!-- 設備 -->
+      <div class="fixture coffee" style="top: 248px; left: 28px;" title="cache hit 響一聲">☕</div>
+      <div class="fixture entry" style="bottom: 6px; left: 50%; transform: translateX(-50%);">入口</div>
+
+      <!-- 角色們 -->
+      <div class="agent active-sprite" data-id="conti"   style="top: 110px; left: 65px;">
+        <svg viewBox="0 0 22 26"></svg>
+        <div class="name-tag">康提</div>
+      </div>
+      <div class="agent active-sprite" data-id="tai"     style="top: 110px; left: 215px;">
+        <svg viewBox="0 0 22 26"></svg>
+        <div class="name-tag">泰艾</div>
+      </div>
+      <div class="agent active-sprite" data-id="ortho"   style="top: 110px; left: 380px;">
+        <svg viewBox="0 0 22 26"></svg>
+        <div class="name-tag">歐西</div>
+      </div>
+      <div class="agent active-sprite" data-id="combo"   style="top: 198px; left: 185px;">
+        <svg viewBox="0 0 22 26"></svg>
+        <div class="name-tag">康柏</div>
+      </div>
+      <div class="agent active-sprite" data-id="revie"   style="top: 265px; left: 355px;">
+        <svg viewBox="0 0 22 26"></svg>
+        <div class="name-tag">芮薇</div>
+      </div>
+      <div class="agent" data-id="scan" style="top: 295px; left: 60px;">
+        <svg viewBox="0 0 22 26"></svg>
+        <div class="name-tag">史肯 (08:30)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 右側資訊卡 -->
+  <div class="panel" id="panel">
+    <div class="panel-title">角色檔案</div>
+    <div id="card-area">
+      <div class="empty-hint">
+        將滑鼠移到任一角色上<br/>
+        看 <span class="key">職責</span> 與 <span class="key">工作習性</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 工作流 -->
+  <div class="flow">
+    <h3>🔄 一日工作流</h3>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <span class="step-no">1</span>
+        <strong>08:30</strong> · <span class="step-who">史肯</span>把當日 watchlist 貼上白板，貼完就閃人
+      </div>
+      <div class="flow-step">
+        <span class="step-no">2</span>
+        盤中觸發：<span class="step-who">歐西</span>看到 slv≥3 的標的，往<span class="step-who">康提</span>桌上丟資料夾
+      </div>
+      <div class="flow-step">
+        <span class="step-no">3</span>
+        <span class="step-who">康提</span>翻新聞 → 若 verdict=<code style="color:#f85149">skip</code>，資料夾直接摔回主位（短路省成本）
+      </div>
+      <div class="flow-step">
+        <span class="step-no">4</span>
+        否則資料夾傳給 <span class="step-who">泰艾</span>，他打開 twstockmcp 查籌碼與技術
+      </div>
+      <div class="flow-step">
+        <span class="step-no">5</span>
+        兩票交給 <span class="step-who">康柏</span>，他敲槌做最終 go / wait / skip
+      </div>
+      <div class="flow-step">
+        <span class="step-no">6</span>
+        盤後 <span class="step-who">芮薇</span>把當日出場的交易抽出來寫第一版檢討
+      </div>
+      <div class="flow-step">
+        <span class="step-no">7</span>
+        一週後 <span class="step-who">芮薇</span>回看當初判斷對不對，補上 hindsight
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============ 角色資料 ============
+const AGENTS = {
+  ortho: {
+    name: '歐西 Ortho',
+    role: '調度長 · 坐主位',
+    file: 'agents/orchestrator.py',
+    badges: ['blue:派工', 'green:cache 命中率高', 'gray:坐主位'],
+    body: '把當日要跑的候選股按 slv 由高到低排隊，最多同時跑 6 檔（成本上限）。同一候選裡 Context → TA 順序執行；不同候選之間平行（ThreadPool）。',
+    quirk: 'Cache hit 15 分鐘內絕對沿用，15-30 分若價格 ±2% 內也沿用 — 命中時翹腳喝咖啡。失敗就 fail-soft 回 wait，絕對不擋系統。',
+    look: { hair: '#1f2937', skin: '#e8c9a5', cloth: '#0f172a', accent: '#1f6feb' }
+  },
+  conti: {
+    name: '康提 Conti',
+    role: '脈絡分析師',
+    file: 'agents/context_agent.py',
+    badges: ['blue:先發', 'amber:可短路', 'gray:讀新聞'],
+    body: '從當日 qts_news_YYYYMMDD.csv 抓對應 code 的新聞，加上大盤狀態（risk-on / risk-off），輸出 verdict + score + reasons。',
+    quirk: '一旦喊 verdict="skip"，這檔就直接被否決，省下後面 TA agent 的呼叫（成本砍 ~60%）。所以他翻新聞特別狠。',
+    look: { hair: '#6b3e26', skin: '#e8c9a5', cloth: '#c9a96e', accent: '#fb7185' }
+  },
+  tai: {
+    name: '泰艾 Tai',
+    role: '技術分析師',
+    file: 'agents/ta_agent.py',
+    badges: ['blue:後手', 'green:MCP', 'gray:背 Qullamaggie'],
+    body: '透過 twstockmcp 抓技術指標 + 籌碼。System prompt 內嵌完整 Qullamaggie 知識庫（讓 prompt 過 1024 token 觸發 caching 折扣）。',
+    quirk: '背心法背到桌上四螢幕全是 EMA10 / ADR / volume。Context 沒 skip 才出手 — 是辦公室裡的最後一關技術把關。',
+    look: { hair: '#1c1c1c', skin: '#e8c9a5', cloth: '#7c2d12', accent: '#fbbf24' }
+  },
+  combo: {
+    name: '康柏 Combo',
+    role: '投票仲裁',
+    file: 'agents/combiner.py',
+    badges: ['green:雙方 go → 進場', 'amber:混合需 ≥130', 'gray:任一 skip → 否決'],
+    body: '收兩票做仲裁：雙方 go = 進場；任一 skip = 否決；一 go 一 wait 要綜合分 ≥130 且 go 那邊 ≥70 才放行。',
+    quirk: '不寫 LLM call，純規則 — 但偏保守。一 go 一 wait 的混合情境門檻刻意拉高，避免單方力推就硬塞單。',
+    look: { hair: '#b45309', skin: '#e8c9a5', cloth: '#0f172a', accent: '#fbbf24' }
+  },
+  revie: {
+    name: '芮薇 Revie',
+    role: '事後檢討官',
+    file: 'agents/reviewer_agent.py',
+    badges: ['green:寫檢討', 'blue:hindsight', 'gray:盤後/週後'],
+    body: '出場後產第一版檢討（進場理由 vs 實際走勢 vs 出場決定）。一週後再回看當初判斷對不對，把 reasoning 收進長期回饋。',
+    quirk: '桌上紅筆綠筆並排 — 紅筆畫錯的判斷、綠筆圈下次該模仿的決策。是辦公室裡唯一不參與當下進場決定的人。',
+    look: { hair: '#4b5563', skin: '#e8c9a5', cloth: '#a78bfa', accent: '#34d399' }
+  },
+  scan: {
+    name: '史肯 Scan',
+    role: '早班掃描員（輪班）',
+    file: 'qts_scanner.py',
+    badges: ['amber:輪班', 'gray:08:30 上工', 'gray:貼完就走'],
+    body: '盤前跑 Qullamaggie 條件掃描，產出當日 watchlist（強勢續強池 + 落後補漲池 + 近突破擴展池）。',
+    quirk: '不參與盤中決策。早上 8:30 進辦公室、把白板貼好就走 — 之後整天位子空著，所以名牌灰灰的。',
+    look: { hair: '#047857', skin: '#e8c9a5', cloth: '#065f46', accent: '#fbbf24' }
+  }
+};
+
+// ============ Sprite 產生器 ============
+// 22x26 像素人偶（俯視半身）
+function spriteSVG(look, scale = 1) {
+  const { hair, skin, cloth, accent } = look;
+  // pixel layout (each cell = 2px, 11x13 grid)
+  // we draw rects directly
+  const px = (x, y, w, h, fill) =>
+    `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}"/>`;
+  return `
+    <svg viewBox="0 0 22 26" xmlns="http://www.w3.org/2000/svg">
+      <!-- 頭髮頂 -->
+      ${px(5, 2, 12, 2, hair)}
+      ${px(3, 4, 16, 2, hair)}
+      <!-- 臉 -->
+      ${px(5, 6, 12, 6, skin)}
+      <!-- 髮型側 -->
+      ${px(3, 6, 2, 4, hair)}
+      ${px(17, 6, 2, 4, hair)}
+      <!-- 眼睛 -->
+      ${px(7, 8, 2, 2, '#0d1117')}
+      ${px(13, 8, 2, 2, '#0d1117')}
+      <!-- 脖子 -->
+      ${px(9, 12, 4, 2, skin)}
+      <!-- 衣服 -->
+      ${px(3, 14, 16, 10, cloth)}
+      <!-- 衣領強調 -->
+      ${px(9, 14, 4, 2, accent)}
+      <!-- 鈕扣/口袋 -->
+      ${px(10, 18, 2, 2, accent)}
+      <!-- 鞋底 -->
+      ${px(5, 24, 4, 2, '#0d1117')}
+      ${px(13, 24, 4, 2, '#0d1117')}
+    </svg>
+  `;
+}
+
+// ============ 注入 sprite ============
+document.querySelectorAll('.agent').forEach(el => {
+  const id = el.dataset.id;
+  const a = AGENTS[id];
+  if (!a) return;
+  el.innerHTML = spriteSVG(a.look) +
+    `<div class="name-tag">${a.name.split(' ')[0]}${id==='scan'?' (08:30)':''}</div>`;
+});
+
+// ============ 互動：hover/click 顯示角色卡 ============
+const cardArea = document.getElementById('card-area');
+const defaultHTML = cardArea.innerHTML;
+
+function renderCard(id) {
+  const a = AGENTS[id];
+  if (!a) return;
+  const badges = a.badges.map(b => {
+    const [color, text] = b.split(':');
+    return `<span class="badge ${color}">${text}</span>`;
+  }).join('');
+  cardArea.innerHTML = `
+    <div class="card-head">
+      <div class="card-avatar">${spriteSVG(a.look)}</div>
+      <div>
+        <div class="card-name">${a.name}</div>
+        <div class="card-role">${a.role}</div>
+        <div class="card-file">${a.file}</div>
+      </div>
+    </div>
+    <div>${badges}</div>
+    <div class="card-section">
+      <div class="card-label">職責</div>
+      <div class="card-body">${a.body}</div>
+    </div>
+    <div class="card-quirk">💡 ${a.quirk}</div>
+  `;
+}
+
+let stickyId = null;
+document.querySelectorAll('.agent').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.agent').forEach(x => x.classList.remove('selected'));
+    el.classList.add('selected');
+    renderCard(el.dataset.id);
+  });
+  el.addEventListener('click', () => {
+    stickyId = stickyId === el.dataset.id ? null : el.dataset.id;
+  });
+  el.addEventListener('mouseleave', () => {
+    if (!stickyId) {
+      el.classList.remove('selected');
+      cardArea.innerHTML = defaultHTML;
+    } else {
+      // 回到 sticky 那位
+      document.querySelectorAll('.agent').forEach(x => x.classList.remove('selected'));
+      const sticky = document.querySelector(`.agent[data-id="${stickyId}"]`);
+      if (sticky) sticky.classList.add('selected');
+      renderCard(stickyId);
+    }
+  });
+});
+</script>
+
+</body>
+</html>
