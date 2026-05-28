@@ -16,17 +16,19 @@
     --green: #3fb950;
     --amber: #d29922;
     --red: #f85149;
-    /* office palette */
-    --wood-1: #6b4f2c;
-    --wood-2: #5c4225;
-    --wood-3: #4a341d;
-    --wall-1: #2a3441;
-    --wall-2: #1f2730;
-    --wall-trim: #3b4655;
-    --rug:   #8b4a3a;
-    --rug-dk:#6e3a2e;
-    --tile-1:#3d4856;
-    --tile-2:#34404e;
+    /* office tones */
+    --floor-tint: #6b4a2c;   /* 木地板色（floor_4 tile 是灰，靠這個底色透出） */
+    --wall-tint:  #2a3441;
+    --rug:        #8b4a3a;
+
+    /* sprite 基準尺寸 */
+    --scale: 3;
+    --tile: calc(16px * var(--scale));   /* 48px */
+    --char-w: calc(16px * var(--scale));
+    --char-h: calc(24px * var(--scale));
+
+    /* sprite 來源 */
+    --sprite-base: 'https://yakultdeco.github.io/qts-page/sprites';
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -39,13 +41,12 @@
   .pulse {
     display: inline-block; width: 8px; height: 8px; border-radius: 50%;
     background: var(--dim); margin-left: 6px;
-    box-shadow: 0 0 0 0 currentColor;
   }
-  .pulse.live { background: var(--green); color: var(--green); animation: ping 1.5s infinite; }
-  .pulse.stale { background: var(--amber); color: var(--amber); }
-  .pulse.off { background: var(--dim); color: var(--dim); }
+  .pulse.live { background: var(--green); animation: ping 1.5s infinite; }
+  .pulse.stale { background: var(--amber); }
+  .pulse.off { background: var(--dim); }
   @keyframes ping {
-    0%   { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+    0%   { box-shadow: 0 0 0 0 #3fb950; opacity: 1; }
     70%  { box-shadow: 0 0 0 6px transparent; opacity: 0.7; }
     100% { box-shadow: 0 0 0 0 transparent; opacity: 1; }
   }
@@ -59,7 +60,6 @@
     .layout { grid-template-columns: 1fr; }
   }
 
-  /* 辦公室容器 */
   .office-wrap {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -73,109 +73,186 @@
   .ow-title { font-size: 14px; color: #f0f6fc; font-weight: 600; }
   .ow-meta  { font-size: 11px; color: var(--dim); }
 
-  /* —— 辦公室畫布：用內嵌 SVG 畫，crispEdges 保像素感 —— */
+  /* —— 辦公室 —— */
   .office {
     position: relative;
-    width: 720px; max-width: 100%;
-    aspect-ratio: 720 / 480;
+    width: calc(var(--tile) * 16);     /* 16 tiles wide = 768px @3x */
+    height: calc(var(--tile) * 10);    /* 10 tiles = 480px */
+    max-width: 100%;
     image-rendering: pixelated;
-    background: #0a0e14;
-    border: 4px solid var(--wall-trim);
+    image-rendering: crisp-edges;
+    border: 4px solid #1f2730;
     border-radius: 4px;
-    box-shadow: inset 0 0 0 2px #0d1117;
     overflow: hidden;
     margin: 0 auto;
-  }
-  .office svg.bg {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    shape-rendering: crispEdges;
+    background: var(--floor-tint);
   }
 
-  /* —— 角色容器 —— */
+  /* 上方牆面（用 wall_0 tile）*/
+  .wall {
+    position: absolute; left: 0; right: 0; top: 0;
+    height: calc(var(--tile) * 1.5);
+    background:
+      image-set(url(https://yakultdeco.github.io/qts-page/sprites/walls/wall_0.png));
+    background-image: url(https://yakultdeco.github.io/qts-page/sprites/walls/wall_0.png);
+    background-repeat: repeat-x;
+    background-size: calc(64px * var(--scale)) calc(128px * var(--scale));
+    background-position: 0 calc(-32px * var(--scale));
+    image-rendering: pixelated;
+    filter: hue-rotate(190deg) saturate(0.7) brightness(0.6);
+  }
+
+  /* 地板（floor_4 tile + 暖色濾鏡讓它像木地板） */
+  .floor {
+    position: absolute; left: 0; right: 0; top: calc(var(--tile) * 1.5); bottom: 0;
+    background-image: url(https://yakultdeco.github.io/qts-page/sprites/floors/floor_4.png);
+    background-repeat: repeat;
+    background-size: var(--tile) var(--tile);
+    image-rendering: pixelated;
+    filter: sepia(0.5) hue-rotate(-10deg) saturate(1.4) brightness(0.75);
+  }
+
+  /* 中央地毯 */
+  .rug {
+    position: absolute;
+    left: calc(var(--tile) * 5); top: calc(var(--tile) * 5.5);
+    width: calc(var(--tile) * 6); height: calc(var(--tile) * 3);
+    background: var(--rug);
+    border: 2px solid #5e2e22;
+    box-shadow: inset 0 0 0 4px var(--rug), inset 0 0 0 6px #5e2e22;
+  }
+
+  /* 白板 */
+  .whiteboard {
+    position: absolute;
+    top: calc(var(--tile) * 0.3); left: calc(var(--tile) * 3);
+    width: calc(var(--tile) * 4); height: calc(var(--tile) * 0.9);
+    background: #f0f6fc;
+    border: 2px solid #1f2730;
+    display: flex; flex-direction: column; padding: 2px 6px;
+    font-family: ui-monospace, 'SF Mono', monospace;
+    font-size: 9px; color: #0d1117; font-weight: 700;
+    image-rendering: auto;
+  }
+  .whiteboard .wb-title { font-size: 10px; margin-bottom: 1px; }
+  .whiteboard .wb-line {
+    height: 2px; background: #8b949e; margin: 1px 0;
+  }
+
+  /* 通用家具 sprite */
+  .sprite {
+    position: absolute;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    pointer-events: none;
+  }
+  .sprite.desk-front { width: calc(48px * var(--scale)); height: calc(32px * var(--scale)); }
+  .sprite.pc         { width: calc(16px * var(--scale)); height: calc(32px * var(--scale)); }
+  .sprite.bookshelf  { width: calc(32px * var(--scale)); height: calc(16px * var(--scale)); }
+  .sprite.coffee     { width: calc(16px * var(--scale)); height: calc(16px * var(--scale)); }
+  .sprite.plant      { width: calc(32px * var(--scale)); height: calc(48px * var(--scale)); }
+
+  /* PC 螢幕 ON 動畫（3 frame） */
+  @keyframes pc-on {
+    0%, 33%  { background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png); }
+    34%, 66% { background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png); }
+    67%, 100%{ background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png); }
+  }
+  .pc-on {
+    background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    animation: pc-on 1.2s steps(3, end) infinite;
+  }
+
+  /* ========= 角色（PNG sprite sheet）========= */
   .agent {
     position: absolute;
-    width: 36px; height: 54px;
+    width: var(--char-w); height: var(--char-h);
     cursor: pointer;
     z-index: 5;
     transition: transform 0.15s;
   }
-  .agent:hover { transform: scale(1.18); z-index: 10; }
-  .agent.busy { animation: bob 1.0s ease-in-out infinite; }
-  .agent.idle { animation: bob 2.4s ease-in-out infinite; }
-  .agent.away { opacity: 0.4; filter: grayscale(1); }
-  @keyframes bob {
-    0%, 100% { transform: translateY(0); }
-    50%      { transform: translateY(-2px); }
-  }
-  .agent svg.sprite {
+  .agent:hover { transform: translateY(-3px) scale(1.05); z-index: 10; }
+  .agent .sprite-img {
     width: 100%; height: 100%;
-    shape-rendering: crispEdges; image-rendering: pixelated;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background-repeat: no-repeat;
+    /* sprite sheet 是 112x96，scale ×3 → 336x288 */
+    background-size: calc(112px * var(--scale)) calc(96px * var(--scale));
+    background-position: 0 0;       /* row 0, col 0 = 前方站立 idle */
   }
+  /* idle 動畫：在 col 0/1 之間切換 */
+  @keyframes idle-frames {
+    0%, 49%   { background-position: 0 0; }
+    50%, 100% { background-position: calc(-16px * var(--scale)) 0; }
+  }
+  .agent.busy .sprite-img { animation: idle-frames 0.6s steps(1, end) infinite; }
+  .agent.idle .sprite-img { animation: idle-frames 1.8s steps(1, end) infinite; }
+  .agent.away             { opacity: 0.4; filter: grayscale(1) brightness(0.7); }
+
   .agent .name-tag {
     position: absolute;
-    bottom: -10px; left: 50%; transform: translateX(-50%);
-    font-size: 9px; color: var(--muted); white-space: nowrap;
-    pointer-events: none;
-    text-shadow: 1px 1px 0 #000;
+    bottom: -14px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; color: var(--muted);
+    white-space: nowrap; pointer-events: none;
+    text-shadow: 1px 1px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
   }
   .agent.selected .name-tag { color: var(--accent); font-weight: 700; }
+
   .agent .status-badge {
     position: absolute;
-    top: -6px; right: -10px;
+    top: -8px; right: -10px;
     background: var(--bg); color: var(--accent);
     border: 1px solid var(--accent);
     border-radius: 8px;
-    padding: 0 4px;
-    font-size: 9px;
-    font-weight: 700;
-    min-width: 14px;
-    text-align: center;
+    padding: 0 5px;
+    font-size: 10px; font-weight: 700;
+    min-width: 16px; text-align: center;
     pointer-events: none;
   }
   .agent .status-badge.zero { color: var(--dim); border-color: var(--border); }
   .agent .status-badge.go   { color: var(--green); border-color: var(--green); }
   .agent .status-badge.skip { color: var(--amber); border-color: var(--amber); }
 
-  /* 信封動畫 — 任務在 agent 間流動 */
+  /* 信封動畫 */
   .envelope {
     position: absolute;
-    width: 14px; height: 11px;
+    width: 18px; height: 14px;
     background: #f0f6fc;
-    border: 1px solid #0d1117;
+    border: 2px solid #0d1117;
     z-index: 20;
     pointer-events: none;
     box-shadow: 1px 1px 0 #0d1117;
   }
   .envelope::before {
-    content: ''; position: absolute; inset: 1px 1px 50% 1px;
-    border-bottom: 1px solid #d29922;
+    content: ''; position: absolute; inset: 1px;
     background: linear-gradient(135deg, transparent 49%, #d29922 49%, #d29922 51%, transparent 51%),
                 linear-gradient(45deg,  transparent 49%, #d29922 49%, #d29922 51%, transparent 51%);
   }
 
-  /* —— 右側 — —— */
+  /* —— 右側 —— */
   .panel {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px;
-    position: sticky;
-    top: 16px;
-    align-self: start;
-    max-height: calc(100vh - 32px);
-    overflow-y: auto;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 12px;
+    padding: 16px; position: sticky; top: 16px; align-self: start;
+    max-height: calc(100vh - 32px); overflow-y: auto;
   }
   .panel-title { font-size: 13px; color: var(--muted); margin-bottom: 8px; }
   .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
   .card-avatar {
-    width: 48px; height: 60px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    width: 56px; height: 80px;
+    background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
     display: flex; align-items: center; justify-content: center;
-    padding: 4px;
+    image-rendering: pixelated; position: relative; overflow: hidden;
   }
-  .card-avatar svg { width: 100%; height: 100%; shape-rendering: crispEdges; }
+  .card-avatar .sprite-img {
+    width: 48px; height: 72px;
+    background-repeat: no-repeat;
+    background-size: 336px 288px;
+    background-position: 0 0;
+    image-rendering: pixelated; image-rendering: crisp-edges;
+  }
   .card-name { font-size: 17px; font-weight: 700; color: #f0f6fc; }
   .card-role { font-size: 11px; color: var(--accent); margin-top: 1px; }
   .card-file { font-family: ui-monospace, 'SF Mono', monospace; font-size: 11px; color: var(--dim); margin-top: 1px; }
@@ -189,59 +266,32 @@
     padding: 6px 10px; margin-top: 10px;
   }
   .badge {
-    display: inline-block;
-    padding: 1px 7px;
-    border-radius: 8px;
-    font-size: 10px;
-    border: 1px solid;
-    margin-right: 4px; margin-bottom: 4px;
+    display: inline-block; padding: 1px 7px; border-radius: 8px;
+    font-size: 10px; border: 1px solid; margin-right: 4px; margin-bottom: 4px;
   }
   .badge.green { color: var(--green); border-color: #238636; background: rgba(63,185,80,0.08); }
   .badge.blue  { color: var(--accent); border-color: #1f6feb; background: rgba(31,111,235,0.08); }
   .badge.amber { color: var(--amber); border-color: #9e6a03; background: rgba(210,153,34,0.08); }
   .badge.gray  { color: var(--muted); border-color: var(--border); background: var(--panel); }
 
-  .stats-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
-    margin-top: 8px;
-  }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
   .stat-cell {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 6px 8px;
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 8px;
   }
   .stat-cell .v { font-size: 16px; font-weight: 700; color: #f0f6fc; font-variant-numeric: tabular-nums; }
   .stat-cell .l { font-size: 10px; color: var(--dim); margin-top: 1px; }
   .stat-cell.go .v   { color: var(--green); }
   .stat-cell.skip .v { color: var(--amber); }
 
-  .empty-hint {
-    color: var(--dim); font-size: 12px; text-align: center;
-    padding: 24px 8px; line-height: 1.6;
-  }
+  .empty-hint { color: var(--dim); font-size: 12px; text-align: center; padding: 24px 8px; line-height: 1.6; }
   .empty-hint .key { color: var(--accent); }
 
-  /* 活動 feed */
   .feed { margin-top: 14px; }
-  .feed-head {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 6px;
-  }
+  .feed-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
   .feed-title { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.5px; }
-  .feed-list {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    max-height: 230px; overflow-y: auto;
-  }
-  .feed-item {
-    padding: 6px 10px;
-    border-bottom: 1px solid var(--border);
-    font-size: 11px;
-    display: flex; gap: 8px;
-    align-items: center;
-  }
+  .feed-list { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; max-height: 230px; overflow-y: auto; }
+  .feed-item { padding: 6px 10px; border-bottom: 1px solid var(--border); font-size: 11px; display: flex; gap: 8px; align-items: center; }
   .feed-item:last-child { border-bottom: none; }
   .feed-item .v { font-weight: 700; min-width: 32px; }
   .feed-item .v.go { color: var(--green); }
@@ -249,37 +299,21 @@
   .feed-item .v.skip { color: var(--amber); }
   .feed-item .code { color: var(--accent); font-family: ui-monospace, monospace; min-width: 40px; }
   .feed-item .meta { color: var(--dim); margin-left: auto; font-size: 10px; }
-  .feed-item .sc {
-    color: var(--amber); font-size: 9px; border: 1px solid var(--amber);
-    border-radius: 4px; padding: 0 4px;
-  }
+  .feed-item .sc { color: var(--amber); font-size: 9px; border: 1px solid var(--amber); border-radius: 4px; padding: 0 4px; }
   .feed-empty { padding: 16px; text-align: center; color: var(--dim); font-size: 11px; }
 
-  /* 工作流 */
   .flow {
-    grid-column: 1 / -1;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    margin-top: 16px;
+    grid-column: 1 / -1; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; margin-top: 16px;
   }
   .flow h3 { font-size: 13px; color: #f0f6fc; margin-bottom: 10px; }
   .flow-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
-  .flow-step {
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px;
-    font-size: 12px;
-    color: var(--text);
-  }
+  .flow-step { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; font-size: 12px; color: var(--text); }
   .flow-step .step-no {
     display: inline-block; font-weight: 700;
     background: #1f6feb; color: #fff;
     width: 18px; height: 18px; border-radius: 50%;
-    text-align: center; line-height: 18px; font-size: 11px;
-    margin-right: 6px;
+    text-align: center; line-height: 18px; font-size: 11px; margin-right: 6px;
   }
   .flow-step .step-who { color: var(--accent); font-weight: 600; }
   .flow-step code { color: var(--red); }
@@ -292,7 +326,6 @@
 
 <div class="layout">
 
-  <!-- 辦公室 -->
   <div class="office-wrap">
     <div class="ow-head">
       <div class="ow-title">辦公室平面圖（俯視）</div>
@@ -300,259 +333,63 @@
     </div>
 
     <div class="office" id="office">
-      <!-- 背景 SVG（牆/地板/窗/家具）-->
-      <svg class="bg" viewBox="0 0 720 480" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <!-- 木地板 pattern：每塊 60×30 -->
-          <pattern id="parquet" x="0" y="0" width="60" height="30" patternUnits="userSpaceOnUse">
-            <rect width="60" height="30" fill="var(--wood-1)"/>
-            <rect x="0"  y="0"  width="30" height="15" fill="var(--wood-2)"/>
-            <rect x="30" y="15" width="30" height="15" fill="var(--wood-2)"/>
-            <line x1="0"  y1="0"  x2="60" y2="0"  stroke="var(--wood-3)" stroke-width="1"/>
-            <line x1="0"  y1="15" x2="60" y2="15" stroke="var(--wood-3)" stroke-width="1"/>
-            <line x1="30" y1="0"  x2="30" y2="30" stroke="var(--wood-3)" stroke-width="1"/>
-            <line x1="0"  y1="15" x2="0"  y2="30" stroke="var(--wood-3)" stroke-width="1"/>
-            <line x1="60" y1="15" x2="60" y2="30" stroke="var(--wood-3)" stroke-width="1"/>
-          </pattern>
-          <!-- 角落瓷磚 -->
-          <pattern id="tiles" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
-            <rect width="30" height="30" fill="var(--tile-1)"/>
-            <rect x="1" y="1" width="14" height="14" fill="var(--tile-2)"/>
-            <rect x="16" y="16" width="13" height="13" fill="var(--tile-2)"/>
-          </pattern>
-        </defs>
+      <div class="wall"></div>
+      <div class="floor"></div>
+      <div class="rug"></div>
 
-        <!-- 木地板 -->
-        <rect x="0" y="34" width="720" height="446" fill="url(#parquet)"/>
-        <!-- 咖啡角磁磚 -->
-        <rect x="0" y="280" width="120" height="200" fill="url(#tiles)"/>
-        <!-- 中央地毯 -->
-        <rect x="240" y="200" width="240" height="120" fill="var(--rug)"/>
-        <rect x="244" y="204" width="232" height="112" fill="none" stroke="var(--rug-dk)" stroke-width="2"/>
-        <rect x="252" y="212" width="216" height="96"  fill="none" stroke="var(--rug-dk)" stroke-width="1"/>
+      <!-- 白板 -->
+      <div class="whiteboard">
+        <div class="wb-title">📋 WATCHLIST</div>
+        <div class="wb-line" style="width: 92%"></div>
+        <div class="wb-line" style="width: 80%"></div>
+        <div class="wb-line" style="width: 70%"></div>
+      </div>
 
-        <!-- 上方牆 -->
-        <rect x="0" y="0" width="720" height="34" fill="var(--wall-1)"/>
-        <rect x="0" y="30" width="720" height="4" fill="var(--wall-trim)"/>
-        <!-- 牆面格紋 -->
-        <g opacity="0.4">
-          <line x1="0" y1="10" x2="720" y2="10" stroke="var(--wall-2)"/>
-          <line x1="0" y1="20" x2="720" y2="20" stroke="var(--wall-2)"/>
-        </g>
+      <!-- 書櫃 ×2（上方靠牆） -->
+      <img class="sprite bookshelf" style="left: calc(var(--tile) * 0.3); top: calc(var(--tile) * 1.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/BOOKSHELF.png" alt="">
+      <img class="sprite bookshelf" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 1.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/BOOKSHELF.png" alt="">
 
-        <!-- 窗戶 ×2 -->
-        <g>
-          <rect x="500" y="6" width="80" height="22" fill="#7ec8f5"/>
-          <rect x="500" y="6" width="80" height="22" fill="none" stroke="#1f2730" stroke-width="2"/>
-          <line x1="540" y1="6" x2="540" y2="28" stroke="#1f2730" stroke-width="2"/>
-          <line x1="500" y1="17" x2="580" y2="17" stroke="#1f2730" stroke-width="2"/>
-          <rect x="600" y="6" width="80" height="22" fill="#7ec8f5"/>
-          <rect x="600" y="6" width="80" height="22" fill="none" stroke="#1f2730" stroke-width="2"/>
-          <line x1="640" y1="6" x2="640" y2="28" stroke="#1f2730" stroke-width="2"/>
-          <line x1="600" y1="17" x2="680" y2="17" stroke="#1f2730" stroke-width="2"/>
-        </g>
+      <!-- 盆栽 -->
+      <img class="sprite plant" style="left: calc(var(--tile) * 14); top: calc(var(--tile) * 1.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/LARGE_PLANT.png" alt="">
 
-        <!-- 白板 -->
-        <g>
-          <rect x="40" y="6" width="200" height="22" fill="#f0f6fc"/>
-          <rect x="40" y="6" width="200" height="22" fill="none" stroke="#1f2730" stroke-width="2"/>
-          <text x="48" y="22" font-size="11" font-family="ui-monospace, monospace" fill="#0d1117" font-weight="700">📋 WATCHLIST</text>
-          <!-- 條列線（裝飾） -->
-          <line x1="120" y1="14" x2="232" y2="14" stroke="#8b949e" stroke-width="1"/>
-          <line x1="120" y1="20" x2="220" y2="20" stroke="#8b949e" stroke-width="1"/>
-          <line x1="120" y1="26" x2="200" y2="26" stroke="#8b949e" stroke-width="1"/>
-        </g>
+      <!-- 咖啡機（左下角） -->
+      <img class="sprite coffee" style="left: calc(var(--tile) * 0.4); top: calc(var(--tile) * 8);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/COFFEE.png" alt="">
 
-        <!-- 書櫃（左牆） -->
-        <g>
-          <rect x="4" y="36" width="20" height="240" fill="var(--wood-3)"/>
-          <rect x="6" y="40" width="16" height="56" fill="var(--wood-2)"/>
-          <rect x="6" y="100" width="16" height="56" fill="var(--wood-2)"/>
-          <rect x="6" y="160" width="16" height="56" fill="var(--wood-2)"/>
-          <rect x="6" y="220" width="16" height="52" fill="var(--wood-2)"/>
-          <!-- 書本 -->
-          <g>
-            <rect x="7" y="44" width="3" height="48" fill="#f85149"/>
-            <rect x="10" y="44" width="3" height="48" fill="#1f6feb"/>
-            <rect x="13" y="44" width="3" height="48" fill="#3fb950"/>
-            <rect x="16" y="44" width="3" height="48" fill="#d29922"/>
-            <rect x="7" y="104" width="3" height="48" fill="#a78bfa"/>
-            <rect x="10" y="104" width="3" height="48" fill="#fb7185"/>
-            <rect x="13" y="104" width="3" height="48" fill="#34d399"/>
-            <rect x="16" y="104" width="3" height="48" fill="#facc15"/>
-            <rect x="7" y="164" width="3" height="48" fill="#22d3ee"/>
-            <rect x="10" y="164" width="3" height="48" fill="#f97316"/>
-            <rect x="13" y="164" width="3" height="48" fill="#8b5cf6"/>
-            <rect x="16" y="164" width="3" height="48" fill="#10b981"/>
-            <rect x="7" y="224" width="3" height="44" fill="#ec4899"/>
-            <rect x="10" y="224" width="3" height="44" fill="#0ea5e9"/>
-            <rect x="13" y="224" width="3" height="44" fill="#84cc16"/>
-            <rect x="16" y="224" width="3" height="44" fill="#f59e0b"/>
-          </g>
-        </g>
+      <!-- 三張桌（上排：康提 / 泰艾 / 歐西） -->
+      <img class="sprite desk-front" style="left: calc(var(--tile) * 1.5); top: calc(var(--tile) * 3.2);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
+      <img class="sprite desk-front" style="left: calc(var(--tile) * 6.5); top: calc(var(--tile) * 3.2);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
+      <img class="sprite desk-front" style="left: calc(var(--tile) * 11.5); top: calc(var(--tile) * 3.2);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
 
-        <!-- 盆栽（右上角） -->
-        <g transform="translate(692, 30)">
-          <rect x="0" y="14" width="22" height="14" fill="#7c3a1d"/>
-          <rect x="2" y="12" width="18" height="4" fill="#5a2710"/>
-          <circle cx="11" cy="6"  r="9"  fill="#15803d"/>
-          <circle cx="5"  cy="10" r="6"  fill="#16a34a"/>
-          <circle cx="17" cy="10" r="6"  fill="#16a34a"/>
-        </g>
+      <!-- PC on desks -->
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 2.5); top: calc(var(--tile) * 2.5);"></div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 7.5); top: calc(var(--tile) * 2.5);"></div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 2.5);"></div>
 
-        <!-- 桌子 — 通用：用 group 畫 -->
-        <!-- 桌子 1：康提（左上） -->
-        <g transform="translate(72, 100)">
-          <rect width="92" height="42" fill="var(--wood-2)"/>
-          <rect width="92" height="6"  fill="var(--wood-3)"/>
-          <rect y="40" width="92" height="2" fill="var(--wood-3)"/>
-          <!-- 雙螢幕 -->
-          <rect x="10" y="8" width="30" height="22" fill="#0d1117" stroke="#30363d"/>
-          <rect x="48" y="8" width="34" height="22" fill="#0d1117" stroke="#30363d"/>
-          <!-- 螢幕內容：K 線 mini -->
-          <g class="screen-content">
-            <rect x="12" y="10" width="26" height="18" fill="#0d1117"/>
-            <polyline points="14,24 18,20 22,22 26,16 30,18 34,12 36,14" stroke="#3fb950" stroke-width="1" fill="none"/>
-          </g>
-          <g class="screen-content">
-            <rect x="50" y="10" width="30" height="18" fill="#0d1117"/>
-            <text x="52" y="20" font-size="6" font-family="monospace" fill="#58a6ff">NEWS</text>
-            <line x1="52" y1="22" x2="78" y2="22" stroke="#8b949e" stroke-width="0.5"/>
-            <line x1="52" y1="24" x2="74" y2="24" stroke="#8b949e" stroke-width="0.5"/>
-            <line x1="52" y1="26" x2="76" y2="26" stroke="#8b949e" stroke-width="0.5"/>
-          </g>
-          <!-- 桌上報紙 -->
-          <rect x="64" y="32" width="16" height="8" fill="#f0f6fc" stroke="#30363d" stroke-width="0.5"/>
-          <line x1="66" y1="35" x2="78" y2="35" stroke="#8b949e" stroke-width="0.5"/>
-          <line x1="66" y1="37" x2="76" y2="37" stroke="#8b949e" stroke-width="0.5"/>
-        </g>
+      <!-- 中央仲裁桌：康柏 -->
+      <img class="sprite desk-front" style="left: calc(var(--tile) * 6.5); top: calc(var(--tile) * 6.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 7.5); top: calc(var(--tile) * 5.8);"></div>
 
-        <!-- 桌子 2：泰艾（中上） -->
-        <g transform="translate(280, 100)">
-          <rect width="108" height="42" fill="var(--wood-2)"/>
-          <rect width="108" height="6"  fill="var(--wood-3)"/>
-          <rect y="40" width="108" height="2" fill="var(--wood-3)"/>
-          <!-- 四螢幕 -->
-          <rect x="6"  y="8" width="24" height="20" fill="#0d1117" stroke="#30363d"/>
-          <rect x="32" y="8" width="24" height="20" fill="#0d1117" stroke="#30363d"/>
-          <rect x="58" y="8" width="24" height="20" fill="#0d1117" stroke="#30363d"/>
-          <rect x="84" y="8" width="20" height="20" fill="#0d1117" stroke="#30363d"/>
-          <!-- 四個 K 線 -->
-          <polyline points="8,24 12,20 16,22 20,16 24,18 28,12" stroke="#3fb950" stroke-width="1" fill="none"/>
-          <polyline points="34,22 38,18 42,16 46,20 50,14 54,16" stroke="#f85149" stroke-width="1" fill="none"/>
-          <polyline points="60,18 64,22 68,16 72,18 76,12 80,14" stroke="#3fb950" stroke-width="1" fill="none"/>
-          <polyline points="86,16 90,20 94,18 98,14 102,16" stroke="#d29922" stroke-width="1" fill="none"/>
-        </g>
-
-        <!-- 桌子 3：歐西（右上，主位，較大有名牌） -->
-        <g transform="translate(530, 100)">
-          <rect width="120" height="48" fill="var(--wood-2)"/>
-          <rect width="120" height="6"  fill="var(--wood-3)"/>
-          <rect y="46" width="120" height="2" fill="var(--wood-3)"/>
-          <!-- 螢幕 -->
-          <rect x="14" y="8" width="38" height="26" fill="#0d1117" stroke="#30363d"/>
-          <polyline points="16,28 22,22 28,26 34,16 40,20 46,12 50,14" stroke="#58a6ff" stroke-width="1" fill="none"/>
-          <!-- 三支電話 -->
-          <g transform="translate(60, 14)">
-            <rect width="12" height="8" fill="#1f2937"/><rect x="2" y="2" width="8" height="4" fill="#0d1117"/>
-            <rect x="14" width="12" height="8" fill="#1f2937"/><rect x="16" y="2" width="8" height="4" fill="#0d1117"/>
-            <rect x="28" width="12" height="8" fill="#1f2937"/><rect x="30" y="2" width="8" height="4" fill="#0d1117"/>
-          </g>
-          <!-- 名牌 -->
-          <rect x="60" y="28" width="50" height="12" fill="#0d1117" stroke="#d29922"/>
-          <text x="64" y="37" font-size="8" font-family="monospace" fill="#d29922" font-weight="700">ORTHO</text>
-          <!-- 咖啡杯 -->
-          <rect x="100" y="32" width="10" height="10" fill="#f0f6fc" stroke="#30363d"/>
-          <rect x="100" y="32" width="10" height="3" fill="#6b3e1a"/>
-        </g>
-
-        <!-- 桌子 4：康柏（中央仲裁桌） -->
-        <g transform="translate(290, 218)">
-          <rect width="92" height="38" fill="var(--wood-3)"/>
-          <rect width="92" height="6"  fill="#3a2614"/>
-          <rect y="36" width="92" height="2" fill="#3a2614"/>
-          <!-- 螢幕 -->
-          <rect x="10" y="8" width="28" height="20" fill="#0d1117" stroke="#30363d"/>
-          <text x="14" y="22" font-size="6" font-family="monospace" fill="#3fb950">VOTE</text>
-          <!-- 法槌 -->
-          <g transform="translate(48, 12)">
-            <rect width="22" height="6" fill="#5c4225"/>
-            <rect x="6" y="-2" width="10" height="10" fill="#5c4225"/>
-            <rect x="6" y="-2" width="10" height="2" fill="#d29922"/>
-          </g>
-          <!-- 天秤 -->
-          <g transform="translate(72, 20)">
-            <rect x="6" y="0" width="2" height="14" fill="#d29922"/>
-            <rect x="0" y="4" width="14" height="2" fill="#d29922"/>
-            <rect x="-2" y="6" width="6" height="3" fill="#d29922"/>
-            <rect x="10" y="6" width="6" height="3" fill="#d29922"/>
-          </g>
-        </g>
-
-        <!-- 桌子 5：芮薇（右下） -->
-        <g transform="translate(488, 320)">
-          <rect width="92" height="38" fill="var(--wood-2)"/>
-          <rect width="92" height="6"  fill="var(--wood-3)"/>
-          <rect y="36" width="92" height="2" fill="var(--wood-3)"/>
-          <!-- 螢幕 -->
-          <rect x="8" y="8" width="32" height="22" fill="#0d1117" stroke="#30363d"/>
-          <text x="12" y="20" font-size="6" font-family="monospace" fill="#a78bfa">REVIEW</text>
-          <line x1="12" y1="22" x2="36" y2="22" stroke="#8b949e" stroke-width="0.5"/>
-          <line x1="12" y1="25" x2="32" y2="25" stroke="#8b949e" stroke-width="0.5"/>
-          <!-- 紅綠筆 -->
-          <rect x="48" y="22" width="2" height="12" fill="#f85149"/>
-          <rect x="48" y="20" width="2" height="2"  fill="#fbbf24"/>
-          <rect x="52" y="22" width="2" height="12" fill="#3fb950"/>
-          <rect x="52" y="20" width="2" height="2"  fill="#fbbf24"/>
-          <!-- 資料夾堆 -->
-          <rect x="60" y="22" width="24" height="12" fill="#d29922" stroke="#9e6a03"/>
-          <rect x="60" y="22" width="24" height="2"  fill="#9e6a03"/>
-          <rect x="62" y="24" width="20" height="1"  fill="#9e6a03"/>
-        </g>
-
-        <!-- 檔案櫃（芮薇左側） -->
-        <g transform="translate(440, 308)">
-          <rect width="32" height="56" fill="#4a5568"/>
-          <rect x="2" y="4" width="28" height="14" fill="#2d3748" stroke="#1a202c"/>
-          <rect x="2" y="22" width="28" height="14" fill="#2d3748" stroke="#1a202c"/>
-          <rect x="2" y="40" width="28" height="14" fill="#2d3748" stroke="#1a202c"/>
-          <circle cx="16" cy="11" r="1" fill="#d29922"/>
-          <circle cx="16" cy="29" r="1" fill="#d29922"/>
-          <circle cx="16" cy="47" r="1" fill="#d29922"/>
-        </g>
-
-        <!-- 咖啡機（左下） -->
-        <g transform="translate(40, 320)">
-          <rect width="40" height="56" fill="#2d3748"/>
-          <rect x="4" y="6" width="32" height="20" fill="#0d1117" stroke="#1a202c"/>
-          <rect x="6" y="8" width="28" height="8" fill="#1f6feb" opacity="0.4"/>
-          <text x="9" y="14" font-size="6" font-family="monospace" fill="#3fb950">CACHE</text>
-          <rect x="14" y="32" width="12" height="14" fill="#f0f6fc" stroke="#30363d"/>
-          <rect x="14" y="32" width="12" height="3" fill="#6b3e1a"/>
-          <rect x="8" y="46" width="24" height="4" fill="#1a202c"/>
-        </g>
-
-        <!-- 入口（下方門） -->
-        <g transform="translate(330, 444)">
-          <rect width="60" height="36" fill="#1a202c" stroke="#3b4655" stroke-width="2"/>
-          <rect x="4" y="4" width="52" height="28" fill="#0a0e14"/>
-          <text x="20" y="22" font-size="9" font-family="monospace" fill="#6e7681">ENTRY</text>
-        </g>
-
-      </svg>
+      <!-- 右下：芮薇桌 -->
+      <img class="sprite desk-front" style="left: calc(var(--tile) * 11.5); top: calc(var(--tile) * 7.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 6.8);"></div>
 
       <!-- ========= 角色 ========= -->
-      <div class="agent" data-id="conti" style="top: 145px; left: 105px;"></div>
-      <div class="agent" data-id="tai"   style="top: 145px; left: 320px;"></div>
-      <div class="agent" data-id="ortho" style="top: 150px; left: 568px;"></div>
-      <div class="agent" data-id="combo" style="top: 258px; left: 318px;"></div>
-      <div class="agent" data-id="revie" style="top: 360px; left: 518px;"></div>
-      <div class="agent" data-id="scan"  style="top: 390px; left: 70px;"></div>
-
+      <!-- 康提（char_3 戴眼鏡淺髮）-->
+      <div class="agent" data-id="conti" data-char="3" style="top: calc(var(--tile) * 4.4); left: calc(var(--tile) * 2.5);"></div>
+      <!-- 泰艾（char_1 棕色）-->
+      <div class="agent" data-id="tai"   data-char="1" style="top: calc(var(--tile) * 4.4); left: calc(var(--tile) * 7.5);"></div>
+      <!-- 歐西（char_0 西裝）-->
+      <div class="agent" data-id="ortho" data-char="0" style="top: calc(var(--tile) * 4.4); left: calc(var(--tile) * 12.5);"></div>
+      <!-- 康柏（char_4 制服）-->
+      <div class="agent" data-id="combo" data-char="4" style="top: calc(var(--tile) * 7.7); left: calc(var(--tile) * 7.5);"></div>
+      <!-- 芮薇（char_5 紅裙）-->
+      <div class="agent" data-id="revie" data-char="5" style="top: calc(var(--tile) * 8.7); left: calc(var(--tile) * 12.5);"></div>
+      <!-- 史肯（char_2 橘衣）8:30 上工，灰調 -->
+      <div class="agent" data-id="scan"  data-char="2" style="top: calc(var(--tile) * 8.7); left: calc(var(--tile) * 1.5);"></div>
     </div>
   </div>
 
-  <!-- 右側資訊卡 + 活動 feed -->
+  <!-- 右側 -->
   <div class="panel" id="panel">
     <div class="panel-title">角色檔案</div>
     <div id="card-area">
@@ -561,7 +398,6 @@
         看 <span class="key">職責</span>、<span class="key">工作習性</span> 與 <span class="key">今日數據</span>
       </div>
     </div>
-
     <div class="feed">
       <div class="feed-head">
         <div class="feed-title">最近活動</div>
@@ -590,164 +426,82 @@
 </div>
 
 <script>
+const SPRITE_BASE = 'https://yakultdeco.github.io/qts-page/sprites';
+
 // ============ 角色資料 ============
 const AGENTS = {
   ortho: {
     name: '歐西 Ortho', role: '調度長 · 坐主位',
-    file: 'agents/orchestrator.py',
+    file: 'agents/orchestrator.py', char: 0,
     badges: ['blue:派工', 'green:cache 命中率高', 'gray:坐主位'],
     body: '把當日要跑的候選股按 slv 由高到低排隊，最多同時跑 6 檔（成本上限）。同一候選裡 Context → TA 順序執行；不同候選之間平行（ThreadPool）。',
     quirk: 'Cache hit 15 分鐘內絕對沿用，15-30 分若價格 ±2% 內也沿用 — 命中時翹腳喝咖啡。失敗就 fail-soft 回 wait，絕對不擋系統。',
-    look: { hair: '#1f2937', skin: '#f0c39a', cloth: '#1e293b', accent: '#1f6feb', glasses: false, headset: true, hairStyle: 'short' },
-    statKey: 'final',
   },
   conti: {
     name: '康提 Conti', role: '脈絡分析師',
-    file: 'agents/context_agent.py',
+    file: 'agents/context_agent.py', char: 3,
     badges: ['blue:先發', 'amber:可短路', 'gray:讀新聞'],
     body: '從當日 qts_news_YYYYMMDD.csv 抓對應 code 的新聞，加上大盤狀態，輸出 verdict + score + reasons。',
     quirk: 'verdict="skip" 直接否決，省下後面 TA agent 的呼叫（成本砍 ~60%）。所以他翻新聞特別狠。',
-    look: { hair: '#6b3e26', skin: '#f0c39a', cloth: '#c9a96e', accent: '#fb7185', glasses: true, headset: false, hairStyle: 'side' },
-    statKey: 'context',
   },
   tai: {
     name: '泰艾 Tai', role: '技術分析師',
-    file: 'agents/ta_agent.py',
+    file: 'agents/ta_agent.py', char: 1,
     badges: ['blue:後手', 'green:MCP', 'gray:背 Qullamaggie'],
     body: '透過 twstockmcp 抓技術指標 + 籌碼。System prompt 內嵌完整 Qullamaggie 知識庫（觸發 caching 折扣）。',
     quirk: '背心法背到桌上四螢幕全是 EMA10 / ADR / volume。Context 沒 skip 才出手，是辦公室最後一關技術把關。',
-    look: { hair: '#1c1c1c', skin: '#f0c39a', cloth: '#7c2d12', accent: '#fbbf24', glasses: false, headset: false, hairStyle: 'spike', scarf: '#dc2626' },
-    statKey: 'ta',
   },
   combo: {
     name: '康柏 Combo', role: '投票仲裁',
-    file: 'agents/combiner.py',
+    file: 'agents/combiner.py', char: 4,
     badges: ['green:雙方 go → 進場', 'amber:混合需 ≥130', 'gray:任一 skip → 否決'],
     body: '雙方 go = 進場；任一 skip = 否決；一 go 一 wait 要綜合分 ≥130 且 go 那邊 ≥70 才放行。',
     quirk: '純規則無 LLM call，但偏保守。混合情境門檻刻意拉高，避免單方力推就硬塞單。',
-    look: { hair: '#b45309', skin: '#f0c39a', cloth: '#0f172a', accent: '#fbbf24', glasses: false, headset: false, hairStyle: 'short' },
-    statKey: 'final',
   },
   revie: {
     name: '芮薇 Revie', role: '事後檢討官',
-    file: 'agents/reviewer_agent.py',
+    file: 'agents/reviewer_agent.py', char: 5,
     badges: ['green:寫檢討', 'blue:hindsight', 'gray:盤後/週後'],
     body: '出場後產第一版檢討。一週後再回看當初判斷對不對，把 reasoning 收進長期回饋。',
     quirk: '桌上紅筆綠筆並排 — 紅筆畫錯的判斷、綠筆圈下次該模仿的決策。',
-    look: { hair: '#9ca3af', skin: '#f0c39a', cloth: '#a78bfa', accent: '#34d399', glasses: true, headset: false, hairStyle: 'bob' },
-    statKey: null,
   },
   scan: {
     name: '史肯 Scan', role: '早班掃描員（輪班）',
-    file: 'qts_scanner.py',
+    file: 'qts_scanner.py', char: 2,
     badges: ['amber:輪班', 'gray:08:30 上工', 'gray:貼完就走'],
-    body: '盤前跑 Qullamaggie 條件掃描，產出當日 watchlist（強勢續強池 + 落後補漲池 + 近突破擴展池）。',
+    body: '盤前跑 Qullamaggie 條件掃描，產出當日 watchlist。',
     quirk: '不參與盤中決策。早上 8:30 進辦公室、把白板貼好就走。',
-    look: { hair: '#047857', skin: '#f0c39a', cloth: '#065f46', accent: '#fbbf24', glasses: false, headset: false, hairStyle: 'hood' },
-    statKey: null,
   }
 };
 
-// ============ Sprite 產生器（24×36，全身像）============
-function spriteSVG(look) {
-  const { hair, skin, cloth, accent, glasses, headset, hairStyle, scarf } = look;
-  const r = (x, y, w, h, fill) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}"/>`;
+// ============ 注入 sprite ============
+function spriteBgUrl(char) { return `${SPRITE_BASE}/chars/char_${char}.png`; }
 
-  let svg = `<svg viewBox="0 0 24 36" xmlns="http://www.w3.org/2000/svg">`;
-
-  // ───── 髮型（每人不同）─────
-  if (hairStyle === 'short') {
-    svg += r(7, 2, 10, 2, hair); svg += r(5, 4, 14, 3, hair); svg += r(5, 7, 2, 3, hair); svg += r(17, 7, 2, 3, hair);
-  } else if (hairStyle === 'side') {
-    svg += r(7, 2, 10, 2, hair); svg += r(5, 4, 14, 4, hair); svg += r(5, 8, 2, 3, hair);
-  } else if (hairStyle === 'spike') {
-    svg += r(7, 1, 2, 3, hair); svg += r(11, 0, 2, 4, hair); svg += r(15, 1, 2, 3, hair);
-    svg += r(5, 4, 14, 3, hair); svg += r(5, 7, 2, 3, hair); svg += r(17, 7, 2, 3, hair);
-  } else if (hairStyle === 'bob') {
-    svg += r(6, 2, 12, 2, hair); svg += r(4, 4, 16, 5, hair); svg += r(4, 9, 3, 3, hair); svg += r(17, 9, 3, 3, hair);
-  } else if (hairStyle === 'hood') {
-    svg += r(5, 2, 14, 2, hair); svg += r(3, 4, 18, 8, hair); svg += r(3, 12, 3, 4, hair); svg += r(18, 12, 3, 4, hair);
-  }
-
-  // ───── 臉 ─────
-  svg += r(7, 6, 10, 7, skin);
-  // 眼睛
-  svg += r(9, 9, 2, 2, '#0d1117'); svg += r(13, 9, 2, 2, '#0d1117');
-  // 眼鏡
-  if (glasses) {
-    svg += `<rect x="8" y="8" width="4" height="4" fill="none" stroke="#0d1117" stroke-width="0.5"/>`;
-    svg += `<rect x="12" y="8" width="4" height="4" fill="none" stroke="#0d1117" stroke-width="0.5"/>`;
-    svg += r(12, 9, 0.8, 1, '#0d1117');
-  }
-  // 耳麥
-  if (headset) {
-    svg += r(5, 6, 1, 3, '#1a202c');
-    svg += r(18, 6, 1, 3, '#1a202c');
-    svg += r(6, 5, 12, 1, '#1a202c');
-    svg += r(4, 10, 2, 2, '#0d1117');
-  }
-  // 嘴
-  svg += r(10, 12, 4, 1, '#7c2d12');
-
-  // ───── 脖子/圍巾 ─────
-  if (scarf) {
-    svg += r(7, 13, 10, 3, scarf);
-    svg += r(9, 16, 2, 2, scarf);
-  } else {
-    svg += r(10, 13, 4, 2, skin);
-  }
-
-  // ───── 上衣 ─────
-  svg += r(4, 15, 16, 11, cloth);
-  // 衣領
-  svg += r(10, 15, 4, 2, accent);
-  // 鈕扣
-  svg += r(11, 19, 1, 1, accent);
-  svg += r(11, 22, 1, 1, accent);
-
-  // ───── 手臂 ─────
-  svg += r(3, 15, 1, 9, cloth);
-  svg += r(20, 15, 1, 9, cloth);
-  svg += r(3, 24, 2, 2, skin);
-  svg += r(19, 24, 2, 2, skin);
-
-  // ───── 下身 ─────
-  svg += r(6, 26, 5, 7, '#1a202c');
-  svg += r(13, 26, 5, 7, '#1a202c');
-
-  // ───── 鞋 ─────
-  svg += r(5, 33, 6, 2, '#0d1117');
-  svg += r(13, 33, 6, 2, '#0d1117');
-
-  svg += `</svg>`;
-  return svg;
-}
-
-// ============ 注入 sprite + 名牌 + status badge ============
 function renderAgents() {
   document.querySelectorAll('.agent').forEach(el => {
     const id = el.dataset.id;
     const a = AGENTS[id];
     if (!a) return;
-    const status = (a.statKey === null || !window.STATS) ? null : window.STATS.agents?.[id];
-    const badgeText = status ? String(status.calls || 0) : '';
-    const badgeCls = !status ? 'zero'
-      : status.go > 0 ? 'go'
-      : status.skip > 0 ? 'skip'
+    const stats = window.STATS?.agents?.[id];
+    const calls = stats?.calls || 0;
+    const badgeCls = !stats || !calls ? 'zero'
+      : stats.go > 0 ? 'go'
+      : stats.skip > 0 ? 'skip'
       : 'zero';
-    el.innerHTML =
-      spriteSVG(a.look) +
-      (badgeText ? `<span class="status-badge ${badgeCls}">${badgeText}</span>` : '') +
-      `<span class="name-tag">${a.name.split(' ')[0]}${id==='scan'?' (08:30)':''}</span>`;
-    // 預設動畫狀態
+    const badgeText = calls > 0 ? String(calls) : '';
+    el.innerHTML = `
+      <div class="sprite-img" style="background-image: url(${spriteBgUrl(a.char)});"></div>
+      ${badgeText ? `<span class="status-badge ${badgeCls}">${badgeText}</span>` : ''}
+      <span class="name-tag">${a.name.split(' ')[0]}${id==='scan'?' (08:30)':''}</span>
+    `;
     el.classList.remove('busy', 'idle', 'away');
-    if (id === 'scan')               el.classList.add('away');
-    else if (status && status.calls) el.classList.add('busy');
-    else                              el.classList.add('idle');
+    if (id === 'scan')          el.classList.add('away');
+    else if (calls > 0)         el.classList.add('busy');
+    else                         el.classList.add('idle');
   });
 }
 
-// ============ 角色卡渲染 ============
+// ============ 角色卡 ============
 const cardArea = document.getElementById('card-area');
 const defaultHTML = cardArea.innerHTML;
 
@@ -760,25 +514,23 @@ function renderCard(id) {
   }).join('');
 
   let statsBlock = '';
-  if (a.statKey !== null && window.STATS) {
-    const s = window.STATS.agents?.[id];
-    if (s) {
-      statsBlock = `
-        <div class="card-section">
-          <div class="card-label">今日數據</div>
-          <div class="stats-grid">
-            <div class="stat-cell"><div class="v">${s.calls || 0}</div><div class="l">出手次數</div></div>
-            <div class="stat-cell go"><div class="v">${s.go || 0}</div><div class="l">go</div></div>
-            <div class="stat-cell"><div class="v">${s.wait || 0}</div><div class="l">wait</div></div>
-            <div class="stat-cell skip"><div class="v">${s.skip || 0}</div><div class="l">skip</div></div>
-          </div>
-        </div>`;
-    }
+  const s = window.STATS?.agents?.[id];
+  if (s && a.char !== 2 && id !== 'revie') {
+    statsBlock = `
+      <div class="card-section">
+        <div class="card-label">今日數據</div>
+        <div class="stats-grid">
+          <div class="stat-cell"><div class="v">${s.calls || 0}</div><div class="l">出手次數</div></div>
+          <div class="stat-cell go"><div class="v">${s.go || 0}</div><div class="l">go</div></div>
+          <div class="stat-cell"><div class="v">${s.wait || 0}</div><div class="l">wait</div></div>
+          <div class="stat-cell skip"><div class="v">${s.skip || 0}</div><div class="l">skip</div></div>
+        </div>
+      </div>`;
   }
 
   cardArea.innerHTML = `
     <div class="card-head">
-      <div class="card-avatar">${spriteSVG(a.look)}</div>
+      <div class="card-avatar"><div class="sprite-img" style="background-image: url(${spriteBgUrl(a.char)});"></div></div>
       <div>
         <div class="card-name">${a.name}</div>
         <div class="card-role">${a.role}</div>
@@ -795,7 +547,7 @@ function renderCard(id) {
   `;
 }
 
-// ============ Hover 互動 ============
+// ============ 互動 ============
 let stickyId = null;
 function wireAgents() {
   document.querySelectorAll('.agent').forEach(el => {
@@ -830,9 +582,9 @@ function flyEnvelope(fromEl, toEl) {
   const r0 = office.getBoundingClientRect();
   const env = document.createElement('div');
   env.className = 'envelope';
-  const x1 = r1.left - r0.left + r1.width/2 - 7;
+  const x1 = r1.left - r0.left + r1.width/2 - 9;
   const y1 = r1.top  - r0.top  + 8;
-  const x2 = r2.left - r0.left + r2.width/2 - 7;
+  const x2 = r2.left - r0.left + r2.width/2 - 9;
   const y2 = r2.top  - r0.top  + 8;
   env.style.left = x1 + 'px';
   env.style.top  = y1 + 'px';
@@ -846,7 +598,6 @@ function flyEnvelope(fromEl, toEl) {
   setTimeout(() => env.remove(), 1200);
 }
 
-// 偵測新投票觸發動畫
 let lastSeenTs = 0;
 function animateNewVotes(stats) {
   if (!stats?.recent) return;
@@ -855,23 +606,17 @@ function animateNewVotes(stats) {
   lastSeenTs = Math.max(...stats.recent.map(r => r.ts));
   fresh.slice(0, 3).forEach((r, i) => {
     setTimeout(() => {
-      const ortho = document.querySelector('.agent[data-id="ortho"]');
-      const conti = document.querySelector('.agent[data-id="conti"]');
-      const tai   = document.querySelector('.agent[data-id="tai"]');
-      const combo = document.querySelector('.agent[data-id="combo"]');
-      flyEnvelope(ortho, conti);
+      const $ = id => document.querySelector(`.agent[data-id="${id}"]`);
+      flyEnvelope($('ortho'), $('conti'));
       setTimeout(() => {
-        if (r.short_circuit) flyEnvelope(conti, ortho);
-        else {
-          flyEnvelope(conti, tai);
-          setTimeout(() => flyEnvelope(tai, combo), 900);
-        }
+        if (r.short_circuit) flyEnvelope($('conti'), $('ortho'));
+        else { flyEnvelope($('conti'), $('tai')); setTimeout(() => flyEnvelope($('tai'), $('combo')), 900); }
       }, 900);
     }, i * 2000);
   });
 }
 
-// ============ Feed 渲染 ============
+// ============ Feed ============
 function renderFeed(stats) {
   const list = document.getElementById('feed-list');
   const meta = document.getElementById('feed-meta');
@@ -882,9 +627,7 @@ function renderFeed(stats) {
   }
   meta.textContent = `${stats.recent.length} 筆`;
   list.innerHTML = stats.recent
-    .slice()
-    .sort((a, b) => b.ts - a.ts)
-    .slice(0, 12)
+    .slice().sort((a, b) => b.ts - a.ts).slice(0, 12)
     .map(r => {
       const t = new Date(r.ts * 1000);
       const hh = String(t.getHours()).padStart(2,'0');
@@ -904,11 +647,11 @@ function renderFeed(stats) {
     }).join('');
 }
 
-// ============ 抓 agent_stats.json ============
+// ============ Fetch stats ============
 async function fetchStats() {
   try {
     const res = await fetch('agent_stats.json?_=' + Date.now(), { cache: 'no-store' });
-    if (!res.ok) throw new Error('no stats file');
+    if (!res.ok) throw new Error('no stats');
     const stats = await res.json();
     window.STATS = stats;
     setLive(stats);
