@@ -152,17 +152,24 @@
   .sprite.coffee     { width: calc(16px * var(--scale)); height: calc(16px * var(--scale)); }
   .sprite.plant      { width: calc(32px * var(--scale)); height: calc(48px * var(--scale)); }
 
-  /* PC 螢幕 ON 動畫（3 frame） */
-  @keyframes pc-on {
-    0%, 33%  { background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png); }
-    34%, 66% { background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png); }
-    67%, 100%{ background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png); }
-  }
+  /* PC 螢幕 ON（用 3 層 img + opacity 切換，比 background-image keyframe 可靠）*/
   .pc-on {
-    background-image: url(https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    animation: pc-on 1.2s steps(3, end) infinite;
+    position: absolute;
+    overflow: hidden;
+  }
+  .pc-on img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    image-rendering: pixelated;
+    opacity: 0;
+    animation: pc-frame 1.2s steps(1, end) infinite;
+  }
+  .pc-on img:nth-child(1) { animation-delay: 0s; }
+  .pc-on img:nth-child(2) { animation-delay: -0.4s; }
+  .pc-on img:nth-child(3) { animation-delay: -0.8s; }
+  @keyframes pc-frame {
+    0%, 33%  { opacity: 1; }
+    34%, 100%{ opacity: 0; }
   }
 
   /* ========= 角色（PNG sprite sheet）========= */
@@ -361,17 +368,37 @@
       <img class="sprite desk-front" style="left: calc(var(--tile) * 11.5); top: calc(var(--tile) * 3.2);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
 
       <!-- PC on desks -->
-      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 2.5); top: calc(var(--tile) * 2.5);"></div>
-      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 7.5); top: calc(var(--tile) * 2.5);"></div>
-      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 2.5);"></div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 2.5); top: calc(var(--tile) * 2.5);">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png" alt="">
+      </div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 7.5); top: calc(var(--tile) * 2.5);">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png" alt="">
+      </div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 2.5);">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png" alt="">
+      </div>
 
       <!-- 中央仲裁桌：康柏 -->
       <img class="sprite desk-front" style="left: calc(var(--tile) * 6.5); top: calc(var(--tile) * 6.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
-      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 7.5); top: calc(var(--tile) * 5.8);"></div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 7.5); top: calc(var(--tile) * 5.8);">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png" alt="">
+      </div>
 
       <!-- 右下：芮薇桌 -->
       <img class="sprite desk-front" style="left: calc(var(--tile) * 11.5); top: calc(var(--tile) * 7.5);" src="https://yakultdeco.github.io/qts-page/sprites/furniture/DESK_FRONT.png" alt="">
-      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 6.8);"></div>
+      <div class="sprite pc pc-on" style="left: calc(var(--tile) * 12.5); top: calc(var(--tile) * 6.8);">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_1.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_2.png" alt="">
+        <img src="https://yakultdeco.github.io/qts-page/sprites/furniture/PC_FRONT_ON_3.png" alt="">
+      </div>
 
       <!-- ========= 角色 ========= -->
       <!-- 康提（char_3 戴眼鏡淺髮）-->
