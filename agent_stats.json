@@ -1,0 +1,76 @@
+{
+  "ts": 1779937862.201018,
+  "total": 2,
+  "by_verdict": {
+    "go": 0,
+    "wait": 2,
+    "skip": 0
+  },
+  "short_circuits": 0,
+  "cache_reads_tokens": 0,
+  "input_tokens": 1747,
+  "agents": {
+    "conti": {
+      "calls": 2,
+      "go": 1,
+      "wait": 1,
+      "skip": 0,
+      "last": {
+        "code": "6531",
+        "verdict": "wait",
+        "ts": 1779934188.177906
+      }
+    },
+    "tai": {
+      "calls": 2,
+      "go": 0,
+      "wait": 2,
+      "skip": 0,
+      "last": {
+        "code": "6531",
+        "verdict": "wait",
+        "ts": 1779934188.177906
+      }
+    },
+    "combo": {
+      "calls": 2,
+      "go": 0,
+      "wait": 2,
+      "skip": 0,
+      "last": {
+        "code": "6531",
+        "verdict": "wait",
+        "ts": 1779934188.177906
+      }
+    },
+    "ortho": {
+      "calls": 2,
+      "go": 0,
+      "wait": 2,
+      "skip": 0,
+      "last": {
+        "code": "6531",
+        "verdict": "wait",
+        "ts": 1779934188.177906
+      }
+    }
+  },
+  "recent": [
+    {
+      "code": "6531",
+      "ts": 1779934188.177906,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false
+    },
+    {
+      "code": "2330",
+      "ts": 1779934187.726804,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false
+    }
+  ]
+}
