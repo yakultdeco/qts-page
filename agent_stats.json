@@ -1,5 +1,5 @@
 {
-  "ts": 1780039230.579086,
+  "ts": 1780039347.37869,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -7,10 +7,10 @@
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 35688,
-  "input_tokens": 8009,
+  "cache_reads_tokens": 32335,
+  "input_tokens": 6320,
   "llm_calls": 3,
-  "cost_usd": 0.1266,
+  "cost_usd": 0.1066,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780039224.308367
+        "ts": 1780039344.4118788
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780039224.308367
+        "ts": 1780039344.4118788
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780039224.308367
+        "ts": 1780039344.4118788
       }
     },
     "ortho": {
@@ -51,24 +51,39 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780039224.308367
+        "ts": 1780039344.4118788
       }
     }
   },
   "recent": [
     {
-      "code": "6291",
-      "ts": 1780039224.308367,
+      "code": "8358",
+      "ts": 1780039344.4118788,
       "context": "wait",
       "ta": "skip",
       "final": "skip",
       "short_circuit": false,
-      "head": "TA resonance.total=-2、ext=19.6% 嚴重過熱，且停損架構根本性錯誤（stop 666 高於 entry 655、現價 679 距 stop 僅 1.9% 遠小於 ADR 6.53%），三項關鍵指標同時失效，無任何",
+      "head": "現價608已較原始進場點571延伸6.5%，EMA10延伸達15.7%，最佳窗口已過；TA resonance.total=3看似正面，但分子（延伸過遠）使風報比崩潰，停損565距現價7.1%卻無任何下方支撐緩衝，不具可執行進場條件。",
       "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6291",
+      "ts": 1780039238.8820999,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以判斷催化劑是否持續",
+        "脈絡｜距 EMA10 延伸達 19.6%，追價風險偏高，等待回測進場區確認強度更佳"
+      ],
       "ta_reasons": [
-        "TA resonance.total=-2、ext=19.6% 嚴重過熱，且停損架構根本性錯誤（stop 666 高於 entry 655、現價 679 距 stop 僅 1.9% 遠小於 ADR 6.53%），三項關鍵指標同時失效，無任何"
+        "TA｜距EMA10延伸19.6%，遠超5%警戒線，進場即承擔巨大均值回歸風險",
+        "TA｜突破點655元、現價679元，已超漲3.7%；停損距現價僅1.9%但距EMA10過遠，風報比嚴重惡化"
       ]
     },
     {
@@ -79,17 +94,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext_pct=11.2% 嚴重偏離均線，TA resonance total=2 但 momentum=-1 structure=-1 內部矛盾；融資單日暴增+607張浮動籌碼惡化，Bear bear_score=82，風報比不支持進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780037485.6492999,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=15.7% 遠超5%上限，停損7.1%接近1×ADR(6.76%)風報比失衡；TA resonance.total僅+2但momentum=-1，加上slv=3未達強量級別，Bear bear_score=82的失敗結構論述有力，無",
       "ctx_reasons": [],
       "ta_reasons": []
     },
