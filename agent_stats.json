@@ -1,5 +1,5 @@
 {
-  "ts": 1780043382.331986,
+  "ts": 1780043516.9163399,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 8131,
+  "input_tokens": 8127,
   "llm_calls": 3,
-  "cost_usd": 0.1296,
+  "cost_usd": 0.1306,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780043160.459732
+        "ts": 1780043496.878845
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780043160.459732
+        "ts": 1780043496.878845
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780043160.459732
+        "ts": 1780043496.878845
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780043160.459732
+        "ts": 1780043496.878845
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780043496.878845,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext_pct=11.2% 遠超 5% 紅線，融資單日暴增 +607 張（+5.3%）籌碼鬆散，Bear bear_score=82 且兩項核心 invalidation 觸發機率偏高；大盤雖多頭，但個股過熱加籌碼惡化組合風報比不合格，不宜",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780043160.459732,
@@ -66,17 +77,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext=15.7% 遠超追高紅線，停損設 565 距現價 43 點（7.1%）已超過 ADR 6.76%，單日波動即可觸及停損；TA resonance total 僅+2 且 momentum=-1，進場當下無量能支撐（slv=3），風報",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6531",
-      "ts": 1780041606.9691288,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=11.2% 遠超5%上限、融資單日暴增+5.3%、slv=3量能不足，三項核心疑慮同時存在；ADR=8.97%下停損距離僅3%（35點）邏輯矛盾，risk/reward不成立，無執行依據。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
