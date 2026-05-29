@@ -1,5 +1,5 @@
 {
-  "ts": 1780039739.218442,
+  "ts": 1780039815.587125,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -7,10 +7,10 @@
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 32335,
-  "input_tokens": 6289,
+  "cache_reads_tokens": 28982,
+  "input_tokens": 4629,
   "llm_calls": 3,
-  "cost_usd": 0.1033,
+  "cost_usd": 0.0799,
   "agents": {
     "conti": {
       "calls": 5,
@@ -20,7 +20,7 @@
       "last": {
         "code": "6531",
         "verdict": "wait",
-        "ts": 1780039737.2514088
+        "ts": 1780039750.259458
       }
     },
     "tai": {
@@ -31,7 +31,7 @@
       "last": {
         "code": "6531",
         "verdict": "skip",
-        "ts": 1780039737.2514088
+        "ts": 1780039750.259458
       }
     },
     "combo": {
@@ -42,7 +42,7 @@
       "last": {
         "code": "6531",
         "verdict": "skip",
-        "ts": 1780039737.2514088
+        "ts": 1780039750.259458
       }
     },
     "ortho": {
@@ -53,22 +53,26 @@
       "last": {
         "code": "6531",
         "verdict": "skip",
-        "ts": 1780039737.2514088
+        "ts": 1780039750.259458
       }
     }
   },
   "recent": [
     {
       "code": "6531",
-      "ts": 1780039737.2514088,
+      "ts": 1780039750.259458,
       "context": "wait",
       "ta": "skip",
       "final": "skip",
       "short_circuit": false,
-      "head": "TA resonance total=0 且 ext=11.2% 遠超5%上限，Bear bear_score=88 三項 invalidation 均具高度可信度；融資單日+5.3%（+607張）籌碼鬆散，ADR=8.97% 遠大於停損距",
-      "ctx_reasons": [],
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤加權與櫃買均呈多頭排列，系統性環境有利",
+        "脈絡｜無任何新聞題材佐證，突破缺乏基本面催化劑"
+      ],
       "ta_reasons": [
-        "TA resonance total=0 且 ext=11.2% 遠超5%上限，Bear bear_score=88 三項 invalidation 均具高度可信度；融資單日+5.3%（+607張）籌碼鬆散，ADR=8.97% 遠大於停損距"
+        "TA｜距 EMA10 延伸 11.2%，遠超 5% 安全門檻，股價已嚴重延伸",
+        "TA｜融資單日暴增 +607 張（+5.3%），使用率 29.5%，散戶追高籌碼鬆散"
       ]
     },
     {
