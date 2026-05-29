@@ -1,5 +1,5 @@
 {
-  "ts": 1780041498.7002099,
+  "ts": 1780041616.661969,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -7,10 +7,10 @@
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 32335,
-  "input_tokens": 6393,
+  "cache_reads_tokens": 35688,
+  "input_tokens": 8075,
   "llm_calls": 3,
-  "cost_usd": 0.1039,
+  "cost_usd": 0.1279,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780041275.331041
+        "ts": 1780041606.9691288
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780041275.331041
+        "ts": 1780041606.9691288
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780041275.331041
+        "ts": 1780041606.9691288
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780041275.331041
+        "ts": 1780041606.9691288
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780041606.9691288,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=11.2% 遠超5%上限、融資單日暴增+5.3%、slv=3量能不足，三項核心疑慮同時存在；ADR=8.97%下停損距離僅3%（35點）邏輯矛盾，risk/reward不成立，無執行依據。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780041275.331041,
@@ -80,23 +91,6 @@
       "ctx_reasons": [],
       "ta_reasons": [
         "TA resonance total=-2、ext=19.6%（遠超5%上限），加上停損666高於進場655導致風險參數自相矛盾（現價679進場停損空間僅1.9% vs ADR 6.53%），三項結構性缺陷同時成立，無法構成有效進場條件。"
-      ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780039750.259458,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜大盤加權與櫃買均呈多頭排列，系統性環境有利",
-        "脈絡｜無任何新聞題材佐證，突破缺乏基本面催化劑"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 11.2%，遠超 5% 安全門檻，股價已嚴重延伸",
-        "TA｜融資單日暴增 +607 張（+5.3%），使用率 29.5%，散戶追高籌碼鬆散"
       ]
     },
     {
