@@ -1,5 +1,5 @@
 {
-  "ts": 1780041160.996306,
+  "ts": 1780041279.6003132,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 32335,
-  "input_tokens": 6407,
+  "input_tokens": 6393,
   "llm_calls": 3,
-  "cost_usd": 0.1045,
+  "cost_usd": 0.1039,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780041158.5521238
+        "ts": 1780041275.331041
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780041158.5521238
+        "ts": 1780041275.331041
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780041158.5521238
+        "ts": 1780041275.331041
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780041158.5521238
+        "ts": 1780041275.331041
       }
     }
   },
   "recent": [
+    {
+      "code": "8358",
+      "ts": 1780041275.331041,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=15.7% 遠超閾值，停損 565 距現價 608 達 7.1%（≈ ADR 6.76%），風報比結構性惡化；TA resonance.total 僅 +2 且 momentum=-1，量能未確認（slv=3），三方均未給出可執行的",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6291",
       "ts": 1780041158.5521238,
@@ -87,17 +98,6 @@
         "TA｜距 EMA10 延伸 11.2%，遠超 5% 安全門檻，股價已嚴重延伸",
         "TA｜融資單日暴增 +607 張（+5.3%），使用率 29.5%，散戶追高籌碼鬆散"
       ]
-    },
-    {
-      "code": "8358",
-      "ts": 1780039344.4118788,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "現價608已較原始進場點571延伸6.5%，EMA10延伸達15.7%，最佳窗口已過；TA resonance.total=3看似正面，但分子（延伸過遠）使風報比崩潰，停損565距現價7.1%卻無任何下方支撐緩衝，不具可執行進場條件。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2464",
