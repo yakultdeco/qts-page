@@ -1,9 +1,9 @@
 {
-  "ts": 1780022163.079242,
-  "total": 12,
+  "ts": 1780022445.5524936,
+  "total": 13,
   "by_verdict": {
     "go": 0,
-    "wait": 1,
+    "wait": 2,
     "skip": 11
   },
   "short_circuits": 0,
@@ -13,51 +13,66 @@
   "cost_usd": 0.1845,
   "agents": {
     "conti": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 12,
+      "wait": 13,
       "skip": 0,
       "last": {
-        "code": "6147",
+        "code": "6291",
         "verdict": "wait",
-        "ts": 1780022162.7236197
+        "ts": 1780022445.3410156
       }
     },
     "tai": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 1,
+      "wait": 2,
       "skip": 11,
       "last": {
-        "code": "6147",
-        "verdict": "skip",
-        "ts": 1780022162.7236197
+        "code": "6291",
+        "verdict": "wait",
+        "ts": 1780022445.3410156
       }
     },
     "combo": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 1,
+      "wait": 2,
       "skip": 11,
       "last": {
-        "code": "6147",
-        "verdict": "skip",
-        "ts": 1780022162.7236197
+        "code": "6291",
+        "verdict": "wait",
+        "ts": 1780022445.3410156
       }
     },
     "ortho": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 1,
+      "wait": 2,
       "skip": 11,
       "last": {
-        "code": "6147",
-        "verdict": "skip",
-        "ts": 1780022162.7236197
+        "code": "6291",
+        "verdict": "wait",
+        "ts": 1780022445.3410156
       }
     }
   },
   "recent": [
+    {
+      "code": "6291",
+      "ts": 1780022445.3410156,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "6147",
       "ts": 1780022162.7236197,

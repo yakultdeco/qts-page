@@ -180,44 +180,33 @@
     "last_at_vote": 468.0
   },
   "6291": {
-    "verdict": "skip",
-    "score": 32,
+    "verdict": "wait",
+    "score": 0,
     "context": {
-      "score": 52,
+      "score": 0,
       "verdict": "wait"
     },
     "ta": {
-      "score": 12,
-      "verdict": "skip"
+      "score": 0,
+      "verdict": "wait"
     },
-    "entry_plan": {
-      "entry": null,
-      "stop": null,
-      "stop_basis": "不進場，無需設定停損"
-    },
+    "entry_plan": {},
     "reasons": [
-      "至少一方否決",
-      "脈絡｜無任何新聞題材支撐，純技術突破，持續性待觀察",
-      "脈絡｜距 EMA10 已延伸 19.6%，追高風險偏高，等回踩確認較佳",
-      "TA｜距 EMA10 延伸 19.6%，嚴重超過 5% 上限，追高風險極高",
-      "TA｜外資當日賣超 -106,054 股、投信零買，法人籌碼淨流出，不支持突破延續"
+      "雙方觀望",
+      "脈絡｜context_agent 失敗: BadRequestError",
+      "TA｜ta_agent 失敗: BadRequestError"
     ],
-    "resonance": {
-      "trend": 1,
-      "momentum": -2,
-      "volume": 1,
-      "structure": -2,
-      "total": -2
-    },
+    "resonance": {},
+    "triggers": [],
     "_usage": {
-      "in": 1533,
-      "out": 856,
-      "cw": 33393,
-      "cr": 65050
+      "in": 0,
+      "out": 0,
+      "cw": 0,
+      "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1779945484.109012,
-    "last_at_vote": 663.0
+    "ts": 1780022445.3410156,
+    "last_at_vote": 698.0
   },
   "6175": {
     "verdict": "skip",
