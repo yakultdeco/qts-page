@@ -1,16 +1,16 @@
 {
-  "ts": 1780028380.34218,
+  "ts": 1780028497.305929,
   "total": 5,
   "by_verdict": {
     "go": 0,
-    "wait": 3,
-    "skip": 2
+    "wait": 2,
+    "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 11896,
-  "input_tokens": 5354,
-  "llm_calls": 2,
-  "cost_usd": 0.1262,
+  "cache_reads_tokens": 23792,
+  "input_tokens": 8021,
+  "llm_calls": 3,
+  "cost_usd": 0.1708,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,46 +18,57 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780028165.796382
+        "ts": 1780028496.663934
       }
     },
     "tai": {
       "calls": 5,
       "go": 0,
-      "wait": 3,
-      "skip": 2,
+      "wait": 2,
+      "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780028165.796382
+        "ts": 1780028496.663934
       }
     },
     "combo": {
       "calls": 5,
       "go": 0,
-      "wait": 3,
-      "skip": 2,
+      "wait": 2,
+      "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780028165.796382
+        "ts": 1780028496.663934
       }
     },
     "ortho": {
       "calls": 5,
       "go": 0,
-      "wait": 3,
-      "skip": 2,
+      "wait": 2,
+      "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780028165.796382
+        "ts": 1780028496.663934
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780028496.663934,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext_pct=11.2% 已超警戒線兩倍，TA resonance.total 僅+1 且 momentum/structure 均負；融資單日暴增+607張（+5.3%）籌碼浮動化，報酬風險比嚴重扭曲（1.5R 目標僅 1228，空間不",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780028165.796382,
@@ -79,21 +90,6 @@
       "head": "ext 19.6% 遠超容忍上限，TA resonance total=0 無動能共識，Bear 指出 stop 666 高於 entry 655 邏輯矛盾（買入即虧 1.7%），三項致命缺陷並存，無可執行的正期望值進場點。",
       "ctx_reasons": [],
       "ta_reasons": []
-    },
-    {
-      "code": "6531",
-      "ts": 1780026217.983882,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
     },
     {
       "code": "2464",
