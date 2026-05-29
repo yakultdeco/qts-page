@@ -912,6 +912,176 @@
 
 </div>
 
+<!-- 🌙 明日交易計畫（夜間圓桌） -->
+<section id="night-plan" class="night-plan">
+  <div class="np-head">
+    <h2>🌙 明日交易計畫</h2>
+    <span class="np-meta" id="np-meta">尚未連線到 night_plan.json</span>
+    <span class="np-bias" id="np-bias" style="display:none"></span>
+  </div>
+  <div id="np-body" class="np-body">
+    <div class="np-empty">
+      夜間圓桌每日 18:00 在 GitHub Actions 跑一次。<br/>
+      還沒看到資料？檢查 <code>https://&lt;your&gt;.github.io/qts-page/night_plan.json</code>
+    </div>
+  </div>
+</section>
+
+<style>
+.night-plan { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px; margin-top:16px; max-width:1320px; }
+.np-head { display:flex; align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap; }
+.np-head h2 { font-size:15px; color:#f0f6fc; margin:0; }
+.np-meta { color:var(--muted); font-size:11px; }
+.np-bias { padding:2px 8px; border-radius:4px; font-size:10px; font-weight:600; border:1px solid; }
+.np-bias.bullish { background:#0d2818; color:#3fb950; border-color:#2d5a3e; }
+.np-bias.neutral { background:#1c1f24; color:#8b949e; border-color:#30363d; }
+.np-bias.cautious { background:#2b2410; color:#d29922; border-color:#6f5512; }
+.np-bias.defensive { background:#2d1418; color:#f85149; border-color:#5c2329; }
+.np-empty { color:var(--dim); font-size:12px; text-align:center; padding:18px; }
+.np-empty code { background:#0d1117; padding:1px 5px; border-radius:3px; font-family:ui-monospace,monospace; }
+.np-brief { background:#0d1117; border:1px solid var(--border); border-radius:6px; padding:10px 12px; margin-bottom:10px; }
+.np-outlook { color:var(--text); font-size:12px; line-height:1.6; margin-bottom:6px; }
+.np-levels { color:var(--muted); font-size:11px; margin-bottom:6px; }
+.np-sectors { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:6px; }
+.np-sector { background:#161b22; border:1px solid var(--border); border-radius:4px; padding:4px 8px; font-size:11px; }
+.np-sector .ns-name { color:#79c0ff; font-weight:600; margin-right:6px; }
+.np-sector .ns-codes { color:var(--dim); font-family:ui-monospace,monospace; font-size:10px; }
+.np-risks { color:#f0a500; font-size:11px; }
+.np-tempo { color:var(--muted); font-size:11px; margin-top:6px; padding-top:6px; border-top:1px dashed var(--border); }
+.np-tempo span { margin-right:10px; }
+.np-trader-brief { background:#0c1f2d; border:1px solid #1f6feb55; color:#79c0ff; border-radius:4px; padding:6px 8px; font-size:11px; margin-top:8px; }
+.np-counts { display:flex; gap:10px; font-size:11px; color:var(--muted); margin-bottom:8px; flex-wrap:wrap; }
+.np-counts b { color:var(--text); }
+.np-cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:10px; }
+.np-card { background:#0d1117; border:1px solid var(--border); border-radius:6px; padding:10px; }
+.np-card-head { display:flex; align-items:center; gap:6px; margin-bottom:6px; flex-wrap:wrap; font-size:12px; }
+.np-card-head .np-tier { font-size:15px; }
+.np-card-head .np-code { color:#79c0ff; font-weight:700; font-family:ui-monospace,monospace; }
+.np-card-head .np-name { color:var(--text); }
+.np-card-head .np-verdict { padding:1px 6px; border-radius:3px; font-size:9px; font-weight:600; border:1px solid; }
+.np-card-head .np-verdict.go { background:#0d2818; color:#3fb950; border-color:#2d5a3e; }
+.np-card-head .np-verdict.wait { background:#2b2410; color:#d29922; border-color:#6f5512; }
+.np-card-head .np-verdict.skip { background:#2d1418; color:#f85149; border-color:#5c2329; }
+.np-card-head .np-conf { margin-left:auto; color:var(--dim); font-size:10px; }
+.np-card .np-prices { display:flex; gap:8px; flex-wrap:wrap; font-size:10px; color:var(--muted); padding:4px 0; border-bottom:1px solid var(--border); margin-bottom:6px; }
+.np-card .np-prices b { color:var(--text); }
+.np-card .np-disc { font-size:11px; line-height:1.5; color:var(--text); }
+.np-card .np-disc div { margin-bottom:3px; }
+.np-card .np-disc b { color:#d29922; margin-right:3px; }
+.np-card .np-trigs { display:flex; gap:4px; flex-wrap:wrap; margin-top:6px; padding-top:6px; border-top:1px solid var(--border); }
+.np-trig { padding:1px 5px; border-radius:3px; font-size:9px; border:1px solid; }
+.np-trig.go { color:#3fb950; border-color:#2d5a3e; background:#0d2818; }
+.np-trig.ab { color:#f85149; border-color:#5c2329; background:#2d1418; }
+</style>
+
+<script>
+(function loadNightPlan() {
+  // 1. 同層 night_plan.json（office.html 在 qts-page 上）
+  // 2. 本機 reports/night_plan.json（開發時）
+  const SOURCES = ['night_plan.json', 'reports/night_plan.json', '../reports/night_plan.json'];
+  const TIER_COLOR = { '🟢':'#3fb950','🟡':'#d29922','🟠':'#f0a500','🔵':'#58a6ff','⚪':'#8b949e' };
+
+  function el(tag, cls, html) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html !== undefined) e.innerHTML = html;
+    return e;
+  }
+
+  function render(data) {
+    const meta = document.getElementById('np-meta');
+    const bias = document.getElementById('np-bias');
+    const body = document.getElementById('np-body');
+    body.innerHTML = '';
+
+    meta.textContent = `掃描日 ${data.scan_date || '?'}｜${data.asof || ''}｜${(data.plans||[]).length} 檔`;
+    const strat = data.strategist || {};
+    const b = (strat.bias || 'neutral').toLowerCase();
+    bias.style.display = 'inline-block';
+    bias.className = 'np-bias ' + b;
+    bias.textContent = b.toUpperCase();
+
+    // brief
+    const brief = el('div', 'np-brief');
+    brief.appendChild(el('div', 'np-outlook', strat.market_outlook || ''));
+    const kl = strat.key_levels || {};
+    brief.appendChild(el('div', 'np-levels',
+      `關鍵位：支撐 <b style="color:#e6edf3">${kl.taiex_support||'—'}</b>｜壓力 <b style="color:#e6edf3">${kl.taiex_resistance||'—'}</b>｜${kl.note||''}`));
+    const secWrap = el('div', 'np-sectors');
+    (strat.hot_sectors||[]).forEach(s => {
+      const node = el('div', 'np-sector',
+        `<span class="ns-name">${s.name||''}</span>${s.thesis||''}<span class="ns-codes"> · ${(s.watch_codes||[]).join(' ')}</span>`);
+      secWrap.appendChild(node);
+    });
+    brief.appendChild(secWrap);
+    const risks = (strat.system_risks||[]).map(r => `• ${r}`).join('　');
+    if (risks) brief.appendChild(el('div', 'np-risks', '⚠️ ' + risks));
+    const tempo = strat.tempo || {};
+    brief.appendChild(el('div', 'np-tempo',
+      `<span>盤前：${tempo.pre_open_focus||''}</span><span>開盤：${tempo.open_play||''}</span><span>最佳：${tempo.best_window||''}</span>`));
+    if (strat.trader_brief) brief.appendChild(el('div', 'np-trader-brief', '💼 ' + strat.trader_brief));
+    body.appendChild(brief);
+
+    // counts
+    const summary = data.summary || {};
+    const w = data.waiting_summary || {};
+    body.appendChild(el('div', 'np-counts',
+      `<span>🟢 強量 <b>${summary.n_4||0}</b></span>
+       <span>🟡 量正常 <b>${summary.n_3||0}</b></span>
+       <span>🟠 量偏弱 <b>${summary.n_2||0}</b></span>
+       <span>🔵 接近 <b>${summary.n_1||0}</b></span>
+       <span>⚪ 等待池 <b>${w.total||0}</b></span>`));
+
+    // cards
+    const cards = el('div', 'np-cards');
+    (data.plans||[]).forEach(p => {
+      const plan = p.plan || {}, disc = p.discussion || {}, c = p.candidate || {};
+      const tier = plan.watch_tier || '⚪';
+      const vdt = (plan.verdict||'wait').toLowerCase();
+      const card = el('div', 'np-card');
+      card.appendChild(el('div', 'np-card-head',
+        `<span class="np-tier" style="color:${TIER_COLOR[tier]||'#fff'}">${tier}</span>
+         <span class="np-code">${c.code||''}</span>
+         <span class="np-name">${c.name||''}</span>
+         <span class="np-verdict ${vdt}">${vdt.toUpperCase()}</span>
+         <span class="np-conf">信心 ${plan.confidence||0}</span>`));
+      card.appendChild(el('div', 'np-prices',
+        `<span>現價 <b>${c.last||'—'}</b></span>
+         <span>進場 <b>${plan.entry||'—'}</b></span>
+         <span>停損 <b>${plan.stop||'—'}</b></span>
+         <span>首批 <b>${plan.first_tranche_pct||0}%</b></span>
+         <span style="margin-left:auto">ADR ${c.adr_pct||'—'}% · RS ${c.rs_rating||'—'}</span>`));
+      card.appendChild(el('div', 'np-disc',
+        `<div><b>分析師</b>${disc.analyst||''}</div>
+         <div><b>風控</b>${disc.risk||''}</div>
+         <div><b>交易員</b>${disc.trader||''}</div>`));
+      const trigs = el('div', 'np-trigs');
+      (plan.tomorrow_triggers||[]).forEach(t => trigs.appendChild(el('span', 'np-trig go', '▶ ' + t)));
+      (plan.abort_triggers||[]).forEach(t => trigs.appendChild(el('span', 'np-trig ab', '✕ ' + t)));
+      if (trigs.children.length) card.appendChild(trigs);
+      cards.appendChild(card);
+    });
+    body.appendChild(cards);
+  }
+
+  async function tryFetch(url) {
+    try {
+      const r = await fetch(url, { cache: 'no-store' });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (_) { return null; }
+  }
+
+  (async () => {
+    for (const src of SOURCES) {
+      const data = await tryFetch(src);
+      if (data) { render(data); return; }
+    }
+    // 沒有任何來源命中：保留 empty hint
+  })();
+})();
+</script>
+
 <script>
 const SPRITE_BASE = 'https://yakultdeco.github.io/qts-page/sprites';
 
