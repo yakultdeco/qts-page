@@ -1,5 +1,5 @@
 {
-  "ts": 1780030246.348446,
+  "ts": 1780030361.961014,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 8011,
+  "input_tokens": 8069,
   "llm_calls": 3,
-  "cost_usd": 0.1292,
+  "cost_usd": 0.1282,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780030036.562262
+        "ts": 1780030361.131212
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780030036.562262
+        "ts": 1780030361.131212
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780030036.562262
+        "ts": 1780030361.131212
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780030036.562262
+        "ts": 1780030361.131212
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780030361.131212,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=11.2% 遠超可接受上限，融資單日暴增 607 張，Bear bear_score=82 且兩項 invalidation 均屬中高機率；TA resonance.total=2 但 momentum=-1 顯示動能已衰，風報比嚴",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780030036.562262,
@@ -77,17 +88,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext_pct 19.6% 遠超可接受上限，TA resonance total=-1 且 score 僅 28，停損 666 設於進場 655 之上本身即為結構矛盾，Bear bear_score=88 三大 invalidation 均",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6531",
-      "ts": 1780028496.663934,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext_pct=11.2% 已超警戒線兩倍，TA resonance.total 僅+1 且 momentum/structure 均負；融資單日暴增+607張（+5.3%）籌碼浮動化，報酬風險比嚴重扭曲（1.5R 目標僅 1228，空間不",
       "ctx_reasons": [],
       "ta_reasons": []
     },
