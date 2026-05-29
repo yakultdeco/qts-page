@@ -29,32 +29,83 @@
   },
   "6531": {
     "verdict": "wait",
-    "score": 0,
+    "score": 53,
     "context": {
-      "score": 0,
+      "score": 55,
       "verdict": "wait"
     },
     "ta": {
-      "score": 0,
+      "score": 52,
       "verdict": "wait"
     },
-    "entry_plan": {},
+    "entry_plan": {
+      "entry": 1190.0,
+      "stop": 1140.0,
+      "stop_basis": "掃描日整理低點，突破結構破壞即出"
+    },
     "reasons": [
       "雙方觀望",
-      "脈絡｜context_agent 失敗: BadRequestError",
-      "TA｜ta_agent 失敗: BadRequestError"
+      "脈絡｜大盤加權與櫃買均處多頭排列，系統性環境支撐進場",
+      "脈絡｜無任何新聞題材佐證，突破動能來源不明，難以判斷是否有基本面驅動",
+      "TA｜距 EMA10 延伸 5.7%，超過理想進場閾值 5%，風報比偏差",
+      "TA｜投信 +896 張為主力買超，籌碼方向正面，但融資單日暴增 +607 張需警惕"
     ],
-    "resonance": {},
-    "triggers": [],
+    "resonance": {
+      "trend": 1,
+      "momentum": 0,
+      "volume": 1,
+      "structure": 0,
+      "total": 2
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "量能步調 ≥ 150%，確認爆量追進動能充足",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "現價回落站穩 EMA10（延伸縮減至合理範圍）",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "總量 / 20 日均量 < 1.0，量縮突破結構不可信",
+        "cond": {
+          "type": "vol_ratio",
+          "op": "<",
+          "value": 1.0
+        }
+      },
+      {
+        "id": "T4",
+        "for": "abort",
+        "desc": "現價跌破 EMA20，多頭趨勢結構已破壞",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
     "_usage": {
-      "in": 0,
-      "out": 0,
+      "in": 1299,
+      "out": 745,
       "cw": 0,
-      "cr": 0
+      "cr": 2240
     },
     "_short_circuit": false,
-    "ts": 1780026660.3491037,
-    "last_at_vote": 1195.0
+    "ts": 1780030265.8829155,
+    "last_at_vote": 1190.0
   },
   "4760": {
     "verdict": "skip",
