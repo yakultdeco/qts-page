@@ -1,5 +1,5 @@
 {
-  "ts": 1780049038.9769669,
+  "ts": 1780049153.510985,
   "total": 12,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 7,
   "cache_reads_tokens": 35688,
-  "input_tokens": 15093,
+  "input_tokens": 15055,
   "llm_calls": 10,
-  "cost_usd": 0.1686,
+  "cost_usd": 0.1675,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 7,
       "last": {
-        "code": "QCOM",
-        "verdict": "skip",
-        "ts": 1780047837.80252
+        "code": "6531",
+        "verdict": "wait",
+        "ts": 1780049149.2806559
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "QCOM",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780047837.80252
+        "ts": 1780049149.2806559
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 10,
       "last": {
-        "code": "QCOM",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780047837.80252
+        "ts": 1780049149.2806559
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 17,
       "last": {
-        "code": "QCOM",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780047837.80252
+        "ts": 1780049149.2806559
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780049149.2806559,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=11.2% 遠超 5% 上限，融資單日暴增 +607 張籌碼明顯鬆散，三方中最具量化依據的 TA（score=28）與 Bear（bear_score=82）均反對進場，風報比在延伸 11.2% 下已嚴重惡化，無任何催化劑抵消上述疑",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "QCOM",
       "ts": 1780047837.80252,
@@ -169,17 +180,6 @@
       "ta_reasons": [
         "TA｜(context 已 skip，省略 TA 呼叫)"
       ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780047237.193718,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=11.2% 遠超 5% 上限，ADR=8.97% 使停損 1140 一日波動即可觸及，融資單日暴增 607 張顯示籌碼鬆散；TA resonance.total=0 且 slv=3，無充分量能支撐，大盤多頭無法彌補個股結構過度延伸的",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "8358",
