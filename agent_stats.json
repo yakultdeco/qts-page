@@ -1,63 +1,97 @@
 {
-  "ts": 1780016772.470065,
-  "total": 6,
+  "ts": 1780017067.4492877,
+  "total": 8,
   "by_verdict": {
     "go": 0,
     "wait": 0,
-    "skip": 6
+    "skip": 8
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 13440,
-  "input_tokens": 7158,
-  "llm_calls": 6,
-  "cost_usd": 0.09,
+  "cache_reads_tokens": 17920,
+  "input_tokens": 9702,
+  "llm_calls": 8,
+  "cost_usd": 0.1204,
   "agents": {
     "conti": {
-      "calls": 6,
+      "calls": 8,
       "go": 0,
-      "wait": 6,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "5425",
+        "code": "3135",
         "verdict": "wait",
-        "ts": 1780016772.2486844
+        "ts": 1780017067.2322721
       }
     },
     "tai": {
-      "calls": 6,
+      "calls": 8,
       "go": 0,
       "wait": 0,
-      "skip": 6,
+      "skip": 8,
       "last": {
-        "code": "5425",
+        "code": "3135",
         "verdict": "skip",
-        "ts": 1780016772.2486844
+        "ts": 1780017067.2322721
       }
     },
     "combo": {
-      "calls": 6,
+      "calls": 8,
       "go": 0,
       "wait": 0,
-      "skip": 6,
+      "skip": 8,
       "last": {
-        "code": "5425",
+        "code": "3135",
         "verdict": "skip",
-        "ts": 1780016772.2486844
+        "ts": 1780017067.2322721
       }
     },
     "ortho": {
-      "calls": 6,
+      "calls": 8,
       "go": 0,
       "wait": 0,
-      "skip": 6,
+      "skip": 8,
       "last": {
-        "code": "5425",
+        "code": "3135",
         "verdict": "skip",
-        "ts": 1780016772.2486844
+        "ts": 1780017067.2322721
       }
     }
   },
   "recent": [
+    {
+      "code": "3135",
+      "ts": 1780017067.2322721,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以評估持續性",
+        "脈絡｜距 EMA10 延伸已達 16.8%，追高風險偏高，宜等回測確認"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸達 16.8%，遠超 5% 警戒線，嚴重過熱",
+        "TA｜整理低點 258.5 高於進場價 256.0，停損倒掛、風報比無法成立"
+      ]
+    },
+    {
+      "code": "8358",
+      "ts": 1780017062.2179582,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤雙指數多頭排列，系統性風險低，環境有利",
+        "脈絡｜無任何新聞題材支撐，純技術突破難判催化劑是否持續"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 12.5%，遠超 5% 警戒線，追高風險極高",
+        "TA｜現價 586 已超越進場點 578，若此刻進場為追漲而非突破買進"
+      ]
+    },
     {
       "code": "5425",
       "ts": 1780016772.2486844,
