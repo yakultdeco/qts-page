@@ -788,5 +788,77 @@
     "_short_circuit": false,
     "ts": 1780019165.747189,
     "last_at_vote": 224.0
+  },
+  "6197": {
+    "verdict": "skip",
+    "score": 35,
+    "context": {
+      "score": 52,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 18,
+      "verdict": "skip"
+    },
+    "entry_plan": {
+      "entry": 296.5,
+      "stop": 277.0,
+      "stop_basis": "整理低點停損，距現價 6.6%，風報比偏差"
+    },
+    "reasons": [
+      "至少一方否決",
+      "脈絡｜大盤多頭明確，加權與櫃買均呈 10MA > 20MA 正排列，系統性風險低",
+      "脈絡｜無任何新聞題材支撐，突破缺乏基本面催化劑，難判斷是否具持續動能",
+      "TA｜距 EMA10 延伸 13.8%，遠超 5% 紅線，進場即追高",
+      "TA｜外資單日賣超 1,129 張，三大法人合計 -1,227 張，籌碼明顯流出"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": -2,
+      "volume": -1,
+      "structure": 0,
+      "total": -2
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "abort",
+        "desc": "距 EMA10 已達 13.8%，過熱延伸，現價仍高於 EMA10 過多",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">=",
+          "value": 1.05
+        }
+      },
+      {
+        "id": "T2",
+        "for": "abort",
+        "desc": "量能步調未達爆量標準，突破動能不足",
+        "cond": {
+          "type": "vol_pace",
+          "op": "<",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T3",
+        "for": "entry",
+        "desc": "若出現回踩 EMA10 後量縮整理再突破，方可重新評估",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": "<=",
+          "value": 1.03
+        }
+      }
+    ],
+    "_usage": {
+      "in": 1296,
+      "out": 701,
+      "cw": 0,
+      "cr": 2240
+    },
+    "_short_circuit": false,
+    "ts": 1780028469.0219026,
+    "last_at_vote": 296.5
   }
 }
