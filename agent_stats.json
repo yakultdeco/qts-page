@@ -1,5 +1,5 @@
 {
-  "ts": 1780039630.485445,
+  "ts": 1780039739.218442,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 32335,
-  "input_tokens": 6320,
+  "input_tokens": 6289,
   "llm_calls": 3,
-  "cost_usd": 0.1066,
+  "cost_usd": 0.1033,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780039344.4118788
+        "ts": 1780039737.2514088
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780039344.4118788
+        "ts": 1780039737.2514088
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780039344.4118788
+        "ts": 1780039737.2514088
       }
     },
     "ortho": {
@@ -51,13 +51,26 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780039344.4118788
+        "ts": 1780039737.2514088
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780039737.2514088,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "TA resonance total=0 且 ext=11.2% 遠超5%上限，Bear bear_score=88 三項 invalidation 均具高度可信度；融資單日+5.3%（+607張）籌碼鬆散，ADR=8.97% 遠大於停損距",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA resonance total=0 且 ext=11.2% 遠超5%上限，Bear bear_score=88 三項 invalidation 均具高度可信度；融資單日+5.3%（+607張）籌碼鬆散，ADR=8.97% 遠大於停損距"
+      ]
+    },
     {
       "code": "8358",
       "ts": 1780039344.4118788,
@@ -85,17 +98,6 @@
         "TA｜距EMA10延伸19.6%，遠超5%警戒線，進場即承擔巨大均值回歸風險",
         "TA｜突破點655元、現價679元，已超漲3.7%；停損距現價僅1.9%但距EMA10過遠，風報比嚴重惡化"
       ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780037881.56532,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext_pct=11.2% 嚴重偏離均線，TA resonance total=2 但 momentum=-1 structure=-1 內部矛盾；融資單日暴增+607張浮動籌碼惡化，Bear bear_score=82，風報比不支持進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2464",
