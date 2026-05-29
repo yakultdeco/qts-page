@@ -1,5 +1,5 @@
 {
-  "ts": 1780037378.1747332,
+  "ts": 1780037487.983329,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 7998,
+  "input_tokens": 8085,
   "llm_calls": 3,
-  "cost_usd": 0.1307,
+  "cost_usd": 0.1298,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780037374.503288
+        "ts": 1780037485.6492999
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780037374.503288
+        "ts": 1780037485.6492999
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780037374.503288
+        "ts": 1780037485.6492999
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780037374.503288
+        "ts": 1780037485.6492999
       }
     }
   },
   "recent": [
+    {
+      "code": "8358",
+      "ts": 1780037485.6492999,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=15.7% 遠超5%上限，停損7.1%接近1×ADR(6.76%)風報比失衡；TA resonance.total僅+2但momentum=-1，加上slv=3未達強量級別，Bear bear_score=82的失敗結構論述有力，無",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6291",
       "ts": 1780037374.503288,
@@ -77,17 +88,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext=11.2% 嚴重超標（TA 上限 5%），停損距離 2.98% 遠低於 ADR 8.97%，單日正常波動即可掃損；融資單日暴增 607 張，Bear bear_score=82 的籌碼疑慮無法被現有條件反駁，風報比不成立。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780035637.979378,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "現價 608 距停損 565 達 7.1%，已超過 ADR 6.76%；同時 ext=15.7% 遠超安全門檻，進場即承擔超過一個 ADR 的虧損風險，風報比根本不成立，skip 無疑。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
