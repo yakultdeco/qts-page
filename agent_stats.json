@@ -1,5 +1,5 @@
 {
-  "ts": 1780035856.983993,
+  "ts": 1780035974.596066,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 7898,
+  "input_tokens": 7928,
   "llm_calls": 3,
-  "cost_usd": 0.1238,
+  "cost_usd": 0.1274,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,20 +18,20 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780035637.979378
+        "ts": 1780035972.322029
       }
     },
     "tai": {
       "calls": 5,
       "go": 0,
-      "wait": 3,
-      "skip": 2,
+      "wait": 2,
+      "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780035637.979378
+        "ts": 1780035972.322029
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780035637.979378
+        "ts": 1780035972.322029
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780035637.979378
+        "ts": 1780035972.322029
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780035972.322029,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=11.2% 嚴重超標（TA 上限 5%），停損距離 2.98% 遠低於 ADR 8.97%，單日正常波動即可掃損；融資單日暴增 607 張，Bear bear_score=82 的籌碼疑慮無法被現有條件反駁，風報比不成立。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780035637.979378,
@@ -77,17 +88,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext=19.6%遠超拒絕門檻，TA resonance total=-1，停損邏輯倒置（stop 666 > entry 655），風報比1.9% vs 潛在16%回撤，三方均無有效反駁理由，無任何進場基礎。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6531",
-      "ts": 1780034097.365105,
-      "context": "wait",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext_pct=11.2% 已嚴重延伸，停損距離僅 2.98% 遠低於 ADR 8.97%，風報比根本不成立；融資單日+607張(+5.3%)顯示散戶追高，Bear 核心疑慮均有數據支撐，大盤多頭雖正面但無法彌補個股層面的結構性缺陷。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
