@@ -1,5 +1,5 @@
 {
-  "ts": 1780035513.8494458,
+  "ts": 1780035640.8489,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 7929,
+  "input_tokens": 7898,
   "llm_calls": 3,
-  "cost_usd": 0.1208,
+  "cost_usd": 0.1238,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780035513.187874
+        "ts": 1780035637.979378
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 3,
       "skip": 2,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780035513.187874
+        "ts": 1780035637.979378
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780035513.187874
+        "ts": 1780035637.979378
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6291",
+        "code": "8358",
         "verdict": "skip",
-        "ts": 1780035513.187874
+        "ts": 1780035637.979378
       }
     }
   },
   "recent": [
+    {
+      "code": "8358",
+      "ts": 1780035637.979378,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "現價 608 距停損 565 達 7.1%，已超過 ADR 6.76%；同時 ext=15.7% 遠超安全門檻，進場即承擔超過一個 ADR 的虧損風險，風報比根本不成立，skip 無疑。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6291",
       "ts": 1780035513.187874,
@@ -77,17 +88,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext_pct=11.2% 已嚴重延伸，停損距離僅 2.98% 遠低於 ADR 8.97%，風報比根本不成立；融資單日+607張(+5.3%)顯示散戶追高，Bear 核心疑慮均有數據支撐，大盤多頭雖正面但無法彌補個股層面的結構性缺陷。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780033742.025716,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=15.7%遠超5%安全門檻，現價608追入停損565需承受7.1%虧損，以ADR=6.76%衡量風報比嚴重失衡；Bear bear_score=82且三條invalidation皆屬中高機率，無題材催化劑難支撐延伸行情。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
