@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-TW"><head>
+<meta charset="UTF-8">
+<title>明日交易計畫 · 20260529 → 次一交易日</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root {
+  --bg:#0d1117; --panel:#161b22; --border:#30363d;
+  --text:#e6edf3; --muted:#8b949e; --dim:#6e7681; --accent:#58a6ff;
+}
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:var(--bg); color:var(--text); font-family:-apple-system,'Segoe UI',sans-serif; font-size:13px; padding:16px; }
+h1 { color:#f0f6fc; font-size:20px; margin-bottom:4px; }
+.sub { color:var(--muted); font-size:12px; margin-bottom:16px; }
+.brief { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:16px; }
+.brief h2 { font-size:14px; color:#f0f6fc; margin-bottom:8px; display:flex; gap:8px; align-items:center; }
+.brief .outlook { color:var(--text); margin-bottom:10px; line-height:1.6; }
+.brief .bias { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; font-weight:600; margin-left:8px; }
+.bias.bullish { background:#0d2818; color:#3fb950; border:1px solid #2d5a3e; }
+.bias.neutral { background:#1c1f24; color:#8b949e; border:1px solid #30363d; }
+.bias.cautious { background:#2b2410; color:#d29922; border:1px solid #6f5512; }
+.bias.defensive { background:#2d1418; color:#f85149; border:1px solid #5c2329; }
+.brief .levels { color:var(--muted); font-size:12px; margin-bottom:10px; }
+.sectors { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px; }
+.sector { background:#0d1117; border:1px solid var(--border); border-radius:6px; padding:8px 10px; min-width:170px; max-width:220px; flex:1; }
+.sname { color:#79c0ff; font-weight:600; font-size:12px; margin-bottom:4px; }
+.sthesis { color:var(--text); font-size:11px; line-height:1.5; margin-bottom:4px; }
+.scodes { color:var(--muted); font-size:10px; font-family:ui-monospace,monospace; }
+.risks { color:#f0a500; font-size:12px; }
+.risks ul { padding-left:18px; }
+.risks li { margin:2px 0; }
+.tempo { color:var(--muted); font-size:11px; margin-top:8px; padding-top:8px; border-top:1px solid var(--border); }
+.tempo span { margin-right:10px; }
+.trader-brief { background:#0c1f2d; border:1px solid #1f6feb55; border-radius:6px; padding:8px 10px; margin-top:10px; color:#79c0ff; font-size:12px; }
+.cards { display:grid; grid-template-columns:repeat(auto-fill, minmax(360px, 1fr)); gap:12px; }
+.card { background:var(--panel); border:1px solid var(--border); border-radius:8px; padding:12px; }
+.card-head { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
+.tier { font-size:18px; }
+.code { color:#79c0ff; font-weight:700; font-family:ui-monospace,monospace; }
+.name { color:var(--text); font-weight:600; }
+.verdict { padding:1px 7px; border-radius:4px; font-size:10px; font-weight:600; border:1px solid; }
+.conf { margin-left:auto; color:var(--muted); font-size:11px; }
+.prices { display:flex; gap:8px; flex-wrap:wrap; padding:6px 0; color:var(--muted); font-size:11px; border-bottom:1px solid var(--border); margin-bottom:8px; }
+.prices b { color:var(--text); font-weight:600; }
+.prices .adr,.prices .rs { margin-left:auto; }
+.disc { color:var(--text); font-size:12px; line-height:1.5; }
+.disc div { margin-bottom:4px; }
+.disc b { color:#d29922; margin-right:4px; }
+.triggers { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; padding-top:8px; border-top:1px solid var(--border); }
+.trig { padding:2px 6px; border-radius:4px; font-size:10px; border:1px solid; }
+.trig.go { background:#0d2818; color:#3fb950; border-color:#2d5a3e; }
+.trig.abort { background:#2d1418; color:#f85149; border-color:#5c2329; }
+.summary { display:flex; gap:14px; flex-wrap:wrap; color:var(--muted); font-size:12px; margin-bottom:12px; }
+.summary b { color:var(--text); }
+.cost { color:var(--dim); font-size:11px; margin-top:14px; text-align:right; }
+</style></head><body>
+<h1>🌙 明日交易計畫 · 20260529 → 次一交易日</h1>
+<div class="sub">夜間圓桌 · 策略長 → 分析師 → 風控官 → 交易員｜更新：2026-05-29 12:59</div>
+
+<div class="summary">
+  <span>🟢 強量 <b>3</b></span>
+  <span>🟡 量正常 <b>2</b></span>
+  <span>🟠 量偏弱 <b>1</b></span>
+  <span>🔵 接近 <b>2</b></span>
+  <span>⚪ 等待池 <b>43</b>（取前 10）</span>
+</div>
+
+<div class="brief">
+  <h2>🎯 策略長 · 明日大盤定調
+    <span class="bias bullish">BULLISH</span>
+  </h2>
+  <div class="outlook">TAIEX 收 44,921（+2.94%），距 EMA10 達 +4.46%、近 5 日累漲 6.28%，短線偏強但已脫離均線偏高，動能延續需觀察量能是否同步放大；突破檔 6 檔、等待池 43 檔積蓄，明日族群輪動可期。</div>
+  <div class="levels">關鍵位：支撐 <b>43800</b>｜壓力 <b>45500</b>｜43,800 約 EMA10 位置，若回測需守；45,500 為心理整數壓力區</div>
+  <div class="sectors">
+<div class="sector">
+  <div class="sname">leader 族群領頭股</div>
+  <div class="sthesis">今日掃描 leader 族群出現 8 次，為最強主流；立敦(6175)、台半(5425) slv≥3 量能確認，明日延續性高。</div>
+  <div class="scodes">6175、5425、8289</div>
+</div>
+<div class="sector">
+  <div class="sname">半導體通路／IC設計</div>
+  <div class="sthesis">等待池 RS99 頎邦、禾伸堂、鼎元蓄勢，若明日量增突破 entry 可成下一波接力；通路族群與主流同向。</div>
+  <div class="scodes">6147、3026、2426</div>
+</div>
+<div class="sector">
+  <div class="sname">電子材料／基板</div>
+  <div class="sthesis">台燿(6274 RS97)、信昌電(6173 RS98) 等待池位置佳，電子材料族群跟隨大盤強勢，明日值得觀察突破訊號。</div>
+  <div class="scodes">6274、6173、6727</div>
+</div></div>
+  <div class="risks">⚠️ 系統性風險<ul><li>TAIEX 距 EMA10 已達 +4.46%，短線偏高，若美股隔夜收黑易引發獲利回吐賣壓</li><li>近 5 日急漲 6.28%，市場情緒偏亢奮，追高風險上升；量偏弱突破股（slv=1）需提防假突破</li><li>等待池 43 檔蓄積、尚未發動，若主力資金輪動速度過快恐出現齊跌</li></ul></div>
+  <div class="tempo">
+    <span>盤前：8:30 盯台指期貨偷跑方向與費城半導體隔夜表現，確認大盤開盤 gap 意圖</span>
+    <span>開盤：9:00-9:30 觀察成交量是否放大、slv≥3 候選能否站穩，若量縮或跳空開高走低則暫緩追進</span>
+    <span>最佳時段：10:00 後均價確認方向，再選量能最強 1-2 檔佈局</span>
+  </div>
+  <div class="trader-brief">💼 交易員備忘：大盤偏多但短線脫離均線偏高，明日優先持有 slv≥3 強勢股（立敦、台半），等待池 RS99 三檔若出現突破訊號可小碼試單；避免追高已大漲股，控制單筆倉位不超過平時 80%。</div>
+</div>
+
+<h2 style="font-size:15px;margin:10px 2px;color:#f0f6fc">📋 交易員 · 明日標的計畫（18 檔）</h2>
+<div class="cards">
+<div class="card" data-tier="🔵" data-verdict="wait">
+  <div class="card-head">
+    <span class="tier" style="color:#58a6ff">🔵</span>
+    <span class="code">3042</span>
+    <span class="name">晶技</span>
+    <span class="verdict v-wait" style="background:#d2992222;border-color:#d29922;color:#d29922">WAIT</span>
+    <span class="conf">信心 45</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>217.5</b></span>
+    <span>進場 <b>221.5</b></span>
+    <span>停損 <b>205.0</b></span>
+    <span>首批 <b>10%</b></span>
+    <span class="adr">ADR 8.08%</span>
+    <span class="rs">RS 93</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距整理高 221.5 只差 1.8%，收 217.5 屬 🔵 接近進場點。量能步調 121% 尚可，但突破品質 C 級、距 EMA10 高達 +25.4%，延伸幅度相當驚人；整理低 138 vs 停損 161 都還在合理位，但 ext 過高是最大隱憂。等明日站穩 221.5 前高才談進場。</div>
+    <div><b>風控</b>：停損 161.0 距現價 217.5 達 26%，遠超 1R 正常範圍，實際執行幾乎不可能依系統停損；距 EMA10 +25.4% 嚴重延伸，即便大盤仍強，個股隨時可能急回修。這個 R 根本擺不下。</div>
+    <div><b>交易員</b>：風控說的停損 26% 是硬傷——我沒辦法開倉下這種停損。就算明日放量站上 221.5，部位也只能掛象徵性 10%，真正的倉位等回踩縮窄停損再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 開盤後 30 分鐘量能步調 ≥ 140%，且價格站上 221.5 整理高</span><span class="trig go">▶ 10:00 後均價維持 221.5 上方不跌破</span>
+    <span class="trig abort">✕ 開盤跳空 +3% 以上（>228）直接放棄，ext 更高無法控風險</span><span class="trig abort">✕ 任何時段跌破 210 均線支撐視為假突破，取消計畫</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="wait">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">2426</span>
+    <span class="name">鼎元</span>
+    <span class="verdict v-wait" style="background:#d2992222;border-color:#d29922;color:#d29922">WAIT</span>
+    <span class="conf">信心 52</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>80.9</b></span>
+    <span>進場 <b>88.8</b></span>
+    <span>停損 <b>73.5</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.76%</span>
+    <span class="rs">RS 99</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：今日量能步調 210%，爆量拉升明顯，但現價 80.9 距整理頂 88.8 還差 9.8%，slv=0 代表尚未突破，屬等待池。RS 99 領先市場，整理低點 57.83 撐底扎實，只要耐心等突破前高才是合法進場點。</div>
+    <div><b>風控</b>：最擔心的是急漲後假突破：若明日直接跳空 +5% 以上開在 85 附近、量能不繼就追高，停損距現價已逾 9%，單筆 R 風險會嚴重爆倉，那種盤直接放棄。</div>
+    <div><b>交易員</b>：兩位說的都對，現在就是『等』字訣。爆量是好事，但現價離進場點差一大段，明日若能縮量整理守住今日高點，後天等突破 88.8 再進才是標準做法。今明先觀察。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 盤中現價站上 88.8 且開盤後 30 分鐘量能步調 ≥ 150% 才考慮啟動</span><span class="trig go">▶ 突破後收盤不跌回 85 以下（站穩突破點）</span>
+    <span class="trig abort">✕ 明日跳空開盤直接衝破 85 以上（ext 過高，放棄追）</span><span class="trig abort">✕ 盤中跌破今日低點或整理低點 57.83 附近出現量大長黑</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="wait">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6831</span>
+    <span class="name">邁科</span>
+    <span class="verdict v-wait" style="background:#d2992222;border-color:#d29922;color:#d29922">WAIT</span>
+    <span class="conf">信心 38</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>790.0</b></span>
+    <span>進場 <b>850.0</b></span>
+    <span>停損 <b>767.0</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 6.88%</span>
+    <span class="rs">RS 95</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：邁科今日量能步調僅 34%，明顯縮量，RSI14 從 85 降至 76 有降溫跡象，整體還在整理結構內。進場點 850 距現價 790 約 7.6%，仍有空間。3 日上榜但沒有突破動作，需等量能回來再說。</div>
+    <div><b>風控</b>：連上榜 3 日未動，已被市場消費；若明日仍縮量、量能步調低於 80%，訊號持續衰減。再加上大盤短線距均線 +4.46% 偏高，一旦轉弱這種等待票會優先被砍。</div>
+    <div><b>交易員</b>：風控說得對，3 天沒動不是佔位是消耗。量能步調 34% 完全不夠看，繼續觀察就好，沒看到成交量明顯擴增不會有動作。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 盤中量能步調 ≥ 120% 且價格站上 850 突破整理高點</span><span class="trig go">▶ 開盤後 EMA10 守穩不破，整理結構完整</span>
+    <span class="trig abort">✕ 明日量能步調仍低於 80%，繼續縮量則移出觀察名單</span><span class="trig abort">✕ 價格跌破整理低點 654 或盤中大盤開高走低轉弱</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="wait">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">5386</span>
+    <span class="name">青雲</span>
+    <span class="verdict v-wait" style="background:#d2992222;border-color:#d29922;color:#d29922">WAIT</span>
+    <span class="conf">信心 35</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>575.0</b></span>
+    <span>進場 <b>628.0</b></span>
+    <span>停損 <b>471.0</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.12%</span>
+    <span class="rs">RS 97</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距整理高點 628 還有 9.2%，今日量能步調 200% 放量明顯，但現價 575 距 EMA10 已偏離 16.6%，屬於等待池還沒到進場點。RS 97 強勢股沒問題，就是要等它整理回踩或突破 628 才有進場邏輯。</div>
+    <div><b>風控</b>：最怕的是明日跟著大盤情緒追高、在 575-620 區間亂買。停損設在 471，現價距停損達 18.1%，開倉就是超過 2.5R，這根本不是一個合理的進場。大盤 TAIEX 距 EMA10 已 +4.46%，隨時有拉回。</div>
+    <div><b>交易員</b>：風控說得對，現在進是追高，18% 的停損空間完全不合格。放入觀察名單，等它突破 628 且量能步調 ≥ 150% 才是真正的進場訊號，今天就是記著它。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 收盤或盤中突破 628 且當下量能步調 ≥ 150%</span><span class="trig go">▶ 突破後 EMA10 未破、無跳空 +5% 以上過熱開高</span>
+    <span class="trig abort">✕ 開盤跳空 +5% 以上衝過 628，追高風險過高直接放棄</span><span class="trig abort">✕ 當日跌破 540（近期支撐），觀察名單移除</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">8289</span>
+    <span class="name">泰藝</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 30</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>75.7</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 8.21%</span>
+    <span class="rs">RS 80</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距 EMA10 高達 +20.4%，嚴重延伸，今日量能步調 229% 確實強勢，整理區間 53.1-75.7 今日直接貫穿，突破品質 B，但一日上榜、RSI 已達 78，短線過熱訊號明顯。進場條件需等回踩，直接追現價風險極高。</div>
+    <div><b>風控</b>：最大風險：距 EMA10 +20.4%，停損 61.1 距現價 -19.3%，單筆風險遠超 1R 可接受上限。即使明日跳空開高，只要沒有實質回踩整固，進場即是在最高點接刀。</div>
+    <div><b>交易員</b>：分析師說得對，+20.4% 延伸這個數字就夠我打退堂鼓了。風控官的 19.3% 停損距更是直接否決。降為觀察，等整理後再評估，不急著現在追。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 整理 3 日以上、縮量回踩 EMA10 附近（約 62-65 區間）再重新評估</span><span class="trig go">▶ 量能步調持續 ≥ 150% 且收盤守整理箱底 53.1 以上，方列入下週觀察</span>
+    <span class="trig abort">✕ 明日若跳空再漲 +3% 以上，完全放棄，不追</span><span class="trig abort">✕ 跌破整理低點 53.1 則從觀察名單移除</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6175</span>
+    <span class="name">立敦</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 30</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>107.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 6.85%</span>
+    <span class="rs">RS 92</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：今日大漲 13.6%、量能步調 160%，突破整理區高點 107.0，vp 夠強沒話說。但距 EMA10 已拉開 23.1%、RSI89，突破品質只有 C，整理底部 70.2 到現在一口氣衝上來，結構偏急。明日進場條件要等盤中站穩、量能步調維持 ≥ 130% 才考慮。</div>
+    <div><b>風控</b>：最擔心的是距 EMA10 +23.1%，ext 嚴重過高，明日隨時可能一根長黑回測——若開盤後 30 分鐘內跌破今日收盤 107.0 且量縮，就是假突破訊號，停損距現價 21.2%（84.3），單筆直接超過 3R，根本不符合進場標準。</div>
+    <div><b>交易員</b>：風控說的是實話，ext 23% 我從沒這樣追過。今天先看著，明日若拉回整理 2-3 天、縮量在 EMA10 附近重新建立低點，那才是 Qullamaggie 式的進場點。現在不動。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 移入觀察池：若未來 3-5 日縮量整理、ext 回落至 EMA10 +8% 以內再重評</span>
+    <span class="trig abort">✕ 明日開盤後任何時點繼續跳空拉升，確認放棄追進</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6274</span>
+    <span class="name">台燿</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 30</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>1540.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 6.58%</span>
+    <span class="rs">RS 97</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：今日量能步調 168%，爆量沒錯，但現價 1540 距進場點 1735 還有 12.7%，整理低點 1190，這個整理幅度 45% 也太深了。RSI 從 74 回落到 66、近 3 日跌 3.8%，目前是回踩整理中，不是突破前夕。slv=0 就是系統說「還沒到」。</div>
+    <div><b>風控</b>：最大風險是進場點太遠——現價離 entry 1735 差 12.7%，若硬等突破要追高超過一個 ADR（6.58%），單日跳空即超過可接受滑價。整理低點 1190 離現價 22.7%，停損 1445 也還有 6.2%，R 值會爆掉。</div>
+    <div><b>交易員</b>：分析師說量強，風控說距離太遠，我站風控這邊。現價到進場點還有 12.7%，現在什麼都不用做，放進觀察名單等它整理收窄、系統升 slv 再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 觀察是否縮量整理收斂至 1600-1650 區間，減少距 entry 差距</span><span class="trig go">▶ 等系統 slv 升至 1 以上、整理天數至少 5 日以上再重新評估</span>
+    <span class="trig abort">✕ 跌破整理結構低點 1190 或 RSI14 跌破 50 則移出觀察名單</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6451</span>
+    <span class="name">訊芯-KY</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 30</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>569.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 8.91%</span>
+    <span class="rs">RS 96</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：現價 569 距進場點 653 還有 14.8%，整理區間 472-653、今日收 569 在區間中段偏下。vp 88% 量能步調偏弱，RSI 連 3 日從 68 跌到 59，動能在衰退。這檔連上榜 3 天都沒動，結構還沒到可以操作的位置，就是靜靜等。</div>
+    <div><b>風控</b>：連上榜 3 日無進展，動能消耗明顯；若後續整理跌破 502 停損，距現價達 11.6%，風險敞口太大。目前最大問題是「還有 14.8% 才到進場點」，大盤若開始回落這檔恐先補跌。</div>
+    <div><b>交易員</b>：聽完兩位沒什麼好說的，slv=0、距 entry 14.8%、vp 88%、RSI 往下走，今天不是我的菜。放在觀察清單，等它真的突破 653 再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 僅供遠期追蹤：若股價突破整理高點 653 且 vp ≥ 130% 才重新評估</span><span class="trig go">▶ RSI14 需重新站回 65 以上，動能回升才重新升級</span>
+    <span class="trig abort">✕ 跌破整理低點 472，整理結構破壞直接移出名單</span><span class="trig abort">✕ 連續第 4 日上榜仍無量能配合（vp < 90%），移出等待池</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">4760</span>
+    <span class="name">勤凱</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 22</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>425.5</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 8.22%</span>
+    <span class="rs">RS 91</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：今日突破整理高 425.5，量能步調 140%、尚在正常區間，但距 EMA10 已偏離 +24.3%，延伸幅度相當高；突破品質 C，結構是整理低 281 到今日高 425.5，幅度 51%，短線追高風險明顯，需等回踩收斂後再看。</div>
+    <div><b>風控</b>：最大風險是已延伸 24.3%，停損在 328，距現價 22.9%，遠超 1R 容忍範圍；若明日跳空再高開，R 值更難控，建議除非等到大幅回踩至 EMA10 附近否則不輕易出手。</div>
+    <div><b>交易員</b>：風控說得對，這個停損距離根本沒辦法配置合理部位；ext 24% 加上突破品質 C，現階段看就是 skip，等真正回測整理或縮量收斂再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 觀察而非進場：若 3 日內縮量回踩至 EMA10 區域（約 340-360）再重新評估</span>
+    <span class="trig abort">✕ 現階段任何追高行為一律放棄，除非 ext 收斂至 5% 以內且突破品質升至 B</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">2492</span>
+    <span class="name">華新科</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 22</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>390.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.36%</span>
+    <span class="rs">RS 96</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距 EMA10 高達 +37.1%，已嚴重延伸；今日量能步調僅 31%，連突破前高 397 都沒有放量確認，突破品質 C 級說明一切。整理區間 204.5-397 很寬，進場點就在整理高 397，但這個量根本不夠撐。</div>
+    <div><b>風控</b>：最擔心的是距 EMA10 已達 +37.1%，這種極端延伸一旦市場情緒反轉，單日可以修正 5-8%；若開盤跳空 +2% 以上距 EMA10 更惡化，應直接放棄，停損 280.5 距現價逾 28%，R 值根本算不出合理部位。</div>
+    <div><b>交易員</b>：風控官說得對，28% 的停損幅度完全無法設合理部位，量能步調 31% 也不支持進場。連續上榜 3 日未動、量持續萎縮，今天先跳過，等量能出現再重新評估。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 量能步調回升至 ≥ 120% 且價格站穩 397 前高才重新評估</span><span class="trig go">▶ 距 EMA10 延伸收斂至 15% 以下再列入候選</span>
+    <span class="trig abort">✕ 開盤跳空 +2% 以上（延伸更惡化）直接移除觀察名單</span><span class="trig abort">✕ 成交量持續低於 20 日均量 50% 以下繼續忽略</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6727</span>
+    <span class="name">亞泰金屬</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 22</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>578.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>570</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 8.4%</span>
+    <span class="rs">RS 96</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距進場 697 還有 20.6%，現價 578 停在 EMA10 上方僅 0.4%，RSI 從 73 回落到 60、近 3 日跌 12.4%，整理結構完整（468-697），量能步調 153% 代表今日有人接，突破品質 B 尚可，但進場點還遠，就是標準等待池的狀態。</div>
+    <div><b>風控</b>：最擔心現價離停損只剩 1.4%（578 vs 570），若明日大盤稍微走弱隨時觸停；而進場點 697 距今 20.6%，這段空間在大盤距 EMA10 已偏高 +4.46% 的環境下很難一步到位，耗時愈長鈍化風險愈高。</div>
+    <div><b>交易員</b>：進場點還在 20% 外、停損又近在 1.4%，根本沒有進場邏輯，放入觀察名單等它整理完再站上 697 附近再說，現在開倉是無謂冒險。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 若未來某日收盤站上 697 且量能步調 ≥ 130% 再重新評估</span><span class="trig go">▶ RSI14 回升至 65 以上且整理縮量 3 日後才有結構進場機會</span>
+    <span class="trig abort">✕ 現價跌破 570 整理低緣，直接移除觀察名單</span><span class="trig abort">✕ 大盤開盤跳空 +3% 以上全面追高日，本檔不跟</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6147</span>
+    <span class="name">頎邦</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 20</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>278.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 8.22%</span>
+    <span class="rs">RS 99</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距 EMA10 已達 +20.4%，現價 278 距進場點 291.5 還差 4.9%，短期嚴重超買，RSI14 三日連 82-84、近 3 日單邊漲 17.3%。整理結構上緣 291.5 是有效進場點，但現在既沒站上也沒整理，量能步調 150% 看起來不差，問題是價格完全在空中飄，不是我現在會追的位置。</div>
+    <div><b>風控</b>：最擔心的是距停損 213 整整 23.6%，進場 291.5 算的話單筆風險 26.9%，根本無法控制 R；就算想 pre-buy 也完全沒有合理停損參考點，一旦大盤明日高開走低，這種 ext 過高的股第一個被砍。</div>
+    <div><b>交易員</b>：分析師說得對，風控也說到點上。slv=0、距進場 4.9%、距 EMA10 +20.4%、R/R 根本算不出來——直接 skip，等它整理收斂再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 若 6147 出現 3-5 日以上高位橫盤整理、vp 縮量收斂至 EMA10，再重新評估</span>
+    <span class="trig abort">✕ 明日任何位置追進：ext_pct > 5% 且停損 > 15%，R/R 不成立直接放棄</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">6173</span>
+    <span class="name">信昌電</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 20</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>219.5</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.02%</span>
+    <span class="rs">RS 98</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：現價 219.5 距進場點 240 還有 9.3%，距 EMA10 更高達 +16.2%，屬嚴重延伸。量能步調僅 33%，今日成交量極度萎縮，突破品質 B 級、整理結構低點 153.5 支撐遠在下方。短線沒有任何立即進場理由，純觀察。</div>
+    <div><b>風控</b>：最大風險是市場情緒回落後的高位急殺：現價距停損 182.5 達 17%（遠超 2×ADR），若被迫停損損失遠超 1R；加上量能步調 33% 顯示籌碼已停滯，一旦大盤轉弱，流動性極差的回檔會很難看。</div>
+    <div><b>交易員</b>：分析師說得清楚，風控官說的更讓我怕。slv=0、vp=33%、距 entry 9.3%、距停損 17%，今天完全沒有理由動。丟進觀察池等它整理縮小風險再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 股價縮量整理後重新接近 240 前高，且 vp ≥ 120% 才重新評估</span>
+    <span class="trig abort">✕ 明日若跳空高開追至 225 以上、量能仍萎縮，直接移出觀察池</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">3167</span>
+    <span class="name">大量</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 20</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>795.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 8.21%</span>
+    <span class="rs">RS 96</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距進場 914 還有 15%，現價 795 離得很遠；量能步調只有 16%，今天完全沒在動，整理區間 662-914 很寬，RSI 連三日從 60 滑落到 56，動能在洩壓。slv=0、評分 11，目前只是「放在眼睛裡盯著」的材料，沒有任何進場理由。</div>
+    <div><b>風控</b>：最大風險是整理低點 662 距現價還有 16%，萬一補跌跌破整理低點，停損 753 直接不守；加上近 3 日跌 9.6%，短線動能向下，隔日若再跟跌大盤，整理結構恐進一步破壞。</div>
+    <div><b>交易員</b>：分析師和風控官說的我都同意，這檔現在就是純觀察，距進場 15%、vp 16%、RSI 下彎，完全沒有操作條件。先掛 skip，等它有量站回 914 前高再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 量能步調回升至 120% 以上且價格站回 880 以上再重新評估</span><span class="trig go">▶ RSI14 止跌回升至 62 以上、整理結構未破壞</span>
+    <span class="trig abort">✕ 跌破整理低點 662 或停損價 753 直接移出觀察名單</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">5425</span>
+    <span class="name">台半</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 18</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>114.5</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.79%</span>
+    <span class="rs">RS 83</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：今日爆量 210%、突破整理高 114.5，但距 EMA10 已達 +25.7%，嚴重延伸；突破品質 C 級代表結構凌亂，整理低點 69.5 距現價落差 39.3%，停損寬達 27.4 元（24%）。技術上單日急拉過大，明日需等回踩才有意義的進場點。</div>
+    <div><b>風控</b>：最大風險：停損 87.1 距現價 24%，遠超 1R 正常水位；若明日跳空再開高，ext 只會更誇張。距 EMA10 +25.7% 是系統警戒線兩倍以上，任何回吐都可能直接腰斬。</div>
+    <div><b>交易員</b>：兩位說的都對，這個停損我沒辦法執行，24% 下方才是停損根本不是動能操作，是賭博。現在 skip，等它整理 2-3 週縮量夯實再看。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 觀察：整理 2-3 週後量縮至 20 日均量以下，視為蓄積訊號再重新評估</span>
+    <span class="trig abort">✕ 明日若再跳空開高 +3% 以上，延伸更深，列入黑名單至少 2 週不追</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">4973</span>
+    <span class="name">廣穎</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 18</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>152.5</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 6.64%</span>
+    <span class="rs">RS 98</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：廣穎今日突破整理高 152.5，量能步調 116%，屬正常量突破，但問題是距 EMA10 已延伸 25.5%、近 3 日累漲 29.2%、RSI80，這個位置追進根本就是高點接刀。突破品質 C 級，整理低點 104，結構看起來是一口氣拉上來的，沒有紮實的盤整平台。</div>
+    <div><b>風控</b>：最大風險：距 EMA10 延伸 25.5% 遠超正常 5-8% 追入門檻，停損設整理低點 108.5 距現價竟達 28.8%，單筆風險是正常的 4-5 倍，R 值根本無法控制。開盤若跳空再往上更是災難。</div>
+    <div><b>交易員</b>：分析師說得漂亮，風控說的才是重點——停損 108.5 距現價 28.8%，這不是交易計畫，這是賭博。不管大盤多強，這檔今天的位置我碰不了，直接 skip。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 僅供觀察：若未來回踩至 EMA10 附近（約 120-122）且量縮整理 3-5 日再重新評估</span>
+    <span class="trig abort">✕ 現價位置直接放棄，延伸 25.5% + RSI80 + 停損 28.8% 三項同時觸頂，無條件 skip</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">2472</span>
+    <span class="name">立隆電</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 15</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>371.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.84%</span>
+    <span class="rs">RS 98</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距 EMA10 整整 +34.4%，這已經是極度延伸了，一般我們超過 10% 就要很謹慎。vp 74%、突破品質 C，今天量根本沒跟上，整理低點 213、停損在 258，進場到停損幅度高達 30%。技術面除了 RS98 看起來不錯以外，其他全部亮橘燈。</div>
+    <div><b>風控</b>：最大風險是停損距現價 -30.5%（371→258），遠超 1R 可接受範圍，根本無法按正常部位操作。加上 ext 34.4%，若大盤明日縮量，這種高延伸股往往第一個被砍。</div>
+    <div><b>交易員</b>：風控說得對，停損 30% 這個我沒辦法接受，部位要壓到幾乎掛零才能控 R，那進去也沒意義。直接跳過，等它回踩 EMA10 附近整理一輪再說。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 僅供觀察：若未來回踩 EMA10（約 276 區間）整理 3 週以上再重新評估</span>
+    <span class="trig abort">✕ 當前即放棄：ext_pct 34.4% + vp 74% + 停損 -30.5%，三項均超標，明日不進場</span>
+  </div>
+</div>
+
+<div class="card" data-tier="⚪" data-verdict="skip">
+  <div class="card-head">
+    <span class="tier" style="color:#8b949e">⚪</span>
+    <span class="code">3026</span>
+    <span class="name">禾伸堂</span>
+    <span class="verdict v-skip" style="background:#f8514922;border-color:#f85149;color:#f85149">SKIP</span>
+    <span class="conf">信心 10</span>
+  </div>
+  <div class="prices">
+    <span>現價 <b>605.0</b></span>
+    <span>進場 <b>—</b></span>
+    <span>停損 <b>—</b></span>
+    <span>首批 <b>0%</b></span>
+    <span class="adr">ADR 7.13%</span>
+    <span class="rs">RS 99</span>
+  </div>
+  <div class="disc">
+    <div><b>分析師</b>：距 EMA10 高達 +29.8%，量能步調僅 31%，過去 3 日累漲 15.7%、RSI89 超買，整理結構入場點 635 距現價 605 約 +5%，突破品質 C 級——技術面全部偏負面，這檔現在進場沒有任何依據。</div>
+    <div><b>風控</b>：最大風險是現價已嚴重超買（RSI 89 連 3 日、EMA10 延伸 +29.8%），若主力明日出貨，605 到整理低點 323 空間超過 46%，停損 460 距現價 -24%，單筆虧損遠超 1R 可接受範圍。</div>
+    <div><b>交易員</b>：分析師和風控官說的我都聽到了，這檔根本不在考慮名單——連續 3 日上榜沒動、量能步調 31%、停損距現價 24%，明日直接跳過。</div>
+  </div>
+  <div class="triggers">
+    <span class="trig go">▶ 等待整理高點 635 附近出現量能步調 ≥ 120% 的有效突破再重新評估</span>
+    <span class="trig abort">✕ 現階段直接跳過，無需設廢止條件</span>
+  </div>
+</div>
+</div>
+
+<div class="cost">花費：US$0.329（≈ NT$10.53）</div>
+</body></html>
