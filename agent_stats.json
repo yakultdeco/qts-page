@@ -1,16 +1,16 @@
 {
-  "ts": 1780023937.4975414,
+  "ts": 1780024252.9774494,
   "total": 13,
   "by_verdict": {
     "go": 0,
-    "wait": 4,
-    "skip": 9
+    "wait": 6,
+    "skip": 7
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 22400,
-  "input_tokens": 12326,
-  "llm_calls": 10,
-  "cost_usd": 0.1525,
+  "cache_reads_tokens": 15680,
+  "input_tokens": 8445,
+  "llm_calls": 7,
+  "cost_usd": 0.1043,
   "agents": {
     "conti": {
       "calls": 13,
@@ -18,46 +18,91 @@
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "5425",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780023046.896367
+        "ts": 1780024252.76072
       }
     },
     "tai": {
       "calls": 13,
       "go": 0,
-      "wait": 4,
-      "skip": 9,
+      "wait": 6,
+      "skip": 7,
       "last": {
-        "code": "5425",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780023046.896367
+        "ts": 1780024252.76072
       }
     },
     "combo": {
       "calls": 13,
       "go": 0,
-      "wait": 4,
-      "skip": 9,
+      "wait": 6,
+      "skip": 7,
       "last": {
-        "code": "5425",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780023046.896367
+        "ts": 1780024252.76072
       }
     },
     "ortho": {
       "calls": 13,
       "go": 0,
-      "wait": 4,
-      "skip": 9,
+      "wait": 6,
+      "skip": 7,
       "last": {
-        "code": "5425",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780023046.896367
+        "ts": 1780024252.76072
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780024252.76072,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "2464",
+      "ts": 1780024252.7413733,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "6147",
+      "ts": 1780024244.9862893,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "5425",
       "ts": 1780023046.896367,
@@ -101,57 +146,6 @@
       ],
       "ta_reasons": [
         "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6147",
-      "ts": 1780022162.7236197,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜大盤多頭有利，但無任何新聞題材支撐，難以判斷突破動能來源",
-        "脈絡｜距 EMA10 延伸達 20.4%，現價明顯偏離均線，追高風險偏高"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 20.4%，遠超 5% 拒絕門檻，追高風險極高",
-        "TA｜外資單日賣超 -1,701 張，籌碼背離投信買超，法人方向分歧"
-      ]
-    },
-    {
-      "code": "2464",
-      "ts": 1780022162.3500884,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜無任何新聞題材支撐，純技術突破，題材真空難判持續性",
-        "脈絡｜距 EMA10 延伸已達 13.4%，追高風險偏高，等回測站穩更安全"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 13.4%，遠超 5% 上限，追高風險極高",
-        "TA｜三大法人合計賣超 1,406 張，外資單日賣超 1,122 張，籌碼明顯流出"
-      ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780022162.3252614,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜大盤加權與櫃買均呈多頭排列，系統性環境友善，支撐突破有效性",
-        "脈絡｜當日無任何新聞題材，純技術突破缺乏基本面催化劑，難判斷驅動力來源"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 5.7%，超過 5% 警戒線，追價風報比偏差",
-        "TA｜投信 +896 張、外資 +347 張，法人籌碼明確偏多撐腰"
       ]
     },
     {
