@@ -302,32 +302,85 @@
     "last_at_vote": 76.7
   },
   "5425": {
-    "verdict": "wait",
-    "score": 0,
+    "verdict": "skip",
+    "score": 35,
     "context": {
-      "score": 0,
+      "score": 52,
       "verdict": "wait"
     },
     "ta": {
-      "score": 0,
-      "verdict": "wait"
+      "score": 18,
+      "verdict": "skip"
     },
-    "entry_plan": {},
+    "entry_plan": {
+      "entry": 114.5,
+      "stop": 113.0,
+      "stop_basis": "整理低點停損（掃描日低點）"
+    },
     "reasons": [
-      "雙方觀望",
-      "脈絡｜context_agent 失敗: BadRequestError",
-      "TA｜ta_agent 失敗: BadRequestError"
+      "至少一方否決",
+      "脈絡｜大盤加權與櫃買雙多頭，系統性風險低，技術訊號強度4屬強量突破",
+      "脈絡｜無任何新聞題材支撐，純技術突破缺乏催化劑，持續性存疑",
+      "TA｜距 EMA10 延伸高達 25.7%，遠超 5% 上限，追價風險極高",
+      "TA｜突破品質評等 C，整理結構 VCP 等級 B，形態品質欠佳"
     ],
-    "resonance": {},
-    "triggers": [],
+    "resonance": {
+      "trend": 1,
+      "momentum": -2,
+      "volume": 1,
+      "structure": -1,
+      "total": -1
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "abort",
+        "desc": "現價站於 EMA10 上方超過 5%（目前 25.7%），嚴重過度延伸",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">",
+          "value": 1.05
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "量能步調 ≥ 150%，確認突破有量力撐",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T3",
+        "for": "entry",
+        "desc": "現價回落至 EMA10 附近（距離 < 5%）後再次站回突破點",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">=",
+          "value": 1.0
+        }
+      },
+      {
+        "id": "T4",
+        "for": "abort",
+        "desc": "總量未達 20 日均量 1.5 倍，突破缺乏量能支撐",
+        "cond": {
+          "type": "vol_ratio",
+          "op": "<",
+          "value": 1.5
+        }
+      }
+    ],
     "_usage": {
-      "in": 0,
-      "out": 0,
-      "cw": 0,
+      "in": 1256,
+      "out": 779,
+      "cw": 2240,
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780025149.6479042,
+    "ts": 1780027279.6718357,
     "last_at_vote": 117.0
   },
   "3532": {
@@ -432,32 +485,83 @@
     "last_at_vote": 305.5
   },
   "8358": {
-    "verdict": "wait",
-    "score": 0,
+    "verdict": "skip",
+    "score": 40,
     "context": {
-      "score": 0,
+      "score": 52,
       "verdict": "wait"
     },
     "ta": {
-      "score": 0,
-      "verdict": "wait"
+      "score": 28,
+      "verdict": "skip"
     },
-    "entry_plan": {},
+    "entry_plan": {
+      "entry": 608.0,
+      "stop": 565.0,
+      "stop_basis": "掃描日整理低點下方，停損距 7.1%"
+    },
     "reasons": [
-      "雙方觀望",
-      "脈絡｜context_agent 失敗: BadRequestError",
-      "TA｜ta_agent 失敗: BadRequestError"
+      "至少一方否決",
+      "脈絡｜大盤多頭，加權與櫃買均站穩均線，系統性風險低",
+      "脈絡｜無任何新聞題材佐證，突破缺乏基本面催化劑",
+      "TA｜距 EMA10 延伸 12.5%，遠超 5% 警戒線，追高風險極高",
+      "TA｜現價 608 距進場點 578 已溢出 5.2%，非突破當下介入"
     ],
-    "resonance": {},
-    "triggers": [],
+    "resonance": {
+      "trend": 1,
+      "momentum": -1,
+      "volume": 1,
+      "structure": 1,
+      "total": 2
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "量能步調 ≥ 150% 且收價回落至 EMA10 附近（延伸縮至 3% 以內）",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "現價站上 EMA10（確認均線支撐有效）",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "量能步調 < 100%（縮量，動能不足以支撐高延伸位置）",
+        "cond": {
+          "type": "vol_pace",
+          "op": "<",
+          "value": 100.0
+        }
+      },
+      {
+        "id": "T4",
+        "for": "abort",
+        "desc": "現價跌破 EMA20（趨勢支撐失守，論述廢棄）",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
     "_usage": {
-      "in": 0,
-      "out": 0,
+      "in": 1280,
+      "out": 740,
       "cw": 0,
-      "cr": 0
+      "cr": 2240
     },
     "_short_circuit": false,
-    "ts": 1780025149.965417,
+    "ts": 1780027282.4009428,
     "last_at_vote": 608.0
   },
   "3135": {
