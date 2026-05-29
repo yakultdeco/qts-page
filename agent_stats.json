@@ -1,16 +1,16 @@
 {
-  "ts": 1780022445.5524936,
+  "ts": 1780022743.8592987,
   "total": 13,
   "by_verdict": {
     "go": 0,
-    "wait": 2,
-    "skip": 11
+    "wait": 4,
+    "skip": 9
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 26880,
-  "input_tokens": 14614,
-  "llm_calls": 12,
-  "cost_usd": 0.1845,
+  "cache_reads_tokens": 22400,
+  "input_tokens": 12326,
+  "llm_calls": 10,
+  "cost_usd": 0.1525,
   "agents": {
     "conti": {
       "calls": 13,
@@ -18,46 +18,76 @@
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "6291",
+        "code": "5425",
         "verdict": "wait",
-        "ts": 1780022445.3410156
+        "ts": 1780022743.6051908
       }
     },
     "tai": {
       "calls": 13,
       "go": 0,
-      "wait": 2,
-      "skip": 11,
+      "wait": 4,
+      "skip": 9,
       "last": {
-        "code": "6291",
+        "code": "5425",
         "verdict": "wait",
-        "ts": 1780022445.3410156
+        "ts": 1780022743.6051908
       }
     },
     "combo": {
       "calls": 13,
       "go": 0,
-      "wait": 2,
-      "skip": 11,
+      "wait": 4,
+      "skip": 9,
       "last": {
-        "code": "6291",
+        "code": "5425",
         "verdict": "wait",
-        "ts": 1780022445.3410156
+        "ts": 1780022743.6051908
       }
     },
     "ortho": {
       "calls": 13,
       "go": 0,
-      "wait": 2,
-      "skip": 11,
+      "wait": 4,
+      "skip": 9,
       "last": {
-        "code": "6291",
+        "code": "5425",
         "verdict": "wait",
-        "ts": 1780022445.3410156
+        "ts": 1780022743.6051908
       }
     }
   },
   "recent": [
+    {
+      "code": "5425",
+      "ts": 1780022743.6051908,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "8358",
+      "ts": 1780022743.5770864,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "6291",
       "ts": 1780022445.3410156,
@@ -122,40 +152,6 @@
       "ta_reasons": [
         "TA｜距 EMA10 延伸 5.7%，超過 5% 警戒線，追價風報比偏差",
         "TA｜投信 +896 張、外資 +347 張，法人籌碼明確偏多撐腰"
-      ]
-    },
-    {
-      "code": "8358",
-      "ts": 1780020727.0909042,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜大盤多頭環境支撐，加權與櫃買均呈均線多排，系統性風險低",
-        "脈絡｜無任何新聞題材佐證，純技術突破、催化劑不明，追高依據薄弱"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 12.5%，遠超 5% 上限，嚴重過熱不宜追價",
-        "TA｜現價 608 已高於突破點 578 達 5.2%，進場風報比大幅惡化"
-      ]
-    },
-    {
-      "code": "5425",
-      "ts": 1780020726.6017723,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以判斷是否有實質催化劑",
-        "脈絡｜距 EMA10 延伸達 25.7%，追高風險偏高，等待回測確認站穩較安全"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 25.7%，遠超 Qullamaggie 5% 上限，追高風險極高",
-        "TA｜突破品質 C 級，現價 120 距進場點 114.5 已漲 4.8%，進場風報比嚴重惡化"
       ]
     },
     {
