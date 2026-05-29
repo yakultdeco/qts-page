@@ -1,5 +1,5 @@
 {
-  "ts": 1780049431.47153,
+  "ts": 1780049511.620842,
   "total": 12,
   "by_verdict": {
     "go": 0,
@@ -10,7 +10,7 @@
   "cache_reads_tokens": 35688,
   "input_tokens": 15055,
   "llm_calls": 10,
-  "cost_usd": 0.1675,
+  "cost_usd": 0.1667,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 5,
       "skip": 7,
       "last": {
-        "code": "6531",
-        "verdict": "wait",
-        "ts": 1780049149.2806559
+        "code": "ALAB",
+        "verdict": "skip",
+        "ts": 1780049506.131938
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "6531",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780049149.2806559
+        "ts": 1780049506.131938
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 10,
       "last": {
-        "code": "6531",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780049149.2806559
+        "ts": 1780049506.131938
       }
     },
     "ortho": {
@@ -51,13 +51,109 @@
       "wait": 2,
       "skip": 17,
       "last": {
-        "code": "6531",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780049149.2806559
+        "ts": 1780049506.131938
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780049506.131938,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅 slv=1，突破尚未確認，進場依據薄弱",
+        "脈絡｜距 EMA10 延伸 24.4%，嚴重過熱，追高風險極高"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
+    {
+      "code": "RDDT",
+      "ts": 1780049505.948378,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅 slv=1，突破確認度最低，進場依據薄弱",
+        "脈絡｜距 EMA10 延伸達 9.4%，追高風險高，回撤至停損幅度逾 16%"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
+    {
+      "code": "HUT",
+      "ts": 1780049502.868709,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅1且距EMA10延伸16.8%，追高風險極高，技術面過熱",
+        "脈絡｜評分14分極低，顯示整體訊號品質不佳，缺乏可靠突破依據"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780049502.73476,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅 slv=1，突破確認度極低，尚未達最低進場標準（slv≥3）",
+        "脈絡｜距 EMA10 已延伸 5.5%，追高風險高，無良好風險報酬比"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
+    {
+      "code": "AMD",
+      "ts": 1780049502.628556,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅 slv=1，突破確認度極低，尚未達有效進場門檻",
+        "脈絡｜距 EMA10 延伸達 12.8%，追高風險高，回撤至停損幅度逾 18%"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
+    {
+      "code": "PANW",
+      "ts": 1780049502.543505,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅 slv=1，突破尚未確認，進場依據薄弱",
+        "脈絡｜距 EMA10 延伸 3.4% 且評分僅 15，追高風險高於潛在獲利"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
     {
       "code": "6531",
       "ts": 1780049149.2806559,
@@ -80,102 +176,6 @@
       "ctx_reasons": [
         "脈絡｜訊號強度僅 slv=1，突破確認度不足，尚未達 slv=3 以上的有效突破門檻",
         "脈絡｜現價 243 遠低於進場價 258，代表尚未觸發進場條件，追高空間達 6%+，風險報酬不對稱"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780047672.3055758,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破確認度極低，尚未達到 slv≥3 的可信門檻",
-        "脈絡｜距 EMA10 延伸 9.4%，追高風險高，回踩空間已顯著壓縮風險報酬"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780047671.275411,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜距 EMA10 延伸達 24.4%，嚴重超買，追高被套風險極高",
-        "脈絡｜訊號強度僅 slv=1，突破未獲量能確認，可信度低"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780047668.201348,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅1級、距EMA10延伸16.8%，追高風險極高，停損幅度達23.8%",
-        "脈絡｜無任何新聞題材支撐，純技術訊號且評分僅14，缺乏基本面催化劑"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780047668.1128068,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破確認度最低，尚未達有效突破標準",
-        "脈絡｜距 EMA10 延伸 3.4% 且無新聞題材支撐，追高風險高於預期報酬"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780047668.1000352,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破尚未確認，可信度偏低",
-        "脈絡｜距 EMA10 已延伸 5.5%，追價風險高，風報比不佳"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780047667.616888,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破尚未獲確認，技術基礎薄弱",
-        "脈絡｜距 EMA10 延伸達 12.8%，追高風險極高，安全墊不足"
       ],
       "ta_reasons": [
         "TA｜(context 已 skip，省略 TA 呼叫)"
