@@ -1912,17 +1912,27 @@ async function saveShares(i, val, el) {
 
 function _curPrice(code) {
   const tr=document.querySelector(`tr[data-code="${code}"]`);
-  if(!tr||!tr.dataset.last) return null;
-  const v=parseFloat(tr.dataset.last); return isNaN(v)?null:v;
+  if(tr&&tr.dataset.last) { const v=parseFloat(tr.dataset.last); if(!isNaN(v)) return v; }
+  // fallback：統一關注清單報價（_QUOTES_DATA 即時價 z，無則五檔買價 b）
+  const q=_QUOTES_DATA[code];
+  if(q) {
+    const z=parseFloat(q.z); if(!isNaN(z)&&z>0) return z;
+    const b=(q.b||'').split('_').map(Number).find(v=>v>0); if(b) return b;
+  }
+  return null;
 }
 function _prevPrice(code) {
   const tr=document.querySelector(`tr[data-code="${code}"]`);
-  if(!tr||!tr.dataset.prev) return null;
-  const v=parseFloat(tr.dataset.prev); return isNaN(v)?null:v;
+  if(tr&&tr.dataset.prev) { const v=parseFloat(tr.dataset.prev); if(!isNaN(v)) return v; }
+  const q=_QUOTES_DATA[code];
+  if(q) { const y=parseFloat(q.y); if(!isNaN(y)&&y>0) return y; }
+  return null;
 }
 function _rsiBear(code) {
   const tr=document.querySelector(`tr[data-code="${code}"]`);
-  return !!(tr && tr.dataset.rsiBear === '1');
+  if(tr && tr.dataset.rsiBear) return tr.dataset.rsiBear === '1';
+  const e=_POS_EXTRAS[code];
+  return !!(e && e.rsi_bear);
 }
 function _momTrendH(code) {
   const sd = _SCAN_DATA[code] || _UNIV_DATA[code];   // 候選股優先，否則用全市場宇宙備援
@@ -1949,13 +1959,15 @@ function _riskH(code) {
 }
 function _adrPct(code) {
   const tr=document.querySelector(`tr[data-code="${code}"]`);
-  if(!tr||!tr.dataset.adr) return null;
-  const v=parseFloat(tr.dataset.adr); return (isNaN(v)||v<=0)?null:v;
+  if(tr&&tr.dataset.adr) { const v=parseFloat(tr.dataset.adr); if(!isNaN(v)&&v>0) return v; }
+  const e=_POS_EXTRAS[code];
+  return (e&&e.adr>0)?e.adr:null;
 }
 function _ma(code, which) {
   const tr=document.querySelector(`tr[data-code="${code}"]`);
-  if(!tr||!tr.dataset[which]) return null;
-  const v=parseFloat(tr.dataset[which]); return (isNaN(v)||v<=0)?null:v;
+  if(tr&&tr.dataset[which]) { const v=parseFloat(tr.dataset[which]); if(!isNaN(v)&&v>0) return v; }
+  const e=_POS_EXTRAS[code];
+  return (e&&e[which]>0)?e[which]:null;
 }
 // 移動停損：快速股(ADR≥5)貼 10MA、波段股貼 20MA（Qullamaggie：收盤跌破即減碼/出場）
 function _trailStop(code) {
@@ -2912,7 +2924,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 <div class="top-bar">
   <span class="chip mkt">已收盤</span>
-  <span class="chip" id="live-clock">更新 13:41:55</span>
+  <span class="chip" id="live-clock">更新 13:43:03</span>
   <div class="taiex-card">
     <div class="taiex-label">加權指數 TAIEX</div>
     <div class="taiex-val"><span class='up'>44,733（++1096 / +2.51%）</span></div>
@@ -3022,7 +3034,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A8358" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6531" data-name="愛普*" data-last="1190.00" data-prev="1095.00" data-stop="1140.00" data-entry="1175.00" data-adr="8.97" data-ma10="1042.70" data-ma20="999.90" data-type="強勢觀察" data-slv="4" data-risk="0" data-rsi14="67.7" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="52" data-ext="11.20" data-ext-adr="1.30" data-vp="198" data-vol="13314000" data-avg-vol="6433364">
+        <tr class="" data-code="6531" data-name="愛普*" data-last="1190.00" data-prev="1095.00" data-stop="1140.00" data-entry="1175.00" data-adr="8.97" data-ma10="1042.70" data-ma20="999.90" data-type="強勢觀察" data-slv="4" data-risk="0" data-rsi14="67.7" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="52" data-ext="11.20" data-ext-adr="1.30" data-vp="197" data-vol="13314000" data-avg-vol="6433364">
           <td><span class='sig-badge' style='color:#3fb950'>🟢 突破確認＋強量</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank" class="code-link">6531</a></td>
@@ -3033,7 +3045,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+8.68%</span></td>
           <td class="entry-col">1175.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+1.3%</span></td>
-          <td><span class='vp-strong'>198%</span></td>
+          <td><span class='vp-strong'>197%</span></td>
           <td class="num grey xsm">13,314張 / <span class='grey'>6,433張</span></td>
           <td class="num grey">1140.00 <span class='grey'>(4.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3080,7 +3092,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6291" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2472" data-name="立隆電" data-last="371.00" data-prev="371.00" data-stop="362.00" data-entry="371.00" data-adr="7.84" data-ma10="276.00" data-ma20="241.57" data-type="強勢觀察" data-slv="4" data-risk="2" data-rsi14="88.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="38" data-ext="34.40" data-ext-adr="4.40" data-vp="162" data-vol="20991000" data-avg-vol="12429973">
+        <tr class="" data-code="2472" data-name="立隆電" data-last="371.00" data-prev="371.00" data-stop="362.00" data-entry="371.00" data-adr="7.84" data-ma10="276.00" data-ma20="241.57" data-type="強勢觀察" data-slv="4" data-risk="2" data-rsi14="88.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="38" data-ext="34.40" data-ext-adr="4.40" data-vp="161" data-vol="20991000" data-avg-vol="12429973">
           <td><span class='sig-badge' style='color:#3fb950'>🟢 突破確認＋強量</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2472" target="_blank" class="code-link">2472</a></td>
@@ -3091,7 +3103,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class=''>+0.00%</span></td>
           <td class="entry-col">371.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+0.0%</span></td>
-          <td><span class='vp-strong'>162%</span></td>
+          <td><span class='vp-strong'>161%</span></td>
           <td class="num grey xsm">20,991張 / <span class='grey'>12,429張</span></td>
           <td class="num grey">362.00 <span class='grey'>(2.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3225,7 +3237,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2464" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class=" risk-row-disposal" data-code="6182" data-name="合晶" data-last="99.50" data-prev="90.70" data-stop="96.00" data-entry="92.80" data-adr="5.69" data-ma10="69.89" data-ma20="61.11" data-type="強勢觀察" data-slv="2" data-risk="3" data-rsi14="89.2" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="29.30" data-ext-adr="5.20" data-vp="27" data-vol="14395000" data-avg-vol="51990897">
+        <tr class=" risk-row-disposal" data-code="6182" data-name="合晶" data-last="99.50" data-prev="90.70" data-stop="96.00" data-entry="92.80" data-adr="5.69" data-ma10="69.89" data-ma20="61.11" data-type="強勢觀察" data-slv="2" data-risk="3" data-rsi14="89.2" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="29.30" data-ext-adr="5.20" data-vp="26" data-vol="14395000" data-avg-vol="51990897">
           <td><span class='sig-badge' style='color:#f0a500'>🟠 突破但量偏弱</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6182" target="_blank" class="code-link">6182</a></td>
@@ -3236,7 +3248,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.70%</span></td>
           <td class="entry-col">92.80 <span class='grey xsm'>整理高</span></td>
           <td><span class='trig'>+7.2%</span></td>
-          <td><span class='vp-weak'>27%</span></td>
+          <td><span class='vp-weak'>26%</span></td>
           <td class="num grey xsm">14,395張 / <span class='grey'>51,990張</span></td>
           <td class="num grey">96.00 <span class='grey'>(3.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3399,7 +3411,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3532" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="7769" data-name="鴻勁" data-last="8260.00" data-prev="7700.00" data-stop="7205.00" data-entry="8300.00" data-adr="6.39" data-ma10="7407.00" data-ma20="6779.25" data-type="收縮整理" data-slv="1" data-risk="0" data-rsi14="75.7" data-rsi-bear="0" data-mom-surge="0" data-vcp="A" data-vcp-score="75" data-ext="10.60" data-ext-adr="1.70" data-vp="191" data-vol="1740000" data-avg-vol="873465">
+        <tr class="vcp-row" data-code="7769" data-name="鴻勁" data-last="8260.00" data-prev="7700.00" data-stop="7205.00" data-entry="8300.00" data-adr="6.39" data-ma10="7407.00" data-ma20="6779.25" data-type="收縮整理" data-slv="1" data-risk="0" data-rsi14="75.7" data-rsi-bear="0" data-mom-surge="0" data-vcp="A" data-vcp-score="75" data-ext="10.60" data-ext-adr="1.70" data-vp="190" data-vol="1740000" data-avg-vol="873465">
           <td><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank" class="code-link">7769</a></td>
@@ -3410,7 +3422,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+7.27%</span></td>
           <td class="entry-col">8300.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='near-txt'>-0.5%</span></td>
-          <td><span class='vp-strong'>191%</span></td>
+          <td><span class='vp-strong'>190%</span></td>
           <td class="num grey xsm">1,740張 / <span class='grey'>873張</span></td>
           <td class="num grey">7205.00 <span class='grey'>(12.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3562,7 +3574,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6278" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="8064" data-name="東捷" data-last="143.00" data-prev="133.00" data-stop="117.00" data-entry="153.50" data-adr="7.80" data-ma10="134.60" data-ma20="123.95" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="66.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="25" data-ext="6.20" data-ext-adr="0.80" data-vp="139" data-vol="13152000" data-avg-vol="9086964">
+        <tr class="" data-code="8064" data-name="東捷" data-last="143.00" data-prev="133.00" data-stop="117.00" data-entry="153.50" data-adr="7.80" data-ma10="134.60" data-ma20="123.95" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="66.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="25" data-ext="6.20" data-ext-adr="0.80" data-vp="138" data-vol="13152000" data-avg-vol="9086964">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A8064" target="_blank" class="code-link">8064</a></td>
@@ -3573,7 +3585,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+7.52%</span></td>
           <td class="entry-col">153.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.8%</span></td>
-          <td><span class='vp-ok'>139%</span></td>
+          <td><span class='vp-ok'>138%</span></td>
           <td class="num grey xsm">13,152張 / <span class='grey'>9,086張</span></td>
           <td class="num grey">117.00 <span class='grey'>(18.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3591,7 +3603,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A8064" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="4576" data-name="大銀微系統" data-last="266.50" data-prev="255.50" data-stop="250.50" data-entry="291.00" data-adr="7.84" data-ma10="262.50" data-ma20="250.90" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="62.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="B" data-vcp-score="55" data-ext="2.30" data-ext-adr="0.30" data-vp="54" data-vol="3808000" data-avg-vol="6809226">
+        <tr class="vcp-row" data-code="4576" data-name="大銀微系統" data-last="266.50" data-prev="255.50" data-stop="250.50" data-entry="291.00" data-adr="7.84" data-ma10="262.50" data-ma20="250.90" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="62.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="B" data-vcp-score="55" data-ext="2.30" data-ext-adr="0.30" data-vp="53" data-vol="3808000" data-avg-vol="6809226">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A4576" target="_blank" class="code-link">4576</a></td>
@@ -3602,7 +3614,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+4.31%</span></td>
           <td class="entry-col">291.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-8.4%</span></td>
-          <td><span class='vp-weak'>54%</span></td>
+          <td><span class='vp-weak'>53%</span></td>
           <td class="num grey xsm">3,808張 / <span class='grey'>6,809張</span></td>
           <td class="num grey">250.50 <span class='grey'>(6.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3649,7 +3661,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3209" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="6861" data-name="睿生光電" data-last="440.00" data-prev="416.00" data-stop="397.00" data-entry="490.00" data-adr="8.75" data-ma10="439.35" data-ma20="416.02" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="69.5" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="50" data-ext="4.90" data-ext-adr="0.60" data-vp="173" data-vol="1731000" data-avg-vol="958874">
+        <tr class="vcp-row" data-code="6861" data-name="睿生光電" data-last="440.00" data-prev="416.00" data-stop="397.00" data-entry="490.00" data-adr="8.75" data-ma10="439.35" data-ma20="416.02" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="69.5" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="50" data-ext="4.90" data-ext-adr="0.60" data-vp="172" data-vol="1731000" data-avg-vol="958874">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6861" target="_blank" class="code-link">6861</a></td>
@@ -3660,7 +3672,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+5.77%</span></td>
           <td class="entry-col">490.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-10.2%</span></td>
-          <td><span class='vp-strong'>173%</span></td>
+          <td><span class='vp-strong'>172%</span></td>
           <td class="num grey xsm">1,731張 / <span class='grey'>958張</span></td>
           <td class="num grey">397.00 <span class='grey'>(9.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3678,7 +3690,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6861" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="6223" data-name="旺矽" data-last="5960.00" data-prev="5915.00" data-stop="5765.00" data-entry="6665.00" data-adr="6.20" data-ma10="6033.00" data-ma20="5645.00" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="69.4" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="62" data-ext="5.70" data-ext-adr="0.90" data-vp="548" data-vol="7070000" data-avg-vol="1235439">
+        <tr class="vcp-row" data-code="6223" data-name="旺矽" data-last="5960.00" data-prev="5915.00" data-stop="5765.00" data-entry="6665.00" data-adr="6.20" data-ma10="6033.00" data-ma20="5645.00" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="69.4" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="62" data-ext="5.70" data-ext-adr="0.90" data-vp="546" data-vol="7070000" data-avg-vol="1235439">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6223" target="_blank" class="code-link">6223</a></td>
@@ -3689,7 +3701,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.76%</span></td>
           <td class="entry-col">6665.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-10.6%</span></td>
-          <td><span class='vp-strong'>548%</span></td>
+          <td><span class='vp-strong'>546%</span></td>
           <td class="num grey xsm">7,070張 / <span class='grey'>1,235張</span></td>
           <td class="num grey">5765.00 <span class='grey'>(3.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3707,7 +3719,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6223" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="6831" data-name="邁科" data-last="742.00" data-prev="790.00" data-stop="767.00" data-entry="850.00" data-adr="6.46" data-ma10="773.50" data-ma20="674.62" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="84.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="A" data-vcp-score="82" data-ext="6.80" data-ext-adr="1.10" data-vp="141" data-vol="2094000" data-avg-vol="1421775">
+        <tr class="vcp-row" data-code="6831" data-name="邁科" data-last="742.00" data-prev="790.00" data-stop="767.00" data-entry="850.00" data-adr="6.46" data-ma10="773.50" data-ma20="674.62" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="84.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="A" data-vcp-score="82" data-ext="6.80" data-ext-adr="1.10" data-vp="140" data-vol="2094000" data-avg-vol="1421775">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank" class="code-link">6831</a></td>
@@ -3718,7 +3730,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-6.08%</span></td>
           <td class="entry-col">850.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-12.7%</span></td>
-          <td><span class='vp-ok'>141%</span></td>
+          <td><span class='vp-ok'>140%</span></td>
           <td class="num grey xsm">2,094張 / <span class='grey'>1,421張</span></td>
           <td class="num grey">767.00 <span class='grey'>(-3.4%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3736,7 +3748,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A6831" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="1727" data-name="中華化" data-last="94.00" data-prev="94.20" data-stop="94.00" data-entry="112.00" data-adr="7.41" data-ma10="93.78" data-ma20="86.19" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="68.0" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="4.10" data-ext-adr="0.60" data-vp="55" data-vol="8771000" data-avg-vol="15383890">
+        <tr class="" data-code="1727" data-name="中華化" data-last="94.00" data-prev="94.20" data-stop="94.00" data-entry="112.00" data-adr="7.41" data-ma10="93.78" data-ma20="86.19" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="68.0" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="4.10" data-ext-adr="0.60" data-vp="54" data-vol="8771000" data-avg-vol="15383890">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-a' title='優質：多頭排列＋貼10MA＋基底淺'>A 優</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank" class="code-link">1727</a></td>
@@ -3747,7 +3759,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-0.21%</span></td>
           <td class="entry-col">112.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-16.1%</span></td>
-          <td><span class='vp-weak'>55%</span></td>
+          <td><span class='vp-weak'>54%</span></td>
           <td class="num grey xsm">8,771張 / <span class='grey'>15,383張</span></td>
           <td class="num grey">94.00 <span class='grey'>(0.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3765,7 +3777,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1727" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="3481" data-name="群創" data-last="51.00" data-prev="46.40" data-stop="42.35" data-entry="52.20" data-adr="7.30" data-ma10="43.02" data-ma20="36.71" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="77.0" data-rsi-bear="1" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="18.10" data-ext-adr="2.50" data-vp="121" data-vol="891611000" data-avg-vol="708324348">
+        <tr class="vcp-row" data-code="3481" data-name="群創" data-last="51.00" data-prev="46.40" data-stop="42.35" data-entry="52.20" data-adr="7.30" data-ma10="43.02" data-ma20="36.71" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="77.0" data-rsi-bear="1" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="18.10" data-ext-adr="2.50" data-vp="120" data-vol="891611000" data-avg-vol="708324348">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3481" target="_blank" class="code-link">3481</a></td>
@@ -3776,7 +3788,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.91%</span></td>
           <td class="entry-col">52.20 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-2.3%</span></td>
-          <td><span class='vp-ok'>121%</span></td>
+          <td><span class='vp-ok'>120%</span></td>
           <td class="num grey xsm">891,611張 / <span class='grey'>708,324張</span></td>
           <td class="num grey">42.35 <span class='grey'>(17.0%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3794,7 +3806,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3481" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6274" data-name="台燿" data-last="1690.00" data-prev="1540.00" data-stop="1445.00" data-entry="1735.00" data-adr="6.27" data-ma10="1421.50" data-ma20="1374.50" data-type="強勢觀察" data-slv="0" data-risk="1" data-rsi14="73.5" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="14.70" data-ext-adr="2.30" data-vp="186" data-vol="9322000" data-avg-vol="4800160">
+        <tr class="" data-code="6274" data-name="台燿" data-last="1690.00" data-prev="1540.00" data-stop="1445.00" data-entry="1735.00" data-adr="6.27" data-ma10="1421.50" data-ma20="1374.50" data-type="強勢觀察" data-slv="0" data-risk="1" data-rsi14="73.5" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="14.70" data-ext-adr="2.30" data-vp="185" data-vol="9322000" data-avg-vol="4800160">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6274" target="_blank" class="code-link">6274</a></td>
@@ -3805,7 +3817,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+9.74%</span></td>
           <td class="entry-col">1735.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.6%</span></td>
-          <td><span class='vp-strong'>186%</span></td>
+          <td><span class='vp-strong'>185%</span></td>
           <td class="num grey xsm">9,322張 / <span class='grey'>4,800張</span></td>
           <td class="num grey">1445.00 <span class='grey'>(14.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3852,7 +3864,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6727" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="vcp-row" data-code="5289" data-name="宜鼎" data-last="1810.00" data-prev="1700.00" data-stop="1615.00" data-entry="1890.00" data-adr="6.51" data-ma10="1729.00" data-ma20="1654.25" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="63.1" data-rsi-bear="0" data-mom-surge="0" data-vcp="B" data-vcp-score="65" data-ext="1.20" data-ext-adr="0.20" data-vp="99" data-vol="4838000" data-avg-vol="4684898">
+        <tr class="vcp-row" data-code="5289" data-name="宜鼎" data-last="1810.00" data-prev="1700.00" data-stop="1615.00" data-entry="1890.00" data-adr="6.51" data-ma10="1729.00" data-ma20="1654.25" data-type="收縮整理" data-slv="0" data-risk="0" data-rsi14="63.1" data-rsi-bear="0" data-mom-surge="0" data-vcp="B" data-vcp-score="65" data-ext="1.20" data-ext-adr="0.20" data-vp="98" data-vol="4838000" data-avg-vol="4684898">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge vcp'>● 收縮整理</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A5289" target="_blank" class="code-link">5289</a></td>
@@ -3863,7 +3875,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+6.47%</span></td>
           <td class="entry-col">1890.00 <span class='grey xsm'>突破點</span></td>
           <td><span class='far-txt'>-4.2%</span></td>
-          <td><span class='vp-weak'>99%</span></td>
+          <td><span class='vp-weak'>98%</span></td>
           <td class="num grey xsm">4,838張 / <span class='grey'>4,684張</span></td>
           <td class="num grey">1615.00 <span class='grey'>(10.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -3939,7 +3951,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3090" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="3016" data-name="嘉晶" data-last="138.00" data-prev="134.50" data-stop="118.00" data-entry="145.50" data-adr="6.95" data-ma10="118.95" data-ma20="116.49" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="70.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="16.40" data-ext-adr="2.40" data-vp="421" data-vol="22916000" data-avg-vol="5216909">
+        <tr class="" data-code="3016" data-name="嘉晶" data-last="138.00" data-prev="134.50" data-stop="118.00" data-entry="145.50" data-adr="6.95" data-ma10="118.95" data-ma20="116.49" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="70.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="16.40" data-ext-adr="2.40" data-vp="419" data-vol="22916000" data-avg-vol="5216909">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3016" target="_blank" class="code-link">3016</a></td>
@@ -3950,7 +3962,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+2.60%</span></td>
           <td class="entry-col">145.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-5.2%</span></td>
-          <td><span class='vp-strong'>421%</span></td>
+          <td><span class='vp-strong'>419%</span></td>
           <td class="num grey xsm">22,916張 / <span class='grey'>5,216張</span></td>
           <td class="num grey">118.00 <span class='grey'>(14.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4055,7 +4067,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3673" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2426" data-name="鼎元" data-last="81.20" data-prev="80.90" data-stop="73.50" data-entry="88.80" data-adr="7.71" data-ma10="73.76" data-ma20="70.77" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="70.5" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="15.90" data-ext-adr="2.10" data-vp="139" data-vol="24331000" data-avg-vol="16813041">
+        <tr class="" data-code="2426" data-name="鼎元" data-last="81.20" data-prev="80.90" data-stop="73.50" data-entry="88.80" data-adr="7.71" data-ma10="73.76" data-ma20="70.77" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="70.5" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="15.90" data-ext-adr="2.10" data-vp="138" data-vol="24331000" data-avg-vol="16813041">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2426" target="_blank" class="code-link">2426</a></td>
@@ -4066,7 +4078,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='up'>+0.37%</span></td>
           <td class="entry-col">88.80 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.6%</span></td>
-          <td><span class='vp-ok'>139%</span></td>
+          <td><span class='vp-ok'>138%</span></td>
           <td class="num grey xsm">24,331張 / <span class='grey'>16,813張</span></td>
           <td class="num grey">73.50 <span class='grey'>(9.5%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4171,7 +4183,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3583" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2351" data-name="順德" data-last="207.50" data-prev="220.00" data-stop="183.50" data-entry="232.00" data-adr="6.77" data-ma10="195.95" data-ma20="183.68" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="77.1" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="15.10" data-ext-adr="2.20" data-vp="135" data-vol="12451000" data-avg-vol="8834860">
+        <tr class="" data-code="2351" data-name="順德" data-last="207.50" data-prev="220.00" data-stop="183.50" data-entry="232.00" data-adr="6.77" data-ma10="195.95" data-ma20="183.68" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="77.1" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="15.10" data-ext-adr="2.20" data-vp="134" data-vol="12451000" data-avg-vol="8834860">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2351" target="_blank" class="code-link">2351</a></td>
@@ -4182,7 +4194,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-5.68%</span></td>
           <td class="entry-col">232.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-10.6%</span></td>
-          <td><span class='vp-ok'>135%</span></td>
+          <td><span class='vp-ok'>134%</span></td>
           <td class="num grey xsm">12,451張 / <span class='grey'>8,834張</span></td>
           <td class="num grey">183.50 <span class='grey'>(11.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4287,7 +4299,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3167" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6415" data-name="矽力*-KY" data-last="600.00" data-prev="620.00" data-stop="547.00" data-entry="693.00" data-adr="7.00" data-ma10="566.90" data-ma20="507.80" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="80.3" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="17.50" data-ext-adr="2.50" data-vp="102" data-vol="7572000" data-avg-vol="7128977">
+        <tr class="" data-code="6415" data-name="矽力*-KY" data-last="600.00" data-prev="620.00" data-stop="547.00" data-entry="693.00" data-adr="7.00" data-ma10="566.90" data-ma20="507.80" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="80.3" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="17.50" data-ext-adr="2.50" data-vp="101" data-vol="7572000" data-avg-vol="7128977">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6415" target="_blank" class="code-link">6415</a></td>
@@ -4298,7 +4310,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-3.23%</span></td>
           <td class="entry-col">693.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-13.4%</span></td>
-          <td><span class='vp-ok'>102%</span></td>
+          <td><span class='vp-ok'>101%</span></td>
           <td class="num grey xsm">7,572張 / <span class='grey'>7,128張</span></td>
           <td class="num grey">547.00 <span class='grey'>(8.8%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4374,7 +4386,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A4919" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="1597" data-name="直得" data-last="180.00" data-prev="180.50" data-stop="161.50" data-entry="221.00" data-adr="7.24" data-ma10="188.30" data-ma20="181.32" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="60.6" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="2.50" data-ext-adr="0.30" data-vp="181" data-vol="7074000" data-avg-vol="3743037">
+        <tr class="" data-code="1597" data-name="直得" data-last="180.00" data-prev="180.50" data-stop="161.50" data-entry="221.00" data-adr="7.24" data-ma10="188.30" data-ma20="181.32" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="60.6" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="32" data-ext="2.50" data-ext-adr="0.30" data-vp="180" data-vol="7074000" data-avg-vol="3743037">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-b' title='一般：多頭排列但稍延伸或基底較深'>B</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A1597" target="_blank" class="code-link">1597</a></td>
@@ -4385,7 +4397,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-0.28%</span></td>
           <td class="entry-col">221.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-18.6%</span></td>
-          <td><span class='vp-strong'>181%</span></td>
+          <td><span class='vp-strong'>180%</span></td>
           <td class="num grey xsm">7,074張 / <span class='grey'>3,743張</span></td>
           <td class="num grey">161.50 <span class='grey'>(10.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4403,7 +4415,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A1597" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="3042" data-name="晶技" data-last="215.50" data-prev="217.50" data-stop="161.00" data-entry="221.50" data-adr="8.08" data-ma10="173.50" data-ma20="164.40" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="76.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="25.40" data-ext-adr="3.10" data-vp="267" data-vol="46189000" data-avg-vol="16550759">
+        <tr class="" data-code="3042" data-name="晶技" data-last="215.50" data-prev="217.50" data-stop="161.00" data-entry="221.50" data-adr="8.08" data-ma10="173.50" data-ma20="164.40" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="76.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="25.40" data-ext-adr="3.10" data-vp="266" data-vol="46189000" data-avg-vol="16550759">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A3042" target="_blank" class="code-link">3042</a></td>
@@ -4414,7 +4426,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-0.92%</span></td>
           <td class="entry-col">221.50 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-2.7%</span></td>
-          <td><span class='vp-strong'>267%</span></td>
+          <td><span class='vp-strong'>266%</span></td>
           <td class="num grey xsm">46,189張 / <span class='grey'>16,550張</span></td>
           <td class="num grey">161.00 <span class='grey'>(25.3%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4432,7 +4444,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A3042" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="6175" data-name="立敦" data-last="103.00" data-prev="107.00" data-stop="84.30" data-entry="107.00" data-adr="6.86" data-ma10="86.70" data-ma20="76.65" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="88.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="38" data-ext="21.10" data-ext-adr="3.10" data-vp="129" data-vol="13647000" data-avg-vol="10137653">
+        <tr class="" data-code="6175" data-name="立敦" data-last="103.00" data-prev="107.00" data-stop="84.30" data-entry="107.00" data-adr="6.86" data-ma10="86.70" data-ma20="76.65" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="88.4" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="38" data-ext="21.10" data-ext-adr="3.10" data-vp="128" data-vol="13647000" data-avg-vol="10137653">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TPEX%3A6175" target="_blank" class="code-link">6175</a></td>
@@ -4443,7 +4455,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-3.74%</span></td>
           <td class="entry-col">107.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-3.7%</span></td>
-          <td><span class='vp-ok'>129%</span></td>
+          <td><span class='vp-ok'>128%</span></td>
           <td class="num grey xsm">13,647張 / <span class='grey'>10,137張</span></td>
           <td class="num grey">84.30 <span class='grey'>(18.2%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4490,7 +4502,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A5386" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2484" data-name="希華" data-last="54.30" data-prev="55.20" data-stop="45.30" data-entry="57.80" data-adr="7.67" data-ma10="47.76" data-ma20="44.17" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="71.0" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="38" data-ext="21.00" data-ext-adr="2.70" data-vp="137" data-vol="25631000" data-avg-vol="17931840">
+        <tr class="" data-code="2484" data-name="希華" data-last="54.30" data-prev="55.20" data-stop="45.30" data-entry="57.80" data-adr="7.67" data-ma10="47.76" data-ma20="44.17" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="71.0" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="38" data-ext="21.00" data-ext-adr="2.70" data-vp="136" data-vol="25631000" data-avg-vol="17931840">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2484" target="_blank" class="code-link">2484</a></td>
@@ -4501,7 +4513,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-1.63%</span></td>
           <td class="entry-col">57.80 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-6.1%</span></td>
-          <td><span class='vp-ok'>137%</span></td>
+          <td><span class='vp-ok'>136%</span></td>
           <td class="num grey xsm">25,631張 / <span class='grey'>17,931張</span></td>
           <td class="num grey">45.30 <span class='grey'>(16.6%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4548,7 +4560,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TPEX%3A6435" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2454" data-name="聯發科" data-last="4310.00" data-prev="4410.00" data-stop="3675.00" data-entry="4690.00" data-adr="6.14" data-ma10="3818.50" data-ma20="3589.00" data-type="強勢觀察" data-slv="0" data-risk="2" data-rsi14="77.5" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="19.90" data-ext-adr="3.20" data-vp="186" data-vol="20517000" data-avg-vol="10556686">
+        <tr class="" data-code="2454" data-name="聯發科" data-last="4310.00" data-prev="4410.00" data-stop="3675.00" data-entry="4690.00" data-adr="6.14" data-ma10="3818.50" data-ma20="3589.00" data-type="強勢觀察" data-slv="0" data-risk="2" data-rsi14="77.5" data-rsi-bear="0" data-mom-surge="0" data-vcp="C" data-vcp-score="40" data-ext="19.90" data-ext-adr="3.20" data-vp="185" data-vol="20517000" data-avg-vol="10556686">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2454" target="_blank" class="code-link">2454</a></td>
@@ -4559,7 +4571,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-2.27%</span></td>
           <td class="entry-col">4690.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-8.1%</span></td>
-          <td><span class='vp-strong'>186%</span></td>
+          <td><span class='vp-strong'>185%</span></td>
           <td class="num grey xsm">20,517張 / <span class='grey'>10,556張</span></td>
           <td class="num grey">3675.00 <span class='grey'>(14.7%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4577,7 +4589,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><a class="tv-btn" href="https://www.tradingview.com/chart/?symbol=TWSE%3A2454" target="_blank">📈</a></td>
           <td><button class="entry-btn" onclick="openModal(this.closest('tr'))">＋</button></td>
         </tr>
-        <tr class="" data-code="2360" data-name="致茂" data-last="2520.00" data-prev="2570.00" data-stop="2245.00" data-entry="2795.00" data-adr="6.38" data-ma10="2342.00" data-ma20="2322.50" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="71.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="B" data-vcp-score="52" data-ext="17.40" data-ext-adr="2.70" data-vp="149" data-vol="5229000" data-avg-vol="3362344">
+        <tr class="" data-code="2360" data-name="致茂" data-last="2520.00" data-prev="2570.00" data-stop="2245.00" data-entry="2795.00" data-adr="6.38" data-ma10="2342.00" data-ma20="2322.50" data-type="強勢觀察" data-slv="0" data-risk="0" data-rsi14="71.9" data-rsi-bear="0" data-mom-surge="0" data-vcp="B" data-vcp-score="52" data-ext="17.40" data-ext-adr="2.70" data-vp="148" data-vol="5229000" data-avg-vol="3362344">
           <td><span class='sig-badge' style='color:#484f58'>⚪ 等待</span></td>
           <td><span class='badge leader' title='強勢續強池：Stage 2 多頭排列、距 MA200 ≥+10%、RS Rating ≥80'>🔥 強勢續強</span><span class='badge watch'>↑ 強勢觀察</span><span class='qbadge q-c' title='亂基底/弱：均線未多頭、基底太深或太延伸'>C 亂</span></td>
           <td><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A2360" target="_blank" class="code-link">2360</a></td>
@@ -4588,7 +4600,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           <td><span class='dn'>-1.95%</span></td>
           <td class="entry-col">2795.00 <span class='grey xsm'>整理高</span></td>
           <td><span class='far-txt'>-9.8%</span></td>
-          <td><span class='vp-ok'>149%</span></td>
+          <td><span class='vp-ok'>148%</span></td>
           <td class="num grey xsm">5,229張 / <span class='grey'>3,362張</span></td>
           <td class="num grey">2245.00 <span class='grey'>(10.9%↓)</span></td>
           <td class="num size-cell"><span class="na">-</span></td>
@@ -4703,7 +4715,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <button class="entry-btn" onclick="openModal(this.closest('.buy-card'))">＋ 進場</button>
           </div>
         </div>
-        <div class="buy-card" data-code="6531" data-name="愛普*" data-last="1190.00" data-prev="1095.00" data-stop="1140.00" data-entry="1175.00" data-adr="8.97" data-ma10="1042.70" data-ma20="999.90" data-type="強勢觀察" data-slv="4" data-risk="0" data-rsi14="67.7" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="52" data-ext="11.20" data-ext-adr="1.30" data-vp="198" data-vol="13314000" data-avg-vol="6433364">
+        <div class="buy-card" data-code="6531" data-name="愛普*" data-last="1190.00" data-prev="1095.00" data-stop="1140.00" data-entry="1175.00" data-adr="8.97" data-ma10="1042.70" data-ma20="999.90" data-type="強勢觀察" data-slv="4" data-risk="0" data-rsi14="67.7" data-rsi-bear="1" data-mom-surge="0" data-vcp="B" data-vcp-score="52" data-ext="11.20" data-ext-adr="1.30" data-vp="197" data-vol="13314000" data-avg-vol="6433364">
           <div class="bc-head">
             <span class="bc-sig"><span class='sig-badge' style='color:#3fb950'>🟢 突破確認＋強量</span></span>
             <span class="bc-id"><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A6531" target="_blank" class="code-link">6531</a> 愛普*</span>
@@ -4829,7 +4841,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <button class="entry-btn" onclick="openModal(this.closest('.buy-card'))">＋ 進場</button>
           </div>
         </div>
-        <div class="buy-card" data-code="7769" data-name="鴻勁" data-last="8260.00" data-prev="7700.00" data-stop="7205.00" data-entry="8300.00" data-adr="6.39" data-ma10="7407.00" data-ma20="6779.25" data-type="收縮整理" data-slv="1" data-risk="0" data-rsi14="75.7" data-rsi-bear="0" data-mom-surge="0" data-vcp="A" data-vcp-score="75" data-ext="10.60" data-ext-adr="1.70" data-vp="191" data-vol="1740000" data-avg-vol="873465">
+        <div class="buy-card" data-code="7769" data-name="鴻勁" data-last="8260.00" data-prev="7700.00" data-stop="7205.00" data-entry="8300.00" data-adr="6.39" data-ma10="7407.00" data-ma20="6779.25" data-type="收縮整理" data-slv="1" data-risk="0" data-rsi14="75.7" data-rsi-bear="0" data-mom-surge="0" data-vcp="A" data-vcp-score="75" data-ext="10.60" data-ext-adr="1.70" data-vp="190" data-vol="1740000" data-avg-vol="873465">
           <div class="bc-head">
             <span class="bc-sig"><span class='sig-badge' style='color:#58a6ff'>🔵 接近進場點</span></span>
             <span class="bc-id"><a href="https://www.tradingview.com/chart/?symbol=TWSE%3A7769" target="_blank" class="code-link">7769</a> 鴻勁</span>
