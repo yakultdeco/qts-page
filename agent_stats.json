@@ -1,26 +1,26 @@
 {
-  "ts": 1780047817.743773,
-  "total": 11,
+  "ts": 1780047890.729082,
+  "total": 12,
   "by_verdict": {
     "go": 0,
     "wait": 2,
-    "skip": 9
+    "skip": 10
   },
-  "short_circuits": 6,
+  "short_circuits": 7,
   "cache_reads_tokens": 35688,
-  "input_tokens": 14151,
-  "llm_calls": 9,
-  "cost_usd": 0.1632,
+  "input_tokens": 15093,
+  "llm_calls": 10,
+  "cost_usd": 0.1686,
   "agents": {
     "conti": {
-      "calls": 11,
+      "calls": 12,
       "go": 0,
       "wait": 5,
-      "skip": 6,
+      "skip": 7,
       "last": {
-        "code": "RDDT",
+        "code": "QCOM",
         "verdict": "skip",
-        "ts": 1780047672.3055758
+        "ts": 1780047837.80252
       }
     },
     "tai": {
@@ -29,35 +29,51 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "RDDT",
+        "code": "QCOM",
         "verdict": "skip",
-        "ts": 1780047672.3055758
+        "ts": 1780047837.80252
       }
     },
     "combo": {
-      "calls": 11,
+      "calls": 12,
       "go": 0,
       "wait": 2,
-      "skip": 9,
+      "skip": 10,
       "last": {
-        "code": "RDDT",
+        "code": "QCOM",
         "verdict": "skip",
-        "ts": 1780047672.3055758
+        "ts": 1780047837.80252
       }
     },
     "ortho": {
-      "calls": 11,
+      "calls": 12,
       "go": 0,
       "wait": 2,
-      "skip": 15,
+      "skip": 17,
       "last": {
-        "code": "RDDT",
+        "code": "QCOM",
         "verdict": "skip",
-        "ts": 1780047672.3055758
+        "ts": 1780047837.80252
       }
     }
   },
   "recent": [
+    {
+      "code": "QCOM",
+      "ts": 1780047837.80252,
+      "context": "skip",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": true,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜訊號強度僅 slv=1，突破確認度不足，尚未達 slv=3 以上的有效突破門檻",
+        "脈絡｜現價 243 遠低於進場價 258，代表尚未觸發進場條件，追高空間達 6%+，風險報酬不對稱"
+      ],
+      "ta_reasons": [
+        "TA｜(context 已 skip，省略 TA 呼叫)"
+      ]
+    },
     {
       "code": "RDDT",
       "ts": 1780047672.3055758,
