@@ -1,5 +1,5 @@
 {
-  "ts": 1780047125.772332,
+  "ts": 1780047239.117717,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 8125,
+  "input_tokens": 8166,
   "llm_calls": 3,
-  "cost_usd": 0.1315,
+  "cost_usd": 0.1318,
   "agents": {
     "conti": {
       "calls": 5,
@@ -20,7 +20,7 @@
       "last": {
         "code": "6531",
         "verdict": "wait",
-        "ts": 1780045348.5598772
+        "ts": 1780047237.193718
       }
     },
     "tai": {
@@ -31,7 +31,7 @@
       "last": {
         "code": "6531",
         "verdict": "skip",
-        "ts": 1780045348.5598772
+        "ts": 1780047237.193718
       }
     },
     "combo": {
@@ -42,7 +42,7 @@
       "last": {
         "code": "6531",
         "verdict": "skip",
-        "ts": 1780045348.5598772
+        "ts": 1780047237.193718
       }
     },
     "ortho": {
@@ -53,19 +53,19 @@
       "last": {
         "code": "6531",
         "verdict": "skip",
-        "ts": 1780045348.5598772
+        "ts": 1780047237.193718
       }
     }
   },
   "recent": [
     {
       "code": "6531",
-      "ts": 1780045348.5598772,
+      "ts": 1780047237.193718,
       "context": "wait",
       "ta": "skip",
       "final": "skip",
       "short_circuit": false,
-      "head": "ext_pct 11.2% 已是 EMA10 延伸警戒值兩倍以上，融資單日暴增 607 張強化假突破風險；Bear 提出的三項 invalidation 均屬高機率、低門檻觸發，TA resonance.total 僅 +2 卻 score",
+      "head": "ext=11.2% 遠超 5% 上限，ADR=8.97% 使停損 1140 一日波動即可觸及，融資單日暴增 607 張顯示籌碼鬆散；TA resonance.total=0 且 slv=3，無充分量能支撐，大盤多頭無法彌補個股結構過度延伸的",
       "ctx_reasons": [],
       "ta_reasons": []
     },
