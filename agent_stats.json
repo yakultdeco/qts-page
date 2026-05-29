@@ -1,5 +1,5 @@
 {
-  "ts": 1780033980.835596,
+  "ts": 1780034097.9961941,
   "total": 5,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 35688,
-  "input_tokens": 8016,
+  "input_tokens": 7985,
   "llm_calls": 3,
-  "cost_usd": 0.1242,
+  "cost_usd": 0.1236,
   "agents": {
     "conti": {
       "calls": 5,
@@ -18,20 +18,20 @@
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780033742.025716
+        "ts": 1780034097.365105
       }
     },
     "tai": {
       "calls": 5,
       "go": 0,
-      "wait": 2,
-      "skip": 3,
+      "wait": 3,
+      "skip": 2,
       "last": {
-        "code": "8358",
-        "verdict": "skip",
-        "ts": 1780033742.025716
+        "code": "6531",
+        "verdict": "wait",
+        "ts": 1780034097.365105
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780033742.025716
+        "ts": 1780034097.365105
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 2,
       "skip": 3,
       "last": {
-        "code": "8358",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780033742.025716
+        "ts": 1780034097.365105
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780034097.365105,
+      "context": "wait",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext_pct=11.2% 已嚴重延伸，停損距離僅 2.98% 遠低於 ADR 8.97%，風報比根本不成立；融資單日+607張(+5.3%)顯示散戶追高，Bear 核心疑慮均有數據支撐，大盤多頭雖正面但無法彌補個股層面的結構性缺陷。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780033742.025716,
@@ -77,17 +88,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext=19.6% 遠超安全追價閾值，TA resonance total=-1（momentum=-2），Bear bear_score=82 提出停損距僅 1.7% 且 ADR=6.53% 單日即可掃損，三項核心硬傷同時成立，無入場依據",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6531",
-      "ts": 1780032216.433773,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext_pct=11.2% 遠超 5% 拒絕門檻，融資單日暴增 607 張製造籌碼鬆散，TA resonance.total 僅+1 且 momentum=-2 內部矛盾；Bear bear_score=82 的三條 invalidatio",
       "ctx_reasons": [],
       "ta_reasons": []
     },
