@@ -1,5 +1,5 @@
 {
-  "ts": 1780283312.613674,
+  "ts": 1780283427.845535,
   "total": 15,
   "by_verdict": {
     "go": 1,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 6,
   "cache_reads_tokens": 107064,
-  "input_tokens": 30000,
+  "input_tokens": 30040,
   "llm_calls": 15,
-  "cost_usd": 0.423,
+  "cost_usd": 0.4232,
   "agents": {
     "conti": {
       "calls": 15,
@@ -18,20 +18,20 @@
       "wait": 9,
       "skip": 6,
       "last": {
-        "code": "CRWD",
+        "code": "8064",
         "verdict": "wait",
-        "ts": 1780283309.44128
+        "ts": 1780283426.4639459
       }
     },
     "tai": {
       "calls": 9,
       "go": 1,
-      "wait": 0,
-      "skip": 8,
+      "wait": 1,
+      "skip": 7,
       "last": {
-        "code": "CRWD",
-        "verdict": "skip",
-        "ts": 1780283309.44128
+        "code": "8064",
+        "verdict": "wait",
+        "ts": 1780283426.4639459
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 0,
       "skip": 14,
       "last": {
-        "code": "CRWD",
+        "code": "8064",
         "verdict": "skip",
-        "ts": 1780283309.44128
+        "ts": 1780283426.4639459
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 0,
       "skip": 20,
       "last": {
-        "code": "CRWD",
+        "code": "8064",
         "verdict": "skip",
-        "ts": 1780283309.44128
+        "ts": 1780283426.4639459
       }
     }
   },
   "recent": [
+    {
+      "code": "8064",
+      "ts": 1780283426.4639459,
+      "context": "wait",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "三方均不建議立即進場，核心問題一致：停損距離 9.6% 超 1×ADR（7.8%）、ext 6.2% 超警戒線、外資賣超籌碼逆風，風報比結構性偏差，非時機問題而是本筆設定根本不符規則。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "CRWD",
       "ts": 1780283309.44128,
@@ -207,17 +218,6 @@
       "ta_reasons": [
         "TA resonance.total=0 已中立，加上法人合計賣超 65 張且 ext_pct=17.2% 遠超 5% 上限；更致命的是進場 414 高於停損 438 的資料矛盾使風險報酬完全無法計算，無任何執行條件成立。"
       ]
-    },
-    {
-      "code": "8064",
-      "ts": 1780281512.713515,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損幅度 9.6% 已超越 ADR 7.8%，疊加 ext=6.2% 進場即處高延伸，實際 R 值嚴重偏低；Bear bear_score=82 三條 invalidation 均屬中高機率，TA resonance total=1 偏弱，",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2464",
