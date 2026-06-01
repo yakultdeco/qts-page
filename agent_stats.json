@@ -1,16 +1,16 @@
 {
-  "ts": 1780298264.416564,
+  "ts": 1780298572.5846741,
   "total": 17,
   "by_verdict": {
-    "go": 5,
+    "go": 3,
     "wait": 9,
-    "skip": 3
+    "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 29242,
-  "input_tokens": 74702,
+  "cache_reads_tokens": 35314,
+  "input_tokens": 74543,
   "llm_calls": 10,
-  "cost_usd": 0.0507,
+  "cost_usd": 0.0492,
   "agents": {
     "conti": {
       "calls": 17,
@@ -18,46 +18,68 @@
       "wait": 10,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "ALAB",
         "verdict": "go",
-        "ts": 1780298262.183685
+        "ts": 1780298570.963073
       }
     },
     "tai": {
       "calls": 17,
-      "go": 4,
-      "wait": 11,
-      "skip": 2,
+      "go": 2,
+      "wait": 12,
+      "skip": 3,
       "last": {
-        "code": "HUT",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780298262.183685
+        "ts": 1780298570.963073
       }
     },
     "combo": {
       "calls": 17,
-      "go": 5,
+      "go": 3,
       "wait": 9,
-      "skip": 3,
+      "skip": 5,
       "last": {
-        "code": "HUT",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780298262.183685
+        "ts": 1780298570.963073
       }
     },
     "ortho": {
       "calls": 17,
-      "go": 5,
+      "go": 3,
       "wait": 9,
-      "skip": 3,
+      "skip": 5,
       "last": {
-        "code": "HUT",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780298262.183685
+        "ts": 1780298570.963073
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780298570.963073,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ALAB 距 EMA10 達 24.4% 極度延伸，且停損寬度高達 19%，遠超風控上限與 1.5 倍 ADR，風報比極差，故不進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "RDDT",
+      "ts": 1780298542.934825,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損寬達 16.79% 遠超 ADR (5.94%)，且已延伸 9.4%，無量突破極易遭假突破套牢。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "HUT",
       "ts": 1780298262.183685,
@@ -152,28 +174,6 @@
       "ta_reasons": [
         "TA｜ta_agent 失敗: RuntimeError"
       ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780296176.841648,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭，RDDT ADR 5.94% 股性活潑，現價距 EMA10 延伸 9.4% 合理，具續漲潛力。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780296172.6803489,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "ALAB 具備高 ADR (9.04%) 及強勢 C 型態，大盤及費半皆多頭。雖然停損較遠，但考慮其動能強度，風險值得承受。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2303",
