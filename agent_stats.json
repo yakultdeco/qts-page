@@ -1,5 +1,5 @@
 {
-  "ts": 1780296251.3548002,
+  "ts": 1780296334.0681632,
   "total": 17,
   "by_verdict": {
     "go": 5,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 24160,
-  "input_tokens": 83849,
+  "input_tokens": 72907,
   "llm_calls": 10,
-  "cost_usd": 0.0568,
+  "cost_usd": 0.05,
   "agents": {
     "conti": {
       "calls": 17,
@@ -18,20 +18,20 @@
       "wait": 10,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780296176.841648
+        "ts": 1780296328.187509
       }
     },
     "tai": {
       "calls": 17,
-      "go": 7,
-      "wait": 9,
+      "go": 6,
+      "wait": 10,
       "skip": 1,
       "last": {
-        "code": "RDDT",
-        "verdict": "go",
-        "ts": 1780296176.841648
+        "code": "8064",
+        "verdict": "wait",
+        "ts": 1780296328.187509
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 11,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780296176.841648
+        "ts": 1780296328.187509
       }
     },
     "ortho": {
@@ -51,13 +51,30 @@
       "wait": 11,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780296176.841648
+        "ts": 1780296328.187509
       }
     }
   },
   "recent": [
+    {
+      "code": "8064",
+      "ts": 1780296328.187509,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤環境多頭，有利個股表現。",
+        "脈絡｜無明顯負面新聞或產業雜音。"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "RDDT",
       "ts": 1780296176.841648,
@@ -159,17 +176,6 @@
         "TA｜現價 285.5 站穩突破點 281.0，整理已獲初步確認",
         "TA｜ADR 達 7.95% 顯示波動活躍，適合動能策略"
       ]
-    },
-    {
-      "code": "8064",
-      "ts": 1780294499.9137652,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭強勁，東捷以訊號強度 4 帶量突破整理區間 153.5，Ext 6.2% 合理，具備動能上漲潛力。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2303",
