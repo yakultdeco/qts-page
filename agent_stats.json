@@ -1,16 +1,16 @@
 {
-  "ts": 1780301807.0146072,
+  "ts": 1780302587.425672,
   "total": 26,
   "by_verdict": {
     "go": 11,
-    "wait": 10,
-    "skip": 5
+    "wait": 9,
+    "skip": 6
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 54694,
-  "input_tokens": 158946,
+  "cache_reads_tokens": 49525,
+  "input_tokens": 159018,
   "llm_calls": 21,
-  "cost_usd": 0.0934,
+  "cost_usd": 0.0935,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,46 +18,90 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "AMD",
         "verdict": "go",
-        "ts": 1780301804.639014
+        "ts": 1780302576.07289
       }
     },
     "tai": {
       "calls": 26,
-      "go": 3,
-      "wait": 19,
+      "go": 2,
+      "wait": 20,
       "skip": 4,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780301804.639014
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780302576.07289
       }
     },
     "combo": {
       "calls": 26,
       "go": 11,
-      "wait": 10,
-      "skip": 5,
+      "wait": 9,
+      "skip": 6,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780301804.639014
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780302576.07289
       }
     },
     "ortho": {
       "calls": 26,
       "go": 11,
-      "wait": 10,
-      "skip": 5,
+      "wait": 9,
+      "skip": 6,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780301804.639014
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780302576.07289
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780302576.07289,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損幅度 (18.1%) 遠超 ADR 1.5 倍極限 (8.37%)，且股價已延伸 12.8%，風險過高。訊號強度 slv=1 亦顯不足。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780302521.806049,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雖然大盤與個股趨勢有利且整理結構良好，但訊號量能不足 (SLV=1) 且股價已延伸 5.5%，假突破風險高。需等待放量確認以降低風險。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780302393.143178,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "股票具 VCP 優質結構，大盤多頭有利突破；設定嚴格進場條件與部位，控制 7.8% 寬停損風險。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "4760",
+      "ts": 1780302168.664875,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "核心問題為停損價 (426.0) 高於進場價 (425.5) 的致命邏輯錯誤。此外，股價已較 EMA10 延伸 24.3%，追高風險過高。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "ALAB",
       "ts": 1780301804.639014,
@@ -90,50 +134,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "現價距 EMA10 延伸達 16.8% 過遠，且原始停損幅 23.8% (約 3 倍 ADR) 過寬，導致風報比極差。需等待條件改善。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780300357.267252,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤極強，個股 VCP 結構完整。雖 5.5% 稍延伸，但 6.5% 停損符合 1.5x ADR。嚴守 677.5 進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780300319.559558,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損18.1%遠超1.5x ADR(8.37%)限制，且偏離EMA10達12.8%，極易面臨均值回歸殺盤。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780300174.8507788,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "大盤多頭環境下，PANW 結構緊密且 ADR 具動能。但目前 TA 顯示量能不足 (volume=0)，且停損 7.8% 高於 ADR 4.52%，故需等待帶量突破確認後再行進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "4760",
-      "ts": 1780299693.865713,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價429已偏離突破點，24.3%乖離搭8.22%ADR，直接追高極易因極窄停損被掃，故等待回踩425.5。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
