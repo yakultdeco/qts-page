@@ -1,63 +1,74 @@
 {
-  "ts": 1780299068.4402099,
+  "ts": 1780299696.009235,
   "total": 26,
   "by_verdict": {
-    "go": 11,
-    "wait": 9,
+    "go": 10,
+    "wait": 10,
     "skip": 6
   },
   "short_circuits": 0,
   "cache_reads_tokens": 51628,
-  "input_tokens": 155619,
+  "input_tokens": 160546,
   "llm_calls": 21,
-  "cost_usd": 0.0891,
+  "cost_usd": 0.093,
   "agents": {
     "conti": {
       "calls": 26,
-      "go": 16,
-      "wait": 10,
+      "go": 17,
+      "wait": 9,
       "skip": 0,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780298916.967167
+        "code": "4760",
+        "verdict": "go",
+        "ts": 1780299693.865713
       }
     },
     "tai": {
       "calls": 26,
-      "go": 3,
-      "wait": 19,
+      "go": 2,
+      "wait": 20,
       "skip": 4,
       "last": {
-        "code": "ALAB",
+        "code": "4760",
         "verdict": "wait",
-        "ts": 1780298916.967167
+        "ts": 1780299693.865713
       }
     },
     "combo": {
       "calls": 26,
-      "go": 11,
-      "wait": 9,
+      "go": 10,
+      "wait": 10,
       "skip": 6,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780298916.967167
+        "code": "4760",
+        "verdict": "wait",
+        "ts": 1780299693.865713
       }
     },
     "ortho": {
       "calls": 26,
-      "go": 11,
-      "wait": 9,
+      "go": 10,
+      "wait": 10,
       "skip": 6,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780298916.967167
+        "code": "4760",
+        "verdict": "wait",
+        "ts": 1780299693.865713
       }
     }
   },
   "recent": [
+    {
+      "code": "4760",
+      "ts": 1780299693.865713,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價429已偏離突破點，24.3%乖離搭8.22%ADR，直接追高極易因極窄停損被掃，故等待回踩425.5。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "ALAB",
       "ts": 1780298916.967167,
@@ -332,23 +343,6 @@
         "TA 力推（脈絡觀望，不反對）",
         "TA｜價格突破整理區間，訊號強度 3。",
         "TA｜ADR 高達 7.95%，具備充足波動性。"
-      ]
-    },
-    {
-      "code": "4760",
-      "ts": 1780297320.798441,
-      "context": "wait",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "TA 力推（脈絡觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA 力推（脈絡觀望，不反對）",
-        "TA｜股價強勢突破，現價 429.0 站上所有均線。",
-        "TA｜訊號強度 slv 4 (強量突破) 顯示帶量上攻。"
       ]
     },
     {
