@@ -1,5 +1,5 @@
 {
-  "ts": 1780280736.701076,
+  "ts": 1780280847.009396,
   "total": 14,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 6,
   "cache_reads_tokens": 95168,
-  "input_tokens": 27535,
+  "input_tokens": 27661,
   "llm_calls": 14,
-  "cost_usd": 0.3725,
+  "cost_usd": 0.371,
   "agents": {
     "conti": {
       "calls": 14,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 6,
       "last": {
-        "code": "4760",
+        "code": "6147",
         "verdict": "wait",
-        "ts": 1780280588.286689
+        "ts": 1780280844.5397918
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 1,
       "skip": 7,
       "last": {
-        "code": "4760",
+        "code": "6147",
         "verdict": "skip",
-        "ts": 1780280588.286689
+        "ts": 1780280844.5397918
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 0,
       "skip": 14,
       "last": {
-        "code": "4760",
+        "code": "6147",
         "verdict": "skip",
-        "ts": 1780280588.286689
+        "ts": 1780280844.5397918
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 0,
       "skip": 20,
       "last": {
-        "code": "4760",
+        "code": "6147",
         "verdict": "skip",
-        "ts": 1780280588.286689
+        "ts": 1780280844.5397918
       }
     }
   },
   "recent": [
+    {
+      "code": "6147",
+      "ts": 1780280844.5397918,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "現價 288.5 已超越停損 286.0，進場即處負風險報酬；EMA10 延伸 17.6% 遠超容忍上限；外資單日賣超 11,286 張，TA resonance total=-1，三項硬傷同時成立，無可救藥。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "4760",
       "ts": 1780280588.286689,
@@ -219,17 +230,6 @@
       "ta_reasons": [
         "TA｜(context 已 skip，省略 TA 呼叫)"
       ]
-    },
-    {
-      "code": "6147",
-      "ts": 1780278727.115482,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=17.6% 遠超 5% 上限，外資單日賣超 11,286 張且連續兩日，TA resonance total=-1；三項核心負面訊號同時成立，無足夠催化劑支撐追價，下行風險達 -15%。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "6531",
