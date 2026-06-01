@@ -769,6 +769,8 @@
   "6197": {
     "verdict": "wait",
     "score": 0,
+    "strategy": "",
+    "thesis": "",
     "context": {
       "score": 0,
       "verdict": "wait"
@@ -780,8 +782,8 @@
     "entry_plan": {},
     "reasons": [
       "雙方觀望",
-      "脈絡｜context_agent 失敗: BadRequestError",
-      "TA｜ta_agent 失敗: BadRequestError"
+      "脈絡｜context_agent 失敗: RuntimeError",
+      "TA｜ta_agent 失敗: RuntimeError"
     ],
     "resonance": {},
     "triggers": [],
@@ -792,8 +794,8 @@
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780289746.9896293,
-    "last_at_vote": 308.0
+    "ts": 1780291873.917038,
+    "last_at_vote": 309.0
   },
   "6274": {
     "verdict": "wait",
