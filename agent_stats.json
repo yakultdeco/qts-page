@@ -1,5 +1,5 @@
 {
-  "ts": 1780286072.9177542,
+  "ts": 1780286143.198447,
   "total": 16,
   "by_verdict": {
     "go": 1,
@@ -18,9 +18,9 @@
       "wait": 16,
       "skip": 0,
       "last": {
-        "code": "3481",
+        "code": "2464",
         "verdict": "wait",
-        "ts": 1780285631.120352
+        "ts": 1780286141.52446
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 14,
       "skip": 1,
       "last": {
-        "code": "3481",
+        "code": "2464",
         "verdict": "wait",
-        "ts": 1780285631.120352
+        "ts": 1780286141.52446
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 14,
       "skip": 1,
       "last": {
-        "code": "3481",
+        "code": "2464",
         "verdict": "wait",
-        "ts": 1780285631.120352
+        "ts": 1780286141.52446
       }
     },
     "ortho": {
@@ -51,13 +51,58 @@
       "wait": 14,
       "skip": 1,
       "last": {
-        "code": "3481",
+        "code": "2464",
         "verdict": "wait",
-        "ts": 1780285631.120352
+        "ts": 1780286141.52446
       }
     }
   },
   "recent": [
+    {
+      "code": "2464",
+      "ts": 1780286141.52446,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "4760",
+      "ts": 1780286141.404049,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "6147",
+      "ts": 1780286141.3994088,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "3481",
       "ts": 1780285631.120352,
@@ -196,51 +241,6 @@
     {
       "code": "6274",
       "ts": 1780284410.210725,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6147",
-      "ts": 1780284264.419185,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "2464",
-      "ts": 1780284264.418805,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "4760",
-      "ts": 1780284264.418293,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
