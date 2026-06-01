@@ -110,6 +110,8 @@
   "4760": {
     "verdict": "wait",
     "score": 0,
+    "strategy": "",
+    "thesis": "",
     "context": {
       "score": 0,
       "verdict": "wait"
@@ -133,7 +135,7 @@
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780289155.150053,
+    "ts": 1780291248.389001,
     "last_at_vote": 429.5
   },
   "6291": {
