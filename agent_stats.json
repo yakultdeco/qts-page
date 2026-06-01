@@ -1,63 +1,97 @@
 {
-  "ts": 1780295273.046986,
+  "ts": 1780295352.335432,
   "total": 17,
   "by_verdict": {
-    "go": 5,
-    "wait": 11,
+    "go": 7,
+    "wait": 9,
     "skip": 1
   },
   "short_circuits": 0,
   "cache_reads_tokens": 11896,
-  "input_tokens": 77886,
-  "llm_calls": 8,
-  "cost_usd": 0.0511,
+  "input_tokens": 95206,
+  "llm_calls": 10,
+  "cost_usd": 0.0598,
   "agents": {
     "conti": {
       "calls": 17,
-      "go": 7,
-      "wait": 10,
+      "go": 9,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "8064",
+        "code": "4760",
         "verdict": "go",
-        "ts": 1780294499.9137652
+        "ts": 1780295350.284847
       }
     },
     "tai": {
+      "calls": 17,
+      "go": 9,
+      "wait": 7,
+      "skip": 1,
+      "last": {
+        "code": "4760",
+        "verdict": "go",
+        "ts": 1780295350.284847
+      }
+    },
+    "combo": {
       "calls": 17,
       "go": 7,
       "wait": 9,
       "skip": 1,
       "last": {
-        "code": "8064",
+        "code": "4760",
         "verdict": "go",
-        "ts": 1780294499.9137652
-      }
-    },
-    "combo": {
-      "calls": 17,
-      "go": 5,
-      "wait": 11,
-      "skip": 1,
-      "last": {
-        "code": "8064",
-        "verdict": "go",
-        "ts": 1780294499.9137652
+        "ts": 1780295350.284847
       }
     },
     "ortho": {
       "calls": 17,
-      "go": 5,
-      "wait": 11,
+      "go": 7,
+      "wait": 9,
       "skip": 1,
       "last": {
-        "code": "8064",
+        "code": "4760",
         "verdict": "go",
-        "ts": 1780294499.9137652
+        "ts": 1780295350.284847
       }
     }
   },
   "recent": [
+    {
+      "code": "4760",
+      "ts": 1780295350.284847,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤環境多頭，有利個股表現。",
+        "脈絡｜無明顯利空新聞，脈絡中性偏多。"
+      ],
+      "ta_reasons": [
+        "TA｜訊號強度slv 4，評分 9.0，顯示突破動能強勁。",
+        "TA｜VCP等級 C，突破品質 B，型態良好，具備上攻潛力。"
+      ]
+    },
+    {
+      "code": "6147",
+      "ts": 1780295349.062577,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤環境為明確多頭，有利個股表現。",
+        "脈絡｜無負面新聞，脈絡中性偏多。"
+      ],
+      "ta_reasons": [
+        "TA｜現價 285.5 站穩突破點 281.0，整理已獲初步確認",
+        "TA｜ADR 達 7.95% 顯示波動活躍，適合動能策略"
+      ]
+    },
     {
       "code": "8064",
       "ts": 1780294499.9137652,
@@ -146,36 +180,6 @@
       "head": "AMD 雖有突破企圖，但現價 518.09 仍低於進場價 527.2，且缺少 Bear 的有效風險評估，故先等待回檔。TA 的停損點 490 較原始停損 431.6 更為合理。",
       "ctx_reasons": [],
       "ta_reasons": []
-    },
-    {
-      "code": "6147",
-      "ts": 1780293475.790758,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "4760",
-      "ts": 1780293475.7906492,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
     },
     {
       "code": "2303",
