@@ -1,5 +1,5 @@
 {
-  "ts": 1780305349.2432482,
+  "ts": 1780305863.955864,
   "total": 26,
   "by_verdict": {
     "go": 12,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 50620,
-  "input_tokens": 157950,
+  "input_tokens": 150681,
   "llm_calls": 21,
-  "cost_usd": 0.0915,
+  "cost_usd": 0.0878,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,9 +18,9 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780305346.5019982
+        "ts": 1780305861.2669451
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 20,
       "skip": 4,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780305346.5019982
+        "ts": 1780305861.2669451
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 6,
       "skip": 8,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "skip",
-        "ts": 1780305346.5019982
+        "ts": 1780305861.2669451
       }
     },
     "ortho": {
@@ -51,13 +51,26 @@
       "wait": 6,
       "skip": 8,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "skip",
-        "ts": 1780305346.5019982
+        "ts": 1780305861.2669451
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780305861.2669451,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "TA Agent缺失導致技術面判斷不明。停損139.55造成16.79%過高風險，且獲利需漲33%才達2R，風報比極差，故不考慮進場。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA Agent缺失導致技術面判斷不明。停損139.55造成16.79%過高風險，且獲利需漲33%才達2R，風報比極差，故不考慮進場。"
+      ]
+    },
     {
       "code": "HUT",
       "ts": 1780305346.5019982,
@@ -130,17 +143,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "候選股 ALAB 已跌破建議進場點 354.53，且停損幅度 20.48% 遠超 1.5 倍 ADR (13.56%)，風險報酬比不合理。訊號強度與品質皆低 (SLV=1, Type C)。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780303564.950196,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "個股距 EMA10 延伸 9.4% 偏遠且停損高達 16.79%，短線回檔掃停損機率高，不符風報比。訊號強度 1 也暗示突破量能不確定。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
