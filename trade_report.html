@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>交易紀錄報告 · 2026-06-01</title>
+<style>
+  :root {
+    --bg:#0d1117; --panel:#161b22; --border:#21262d; --txt:#e6edf3;
+    --dim:#8b949e; --pos:#3fb950; --neg:#f85149; --flat:#58a6ff; --accent:#d29922;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--txt);
+    font:14px/1.5 -apple-system,"PingFang TC","Microsoft JhengHei",sans-serif; padding:24px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  h2 { font-size:16px; margin:32px 0 12px; color:var(--accent); }
+  .sub { color:var(--dim); font-size:13px; margin-bottom:20px; }
+  .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:14px 16px; }
+  .card-label { color:var(--dim); font-size:12px; }
+  .card-val { font-size:24px; font-weight:600; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; background:var(--panel);
+    border:1px solid var(--border); border-radius:10px; overflow:hidden; font-size:13px; }
+  th,td { padding:8px 10px; text-align:left; border-bottom:1px solid var(--border); white-space:nowrap; }
+  th { color:var(--dim); font-weight:500; background:#11161d; position:sticky; top:0; }
+  tr:last-child td { border-bottom:none; }
+  tr:hover td { background:#1c2230; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .code { color:var(--flat); font-weight:600; }
+  .dim { color:var(--dim); }
+  .mono { font-family:ui-monospace,Menlo,monospace; font-size:12px; }
+  .pos { color:var(--pos); } .neg { color:var(--neg); } .flat { color:var(--flat); }
+  .tag { background:var(--accent); color:#0d1117; font-size:11px; padding:1px 6px;
+    border-radius:6px; margin-left:6px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .grp th, .grp td { font-size:12px; }
+  .log-blocked td { opacity:.7; }
+  .scroll { max-height:420px; overflow:auto; border-radius:10px; }
+  canvas { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:8px; }
+  @media (max-width:720px){ .grid2 { grid-template-columns:1fr; } }
+</style></head>
+<body>
+  <h1>📊 交易紀錄報告</h1>
+  <div class="sub">產生於 2026-06-01 16:43:05 ｜ 模擬本金 $1,000,000 ｜
+    自動進場：✅ 啟用 ｜ 今日 5 筆（2026/6/1）</div>
+
+  <h2>績效摘要（已平倉 15 筆）</h2>
+  <div class="cards"><div class="card"><div class="card-label">交易筆數</div><div class="card-val flat">15</div></div><div class="card"><div class="card-label">勝率</div><div class="card-val pos">53%</div></div><div class="card"><div class="card-label">總 R</div><div class="card-val pos">+1.60R</div></div><div class="card"><div class="card-label">期望值 / 筆</div><div class="card-val pos">+0.11R</div></div><div class="card"><div class="card-label">獲利因子</div><div class="card-val pos">1.21</div></div><div class="card"><div class="card-label">平均持有</div><div class="card-val flat">3.8 天</div></div><div class="card"><div class="card-label">平均獲利</div><div class="card-val pos">+11.5%</div></div><div class="card"><div class="card-label">平均虧損</div><div class="card-val neg">-4.2%</div></div></div>
+
+  <h2>累積 R 曲線</h2>
+  <canvas id="eq" height="220"></canvas>
+
+  <div class="grid2">
+    <div><h2>依策略 / 類型</h2><table class="grp"><thead><tr>
+          <th>策略 / 類型</th><th class="num">筆數</th><th class="num">勝率</th>
+          <th class="num">總R</th><th class="num">平均R</th></tr></thead>
+          <tbody><tr><td>WATCH</td><td class="num">3</td><td class="num">67%</td><td class="num pos">+1.88R</td><td class="num pos">+0.63R</td></tr><tr><td>EP</td><td class="num">2</td><td class="num">50%</td><td class="num pos">+1.42R</td><td class="num pos">+0.71R</td></tr><tr><td>底部蓄積</td><td class="num">3</td><td class="num">67%</td><td class="num neg">-0.24R</td><td class="num neg">-0.08R</td></tr><tr><td>收縮整理</td><td class="num">2</td><td class="num">50%</td><td class="num neg">-0.28R</td><td class="num neg">-0.14R</td></tr><tr><td>強勢觀察</td><td class="num">5</td><td class="num">40%</td><td class="num neg">-1.17R</td><td class="num neg">-0.23R</td></tr></tbody></table></div>
+    <div><h2>依出場原因</h2><table class="grp"><thead><tr>
+          <th>出場原因</th><th class="num">筆數</th><th class="num">勝率</th>
+          <th class="num">總R</th><th class="num">平均R</th></tr></thead>
+          <tbody><tr><td>stop_profit</td><td class="num">3</td><td class="num">100%</td><td class="num pos">+7.91R</td><td class="num pos">+2.64R</td></tr><tr><td>manual</td><td class="num">10</td><td class="num">50%</td><td class="num neg">-1.31R</td><td class="num neg">-0.13R</td></tr><tr><td>stop_loss</td><td class="num">2</td><td class="num">0%</td><td class="num neg">-5.00R</td><td class="num neg">-2.50R</td></tr></tbody></table></div>
+  </div>
+
+  <h2>現有持倉（7 筆）</h2>
+  <table><thead><tr>
+    <th>代號</th><th>名稱</th><th>類型</th><th>進場日</th><th class="num">進場價</th>
+    <th class="num">停損</th><th class="num">股數</th><th>來源</th><th>策略</th>
+  </tr></thead><tbody><tr>
+          <td class="code">2327</td>
+          <td>國巨*</td>
+          <td class="dim">EP</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">501.00</td>
+          <td class="num dim">501.00</td>
+          <td class="num dim">250</td>
+          <td>👤手動</td>
+          <td class="dim"></td>
+        </tr>
+<tr>
+          <td class="code">8064</td>
+          <td>東捷</td>
+          <td class="dim">強勢觀察</td>
+          <td class="dim">2026/5/29</td>
+          <td class="num">141.00</td>
+          <td class="num dim">124.50</td>
+          <td class="num dim">606</td>
+          <td>👤手動</td>
+          <td class="dim">手動</td>
+        </tr>
+<tr>
+          <td class="code">5289</td>
+          <td>宜鼎</td>
+          <td class="dim">收縮整理</td>
+          <td class="dim">2026/6/1</td>
+          <td class="num">1925.00</td>
+          <td class="num dim">1830.00</td>
+          <td class="num dim">77</td>
+          <td>🤖自動</td>
+          <td class="dim">go</td>
+        </tr>
+<tr>
+          <td class="code">2464</td>
+          <td>盟立</td>
+          <td class="dim">B</td>
+          <td class="dim">2026/6/1</td>
+          <td class="num">199.00</td>
+          <td class="num dim">191.50</td>
+          <td class="num dim">753</td>
+          <td>🤖自動</td>
+          <td class="dim">動能追擊</td>
+        </tr>
+<tr>
+          <td class="code">3430</td>
+          <td>奇鈦科</td>
+          <td class="dim">B</td>
+          <td class="dim">2026/6/1</td>
+          <td class="num">164.00</td>
+          <td class="num dim">162.00</td>
+          <td class="num dim">914</td>
+          <td>🤖自動</td>
+          <td class="dim">突破整理</td>
+        </tr>
+<tr>
+          <td class="code">6274</td>
+          <td>台燿</td>
+          <td class="dim">B</td>
+          <td class="dim">2026/6/1</td>
+          <td class="num">1705.00</td>
+          <td class="num dim">1620.00</td>
+          <td class="num dim">87</td>
+          <td>🤖自動</td>
+          <td class="dim">突破整理</td>
+        </tr>
+<tr>
+          <td class="code">4919</td>
+          <td>新唐</td>
+          <td class="dim">B</td>
+          <td class="dim">2026/6/1</td>
+          <td class="num">208.00</td>
+          <td class="num dim">188.50</td>
+          <td class="num dim">512</td>
+          <td>🤖自動</td>
+          <td class="dim">突破整理</td>
+        </tr></tbody></table>
+
+  <h2>已平倉交易（15 筆）</h2>
+  <div class="scroll"><table><thead><tr>
+    <th>代號</th><th>名稱</th><th>類型</th><th>進場日</th><th class="num">進場</th>
+    <th class="num">停損</th><th>出場日</th><th class="num">出場</th>
+    <th class="num">損益%</th><th class="num">R</th><th class="num">天</th><th>出場原因</th>
+  </tr></thead><tbody><tr>
+          <td class="code">6278</td>
+          <td>台表科</td>
+          <td class="dim">底部蓄積</td>
+          <td class="dim">2026/5/28</td>
+          <td class="num">227.50</td>
+          <td class="num dim">212.00</td>
+          <td class="dim">2026/5/29</td>
+          <td class="num">221.50</td>
+          <td class="num neg">-2.64%</td>
+          <td class="num neg">-0.39R</td>
+          <td class="num dim">1d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">2351</td>
+          <td>順德</td>
+          <td class="dim">強勢觀察</td>
+          <td class="dim">2026/5/25</td>
+          <td class="num">196.00</td>
+          <td class="num dim">175.48</td>
+          <td class="dim">2026/5/29</td>
+          <td class="num">207.50</td>
+          <td class="num pos">+5.87%</td>
+          <td class="num pos">+0.56R</td>
+          <td class="num dim">4d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">3430</td>
+          <td>奇鈦科</td>
+          <td class="dim">強勢觀察</td>
+          <td class="dim">2026/5/22</td>
+          <td class="num">178.00</td>
+          <td class="num dim">157.09</td>
+          <td class="dim">2026/5/29</td>
+          <td class="num">169.00</td>
+          <td class="num neg">-5.06%</td>
+          <td class="num neg">-0.43R</td>
+          <td class="num dim">7d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">4576</td>
+          <td>大銀微系統</td>
+          <td class="dim">收縮整理</td>
+          <td class="dim">2026/5/25</td>
+          <td class="num">274.50</td>
+          <td class="num dim">262.00</td>
+          <td class="dim">2026/5/28</td>
+          <td class="num">264.00</td>
+          <td class="num neg">-3.83%</td>
+          <td class="num neg">-0.84R</td>
+          <td class="num dim">3d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">6278</td>
+          <td>台表科</td>
+          <td class="dim">底部蓄積</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">210.00</td>
+          <td class="num dim">210.00</td>
+          <td class="dim">2026/5/28</td>
+          <td class="num">227.50</td>
+          <td class="num pos">+8.33%</td>
+          <td class="num flat">+0.00R</td>
+          <td class="num dim">10d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">4958</td>
+          <td>臻鼎-KY</td>
+          <td class="dim">收縮整理</td>
+          <td class="dim">2026/5/21</td>
+          <td class="num">468.50</td>
+          <td class="num dim">418.53</td>
+          <td class="dim">2026/5/28</td>
+          <td class="num">496.50</td>
+          <td class="num pos">+5.98%</td>
+          <td class="num pos">+0.56R</td>
+          <td class="num dim">7d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">6415</td>
+          <td>矽力*-KY</td>
+          <td class="dim">WATCH</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">514.00</td>
+          <td class="num dim">514.00</td>
+          <td class="dim">2026/5/28</td>
+          <td class="num">618.00</td>
+          <td class="num pos">+20.23%</td>
+          <td class="num flat">+0.00R</td>
+          <td class="num dim">10d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">3265</td>
+          <td>台星科</td>
+          <td class="dim">強勢觀察</td>
+          <td class="dim">2026/5/25</td>
+          <td class="num">192.50</td>
+          <td class="num dim">187.50</td>
+          <td class="dim">2026/5/27</td>
+          <td class="num">187.50</td>
+          <td class="num neg">-2.60%</td>
+          <td class="num neg">-1.00R</td>
+          <td class="num dim">2d</td>
+          <td>🛑 停損</td>
+        </tr>
+<tr>
+          <td class="code">2481</td>
+          <td>強茂</td>
+          <td class="dim">強勢觀察</td>
+          <td class="dim">2026/5/27</td>
+          <td class="num">153.50</td>
+          <td class="num dim">152.00</td>
+          <td class="dim">2026/5/27</td>
+          <td class="num">147.50</td>
+          <td class="num neg">-3.91%</td>
+          <td class="num neg">-4.00R</td>
+          <td class="num dim">0d</td>
+          <td>🛑 停損</td>
+        </tr>
+<tr>
+          <td class="code">6285</td>
+          <td>啟碁</td>
+          <td class="dim">WATCH</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">286.00</td>
+          <td class="num dim">257.56</td>
+          <td class="dim">2026/5/22</td>
+          <td class="num">280.00</td>
+          <td class="num neg">-2.10%</td>
+          <td class="num neg">-0.21R</td>
+          <td class="num dim">4d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">6207</td>
+          <td>雷科</td>
+          <td class="dim">底部蓄積</td>
+          <td class="dim">2026/5/21</td>
+          <td class="num">86.80</td>
+          <td class="num dim">75.59</td>
+          <td class="dim">2026/5/22</td>
+          <td class="num">88.40</td>
+          <td class="num pos">+1.84%</td>
+          <td class="num pos">+0.14R</td>
+          <td class="num dim">1d</td>
+          <td>✋ 手動</td>
+        </tr>
+<tr>
+          <td class="code">2327</td>
+          <td>國巨*</td>
+          <td class="dim">EP</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">501.00</td>
+          <td class="num dim">467.50</td>
+          <td class="dim">2026/5/21</td>
+          <td class="num">572.00 ½</td>
+          <td class="num pos">+14.17%</td>
+          <td class="num pos">+2.12R</td>
+          <td class="num dim">3d</td>
+          <td>🎯 停利</td>
+        </tr>
+<tr>
+          <td class="code">2478</td>
+          <td>大毅</td>
+          <td class="dim">強勢觀察</td>
+          <td class="dim">2026/5/19</td>
+          <td class="num">91.80</td>
+          <td class="num dim">88.10</td>
+          <td class="dim">2026/5/20</td>
+          <td class="num">105.50</td>
+          <td class="num pos">+14.92%</td>
+          <td class="num pos">+3.70R</td>
+          <td class="num dim">1d</td>
+          <td>🎯 停利</td>
+        </tr>
+<tr>
+          <td class="code">3090</td>
+          <td>日電貿</td>
+          <td class="dim">WATCH</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">148.00</td>
+          <td class="num dim">133.39</td>
+          <td class="dim">2026/5/20</td>
+          <td class="num">178.50 ½</td>
+          <td class="num pos">+20.61%</td>
+          <td class="num pos">+2.09R</td>
+          <td class="num dim">2d</td>
+          <td>🎯 停利</td>
+        </tr>
+<tr>
+          <td class="code">2464</td>
+          <td>盟立</td>
+          <td class="dim">EP</td>
+          <td class="dim">2026/5/18</td>
+          <td class="num">139.00</td>
+          <td class="num dim">121.15</td>
+          <td class="dim">2026/5/20</td>
+          <td class="num">126.50</td>
+          <td class="num neg">-8.99%</td>
+          <td class="num neg">-0.70R</td>
+          <td class="num dim">2d</td>
+          <td>✋ 手動</td>
+        </tr></tbody></table></div>
+
+  <h2>自動進場紀錄（近 40 筆）</h2>
+  <div class="scroll"><table><thead><tr>
+    <th>時間 (UTC)</th><th>代號</th><th>名稱</th><th>結果</th><th>說明</th>
+  </tr></thead><tbody><tr class="log-entered">
+          <td class="dim mono">2026-06-01 07:24:47</td>
+          <td class="code">4919</td>
+          <td>新唐</td>
+          <td>✅ 進場</td>
+          <td class="dim">[backfill] 盤後補進 @ 208.00（512 股、停損 188.50）</td>
+        </tr>
+<tr class="log-entered">
+          <td class="dim mono">2026-06-01 07:24:47</td>
+          <td class="code">6274</td>
+          <td>台燿</td>
+          <td>✅ 進場</td>
+          <td class="dim">[backfill] 盤後補進 @ 1705.00（87 股、停損 1620.00）</td>
+        </tr>
+<tr class="log-entered">
+          <td class="dim mono">2026-06-01 07:24:47</td>
+          <td class="code">3430</td>
+          <td>奇鈦科</td>
+          <td>✅ 進場</td>
+          <td class="dim">[backfill] 盤後補進 @ 164.00（914 股、停損 162.00）</td>
+        </tr>
+<tr class="log-entered">
+          <td class="dim mono">2026-06-01 07:24:47</td>
+          <td class="code">2464</td>
+          <td>盟立</td>
+          <td>✅ 進場</td>
+          <td class="dim">[backfill] 盤後補進 @ 199.00（753 股、停損 191.50）</td>
+        </tr>
+<tr class="log-entered">
+          <td class="dim mono">2026-06-01 02:56:02</td>
+          <td class="code">5289</td>
+          <td>宜鼎</td>
+          <td>✅ 進場</td>
+          <td class="dim">自動進場 @ 1925.00（77 股、停損 1830.00、🟢 收縮整理） 🤖67（脈絡52/TA72）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-06-01 02:20:57</td>
+          <td class="code">2399</td>
+          <td>映泰</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">⏳ 等待 agent 評估（下輪再試）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-06-01 02:20:57</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">⏳ 等待 agent 評估（下輪再試）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-06-01 02:20:57</td>
+          <td class="code">5289</td>
+          <td>宜鼎</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">⏳ 等待 agent 評估（下輪再試）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 05:22:50</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 🛑 否決（綜合 28｜脈絡 52｜TA 32）：ext=11.2% 遠超可接受上限，融資單日暴增 607 張，Bear bear_score=82 且兩項 invalidation 均屬中高機率；TA resonance.total=2 但 momentum=-1 顯示動能已衰，風報比嚴</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 05:17:49</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 🛑 否決（綜合 28｜脈絡 52｜TA 32）：ext=11.2% 遠超可接受上限，融資單日暴增 607 張，Bear bear_score=82 且兩項 invalidation 均屬中高機率；TA resonance.total=2 但 momentum=-1 顯示動能已衰，風報比嚴</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 05:09:10</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 53｜脈絡 55｜TA 52）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 05:03:59</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 🛑 否決（綜合 28｜脈絡 52｜TA 32）：ext=11.2% 遠超可接受上限，融資單日暴增 607 張，Bear bear_score=82 且兩項 invalidation 均屬中高機率；TA resonance.total=2 但 momentum=-1 顯示動能已衰，風報比嚴</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 04:58:59</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 53｜脈絡 55｜TA 52）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 04:55:33</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 53｜脈絡 55｜TA 52）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 03:55:16</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 0｜脈絡 0｜TA 0）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 03:43:14</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 0｜脈絡 0｜TA 0）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 03:29:08</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 0｜脈絡 0｜TA 0）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 03:22:21</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 0｜脈絡 0｜TA 0）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 03:15:16</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 0｜脈絡 0｜TA 0）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-29 03:13:42</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">🤖 ⏸ 觀望（綜合 0｜脈絡 0｜TA 0）：雙方觀望</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 03:32:46</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">⏳ 等待 agent 評估（下輪再試）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:43:13</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $111,625、剩 $101,620）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:38:12</td>
+          <td class="code">3264</td>
+          <td>欣銓</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $149,972、剩 $101,620）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:38:12</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $117,000、剩 $101,620）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:32:09</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $143,750、剩 $101,620）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:21:32</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $111,625、剩 $101,620）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:16:31</td>
+          <td class="code">3264</td>
+          <td>欣銓</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $149,798、剩 $0）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:16:31</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $111,625、剩 $0）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:11:31</td>
+          <td class="code">3264</td>
+          <td>欣銓</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $149,902、剩 $0）</td>
+        </tr>
+<tr class="log-blocked">
+          <td class="dim mono">2026-05-28 02:11:31</td>
+          <td class="code">6531</td>
+          <td>愛普*</td>
+          <td>⛔ 擋下</td>
+          <td class="dim">現金不足（需 $106,200、剩 $0）</td>
+        </tr></tbody></table></div>
+
+<script>
+  const eq = [-0.7, 3.0, 5.09, 7.21, 7.35, 7.14, 3.14, 2.14, 1.3, 1.86, 1.86, 1.86, 2.42, 1.99, 1.6], labels = ["2464", "2478", "3090", "2327", "6207", "6285", "2481", "3265", "4576", "4958", "6278", "6415", "2351", "3430", "6278"];
+  const cv = document.getElementById('eq'), ctx = cv.getContext('2d');
+  function draw() {
+    const W = cv.width = cv.clientWidth, H = cv.height;
+    ctx.clearRect(0,0,W,H);
+    if (!eq.length) return;
+    const pad = 36, min = Math.min(0,...eq), max = Math.max(0,...eq), rng = (max-min)||1;
+    const x = i => pad + i*(W-2*pad)/Math.max(1,eq.length-1);
+    const y = v => H-pad - (v-min)/rng*(H-2*pad);
+    // 零軸
+    ctx.strokeStyle='#30363d'; ctx.lineWidth=1; ctx.beginPath();
+    ctx.moveTo(pad,y(0)); ctx.lineTo(W-pad,y(0)); ctx.stroke();
+    ctx.fillStyle='#8b949e'; ctx.font='11px sans-serif';
+    ctx.fillText('0R', 4, y(0)+3);
+    ctx.fillText(max.toFixed(1)+'R', 4, y(max)+3);
+    // 曲線
+    ctx.strokeStyle = eq[eq.length-1]>=0 ? '#3fb950' : '#f85149';
+    ctx.lineWidth=2; ctx.beginPath();
+    eq.forEach((v,i)=>{ i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v)); });
+    ctx.stroke();
+    // 點
+    ctx.fillStyle = ctx.strokeStyle;
+    eq.forEach((v,i)=>{ ctx.beginPath(); ctx.arc(x(i),y(v),2.5,0,7); ctx.fill(); });
+  }
+  draw(); window.addEventListener('resize', draw);
+</script>
+</body></html>
