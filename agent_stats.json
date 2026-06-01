@@ -1,16 +1,16 @@
 {
-  "ts": 1780307626.1011999,
+  "ts": 1780307858.81196,
   "total": 26,
   "by_verdict": {
     "go": 12,
-    "wait": 7,
-    "skip": 7
+    "wait": 8,
+    "skip": 6
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 44464,
-  "input_tokens": 167448,
+  "cache_reads_tokens": 48538,
+  "input_tokens": 174757,
   "llm_calls": 21,
-  "cost_usd": 0.0971,
+  "cost_usd": 0.1006,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780307548.7381299
+        "ts": 1780307852.542202
       }
     },
     "tai": {
@@ -29,35 +29,46 @@
       "wait": 18,
       "skip": 4,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780307548.7381299
+        "ts": 1780307852.542202
       }
     },
     "combo": {
       "calls": 26,
       "go": 12,
-      "wait": 7,
-      "skip": 7,
+      "wait": 8,
+      "skip": 6,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780307548.7381299
+        "ts": 1780307852.542202
       }
     },
     "ortho": {
       "calls": 26,
       "go": 12,
-      "wait": 7,
-      "skip": 7,
+      "wait": 8,
+      "skip": 6,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780307548.7381299
+        "ts": 1780307852.542202
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780307852.542202,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "延伸達 9.4% 且原始停損達 16.8%，追高風報比極差。大盤極佳，故不直接 skip，選擇 wait 回踩 10MA。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "HUT",
       "ts": 1780307548.7381299,
@@ -123,19 +134,6 @@
       "head": "股價距EMA10延伸24.4%且停損寬達20.5%，在slv僅1的情況下追價風險極高，故拒絕交易。",
       "ctx_reasons": [],
       "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780305861.2669451,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "TA Agent缺失導致技術面判斷不明。停損139.55造成16.79%過高風險，且獲利需漲33%才達2R，風報比極差，故不考慮進場。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA Agent缺失導致技術面判斷不明。停損139.55造成16.79%過高風險，且獲利需漲33%才達2R，風報比極差，故不考慮進場。"
-      ]
     },
     {
       "code": "2383",
