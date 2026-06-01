@@ -1,5 +1,5 @@
 {
-  "ts": 1780291485.634515,
+  "ts": 1780291556.191116,
   "total": 17,
   "by_verdict": {
     "go": 0,
@@ -10,7 +10,7 @@
   "cache_reads_tokens": 11896,
   "input_tokens": 2661,
   "llm_calls": 1,
-  "cost_usd": 0.0411,
+  "cost_usd": 0.0066,
   "agents": {
     "conti": {
       "calls": 17,
