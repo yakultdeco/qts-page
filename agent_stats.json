@@ -1,63 +1,74 @@
 {
-  "ts": 1780303567.2191129,
+  "ts": 1780303848.669306,
   "total": 26,
   "by_verdict": {
     "go": 11,
-    "wait": 8,
-    "skip": 7
+    "wait": 7,
+    "skip": 8
   },
   "short_circuits": 0,
   "cache_reads_tokens": 51562,
-  "input_tokens": 166194,
+  "input_tokens": 175050,
   "llm_calls": 21,
-  "cost_usd": 0.0969,
+  "cost_usd": 0.1022,
   "agents": {
     "conti": {
       "calls": 26,
-      "go": 18,
-      "wait": 8,
+      "go": 17,
+      "wait": 9,
       "skip": 0,
       "last": {
-        "code": "RDDT",
-        "verdict": "go",
-        "ts": 1780303564.950196
+        "code": "ALAB",
+        "verdict": "wait",
+        "ts": 1780303834.6741571
       }
     },
     "tai": {
       "calls": 26,
       "go": 2,
-      "wait": 19,
-      "skip": 5,
+      "wait": 18,
+      "skip": 6,
       "last": {
-        "code": "RDDT",
-        "verdict": "wait",
-        "ts": 1780303564.950196
+        "code": "ALAB",
+        "verdict": "skip",
+        "ts": 1780303834.6741571
       }
     },
     "combo": {
       "calls": 26,
       "go": 11,
-      "wait": 8,
-      "skip": 7,
+      "wait": 7,
+      "skip": 8,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780303564.950196
+        "ts": 1780303834.6741571
       }
     },
     "ortho": {
       "calls": 26,
       "go": 11,
-      "wait": 8,
-      "skip": 7,
+      "wait": 7,
+      "skip": 8,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780303564.950196
+        "ts": 1780303834.6741571
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780303834.6741571,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "候選股 ALAB 已跌破建議進場點 354.53，且停損幅度 20.48% 遠超 1.5 倍 ADR (13.56%)，風險報酬比不合理。訊號強度與品質皆低 (SLV=1, Type C)。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780303564.950196,
@@ -123,19 +134,6 @@
       "head": "核心問題為停損價 (426.0) 高於進場價 (425.5) 的致命邏輯錯誤。此外，股價已較 EMA10 延伸 24.3%，追高風險過高。",
       "ctx_reasons": [],
       "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780301804.639014,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "TA與Bear分析皆因系統錯誤缺失，無法評估技術面結構及潛在風險。股價(349.17)目前也低於進場點(354.53)。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA與Bear分析皆因系統錯誤缺失，無法評估技術面結構及潛在風險。股價(349.17)目前也低於進場點(354.53)。"
-      ]
     },
     {
       "code": "2383",
