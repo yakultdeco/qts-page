@@ -1,63 +1,74 @@
 {
-  "ts": 1780277663.24429,
-  "total": 12,
+  "ts": 1780277780.357342,
+  "total": 13,
   "by_verdict": {
     "go": 0,
     "wait": 0,
-    "skip": 12
+    "skip": 13
   },
   "short_circuits": 7,
-  "cache_reads_tokens": 39041,
-  "input_tokens": 20328,
-  "llm_calls": 12,
-  "cost_usd": 0.3148,
+  "cache_reads_tokens": 50937,
+  "input_tokens": 22945,
+  "llm_calls": 13,
+  "cost_usd": 0.3551,
   "agents": {
     "conti": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 5,
+      "wait": 6,
       "skip": 7,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780277643.2125561
+        "code": "8064",
+        "verdict": "wait",
+        "ts": 1780277776.198807
       }
     },
     "tai": {
-      "calls": 5,
+      "calls": 6,
       "go": 0,
       "wait": 1,
-      "skip": 4,
+      "skip": 5,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "skip",
-        "ts": 1780277643.2125561
+        "ts": 1780277776.198807
       }
     },
     "combo": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
       "wait": 0,
-      "skip": 12,
+      "skip": 13,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "skip",
-        "ts": 1780277643.2125561
+        "ts": 1780277776.198807
       }
     },
     "ortho": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
       "wait": 0,
-      "skip": 19,
+      "skip": 20,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "skip",
-        "ts": 1780277643.2125561
+        "ts": 1780277776.198807
       }
     }
   },
   "recent": [
+    {
+      "code": "8064",
+      "ts": 1780277776.198807,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=6.2% 超標、TA resonance=0、Bear bear_score=78，三重不利共振。停損幅度 7.5% 逼近 ADR=7.8% 上限，外資單日賣超 1,147 張，風報比惡化至不可接受水準，無進場依據。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780277643.2125561,
