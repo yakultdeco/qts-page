@@ -1,63 +1,74 @@
 {
-  "ts": 1780294420.70437,
+  "ts": 1780294501.344318,
   "total": 17,
   "by_verdict": {
-    "go": 4,
-    "wait": 12,
+    "go": 5,
+    "wait": 11,
     "skip": 1
   },
   "short_circuits": 0,
   "cache_reads_tokens": 11896,
-  "input_tokens": 66009,
-  "llm_calls": 7,
-  "cost_usd": 0.0438,
+  "input_tokens": 77886,
+  "llm_calls": 8,
+  "cost_usd": 0.0511,
   "agents": {
     "conti": {
       "calls": 17,
-      "go": 6,
-      "wait": 11,
+      "go": 7,
+      "wait": 10,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780294348.289449
+        "ts": 1780294499.9137652
       }
     },
     "tai": {
       "calls": 17,
-      "go": 6,
-      "wait": 10,
+      "go": 7,
+      "wait": 9,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780294348.289449
+        "ts": 1780294499.9137652
       }
     },
     "combo": {
       "calls": 17,
-      "go": 4,
-      "wait": 12,
+      "go": 5,
+      "wait": 11,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780294348.289449
+        "ts": 1780294499.9137652
       }
     },
     "ortho": {
       "calls": 17,
-      "go": 4,
-      "wait": 12,
+      "go": 5,
+      "wait": 11,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "go",
-        "ts": 1780294348.289449
+        "ts": 1780294499.9137652
       }
     }
   },
   "recent": [
+    {
+      "code": "8064",
+      "ts": 1780294499.9137652,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭強勁，東捷以訊號強度 4 帶量突破整理區間 153.5，Ext 6.2% 合理，具備動能上漲潛力。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780294348.289449,
@@ -154,21 +165,6 @@
     {
       "code": "4760",
       "ts": 1780293475.7906492,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "8064",
-      "ts": 1780292635.036906,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
