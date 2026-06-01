@@ -1,16 +1,16 @@
 {
-  "ts": 1780284195.2020109,
+  "ts": 1780284270.622294,
   "total": 16,
   "by_verdict": {
     "go": 1,
-    "wait": 1,
-    "skip": 14
+    "wait": 4,
+    "skip": 11
   },
   "short_circuits": 6,
-  "cache_reads_tokens": 107064,
-  "input_tokens": 30040,
-  "llm_calls": 15,
-  "cost_usd": 0.4232,
+  "cache_reads_tokens": 71376,
+  "input_tokens": 22078,
+  "llm_calls": 12,
+  "cost_usd": 0.2924,
   "agents": {
     "conti": {
       "calls": 16,
@@ -18,46 +18,91 @@
       "wait": 10,
       "skip": 6,
       "last": {
-        "code": "2303",
+        "code": "6147",
         "verdict": "wait",
-        "ts": 1780284034.592028
+        "ts": 1780284264.419185
       }
     },
     "tai": {
       "calls": 10,
       "go": 1,
-      "wait": 2,
-      "skip": 7,
+      "wait": 5,
+      "skip": 4,
       "last": {
-        "code": "2303",
+        "code": "6147",
         "verdict": "wait",
-        "ts": 1780284034.592028
+        "ts": 1780284264.419185
       }
     },
     "combo": {
       "calls": 16,
       "go": 1,
-      "wait": 1,
-      "skip": 14,
+      "wait": 4,
+      "skip": 11,
       "last": {
-        "code": "2303",
+        "code": "6147",
         "verdict": "wait",
-        "ts": 1780284034.592028
+        "ts": 1780284264.419185
       }
     },
     "ortho": {
       "calls": 16,
       "go": 1,
-      "wait": 1,
-      "skip": 20,
+      "wait": 4,
+      "skip": 17,
       "last": {
-        "code": "2303",
+        "code": "6147",
         "verdict": "wait",
-        "ts": 1780284034.592028
+        "ts": 1780284264.419185
       }
     }
   },
   "recent": [
+    {
+      "code": "6147",
+      "ts": 1780284264.419185,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "2464",
+      "ts": 1780284264.418805,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "4760",
+      "ts": 1780284264.418293,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "2303",
       "ts": 1780284034.592028,
@@ -200,17 +245,6 @@
       ]
     },
     {
-      "code": "6147",
-      "ts": 1780282698.0748532,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損 285.0 設於進場價 281.0 之上，邏輯顛倒且現價 285.5 已在停損上方 0.5 元（0.18%），進場即觸損；疊加外資連續兩日淨賣超逾萬張、resonance total=-2、ext 17.6% 嚴重超限，三重否決無任何",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
       "code": "6274",
       "ts": 1780282577.2311301,
       "context": "wait",
@@ -218,30 +252,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "ext=14.7% 已是 EMA10 延伸上限 3 倍，TA resonance.total=0 顯示多空力道抵銷，Bear bear_score=82 指出損益比嚴重失衡（虧 6% 博 2-3%），無催化劑支撐下追高論述不成立。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "4760",
-      "ts": 1780282458.520622,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "TA resonance.total=0 已中立，加上法人合計賣超 65 張且 ext_pct=17.2% 遠超 5% 上限；更致命的是進場 414 高於停損 438 的資料矛盾使風險報酬完全無法計算，無任何執行條件成立。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA resonance.total=0 已中立，加上法人合計賣超 65 張且 ext_pct=17.2% 遠超 5% 上限；更致命的是進場 414 高於停損 438 的資料矛盾使風險報酬完全無法計算，無任何執行條件成立。"
-      ]
-    },
-    {
-      "code": "2464",
-      "ts": 1780281388.6524491,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=15.5% 遠超安全閾值，ADR=7.55% vs 停損距現價僅 2.5%，停損幾乎無效；融資單日+6.6%、VCP C 級三重結構缺陷疊加，風報比嚴重失衡，任何合理入場依據均不存在。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
