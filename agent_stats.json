@@ -1,16 +1,16 @@
 {
-  "ts": 1780302587.425672,
+  "ts": 1780302893.101815,
   "total": 26,
   "by_verdict": {
     "go": 11,
-    "wait": 9,
-    "skip": 6
+    "wait": 8,
+    "skip": 7
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 49525,
-  "input_tokens": 159018,
+  "cache_reads_tokens": 51562,
+  "input_tokens": 159039,
   "llm_calls": 21,
-  "cost_usd": 0.0935,
+  "cost_usd": 0.0936,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,46 +18,57 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "HUT",
         "verdict": "go",
-        "ts": 1780302576.07289
+        "ts": 1780302889.607751
       }
     },
     "tai": {
       "calls": 26,
       "go": 2,
-      "wait": 20,
-      "skip": 4,
+      "wait": 19,
+      "skip": 5,
       "last": {
-        "code": "AMD",
+        "code": "HUT",
         "verdict": "skip",
-        "ts": 1780302576.07289
+        "ts": 1780302889.607751
       }
     },
     "combo": {
       "calls": 26,
       "go": 11,
-      "wait": 9,
-      "skip": 6,
+      "wait": 8,
+      "skip": 7,
       "last": {
-        "code": "AMD",
+        "code": "HUT",
         "verdict": "skip",
-        "ts": 1780302576.07289
+        "ts": 1780302889.607751
       }
     },
     "ortho": {
       "calls": 26,
       "go": 11,
-      "wait": 9,
-      "skip": 6,
+      "wait": 8,
+      "skip": 7,
       "last": {
-        "code": "AMD",
+        "code": "HUT",
         "verdict": "skip",
-        "ts": 1780302576.07289
+        "ts": 1780302889.607751
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780302889.607751,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損幅度 (23.8%) 遠超 1.5 倍 ADR (11.7%)，風險過高。股價已從 EMA10 延伸 16.8%，且 SLV 僅 1，突破強度不足。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "AMD",
       "ts": 1780302576.07289,
@@ -123,17 +134,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "該股停損距離高達 16.79%，遠超動能策略可接受範圍 (3-8%)。TA Agent 運行失敗導致無法評估進場技術結構與風報比，無法做出安全交易決策。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780300421.150934,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價距 EMA10 延伸達 16.8% 過遠，且原始停損幅 23.8% (約 3 倍 ADR) 過寬，導致風報比極差。需等待條件改善。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
