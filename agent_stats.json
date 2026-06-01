@@ -1,63 +1,80 @@
 {
-  "ts": 1780275775.1891687,
-  "total": 6,
+  "ts": 1780276439.4372897,
+  "total": 7,
   "by_verdict": {
     "go": 0,
-    "wait": 1,
+    "wait": 2,
     "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 11200,
-  "input_tokens": 7746,
-  "llm_calls": 6,
-  "cost_usd": 0.099,
+  "cache_reads_tokens": 13440,
+  "input_tokens": 9034,
+  "llm_calls": 7,
+  "cost_usd": 0.1146,
   "agents": {
     "conti": {
-      "calls": 6,
+      "calls": 7,
       "go": 0,
-      "wait": 6,
+      "wait": 7,
       "skip": 0,
       "last": {
-        "code": "6197",
+        "code": "2399",
         "verdict": "wait",
-        "ts": 1780275697.7415857
+        "ts": 1780276411.0129287
       }
     },
     "tai": {
-      "calls": 6,
+      "calls": 7,
       "go": 0,
-      "wait": 1,
+      "wait": 2,
       "skip": 5,
       "last": {
-        "code": "6197",
-        "verdict": "skip",
-        "ts": 1780275697.7415857
+        "code": "2399",
+        "verdict": "wait",
+        "ts": 1780276411.0129287
       }
     },
     "combo": {
-      "calls": 6,
+      "calls": 7,
       "go": 0,
-      "wait": 1,
+      "wait": 2,
       "skip": 5,
       "last": {
-        "code": "6197",
-        "verdict": "skip",
-        "ts": 1780275697.7415857
+        "code": "2399",
+        "verdict": "wait",
+        "ts": 1780276411.0129287
       }
     },
     "ortho": {
-      "calls": 6,
+      "calls": 7,
       "go": 0,
-      "wait": 1,
+      "wait": 2,
       "skip": 5,
       "last": {
-        "code": "6197",
-        "verdict": "skip",
-        "ts": 1780275697.7415857
+        "code": "2399",
+        "verdict": "wait",
+        "ts": 1780276411.0129287
       }
     }
   },
   "recent": [
+    {
+      "code": "2399",
+      "ts": 1780276411.0129287,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，突破動能來源不明，純技術驅動",
+        "脈絡｜大盤多頭環境有利，但映泰主業主機板/顯卡，近期無明確族群催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜外資單日買超 +935 張，法人合計 +923 張，籌碼面支撐明確",
+        "TA｜距 EMA10 延伸 3.8%，尚在容忍上緣，停損距 5.8% 風報比略緊"
+      ]
+    },
     {
       "code": "6197",
       "ts": 1780275697.7415857,

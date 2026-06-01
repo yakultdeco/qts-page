@@ -1015,5 +1015,85 @@
     "_short_circuit": false,
     "ts": 1780275697.7415857,
     "last_at_vote": 299.5
+  },
+  "2399": {
+    "verdict": "wait",
+    "score": 57,
+    "context": {
+      "score": 52,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 62,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 51.5,
+      "stop": 48.5,
+      "stop_basis": "掃描日整理低點，突破日最低撐撐區下方"
+    },
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜無任何新聞題材支撐，突破動能來源不明，純技術驅動",
+      "脈絡｜大盤多頭環境有利，但映泰主業主機板/顯卡，近期無明確族群催化劑",
+      "TA｜外資單日買超 +935 張，法人合計 +923 張，籌碼面支撐明確",
+      "TA｜距 EMA10 延伸 3.8%，尚在容忍上緣，停損距 5.8% 風報比略緊"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": 1,
+      "volume": 1,
+      "structure": 0,
+      "total": 3
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "量能步調 ≥ 150%，確認爆量突破延續",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "現價維持在 EMA10 之上，趨勢未反轉",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "總量 / 20 日均量 < 1.0，量縮代表突破失敗",
+        "cond": {
+          "type": "vol_ratio",
+          "op": "<",
+          "value": 1.0
+        }
+      },
+      {
+        "id": "T4",
+        "for": "abort",
+        "desc": "現價跌破 EMA20，多頭結構破壞應棄守",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 1288,
+      "out": 743,
+      "cw": 0,
+      "cr": 2240
+    },
+    "_short_circuit": false,
+    "ts": 1780276411.0129287,
+    "last_at_vote": 51.5
   }
 }
