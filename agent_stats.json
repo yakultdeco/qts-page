@@ -1,5 +1,5 @@
 {
-  "ts": 1780282347.97344,
+  "ts": 1780282460.675127,
   "total": 15,
   "by_verdict": {
     "go": 1,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 7,
   "cache_reads_tokens": 95168,
-  "input_tokens": 28292,
+  "input_tokens": 28278,
   "llm_calls": 15,
-  "cost_usd": 0.3714,
+  "cost_usd": 0.3734,
   "agents": {
     "conti": {
       "calls": 15,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 7,
       "last": {
-        "code": "5289",
+        "code": "4760",
         "verdict": "wait",
-        "ts": 1780281517.9701781
+        "ts": 1780282458.520622
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 0,
       "skip": 7,
       "last": {
-        "code": "5289",
-        "verdict": "go",
-        "ts": 1780281517.9701781
+        "code": "4760",
+        "verdict": "skip",
+        "ts": 1780282458.520622
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 0,
       "skip": 14,
       "last": {
-        "code": "5289",
-        "verdict": "go",
-        "ts": 1780281517.9701781
+        "code": "4760",
+        "verdict": "skip",
+        "ts": 1780282458.520622
       }
     },
     "ortho": {
@@ -51,13 +51,26 @@
       "wait": 0,
       "skip": 21,
       "last": {
-        "code": "5289",
-        "verdict": "go",
-        "ts": 1780281517.9701781
+        "code": "4760",
+        "verdict": "skip",
+        "ts": 1780282458.520622
       }
     }
   },
   "recent": [
+    {
+      "code": "4760",
+      "ts": 1780282458.520622,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "TA resonance.total=0 已中立，加上法人合計賣超 65 張且 ext_pct=17.2% 遠超 5% 上限；更致命的是進場 414 高於停損 438 的資料矛盾使風險報酬完全無法計算，無任何執行條件成立。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA resonance.total=0 已中立，加上法人合計賣超 65 張且 ext_pct=17.2% 遠超 5% 上限；更致命的是進場 414 高於停損 438 的資料矛盾使風險報酬完全無法計算，無任何執行條件成立。"
+      ]
+    },
     {
       "code": "5289",
       "ts": 1780281517.9701781,
@@ -224,17 +237,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "現價 288.5 已超越停損 286.0，進場即處負風險報酬；EMA10 延伸 17.6% 遠超容忍上限；外資單日賣超 11,286 張，TA resonance total=-1，三項硬傷同時成立，無可救藥。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "4760",
-      "ts": 1780280588.286689,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損 439.5 高於進場 414.0，資料結構根本錯誤，無法建立有效風控框架；即使忽略此問題，ext=17.2% 遠超閾值、resonance.total=-1、bear_score=88，三重否決已足夠。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
