@@ -1,5 +1,5 @@
 {
-  "ts": 1780292567.862696,
+  "ts": 1780292637.230869,
   "total": 17,
   "by_verdict": {
     "go": 0,
@@ -18,9 +18,9 @@
       "wait": 17,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "wait",
-        "ts": 1780292493.030879
+        "ts": 1780292635.036906
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "wait",
-        "ts": 1780292493.030879
+        "ts": 1780292635.036906
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "wait",
-        "ts": 1780292493.030879
+        "ts": 1780292635.036906
       }
     },
     "ortho": {
@@ -51,13 +51,28 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8064",
         "verdict": "wait",
-        "ts": 1780292493.030879
+        "ts": 1780292635.036906
       }
     }
   },
   "recent": [
+    {
+      "code": "8064",
+      "ts": 1780292635.036906,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "RDDT",
       "ts": 1780292493.030879,
@@ -206,21 +221,6 @@
       ],
       "ta_reasons": [
         "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "8064",
-      "ts": 1780290773.61686,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
       ]
     },
     {
