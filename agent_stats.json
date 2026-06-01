@@ -1,16 +1,16 @@
 {
-  "ts": 1780307205.690662,
+  "ts": 1780307555.448071,
   "total": 26,
   "by_verdict": {
     "go": 12,
-    "wait": 6,
-    "skip": 8
+    "wait": 7,
+    "skip": 7
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 45504,
-  "input_tokens": 167395,
+  "cache_reads_tokens": 44464,
+  "input_tokens": 167448,
   "llm_calls": 21,
-  "cost_usd": 0.0967,
+  "cost_usd": 0.0971,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "CRWD",
+        "code": "HUT",
         "verdict": "go",
-        "ts": 1780307204.034374
+        "ts": 1780307548.7381299
       }
     },
     "tai": {
@@ -29,35 +29,46 @@
       "wait": 18,
       "skip": 4,
       "last": {
-        "code": "CRWD",
-        "verdict": "go",
-        "ts": 1780307204.034374
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780307548.7381299
       }
     },
     "combo": {
       "calls": 26,
       "go": 12,
-      "wait": 6,
-      "skip": 8,
+      "wait": 7,
+      "skip": 7,
       "last": {
-        "code": "CRWD",
-        "verdict": "go",
-        "ts": 1780307204.034374
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780307548.7381299
       }
     },
     "ortho": {
       "calls": 26,
       "go": 12,
-      "wait": 6,
-      "skip": 8,
+      "wait": 7,
+      "skip": 7,
       "last": {
-        "code": "CRWD",
-        "verdict": "go",
-        "ts": 1780307204.034374
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780307548.7381299
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780307548.7381299,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "延伸高達16.8%追高風暴比極差（原停損23.8%）。待回踩EMA10（約110附近）或結構轉緊再行進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "CRWD",
       "ts": 1780307204.034374,
@@ -125,17 +136,6 @@
       "ta_reasons": [
         "TA Agent缺失導致技術面判斷不明。停損139.55造成16.79%過高風險，且獲利需漲33%才達2R，風報比極差，故不考慮進場。"
       ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780305346.5019982,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "股價距 EMA10 延伸 16.8% 過高，且原停損 23.8% 無法接受。儘管大盤強勢，此突破風報比極差，故選擇跳過。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2383",
