@@ -1,84 +1,277 @@
 {
-  "ts": 1780298642.0628119,
-  "total": 17,
+  "ts": 1780298922.287024,
+  "total": 26,
   "by_verdict": {
-    "go": 3,
+    "go": 11,
     "wait": 9,
-    "skip": 5
+    "skip": 6
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 35314,
-  "input_tokens": 74543,
-  "llm_calls": 10,
-  "cost_usd": 0.0492,
+  "cache_reads_tokens": 51628,
+  "input_tokens": 155619,
+  "llm_calls": 21,
+  "cost_usd": 0.0891,
   "agents": {
     "conti": {
-      "calls": 17,
-      "go": 7,
+      "calls": 26,
+      "go": 16,
       "wait": 10,
       "skip": 0,
       "last": {
         "code": "ALAB",
-        "verdict": "go",
-        "ts": 1780298570.963073
+        "verdict": "wait",
+        "ts": 1780298916.967167
       }
     },
     "tai": {
-      "calls": 17,
-      "go": 2,
-      "wait": 12,
-      "skip": 3,
+      "calls": 26,
+      "go": 3,
+      "wait": 19,
+      "skip": 4,
       "last": {
         "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780298570.963073
+        "ts": 1780298916.967167
       }
     },
     "combo": {
-      "calls": 17,
-      "go": 3,
+      "calls": 26,
+      "go": 11,
       "wait": 9,
-      "skip": 5,
+      "skip": 6,
       "last": {
         "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780298570.963073
+        "ts": 1780298916.967167
       }
     },
     "ortho": {
-      "calls": 17,
-      "go": 3,
+      "calls": 26,
+      "go": 11,
       "wait": 9,
-      "skip": 5,
+      "skip": 6,
       "last": {
         "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780298570.963073
+        "ts": 1780298916.967167
       }
     }
   },
   "recent": [
     {
       "code": "ALAB",
-      "ts": 1780298570.963073,
-      "context": "go",
+      "ts": 1780298916.967167,
+      "context": "wait",
       "ta": "wait",
       "final": "skip",
       "short_circuit": false,
-      "head": "ALAB 距 EMA10 達 24.4% 極度延伸，且停損寬度高達 19%，遠超風控上限與 1.5 倍 ADR，風報比極差，故不進場。",
+      "head": "股價較 EMA10 延伸達 24.4% 且訊號強度 (SLV=1) 過弱，突破動能不穩，潛在回檔風險高，不符合追擊條件。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
     {
       "code": "RDDT",
-      "ts": 1780298542.934825,
+      "ts": 1780298829.238173,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價距10EMA延伸達9.4%，原始停損16.8%遠超安全極限，故等待拉回153.5元附近再行佈局。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "2383",
+      "ts": 1780298687.008532,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤多頭趨勢明確，有利個股表現。",
+        "脈絡｜CCL產業受AI與高速運算需求支撐。"
+      ],
+      "ta_reasons": [
+        "TA｜訊號強度 slv 僅 0，顯示突破訊號未確認。",
+        "TA｜現價 5070 遠低於進場價 5635，仍在整理區間內。"
+      ]
+    },
+    {
+      "code": "3167",
+      "ts": 1780298672.150653,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤雙指數強勢多頭，市場整體氛圍極佳",
+        "脈絡｜個股無實質利空，低調整理靜待突破"
+      ],
+      "ta_reasons": [
+        "TA｜現價 786 遠低於突破點 914，尚未滿足進場條件。",
+        "TA｜訊號強度 SLV 為 0，且法人合計賣超 123 張，動能與籌碼偏弱。"
+      ]
+    },
+    {
+      "code": "3037",
+      "ts": 1780298644.011565,
       "context": "go",
       "ta": "skip",
       "final": "skip",
       "short_circuit": false,
-      "head": "停損寬達 16.79% 遠超 ADR (5.94%)，且已延伸 9.4%，無量突破極易遭假突破套牢。",
-      "ctx_reasons": [],
-      "ta_reasons": []
+      "head": "至少一方發現實質利空",
+      "ctx_reasons": [
+        "脈絡｜大盤處於明確多頭趨勢，提供良好環境",
+        "脈絡｜個股當日無任何利空消息"
+      ],
+      "ta_reasons": [
+        "TA｜訊號強度 slv=0 且現價 1050 未達突破點 1130，突破未確認。",
+        "TA｜距 EMA10 延伸 9.8%，若突破將過於偏遠，風報比不佳。"
+      ]
+    },
+    {
+      "code": "3430",
+      "ts": 1780298612.427367,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤處於多頭，環境有利。",
+        "脈絡｜個股無利空消息。"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 僅 0.9%，VCP 結構極緊密，具備蓄勢爆發潛力。",
+        "TA｜ADR 高達 7.83%，股性活潑，突破後具備高續航預期。"
+      ]
+    },
+    {
+      "code": "3209",
+      "ts": 1780298567.671018,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜大盤與櫃買均處強勢多頭，環境極佳",
+        "脈絡｜當日無顯著新聞題材，缺乏即時動能催化"
+      ],
+      "ta_reasons": [
+        "TA｜現價 75.3 遠低於突破點 83.7，未滿足進場條件。",
+        "TA｜三大法人合計賣超 1,283 張，融資餘額增加 203 張，籌碼面偏弱。"
+      ]
+    },
+    {
+      "code": "1727",
+      "ts": 1780298527.446304,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤處於極強多頭，市場整體買氣旺盛。",
+        "脈絡｜無實質利空消息干擾，脈絡安全。"
+      ],
+      "ta_reasons": [
+        "TA｜訊號強度 slv=0，表示目前無明確突破訊號。",
+        "TA｜現價 95.4 遠低於潛在突破點 112.0，未到進場時機。"
+      ]
+    },
+    {
+      "code": "4919",
+      "ts": 1780298513.26271,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤加權與櫃買均為多頭趨勢。",
+        "脈絡｜目前無負面新聞或利空訊息。"
+      ],
+      "ta_reasons": [
+        "TA｜現價 208.0 仍低於建議進場價 230.0，且訊號強度為 0，尚未確認突破。",
+        "TA｜若依 230.0 進場、188.5 停損，風險幅度達 18%，遠超過 ADR (8.8%) 限制，風報比不佳。"
+      ]
+    },
+    {
+      "code": "6173",
+      "ts": 1780298488.1125572,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤多頭趨勢強勁",
+        "脈絡｜個股無負面新聞"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "4958",
+      "ts": 1780298463.474643,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方發現實質利空",
+      "ctx_reasons": [
+        "脈絡｜大盤處於極強多頭，系統性環境極佳",
+        "脈絡｜無任何實質利空，維持中性偏多氛圍"
+      ],
+      "ta_reasons": [
+        "TA｜訊號強度 SLV=0，突破未確認，現價 548.0 遠低於進場價 568.0",
+        "TA｜若依建議進場價 568.0 與停損價 479.0，風險達 15.67%，遠超過 ADR (7.35%) 的 1.5 倍極限 (11.025%)"
+      ]
+    },
+    {
+      "code": "6274",
+      "ts": 1780298436.9483771,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤處於多頭格局。",
+        "脈絡｜個股當日無實質利空。"
+      ],
+      "ta_reasons": [
+        "TA｜投信大買 977 張，籌碼面具備法人支持。",
+        "TA｜ADR 為 6.58% 動能充足，有利於突破後延伸。"
+      ]
+    },
+    {
+      "code": "2464",
+      "ts": 1780298393.0194628,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤處於極強多頭，市場整體氛圍偏多",
+        "脈絡｜個股無任何實質利空，技術突破訊號成立"
+      ],
+      "ta_reasons": [
+        "TA｜外資單日大買 +1,857 張，顯示機構資金積極進場。",
+        "TA｜ADR 達 7.67% 波動充足，動能股特性明確，有利短期空間。"
+      ]
     },
     {
       "code": "HUT",
@@ -221,38 +414,8 @@
       ]
     },
     {
-      "code": "2464",
-      "ts": 1780287969.497239,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
       "code": "8358",
       "ts": 1780286988.388049,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6274",
-      "ts": 1780286211.879992,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
