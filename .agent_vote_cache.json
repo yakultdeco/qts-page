@@ -505,75 +505,33 @@
     "last_at_vote": 350.5
   },
   "6147": {
-    "verdict": "skip",
-    "score": 35,
+    "verdict": "wait",
+    "score": 0,
     "context": {
-      "score": 52,
+      "score": 0,
       "verdict": "wait"
     },
     "ta": {
-      "score": 18,
-      "verdict": "skip"
+      "score": 0,
+      "verdict": "wait"
     },
-    "entry_plan": {
-      "entry": 291.5,
-      "stop": 286.0,
-      "stop_basis": "掃描日整理低點下方，停損距離約 1.9%，但延伸過遠使風報比極差"
-    },
+    "entry_plan": {},
     "reasons": [
-      "至少一方否決",
-      "脈絡｜無任何新聞題材支撐，純技術突破，催化劑不明確",
-      "脈絡｜大盤多頭環境加分，但距 EMA10 延伸已達 20.4%，追高風險偏高",
-      "TA｜距 EMA10 延伸 20.4%，嚴重超過 5% 紅線，追高風險極高",
-      "TA｜VCP 等級 C，整理結構品質差，突破可靠性偏低"
+      "雙方觀望",
+      "脈絡｜context_agent 失敗: BadRequestError",
+      "TA｜ta_agent 失敗: BadRequestError"
     ],
-    "resonance": {
-      "trend": 1,
-      "momentum": -2,
-      "volume": 1,
-      "structure": -1,
-      "total": -1
-    },
-    "triggers": [
-      {
-        "id": "T1",
-        "for": "abort",
-        "desc": "現價仍高於 EMA10 超過 5%，延伸未收斂前不應進場",
-        "cond": {
-          "type": "price_vs_ema10",
-          "op": ">="
-        }
-      },
-      {
-        "id": "T2",
-        "for": "entry",
-        "desc": "量能步調需達 150% 以上，確認爆量突破而非假突破",
-        "cond": {
-          "type": "vol_pace",
-          "op": ">=",
-          "value": 150.0
-        }
-      },
-      {
-        "id": "T3",
-        "for": "abort",
-        "desc": "總量未達 20 日均量 1.5 倍，量能無法支撐突破延續性",
-        "cond": {
-          "type": "vol_ratio",
-          "op": "<",
-          "value": 1.5
-        }
-      }
-    ],
+    "resonance": {},
+    "triggers": [],
     "_usage": {
-      "in": 1260,
-      "out": 670,
+      "in": 0,
+      "out": 0,
       "cw": 0,
-      "cr": 2240
+      "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780278447.254715,
-    "last_at_vote": 292.5
+    "ts": 1780284948.6805134,
+    "last_at_vote": 293.5
   },
   "8358": {
     "verdict": "skip",
