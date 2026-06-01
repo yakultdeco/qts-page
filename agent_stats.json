@@ -1,9 +1,9 @@
 {
-  "ts": 1780283963.9512691,
-  "total": 15,
+  "ts": 1780284043.088375,
+  "total": 16,
   "by_verdict": {
     "go": 1,
-    "wait": 0,
+    "wait": 1,
     "skip": 14
   },
   "short_circuits": 6,
@@ -13,51 +13,66 @@
   "cost_usd": 0.4232,
   "agents": {
     "conti": {
-      "calls": 15,
+      "calls": 16,
       "go": 0,
-      "wait": 9,
+      "wait": 10,
       "skip": 6,
       "last": {
-        "code": "8064",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780283426.4639459
+        "ts": 1780284034.592028
       }
     },
     "tai": {
-      "calls": 9,
+      "calls": 10,
       "go": 1,
-      "wait": 1,
+      "wait": 2,
       "skip": 7,
       "last": {
-        "code": "8064",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780283426.4639459
+        "ts": 1780284034.592028
       }
     },
     "combo": {
-      "calls": 15,
+      "calls": 16,
       "go": 1,
-      "wait": 0,
+      "wait": 1,
       "skip": 14,
       "last": {
-        "code": "8064",
-        "verdict": "skip",
-        "ts": 1780283426.4639459
+        "code": "2303",
+        "verdict": "wait",
+        "ts": 1780284034.592028
       }
     },
     "ortho": {
-      "calls": 15,
+      "calls": 16,
       "go": 1,
-      "wait": 0,
+      "wait": 1,
       "skip": 20,
       "last": {
-        "code": "8064",
-        "verdict": "skip",
-        "ts": 1780283426.4639459
+        "code": "2303",
+        "verdict": "wait",
+        "ts": 1780284034.592028
       }
     }
   },
   "recent": [
+    {
+      "code": "2303",
+      "ts": 1780284034.592028,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "8064",
       "ts": 1780283426.4639459,
