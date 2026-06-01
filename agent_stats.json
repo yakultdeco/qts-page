@@ -1,5 +1,5 @@
 {
-  "ts": 1780305863.955864,
+  "ts": 1780306306.483105,
   "total": 26,
   "by_verdict": {
     "go": 12,
@@ -8,19 +8,19 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 50620,
-  "input_tokens": 150681,
+  "input_tokens": 150657,
   "llm_calls": 21,
-  "cost_usd": 0.0878,
+  "cost_usd": 0.0875,
   "agents": {
     "conti": {
       "calls": 26,
-      "go": 17,
-      "wait": 9,
+      "go": 18,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "go",
-        "ts": 1780305861.2669451
+        "ts": 1780306300.981289
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 20,
       "skip": 4,
       "last": {
-        "code": "RDDT",
-        "verdict": "wait",
-        "ts": 1780305861.2669451
+        "code": "ALAB",
+        "verdict": "skip",
+        "ts": 1780306300.981289
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 6,
       "skip": 8,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780305861.2669451
+        "ts": 1780306300.981289
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 6,
       "skip": 8,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "skip",
-        "ts": 1780305861.2669451
+        "ts": 1780306300.981289
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780306300.981289,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "股價距EMA10延伸24.4%且停損寬達20.5%，在slv僅1的情況下追價風險極高，故拒絕交易。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780305861.2669451,
@@ -134,17 +145,6 @@
         "TA｜距 EMA10 延伸 24.3% 過遠，已脫離整理區後最佳進場點。",
         "TA｜突破品質 C 且訊號強度 SLV 3，非強勢放量突破，動能延續性存疑。"
       ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780303834.6741571,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "候選股 ALAB 已跌破建議進場點 354.53，且停損幅度 20.48% 遠超 1.5 倍 ADR (13.56%)，風險報酬比不合理。訊號強度與品質皆低 (SLV=1, Type C)。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2383",
