@@ -1,16 +1,16 @@
 {
-  "ts": 1780300574.571248,
+  "ts": 1780301376.760562,
   "total": 26,
   "by_verdict": {
     "go": 11,
-    "wait": 10,
-    "skip": 5
+    "wait": 9,
+    "skip": 6
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 62842,
-  "input_tokens": 175002,
+  "cache_reads_tokens": 58768,
+  "input_tokens": 167743,
   "llm_calls": 21,
-  "cost_usd": 0.1017,
+  "cost_usd": 0.0983,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,9 +18,9 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780300421.150934
+        "ts": 1780301373.633822
       }
     },
     "tai": {
@@ -29,35 +29,46 @@
       "wait": 19,
       "skip": 4,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780300421.150934
+        "ts": 1780301373.633822
       }
     },
     "combo": {
       "calls": 26,
       "go": 11,
-      "wait": 10,
-      "skip": 5,
+      "wait": 9,
+      "skip": 6,
       "last": {
-        "code": "HUT",
-        "verdict": "wait",
-        "ts": 1780300421.150934
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780301373.633822
       }
     },
     "ortho": {
       "calls": 26,
       "go": 11,
-      "wait": 10,
-      "skip": 5,
+      "wait": 9,
+      "skip": 6,
       "last": {
-        "code": "HUT",
-        "verdict": "wait",
-        "ts": 1780300421.150934
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780301373.633822
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780301373.633822,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "該股停損距離高達 16.79%，遠超動能策略可接受範圍 (3-8%)。TA Agent 運行失敗導致無法評估進場技術結構與風報比，無法做出安全交易決策。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "HUT",
       "ts": 1780300421.150934,
@@ -121,17 +132,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "股價較 EMA10 延伸達 24.4% 且訊號強度 (SLV=1) 過弱，突破動能不穩，潛在回檔風險高，不符合追擊條件。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780298829.238173,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價距10EMA延伸達9.4%，原始停損16.8%遠超安全極限，故等待拉回153.5元附近再行佈局。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
