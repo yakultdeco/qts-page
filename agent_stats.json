@@ -1,5 +1,5 @@
 {
-  "ts": 1780278500.538173,
+  "ts": 1780278614.461647,
   "total": 13,
   "by_verdict": {
     "go": 0,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 7,
   "cache_reads_tokens": 50937,
-  "input_tokens": 22945,
+  "input_tokens": 22922,
   "llm_calls": 13,
-  "cost_usd": 0.3551,
+  "cost_usd": 0.3544,
   "agents": {
     "conti": {
       "calls": 13,
@@ -18,20 +18,20 @@
       "wait": 6,
       "skip": 7,
       "last": {
-        "code": "8064",
+        "code": "6531",
         "verdict": "wait",
-        "ts": 1780277776.198807
+        "ts": 1780278606.8050618
       }
     },
     "tai": {
       "calls": 6,
       "go": 0,
-      "wait": 1,
-      "skip": 5,
+      "wait": 0,
+      "skip": 6,
       "last": {
-        "code": "8064",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780277776.198807
+        "ts": 1780278606.8050618
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 0,
       "skip": 13,
       "last": {
-        "code": "8064",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780277776.198807
+        "ts": 1780278606.8050618
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 0,
       "skip": 20,
       "last": {
-        "code": "8064",
+        "code": "6531",
         "verdict": "skip",
-        "ts": 1780277776.198807
+        "ts": 1780278606.8050618
       }
     }
   },
   "recent": [
+    {
+      "code": "6531",
+      "ts": 1780278606.8050618,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "entry/stop 結構根本性錯置：現價 1235 高於停損 1225，進場即觸損；延伸 11.2% 遠超安全門檻，bear_score 88 且三大 invalidation 均屬高機率，無可執行之正期望值交易。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8064",
       "ts": 1780277776.198807,
@@ -184,17 +195,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "現價197較進場基準184延伸15.5%，遠超5%警戒；TA resonance total僅+1且momentum=-1、structure=-1；Bear bear_score=88且invalidations均屬高機率觸發；風報比以1",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6531",
-      "ts": 1780277603.2135549,
-      "context": "wait",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext_pct=11.2%已嚴重超標，現價追入後停損空間僅2.4%而上漲空間對稱性極差；Bear指出的7.7%偏離使風險報酬比劣於1:1，融資+388張散戶追高跡象與外資賣超籌碼分歧，放棄此次突破點。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
