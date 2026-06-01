@@ -1,5 +1,5 @@
 {
-  "ts": 1780291924.517838,
+  "ts": 1780291994.920848,
   "total": 17,
   "by_verdict": {
     "go": 0,
@@ -18,9 +18,9 @@
       "wait": 17,
       "skip": 0,
       "last": {
-        "code": "5289",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780291845.543669
+        "ts": 1780291992.5669508
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "5289",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780291845.543669
+        "ts": 1780291992.5669508
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "5289",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780291845.543669
+        "ts": 1780291992.5669508
       }
     },
     "ortho": {
@@ -51,13 +51,28 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "5289",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780291845.543669
+        "ts": 1780291992.5669508
       }
     }
   },
   "recent": [
+    {
+      "code": "2303",
+      "ts": 1780291992.5669508,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "5289",
       "ts": 1780291845.543669,
@@ -196,21 +211,6 @@
     {
       "code": "CRWD",
       "ts": 1780290632.31412,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "2303",
-      "ts": 1780290135.1739771,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
