@@ -517,7 +517,7 @@
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780285559.324013,
+    "ts": 1780287656.7629879,
     "last_at_vote": 668.0
   },
   "3135": {
@@ -618,8 +618,8 @@
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780285568.815331,
-    "last_at_vote": 197.5
+    "ts": 1780287657.6351116,
+    "last_at_vote": 198.0
   },
   "3675": {
     "verdict": "skip",
@@ -790,8 +790,8 @@
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780285569.1216085,
-    "last_at_vote": 306.5
+    "ts": 1780287657.6480427,
+    "last_at_vote": 308.5
   },
   "6274": {
     "verdict": "wait",

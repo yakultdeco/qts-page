@@ -1,201 +1,66 @@
 {
-  "ts": 1780287694.97745,
-  "total": 16,
+  "ts": 1780287716.461147,
+  "total": 11,
   "by_verdict": {
     "go": 0,
-    "wait": 15,
-    "skip": 1
+    "wait": 7,
+    "skip": 4
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 11896,
-  "input_tokens": 2661,
-  "llm_calls": 1,
-  "cost_usd": 0.0411,
+  "cache_reads_tokens": 11200,
+  "input_tokens": 6475,
+  "llm_calls": 5,
+  "cost_usd": 0.077,
   "agents": {
     "conti": {
-      "calls": 16,
+      "calls": 11,
       "go": 0,
-      "wait": 16,
+      "wait": 11,
       "skip": 0,
       "last": {
-        "code": "5289",
+        "code": "6197",
         "verdict": "wait",
-        "ts": 1780287137.041727
+        "ts": 1780287657.6480427
       }
     },
     "tai": {
-      "calls": 16,
+      "calls": 11,
       "go": 0,
-      "wait": 15,
-      "skip": 1,
+      "wait": 7,
+      "skip": 4,
       "last": {
-        "code": "5289",
+        "code": "6197",
         "verdict": "wait",
-        "ts": 1780287137.041727
+        "ts": 1780287657.6480427
       }
     },
     "combo": {
-      "calls": 16,
+      "calls": 11,
       "go": 0,
-      "wait": 15,
-      "skip": 1,
+      "wait": 7,
+      "skip": 4,
       "last": {
-        "code": "5289",
+        "code": "6197",
         "verdict": "wait",
-        "ts": 1780287137.041727
+        "ts": 1780287657.6480427
       }
     },
     "ortho": {
-      "calls": 16,
+      "calls": 11,
       "go": 0,
-      "wait": 15,
-      "skip": 1,
+      "wait": 7,
+      "skip": 4,
       "last": {
-        "code": "5289",
+        "code": "6197",
         "verdict": "wait",
-        "ts": 1780287137.041727
+        "ts": 1780287657.6480427
       }
     }
   },
   "recent": [
     {
-      "code": "5289",
-      "ts": 1780287137.041727,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "8064",
-      "ts": 1780287134.536483,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780286990.523808,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780286990.511154,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780286989.714793,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780286989.561963,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780286989.513765,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780286989.488927,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "8358",
-      "ts": 1780286988.388049,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6274",
-      "ts": 1780286211.879992,
+      "code": "6197",
+      "ts": 1780287657.6480427,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -210,7 +75,22 @@
     },
     {
       "code": "2464",
-      "ts": 1780286141.52446,
+      "ts": 1780287657.6351116,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "8358",
+      "ts": 1780287656.7629879,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -225,7 +105,22 @@
     },
     {
       "code": "4760",
-      "ts": 1780286141.404049,
+      "ts": 1780287050.499704,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
+    {
+      "code": "6274",
+      "ts": 1780285567.5995693,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -240,7 +135,7 @@
     },
     {
       "code": "6147",
-      "ts": 1780286141.3994088,
+      "ts": 1780284948.6805134,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -254,45 +149,89 @@
       ]
     },
     {
-      "code": "3481",
-      "ts": 1780285631.120352,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "2303",
-      "ts": 1780284034.592028,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780278606.8050618,
+      "code": "3135",
+      "ts": 1780283715.644568,
       "context": "wait",
       "ta": "skip",
       "final": "skip",
       "short_circuit": false,
-      "head": "entry/stop 結構根本性錯置：現價 1235 高於停損 1225，進場即觸損；延伸 11.2% 遠超安全門檻，bear_score 88 且三大 invalidation 均屬高機率，無可執行之正期望值交易。",
-      "ctx_reasons": [],
-      "ta_reasons": []
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，純技術突破，基本面驅動力不明",
+        "脈絡｜距 EMA10 延伸 16.8% 偏高，追高風險顯著，等待回測確認較穩妥"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 16.8%，遠超 5% 上限，已嚴重過熱不宜追高",
+        "TA｜外資賣超 390 張、三大法人合計 -400 張，籌碼面偏空"
+      ]
+    },
+    {
+      "code": "2303",
+      "ts": 1780281501.1829271,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤多頭環境加分，但無任何新聞題材支撐，難以判斷突破驅動力",
+        "脈絡｜距 EMA10 延伸達 17.1%，追高風險偏高，等待回踩確認更安全"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 17.1%，遠超 5% 上限，進場即追高",
+        "TA｜外資 -28,218 張、投信 -28,690 張，法人合計賣超 56,077 張，籌碼嚴重惡化"
+      ]
+    },
+    {
+      "code": "3673",
+      "ts": 1780279802.031398,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜無任何新聞題材支撐，突破動能來源不明，難以判斷是否有基本面催化",
+        "脈絡｜大盤處於多頭環境，系統性風險低，不構成拒絕理由"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 5.6%，超過 Qullamaggie 5% 安全門檻，追價風報比差",
+        "TA｜外資單日賣超 6,058 張，三大法人合計 -6,462 張，籌碼明顯流出"
+      ]
+    },
+    {
+      "code": "6531",
+      "ts": 1780279494.7113426,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜大盤處於多頭環境，加權與櫃買均 10MA > 20MA，系統性背景支持",
+        "脈絡｜無當日新聞，缺乏明確題材催化，純技術突破難以確認資金持續性"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 5.7%，超過 5% 警戒線，進場風報比偏差",
+        "TA｜外資單日賣超 1,481 張，投信雖買超 2,241 張但籌碼方向分歧"
+      ]
+    },
+    {
+      "code": "3532",
+      "ts": 1780275684.421466,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤多頭且台勝科屬半導體/石英材料族群，環境有利",
+        "脈絡｜無任何新聞題材支撐，突破缺乏基本面催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 17.0%，遠超 5% 上限，已嚴重過熱不宜追價",
+        "TA｜三大法人合計賣超 558 張（外資 -580 張），籌碼面偏空壓制"
+      ]
     }
   ]
 }
