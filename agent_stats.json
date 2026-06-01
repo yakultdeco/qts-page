@@ -1,16 +1,16 @@
 {
-  "ts": 1780303920.476423,
+  "ts": 1780304986.493088,
   "total": 26,
   "by_verdict": {
-    "go": 11,
-    "wait": 7,
+    "go": 12,
+    "wait": 6,
     "skip": 8
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 51562,
-  "input_tokens": 175050,
+  "cache_reads_tokens": 50620,
+  "input_tokens": 157916,
   "llm_calls": 21,
-  "cost_usd": 0.1022,
+  "cost_usd": 0.0913,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,46 +18,99 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780303834.6741571
+        "code": "CRWD",
+        "verdict": "go",
+        "ts": 1780304983.803762
       }
     },
     "tai": {
       "calls": 26,
       "go": 2,
-      "wait": 18,
-      "skip": 6,
+      "wait": 19,
+      "skip": 5,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780303834.6741571
+        "code": "CRWD",
+        "verdict": "wait",
+        "ts": 1780304983.803762
       }
     },
     "combo": {
       "calls": 26,
-      "go": 11,
-      "wait": 7,
+      "go": 12,
+      "wait": 6,
       "skip": 8,
       "last": {
-        "code": "ALAB",
+        "code": "CRWD",
         "verdict": "skip",
-        "ts": 1780303834.6741571
+        "ts": 1780304983.803762
       }
     },
     "ortho": {
       "calls": 26,
-      "go": 11,
-      "wait": 7,
+      "go": 12,
+      "wait": 6,
       "skip": 8,
       "last": {
-        "code": "ALAB",
+        "code": "CRWD",
         "verdict": "skip",
-        "ts": 1780303834.6741571
+        "ts": 1780304983.803762
       }
     }
   },
   "recent": [
+    {
+      "code": "CRWD",
+      "ts": 1780304983.803762,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "TA agent 失敗導致技術面判斷依據缺失，且熊方指出股價已明確跌破 660 短期支撐區間，動能不足以支持突破 677.5。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA agent 失敗導致技術面判斷依據缺失，且熊方指出股價已明確跌破 660 短期支撐區間，動能不足以支持突破 677.5。"
+      ]
+    },
+    {
+      "code": "AMD",
+      "ts": 1780304746.943964,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損距離達 18.13% 嚴重過寬，導致風險報酬比極差；TA agent 失敗無法評估技術結構，關鍵資訊缺失。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780304742.232576,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤強多，雖 TA 憂慮 7.8% 停損過寬，但改以近期低點 253 為防守，停損縮至 3.2% 即具高風報比。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "4760",
+      "ts": 1780304478.240269,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "脈絡力推（TA 觀望，不反對）",
+      "ctx_reasons": [
+        "脈絡力推（TA 觀望，不反對）",
+        "脈絡｜大盤處於多頭環境，有利個股表現",
+        "脈絡｜無負面新聞或產業利空訊息"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 24.3% 過遠，已脫離整理區後最佳進場點。",
+        "TA｜突破品質 C 且訊號強度 SLV 3，非強勢放量突破，動能延續性存疑。"
+      ]
+    },
     {
       "code": "ALAB",
       "ts": 1780303834.6741571,
@@ -88,50 +141,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "停損幅度 (23.8%) 遠超 1.5 倍 ADR (11.7%)，風險過高。股價已從 EMA10 延伸 16.8%，且 SLV 僅 1，突破強度不足。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780302576.07289,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損幅度 (18.1%) 遠超 ADR 1.5 倍極限 (8.37%)，且股價已延伸 12.8%，風險過高。訊號強度 slv=1 亦顯不足。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780302521.806049,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雖然大盤與個股趨勢有利且整理結構良好，但訊號量能不足 (SLV=1) 且股價已延伸 5.5%，假突破風險高。需等待放量確認以降低風險。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780302393.143178,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "股票具 VCP 優質結構，大盤多頭有利突破；設定嚴格進場條件與部位，控制 7.8% 寬停損風險。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "4760",
-      "ts": 1780302168.664875,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "核心問題為停損價 (426.0) 高於進場價 (425.5) 的致命邏輯錯誤。此外，股價已較 EMA10 延伸 24.3%，追高風險過高。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
