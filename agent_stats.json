@@ -1,16 +1,16 @@
 {
-  "ts": 1780306306.483105,
+  "ts": 1780306828.164921,
   "total": 26,
   "by_verdict": {
-    "go": 12,
+    "go": 11,
     "wait": 6,
-    "skip": 8
+    "skip": 9
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 50620,
-  "input_tokens": 150657,
+  "cache_reads_tokens": 44509,
+  "input_tokens": 160178,
   "llm_calls": 21,
-  "cost_usd": 0.0875,
+  "cost_usd": 0.0919,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,46 +18,79 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "AMD",
         "verdict": "go",
-        "ts": 1780306300.981289
+        "ts": 1780306823.8661911
       }
     },
     "tai": {
       "calls": 26,
-      "go": 2,
-      "wait": 20,
+      "go": 3,
+      "wait": 19,
       "skip": 4,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780306300.981289
+        "code": "AMD",
+        "verdict": "wait",
+        "ts": 1780306823.8661911
       }
     },
     "combo": {
       "calls": 26,
-      "go": 12,
+      "go": 11,
       "wait": 6,
-      "skip": 8,
+      "skip": 9,
       "last": {
-        "code": "ALAB",
+        "code": "AMD",
         "verdict": "skip",
-        "ts": 1780306300.981289
+        "ts": 1780306823.8661911
       }
     },
     "ortho": {
       "calls": 26,
-      "go": 12,
+      "go": 11,
       "wait": 6,
-      "skip": 8,
+      "skip": 9,
       "last": {
-        "code": "ALAB",
+        "code": "AMD",
         "verdict": "skip",
-        "ts": 1780306300.981289
+        "ts": 1780306823.8661911
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780306823.8661911,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "現價距 EMA10 延伸 12.8% 乖離過大，且 SLV=1 量能不足。原始停損 (431.6) 距進場點 (527.2) 達 18.13%，風報比嚴重不合理，故不進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780306775.384543,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤雙多頭，個股 ext 僅 3.4% 具安全邊際，VCP 結構 B 級，突破 261.41 追進。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "4760",
+      "ts": 1780306549.302063,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "EMA10 乖離率達 24.3% 風險極高。原定 426.0 停損高於進場價且僅有 0.7% 空間，極易被 8.22% ADR 的波動震盪出場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "ALAB",
       "ts": 1780306300.981289,
@@ -104,46 +137,6 @@
       "ctx_reasons": [],
       "ta_reasons": [
         "TA agent 失敗導致技術面判斷依據缺失，且熊方指出股價已明確跌破 660 短期支撐區間，動能不足以支持突破 677.5。"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780304746.943964,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損距離達 18.13% 嚴重過寬，導致風險報酬比極差；TA agent 失敗無法評估技術結構，關鍵資訊缺失。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780304742.232576,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤強多，雖 TA 憂慮 7.8% 停損過寬，但改以近期低點 253 為防守，停損縮至 3.2% 即具高風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "4760",
-      "ts": 1780304478.240269,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤處於多頭環境，有利個股表現",
-        "脈絡｜無負面新聞或產業利空訊息"
-      ],
-      "ta_reasons": [
-        "TA｜距 EMA10 延伸 24.3% 過遠，已脫離整理區後最佳進場點。",
-        "TA｜突破品質 C 且訊號強度 SLV 3，非強勢放量突破，動能延續性存疑。"
       ]
     },
     {
