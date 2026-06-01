@@ -1,5 +1,5 @@
 {
-  "ts": 1780282579.637203,
+  "ts": 1780282701.979191,
   "total": 15,
   "by_verdict": {
     "go": 1,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 7,
   "cache_reads_tokens": 95168,
-  "input_tokens": 28338,
+  "input_tokens": 28318,
   "llm_calls": 15,
-  "cost_usd": 0.3766,
+  "cost_usd": 0.3829,
   "agents": {
     "conti": {
       "calls": 15,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 7,
       "last": {
-        "code": "6274",
+        "code": "5289",
         "verdict": "wait",
-        "ts": 1780282577.2311301
+        "ts": 1780282699.917166
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 0,
       "skip": 7,
       "last": {
-        "code": "6274",
-        "verdict": "skip",
-        "ts": 1780282577.2311301
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780282699.917166
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 0,
       "skip": 14,
       "last": {
-        "code": "6274",
-        "verdict": "skip",
-        "ts": 1780282577.2311301
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780282699.917166
       }
     },
     "ortho": {
@@ -51,13 +51,37 @@
       "wait": 0,
       "skip": 21,
       "last": {
-        "code": "6274",
-        "verdict": "skip",
-        "ts": 1780282577.2311301
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780282699.917166
       }
     }
   },
   "recent": [
+    {
+      "code": "5289",
+      "ts": 1780282699.917166,
+      "context": "wait",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "TA resonance total=6 為強訊號，停損 3.43%（< 0.53× ADR）風報比合理，投信淨買+130張提供籌碼錨定；Context 無題材疑慮屬結構性偏見，Bear 的 bear_score=42 未達關鍵否決門檻，首",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA resonance total=6 為強訊號，停損 3.43%（< 0.53× ADR）風報比合理，投信淨買+130張提供籌碼錨定；Context 無題材疑慮屬結構性偏見，Bear 的 bear_score=42 未達關鍵否決門檻，首"
+      ]
+    },
+    {
+      "code": "6147",
+      "ts": 1780282698.0748532,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損 285.0 設於進場價 281.0 之上，邏輯顛倒且現價 285.5 已在停損上方 0.5 元（0.18%），進場即觸損；疊加外資連續兩日淨賣超逾萬張、resonance total=-2、ext 17.6% 嚴重超限，三重否決無任何",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6274",
       "ts": 1780282577.2311301,
@@ -80,19 +104,6 @@
       "ctx_reasons": [],
       "ta_reasons": [
         "TA resonance.total=0 已中立，加上法人合計賣超 65 張且 ext_pct=17.2% 遠超 5% 上限；更致命的是進場 414 高於停損 438 的資料矛盾使風險報酬完全無法計算，無任何執行條件成立。"
-      ]
-    },
-    {
-      "code": "5289",
-      "ts": 1780281517.9701781,
-      "context": "wait",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "TA resonance total=6 屬強訊號，ext僅1.2%位置理想，停損距離5.4%低於ADR 6.51%風報比合格；Context題材疑慮真實但大盤雙指數多頭且Bear score僅38，整體風險可控，以中等部位介入。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA resonance total=6 屬強訊號，ext僅1.2%位置理想，停損距離5.4%低於ADR 6.51%風報比合格；Context題材疑慮真實但大盤雙指數多頭且Bear score僅38，整體風險可控，以中等部位介入。"
       ]
     },
     {
@@ -239,17 +250,6 @@
       "ta_reasons": [
         "TA｜(context 已 skip，省略 TA 呼叫)"
       ]
-    },
-    {
-      "code": "6147",
-      "ts": 1780280844.5397918,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "現價 288.5 已超越停損 286.0，進場即處負風險報酬；EMA10 延伸 17.6% 遠超容忍上限；外資單日賣超 11,286 張，TA resonance total=-1，三項硬傷同時成立，無可救藥。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "6531",
