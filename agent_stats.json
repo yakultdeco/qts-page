@@ -1,63 +1,107 @@
 {
-  "ts": 1780297902.156526,
+  "ts": 1780298264.416564,
   "total": 17,
   "by_verdict": {
     "go": 5,
-    "wait": 11,
-    "skip": 1
+    "wait": 9,
+    "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 30292,
-  "input_tokens": 69680,
+  "cache_reads_tokens": 29242,
+  "input_tokens": 74702,
   "llm_calls": 10,
-  "cost_usd": 0.0483,
+  "cost_usd": 0.0507,
   "agents": {
     "conti": {
       "calls": 17,
-      "go": 5,
-      "wait": 12,
+      "go": 7,
+      "wait": 10,
       "skip": 0,
       "last": {
-        "code": "6147",
-        "verdict": "wait",
-        "ts": 1780297324.6135318
+        "code": "HUT",
+        "verdict": "go",
+        "ts": 1780298262.183685
       }
     },
     "tai": {
       "calls": 17,
-      "go": 6,
-      "wait": 10,
-      "skip": 1,
+      "go": 4,
+      "wait": 11,
+      "skip": 2,
       "last": {
-        "code": "6147",
-        "verdict": "go",
-        "ts": 1780297324.6135318
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780298262.183685
       }
     },
     "combo": {
       "calls": 17,
       "go": 5,
-      "wait": 11,
-      "skip": 1,
+      "wait": 9,
+      "skip": 3,
       "last": {
-        "code": "6147",
-        "verdict": "go",
-        "ts": 1780297324.6135318
+        "code": "HUT",
+        "verdict": "skip",
+        "ts": 1780298262.183685
       }
     },
     "ortho": {
       "calls": 17,
       "go": 5,
-      "wait": 11,
-      "skip": 1,
+      "wait": 9,
+      "skip": 3,
       "last": {
-        "code": "6147",
-        "verdict": "go",
-        "ts": 1780297324.6135318
+        "code": "HUT",
+        "verdict": "skip",
+        "ts": 1780298262.183685
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780298262.183685,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損距離高達 23.8% (進場價 126.26 vs 停損價 96.2)，不符風險管理原則。TA Agent 失敗導致技術面分析缺失，無法評估風報比及進場時機。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780298234.598732,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損距離達 18.1% 遠超 1.5 倍 ADR (8.37%) 風控限制。股價距 EMA10 延伸 12.8% 過高，追高風險大。VCP 結構鬆散。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780298201.042948,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "因 TA agent 無法提供有效技術分析，無法評估突破結構、量能與動能是否支持進場，故暫緩操作。同時考量 Bear advocate 指出的 6.55% 較寬停損距離。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780298160.669636,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價 257.77 仍低於突破點 261.41，且所有 Agent 均強調量能確認的重要性。需等待帶量突破才能降低假突破風險並提升成功率。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6147",
       "ts": 1780297324.6135318,
@@ -128,52 +172,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "ALAB 具備高 ADR (9.04%) 及強勢 C 型態，大盤及費半皆多頭。雖然停損較遠，但考慮其動能強度，風險值得承受。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780296164.758519,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "AMD 雖動能強勁且大盤有利，但 Ext_pct 達 12.8%，乖離過大，潛在回測風險高，建議等待回檔。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780296164.10613,
-      "context": "wait",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "PANW 雖具突破潛力，但現價距進場價偏高 (257.77 vs 261.41)，且停損 241 距離 ADR 偏寬 (7.8% vs 4.52%)。等待回測 249.5-250 區間能提供更好風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780296161.719976,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "TA agent 故障導致缺乏關鍵技術分析，無法確認 126.26 進場價的有效性，因此選擇等待。Context 面雖樂觀，但需技術面驗證。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA agent 故障導致缺乏關鍵技術分析，無法確認 126.26 進場價的有效性，因此選擇等待。Context 面雖樂觀，但需技術面驗證。"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780296161.378752,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "由於 Context agent 和 TA agent 失敗，市場資訊嚴重不足，無法建立完整交易劇本。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
