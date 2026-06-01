@@ -1,5 +1,5 @@
 {
-  "ts": 1780282460.675127,
+  "ts": 1780282579.637203,
   "total": 15,
   "by_verdict": {
     "go": 1,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 7,
   "cache_reads_tokens": 95168,
-  "input_tokens": 28278,
+  "input_tokens": 28338,
   "llm_calls": 15,
-  "cost_usd": 0.3734,
+  "cost_usd": 0.3766,
   "agents": {
     "conti": {
       "calls": 15,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 7,
       "last": {
-        "code": "4760",
+        "code": "6274",
         "verdict": "wait",
-        "ts": 1780282458.520622
+        "ts": 1780282577.2311301
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 0,
       "skip": 7,
       "last": {
-        "code": "4760",
+        "code": "6274",
         "verdict": "skip",
-        "ts": 1780282458.520622
+        "ts": 1780282577.2311301
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 0,
       "skip": 14,
       "last": {
-        "code": "4760",
+        "code": "6274",
         "verdict": "skip",
-        "ts": 1780282458.520622
+        "ts": 1780282577.2311301
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 0,
       "skip": 21,
       "last": {
-        "code": "4760",
+        "code": "6274",
         "verdict": "skip",
-        "ts": 1780282458.520622
+        "ts": 1780282577.2311301
       }
     }
   },
   "recent": [
+    {
+      "code": "6274",
+      "ts": 1780282577.2311301,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "ext=14.7% 已是 EMA10 延伸上限 3 倍，TA resonance.total=0 顯示多空力道抵銷，Bear bear_score=82 指出損益比嚴重失衡（虧 6% 博 2-3%），無催化劑支撐下追高論述不成立。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "4760",
       "ts": 1780282458.520622,
@@ -237,17 +248,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "現價 288.5 已超越停損 286.0，進場即處負風險報酬；EMA10 延伸 17.6% 遠超容忍上限；外資單日賣超 11,286 張，TA resonance total=-1，三項硬傷同時成立，無可救藥。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6274",
-      "ts": 1780279766.476028,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=14.7% 遠超安全門檻，停損距離 8.6% 幾乎等於 1.4 倍 ADR，風報比嚴重失衡；Context score 僅 11 分、無題材支撐，TA resonance.total=1 且 momentum=-1 structur",
       "ctx_reasons": [],
       "ta_reasons": []
     },
