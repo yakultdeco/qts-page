@@ -1,26 +1,26 @@
 {
-  "ts": 1780301376.760562,
+  "ts": 1780301807.0146072,
   "total": 26,
   "by_verdict": {
     "go": 11,
-    "wait": 9,
-    "skip": 6
+    "wait": 10,
+    "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 58768,
-  "input_tokens": 167743,
+  "cache_reads_tokens": 54694,
+  "input_tokens": 158946,
   "llm_calls": 21,
-  "cost_usd": 0.0983,
+  "cost_usd": 0.0934,
   "agents": {
     "conti": {
       "calls": 26,
-      "go": 17,
-      "wait": 9,
+      "go": 18,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "go",
-        "ts": 1780301373.633822
+        "ts": 1780301804.639014
       }
     },
     "tai": {
@@ -29,35 +29,48 @@
       "wait": 19,
       "skip": 4,
       "last": {
-        "code": "RDDT",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780301373.633822
+        "ts": 1780301804.639014
       }
     },
     "combo": {
       "calls": 26,
       "go": 11,
-      "wait": 9,
-      "skip": 6,
+      "wait": 10,
+      "skip": 5,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780301373.633822
+        "code": "ALAB",
+        "verdict": "wait",
+        "ts": 1780301804.639014
       }
     },
     "ortho": {
       "calls": 26,
       "go": 11,
-      "wait": 9,
-      "skip": 6,
+      "wait": 10,
+      "skip": 5,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780301373.633822
+        "code": "ALAB",
+        "verdict": "wait",
+        "ts": 1780301804.639014
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780301804.639014,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "TA與Bear分析皆因系統錯誤缺失，無法評估技術面結構及潛在風險。股價(349.17)目前也低於進場點(354.53)。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA與Bear分析皆因系統錯誤缺失，無法評估技術面結構及潛在風險。股價(349.17)目前也低於進場點(354.53)。"
+      ]
+    },
     {
       "code": "RDDT",
       "ts": 1780301373.633822,
@@ -121,17 +134,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "現價429已偏離突破點，24.3%乖離搭8.22%ADR，直接追高極易因極窄停損被掃，故等待回踩425.5。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780298916.967167,
-      "context": "wait",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "股價較 EMA10 延伸達 24.4% 且訊號強度 (SLV=1) 過弱，突破動能不穩，潛在回檔風險高，不符合追擊條件。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
