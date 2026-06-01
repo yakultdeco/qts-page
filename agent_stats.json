@@ -1,16 +1,16 @@
 {
-  "ts": 1780306828.164921,
+  "ts": 1780307205.690662,
   "total": 26,
   "by_verdict": {
-    "go": 11,
+    "go": 12,
     "wait": 6,
-    "skip": 9
+    "skip": 8
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 44509,
-  "input_tokens": 160178,
+  "cache_reads_tokens": 45504,
+  "input_tokens": 167395,
   "llm_calls": 21,
-  "cost_usd": 0.0919,
+  "cost_usd": 0.0967,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,46 +18,57 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780306823.8661911
+        "ts": 1780307204.034374
       }
     },
     "tai": {
       "calls": 26,
-      "go": 3,
-      "wait": 19,
+      "go": 4,
+      "wait": 18,
       "skip": 4,
       "last": {
-        "code": "AMD",
-        "verdict": "wait",
-        "ts": 1780306823.8661911
+        "code": "CRWD",
+        "verdict": "go",
+        "ts": 1780307204.034374
       }
     },
     "combo": {
       "calls": 26,
-      "go": 11,
+      "go": 12,
       "wait": 6,
-      "skip": 9,
+      "skip": 8,
       "last": {
-        "code": "AMD",
-        "verdict": "skip",
-        "ts": 1780306823.8661911
+        "code": "CRWD",
+        "verdict": "go",
+        "ts": 1780307204.034374
       }
     },
     "ortho": {
       "calls": 26,
-      "go": 11,
+      "go": 12,
       "wait": 6,
-      "skip": 9,
+      "skip": 8,
       "last": {
-        "code": "AMD",
-        "verdict": "skip",
-        "ts": 1780306823.8661911
+        "code": "CRWD",
+        "verdict": "go",
+        "ts": 1780307204.034374
       }
     }
   },
   "recent": [
+    {
+      "code": "CRWD",
+      "ts": 1780307204.034374,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "VCP 整理品質佳 (TA)，大盤多頭順風 (Context)。關鍵在突破 677.5 時的量能確認，以避免假突破風險 (Bear)。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "AMD",
       "ts": 1780306823.8661911,
@@ -125,19 +136,6 @@
       "head": "股價距 EMA10 延伸 16.8% 過高，且原停損 23.8% 無法接受。儘管大盤強勢，此突破風報比極差，故選擇跳過。",
       "ctx_reasons": [],
       "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780304983.803762,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "TA agent 失敗導致技術面判斷依據缺失，且熊方指出股價已明確跌破 660 短期支撐區間，動能不足以支持突破 677.5。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA agent 失敗導致技術面判斷依據缺失，且熊方指出股價已明確跌破 660 短期支撐區間，動能不足以支持突破 677.5。"
-      ]
     },
     {
       "code": "2383",
