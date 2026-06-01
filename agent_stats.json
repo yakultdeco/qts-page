@@ -1,5 +1,5 @@
 {
-  "ts": 1780303119.155369,
+  "ts": 1780303567.2191129,
   "total": 26,
   "by_verdict": {
     "go": 11,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 51562,
-  "input_tokens": 159039,
+  "input_tokens": 166194,
   "llm_calls": 21,
-  "cost_usd": 0.0936,
+  "cost_usd": 0.0969,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780302889.607751
+        "ts": 1780303564.950196
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 19,
       "skip": 5,
       "last": {
-        "code": "HUT",
-        "verdict": "skip",
-        "ts": 1780302889.607751
+        "code": "RDDT",
+        "verdict": "wait",
+        "ts": 1780303564.950196
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 8,
       "skip": 7,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "skip",
-        "ts": 1780302889.607751
+        "ts": 1780303564.950196
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 8,
       "skip": 7,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "skip",
-        "ts": 1780302889.607751
+        "ts": 1780303564.950196
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780303564.950196,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "個股距 EMA10 延伸 9.4% 偏遠且停損高達 16.79%，短線回檔掃停損機率高，不符風報比。訊號強度 1 也暗示突破量能不確定。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "HUT",
       "ts": 1780302889.607751,
@@ -125,17 +136,6 @@
       "ta_reasons": [
         "TA與Bear分析皆因系統錯誤缺失，無法評估技術面結構及潛在風險。股價(349.17)目前也低於進場點(354.53)。"
       ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780301373.633822,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "該股停損距離高達 16.79%，遠超動能策略可接受範圍 (3-8%)。TA Agent 運行失敗導致無法評估進場技術結構與風報比，無法做出安全交易決策。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "2383",
