@@ -1,16 +1,16 @@
 {
-  "ts": 1780300177.0156128,
+  "ts": 1780300422.954148,
   "total": 26,
   "by_verdict": {
-    "go": 10,
+    "go": 11,
     "wait": 10,
-    "skip": 6
+    "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 55702,
-  "input_tokens": 160496,
+  "cache_reads_tokens": 62842,
+  "input_tokens": 175002,
   "llm_calls": 21,
-  "cost_usd": 0.0939,
+  "cost_usd": 0.1017,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,46 +18,79 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "HUT",
         "verdict": "go",
-        "ts": 1780300174.8507788
+        "ts": 1780300421.150934
       }
     },
     "tai": {
       "calls": 26,
-      "go": 2,
-      "wait": 20,
+      "go": 3,
+      "wait": 19,
       "skip": 4,
       "last": {
-        "code": "PANW",
+        "code": "HUT",
         "verdict": "wait",
-        "ts": 1780300174.8507788
+        "ts": 1780300421.150934
       }
     },
     "combo": {
       "calls": 26,
-      "go": 10,
+      "go": 11,
       "wait": 10,
-      "skip": 6,
+      "skip": 5,
       "last": {
-        "code": "PANW",
+        "code": "HUT",
         "verdict": "wait",
-        "ts": 1780300174.8507788
+        "ts": 1780300421.150934
       }
     },
     "ortho": {
       "calls": 26,
-      "go": 10,
+      "go": 11,
       "wait": 10,
-      "skip": 6,
+      "skip": 5,
       "last": {
-        "code": "PANW",
+        "code": "HUT",
         "verdict": "wait",
-        "ts": 1780300174.8507788
+        "ts": 1780300421.150934
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780300421.150934,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價距 EMA10 延伸達 16.8% 過遠，且原始停損幅 23.8% (約 3 倍 ADR) 過寬，導致風報比極差。需等待條件改善。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780300357.267252,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤極強，個股 VCP 結構完整。雖 5.5% 稍延伸，但 6.5% 停損符合 1.5x ADR。嚴守 677.5 進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780300319.559558,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損18.1%遠超1.5x ADR(8.37%)限制，且偏離EMA10達12.8%，極易面臨均值回歸殺盤。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "PANW",
       "ts": 1780300174.8507788,
@@ -294,39 +327,6 @@
         "TA｜外資單日大買 +1,857 張，顯示機構資金積極進場。",
         "TA｜ADR 達 7.67% 波動充足，動能股特性明確，有利短期空間。"
       ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780298262.183685,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損距離高達 23.8% (進場價 126.26 vs 停損價 96.2)，不符風險管理原則。TA Agent 失敗導致技術面分析缺失，無法評估風報比及進場時機。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780298234.598732,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損距離達 18.1% 遠超 1.5 倍 ADR (8.37%) 風控限制。股價距 EMA10 延伸 12.8% 過高，追高風險大。VCP 結構鬆散。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780298201.042948,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "因 TA agent 無法提供有效技術分析，無法評估突破結構、量能與動能是否支持進場，故暫緩操作。同時考量 Bear advocate 指出的 6.55% 較寬停損距離。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "6147",
