@@ -108,75 +108,33 @@
     "last_at_vote": 1200.0
   },
   "4760": {
-    "verdict": "skip",
-    "score": 32,
+    "verdict": "wait",
+    "score": 0,
     "context": {
-      "score": 52,
+      "score": 0,
       "verdict": "wait"
     },
     "ta": {
-      "score": 12,
-      "verdict": "skip"
+      "score": 0,
+      "verdict": "wait"
     },
-    "entry_plan": {
-      "entry": 440.0,
-      "stop": 437.5,
-      "stop_basis": "掃描日整理低點下方（今日低 437.5）"
-    },
+    "entry_plan": {},
     "reasons": [
-      "至少一方否決",
-      "脈絡｜無任何新聞題材支撐，純技術突破，難以判斷驅動力來源",
-      "脈絡｜距 EMA10 延伸達 24.3%，追價風險偏高，等待回踩確認較穩",
-      "TA｜距 EMA10 延伸 24.3%，遠超 5% 上限，已嚴重過熱不宜追",
-      "TA｜三大法人合計賣超 65 張（外資 -26、自營 -39），籌碼呈流出"
+      "雙方觀望",
+      "脈絡｜context_agent 失敗: BadRequestError",
+      "TA｜ta_agent 失敗: BadRequestError"
     ],
-    "resonance": {
-      "trend": 1,
-      "momentum": -2,
-      "volume": 1,
-      "structure": 0,
-      "total": 0
-    },
-    "triggers": [
-      {
-        "id": "T1",
-        "for": "abort",
-        "desc": "現價高於 EMA10 逾 20%，動能嚴重過熱，應廢棄進場",
-        "cond": {
-          "type": "price_vs_ema10",
-          "op": ">="
-        }
-      },
-      {
-        "id": "T2",
-        "for": "abort",
-        "desc": "量能步調未達 150%，缺乏爆量支撐，不符強量突破要求",
-        "cond": {
-          "type": "vol_pace",
-          "op": "<",
-          "value": 150.0
-        }
-      },
-      {
-        "id": "T3",
-        "for": "entry",
-        "desc": "若回踩整理後量比重回 1.5 倍以上，可重新評估",
-        "cond": {
-          "type": "vol_ratio",
-          "op": ">=",
-          "value": 1.5
-        }
-      }
-    ],
+    "resonance": {},
+    "triggers": [],
     "_usage": {
-      "in": 1283,
-      "out": 663,
+      "in": 0,
+      "out": 0,
       "cw": 0,
-      "cr": 2240
+      "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780283706.7903485,
-    "last_at_vote": 440.0
+    "ts": 1780285243.6351333,
+    "last_at_vote": 431.0
   },
   "6291": {
     "verdict": "wait",
