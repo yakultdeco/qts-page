@@ -1,185 +1,134 @@
 {
-  "ts": 1780296918.442854,
-  "total": 17,
+  "ts": 1780297017.514399,
+  "total": 7,
   "by_verdict": {
-    "go": 5,
-    "wait": 11,
-    "skip": 1
+    "go": 1,
+    "wait": 6,
+    "skip": 0
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 24160,
-  "input_tokens": 72907,
-  "llm_calls": 10,
-  "cost_usd": 0.05,
+  "cache_reads_tokens": 0,
+  "input_tokens": 55991,
+  "llm_calls": 7,
+  "cost_usd": 0.0367,
   "agents": {
     "conti": {
-      "calls": 17,
-      "go": 7,
-      "wait": 10,
+      "calls": 7,
+      "go": 4,
+      "wait": 3,
       "skip": 0,
       "last": {
-        "code": "8064",
-        "verdict": "go",
-        "ts": 1780296328.187509
+        "code": "RDDT",
+        "verdict": "wait",
+        "ts": 1780297015.7086122
       }
     },
     "tai": {
-      "calls": 17,
-      "go": 6,
-      "wait": 10,
-      "skip": 1,
+      "calls": 7,
+      "go": 4,
+      "wait": 3,
+      "skip": 0,
       "last": {
-        "code": "8064",
-        "verdict": "wait",
-        "ts": 1780296328.187509
+        "code": "RDDT",
+        "verdict": "go",
+        "ts": 1780297015.7086122
       }
     },
     "combo": {
-      "calls": 17,
-      "go": 5,
-      "wait": 11,
-      "skip": 1,
+      "calls": 7,
+      "go": 1,
+      "wait": 6,
+      "skip": 0,
       "last": {
-        "code": "8064",
-        "verdict": "go",
-        "ts": 1780296328.187509
+        "code": "RDDT",
+        "verdict": "wait",
+        "ts": 1780297015.7086122
       }
     },
     "ortho": {
-      "calls": 17,
-      "go": 5,
-      "wait": 11,
-      "skip": 1,
+      "calls": 7,
+      "go": 1,
+      "wait": 6,
+      "skip": 0,
       "last": {
-        "code": "8064",
-        "verdict": "go",
-        "ts": 1780296328.187509
+        "code": "RDDT",
+        "verdict": "wait",
+        "ts": 1780297015.7086122
       }
     }
   },
   "recent": [
     {
-      "code": "8064",
-      "ts": 1780296328.187509,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤環境多頭，有利個股表現。",
-        "脈絡｜無明顯負面新聞或產業雜音。"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
       "code": "RDDT",
-      "ts": 1780296176.841648,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭，RDDT ADR 5.94% 股性活潑，現價距 EMA10 延伸 9.4% 合理，具續漲潛力。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780296172.6803489,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "ALAB 具備高 ADR (9.04%) 及強勢 C 型態，大盤及費半皆多頭。雖然停損較遠，但考慮其動能強度，風險值得承受。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780296164.758519,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "AMD 雖動能強勁且大盤有利，但 Ext_pct 達 12.8%，乖離過大，潛在回測風險高，建議等待回檔。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780296164.10613,
+      "ts": 1780297015.7086122,
       "context": "wait",
       "ta": "go",
       "final": "wait",
       "short_circuit": false,
-      "head": "PANW 雖具突破潛力，但現價距進場價偏高 (257.77 vs 261.41)，且停損 241 距離 ADR 偏寬 (7.8% vs 4.52%)。等待回測 249.5-250 區間能提供更好風報比。",
+      "head": "TA 雖然建議 go，但量能 resonance 0 且 Bear 指出突破失敗的風險。考量停損寬度過大 (16.8%)，需等待更明確訊號。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA 雖然建議 go，但量能 resonance 0 且 Bear 指出突破失敗的風險。考量停損寬度過大 (16.8%)，需等待更明確訊號。"
+      ]
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780297013.663347,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "ALAB 具備 AI 題材與突破動能，但高 ADR 與停損距離過大，且站穩關鍵價位有待觀察，故傾向等待確認。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
     {
       "code": "HUT",
-      "ts": 1780296161.719976,
+      "ts": 1780297006.5879529,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "考量 Bear advocate 提出的停損偏寬（23.8%），且TA的resonance volume=0，建議等待更明確的量能配合，或回檔提供更好風報比。現價124.24也未達突破價。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780297004.654274,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "CRWD型態良好(VCP B, 突破 A)，且大盤與費半皆處於多頭。儘管股價已延伸5.5%，但動能強勁仍提供合理風報比。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780297003.3084311,
       "context": "go",
       "ta": "wait",
       "final": "wait",
       "short_circuit": false,
-      "head": "TA agent 故障導致缺乏關鍵技術分析，無法確認 126.26 進場價的有效性，因此選擇等待。Context 面雖樂觀，但需技術面驗證。",
+      "head": "大盤多頭但 TA agent 錯誤，Bear advocate 提出 500 點跌破風險，故等待回測再評估。目前停損 18% 過寬。",
       "ctx_reasons": [],
-      "ta_reasons": [
-        "TA agent 故障導致缺乏關鍵技術分析，無法確認 126.26 進場價的有效性，因此選擇等待。Context 面雖樂觀，但需技術面驗證。"
-      ]
+      "ta_reasons": []
     },
     {
-      "code": "CRWD",
-      "ts": 1780296161.378752,
+      "code": "PANW",
+      "ts": 1780297001.5671082,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
       "short_circuit": false,
-      "head": "由於 Context agent 和 TA agent 失敗，市場資訊嚴重不足，無法建立完整交易劇本。",
+      "head": "Context 和 TA agent 失敗，使多方論點缺失。Bear 提示股價已延伸 3.4%，且若突破失敗恐快速回落。暫不追高，等待 250 附近承接風險較低。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
     {
       "code": "4760",
-      "ts": 1780295350.284847,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤環境多頭，有利個股表現。",
-        "脈絡｜無明顯利空新聞，脈絡中性偏多。"
-      ],
-      "ta_reasons": [
-        "TA｜訊號強度slv 4，評分 9.0，顯示突破動能強勁。",
-        "TA｜VCP等級 C，突破品質 B，型態良好，具備上攻潛力。"
-      ]
-    },
-    {
-      "code": "6147",
-      "ts": 1780295349.062577,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤環境為明確多頭，有利個股表現。",
-        "脈絡｜無負面新聞，脈絡中性偏多。"
-      ],
-      "ta_reasons": [
-        "TA｜現價 285.5 站穩突破點 281.0，整理已獲初步確認",
-        "TA｜ADR 達 7.95% 顯示波動活躍，適合動能策略"
-      ]
-    },
-    {
-      "code": "2303",
-      "ts": 1780291992.5669508,
+      "ts": 1780296993.727388,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -191,107 +140,6 @@
       "ta_reasons": [
         "TA｜ta_agent 失敗: RuntimeError"
       ]
-    },
-    {
-      "code": "5289",
-      "ts": 1780291845.543669,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "3135",
-      "ts": 1780288602.253212,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "2464",
-      "ts": 1780287969.497239,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "8358",
-      "ts": 1780286988.388049,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6274",
-      "ts": 1780286211.879992,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "3481",
-      "ts": 1780285631.120352,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780278606.8050618,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "entry/stop 結構根本性錯置：現價 1235 高於停損 1225，進場即觸損；延伸 11.2% 遠超安全門檻，bear_score 88 且三大 invalidation 均屬高機率，無可執行之正期望值交易。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     }
   ]
 }
