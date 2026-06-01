@@ -108,35 +108,76 @@
     "last_at_vote": 1200.0
   },
   "4760": {
-    "verdict": "wait",
-    "score": 0,
-    "strategy": "",
-    "thesis": "",
+    "verdict": "go",
+    "score": 72,
+    "strategy": "動能追擊",
+    "thesis": "股價突破整理，儘管離EMA10偏遠但動能強勁，搭配爆量確認，可望續漲一段。",
     "context": {
-      "score": 0,
-      "verdict": "wait"
+      "score": 80,
+      "verdict": "go"
     },
     "ta": {
-      "score": 0,
-      "verdict": "wait"
+      "score": 65,
+      "verdict": "go"
     },
-    "entry_plan": {},
+    "entry_plan": {
+      "entry": 429.0,
+      "stop": 425.5,
+      "stop_basis": "突破點，跌破則視為假突破"
+    },
     "reasons": [
-      "雙方觀望",
-      "脈絡｜context_agent 失敗: BadRequestError",
-      "TA｜ta_agent 失敗: BadRequestError"
+      "雙方放行",
+      "脈絡｜大盤環境為明確多頭。",
+      "脈絡｜沒有負面新聞題材干擾。",
+      "TA｜強量突破訊號SLV 4，突破確認且有動能支撐。",
+      "TA｜突破價425.5，現價429.0，顯示市場追價意願。"
     ],
-    "resonance": {},
-    "triggers": [],
+    "resonance": {
+      "trend": 2,
+      "momentum": 1,
+      "volume": 2,
+      "structure": 1,
+      "total": 6
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "量能步調維持強勁，代表買盤持續",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "股價能持續站穩在EMA10之上",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "若跌破突破點425.5，顯示假突破",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
     "_usage": {
-      "in": 0,
-      "out": 0,
+      "in": 3354,
+      "out": 555,
       "cw": 0,
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780291248.389001,
-    "last_at_vote": 429.5
+    "ts": 1780293065.0041304,
+    "last_at_vote": 429.0
   },
   "6291": {
     "verdict": "wait",
