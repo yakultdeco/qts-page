@@ -1,5 +1,5 @@
 {
-  "ts": 1780290063.997067,
+  "ts": 1780290138.422364,
   "total": 17,
   "by_verdict": {
     "go": 0,
@@ -18,9 +18,9 @@
       "wait": 17,
       "skip": 0,
       "last": {
-        "code": "6147",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780289783.3701499
+        "ts": 1780290135.1739771
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "6147",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780289783.3701499
+        "ts": 1780290135.1739771
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "6147",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780289783.3701499
+        "ts": 1780290135.1739771
       }
     },
     "ortho": {
@@ -51,13 +51,28 @@
       "wait": 16,
       "skip": 1,
       "last": {
-        "code": "6147",
+        "code": "2303",
         "verdict": "wait",
-        "ts": 1780289783.3701499
+        "ts": 1780290135.1739771
       }
     }
   },
   "recent": [
+    {
+      "code": "2303",
+      "ts": 1780290135.1739771,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: BadRequestError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: BadRequestError"
+      ]
+    },
     {
       "code": "6147",
       "ts": 1780289783.3701499,
@@ -211,21 +226,6 @@
     {
       "code": "3135",
       "ts": 1780288602.253212,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
-      ]
-    },
-    {
-      "code": "2303",
-      "ts": 1780288318.786686,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
