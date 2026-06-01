@@ -1,5 +1,5 @@
 {
-  "ts": 1780304986.493088,
+  "ts": 1780305349.2432482,
   "total": 26,
   "by_verdict": {
     "go": 12,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 50620,
-  "input_tokens": 157916,
+  "input_tokens": 157950,
   "llm_calls": 21,
-  "cost_usd": 0.0913,
+  "cost_usd": 0.0915,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,20 +18,20 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "CRWD",
+        "code": "HUT",
         "verdict": "go",
-        "ts": 1780304983.803762
+        "ts": 1780305346.5019982
       }
     },
     "tai": {
       "calls": 26,
       "go": 2,
-      "wait": 19,
-      "skip": 5,
+      "wait": 20,
+      "skip": 4,
       "last": {
-        "code": "CRWD",
+        "code": "HUT",
         "verdict": "wait",
-        "ts": 1780304983.803762
+        "ts": 1780305346.5019982
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 6,
       "skip": 8,
       "last": {
-        "code": "CRWD",
+        "code": "HUT",
         "verdict": "skip",
-        "ts": 1780304983.803762
+        "ts": 1780305346.5019982
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 6,
       "skip": 8,
       "last": {
-        "code": "CRWD",
+        "code": "HUT",
         "verdict": "skip",
-        "ts": 1780304983.803762
+        "ts": 1780305346.5019982
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780305346.5019982,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "股價距 EMA10 延伸 16.8% 過高，且原停損 23.8% 無法接受。儘管大盤強勢，此突破風報比極差，故選擇跳過。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "CRWD",
       "ts": 1780304983.803762,
@@ -130,17 +141,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "個股距 EMA10 延伸 9.4% 偏遠且停損高達 16.79%，短線回檔掃停損機率高，不符風報比。訊號強度 1 也暗示突破量能不確定。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780302889.607751,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損幅度 (23.8%) 遠超 1.5 倍 ADR (11.7%)，風險過高。股價已從 EMA10 延伸 16.8%，且 SLV 僅 1，突破強度不足。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
