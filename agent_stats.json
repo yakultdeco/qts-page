@@ -1,238 +1,163 @@
 {
-  "ts": 1780049726.147511,
-  "total": 12,
+  "ts": 1780275775.1891687,
+  "total": 6,
   "by_verdict": {
     "go": 0,
-    "wait": 2,
-    "skip": 10
+    "wait": 1,
+    "skip": 5
   },
-  "short_circuits": 7,
-  "cache_reads_tokens": 35688,
-  "input_tokens": 15055,
-  "llm_calls": 10,
-  "cost_usd": 0.1667,
+  "short_circuits": 0,
+  "cache_reads_tokens": 11200,
+  "input_tokens": 7746,
+  "llm_calls": 6,
+  "cost_usd": 0.099,
   "agents": {
     "conti": {
-      "calls": 12,
+      "calls": 6,
       "go": 0,
-      "wait": 5,
-      "skip": 7,
+      "wait": 6,
+      "skip": 0,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780049506.131938
+        "code": "6197",
+        "verdict": "wait",
+        "ts": 1780275697.7415857
       }
     },
     "tai": {
-      "calls": 5,
+      "calls": 6,
       "go": 0,
-      "wait": 2,
-      "skip": 3,
+      "wait": 1,
+      "skip": 5,
       "last": {
-        "code": "ALAB",
+        "code": "6197",
         "verdict": "skip",
-        "ts": 1780049506.131938
+        "ts": 1780275697.7415857
       }
     },
     "combo": {
-      "calls": 12,
+      "calls": 6,
       "go": 0,
-      "wait": 2,
-      "skip": 10,
+      "wait": 1,
+      "skip": 5,
       "last": {
-        "code": "ALAB",
+        "code": "6197",
         "verdict": "skip",
-        "ts": 1780049506.131938
+        "ts": 1780275697.7415857
       }
     },
     "ortho": {
-      "calls": 12,
+      "calls": 6,
       "go": 0,
-      "wait": 2,
-      "skip": 17,
+      "wait": 1,
+      "skip": 5,
       "last": {
-        "code": "ALAB",
+        "code": "6197",
         "verdict": "skip",
-        "ts": 1780049506.131938
+        "ts": 1780275697.7415857
       }
     }
   },
   "recent": [
     {
-      "code": "ALAB",
-      "ts": 1780049506.131938,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破尚未確認，進場依據薄弱",
-        "脈絡｜距 EMA10 延伸 24.4%，嚴重過熱，追高風險極高"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780049505.948378,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破確認度最低，進場依據薄弱",
-        "脈絡｜距 EMA10 延伸達 9.4%，追高風險高，回撤至停損幅度逾 16%"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780049502.868709,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅1且距EMA10延伸16.8%，追高風險極高，技術面過熱",
-        "脈絡｜評分14分極低，顯示整體訊號品質不佳，缺乏可靠突破依據"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780049502.73476,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破確認度極低，尚未達最低進場標準（slv≥3）",
-        "脈絡｜距 EMA10 已延伸 5.5%，追高風險高，無良好風險報酬比"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780049502.628556,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破確認度極低，尚未達有效進場門檻",
-        "脈絡｜距 EMA10 延伸達 12.8%，追高風險高，回撤至停損幅度逾 18%"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780049502.543505,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
-      "head": "至少一方否決",
-      "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破尚未確認，進場依據薄弱",
-        "脈絡｜距 EMA10 延伸 3.4% 且評分僅 15，追高風險高於潛在獲利"
-      ],
-      "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "6531",
-      "ts": 1780049149.2806559,
+      "code": "6197",
+      "ts": 1780275697.7415857,
       "context": "wait",
       "ta": "skip",
       "final": "skip",
       "short_circuit": false,
-      "head": "ext=11.2% 遠超 5% 上限，融資單日暴增 +607 張籌碼明顯鬆散，三方中最具量化依據的 TA（score=28）與 Bear（bear_score=82）均反對進場，風報比在延伸 11.2% 下已嚴重惡化，無任何催化劑抵消上述疑",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "QCOM",
-      "ts": 1780047837.80252,
-      "context": "skip",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": true,
       "head": "至少一方否決",
       "ctx_reasons": [
-        "脈絡｜訊號強度僅 slv=1，突破確認度不足，尚未達 slv=3 以上的有效突破門檻",
-        "脈絡｜現價 243 遠低於進場價 258，代表尚未觸發進場條件，追高空間達 6%+，風險報酬不對稱"
+        "脈絡｜大盤加權與櫃買均呈多頭排列，系統性環境支持進場",
+        "脈絡｜slv=4 強量突破且評分 9.0，技術訊號強，但距 EMA10 延伸達 13.8%，追高風險偏高"
       ],
       "ta_reasons": [
-        "TA｜(context 已 skip，省略 TA 呼叫)"
-      ]
-    },
-    {
-      "code": "8358",
-      "ts": 1780043160.459732,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "ext=15.7% 遠超追高紅線，停損設 565 距現價 43 點（7.1%）已超過 ADR 6.76%，單日波動即可觸及停損；TA resonance total 僅+2 且 momentum=-1，進場當下無量能支撐（slv=3），風報",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6291",
-      "ts": 1780041158.5521238,
-      "context": "wait",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "TA resonance total=-2、ext=19.6%（遠超5%上限），加上停損666高於進場655導致風險參數自相矛盾（現價679進場停損空間僅1.9% vs ADR 6.53%），三項結構性缺陷同時成立，無法構成有效進場條件。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA resonance total=-2、ext=19.6%（遠超5%上限），加上停損666高於進場655導致風險參數自相矛盾（現價679進場停損空間僅1.9% vs ADR 6.53%），三項結構性缺陷同時成立，無法構成有效進場條件。"
-      ]
-    },
-    {
-      "code": "2464",
-      "ts": 1780024366.101558,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
+        "TA｜距 EMA10 延伸 13.8%，遠超 5% 上限，進場即處於過熱延伸區",
+        "TA｜外資單日賣超 598 張、合計法人賣超 537 張，籌碼面明顯偏空"
       ]
     },
     {
       "code": "6147",
-      "ts": 1780024365.0878038,
+      "ts": 1780275688.4515812,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤雙指數均呈多頭排列，系統性風險低，有利個股表現",
+        "脈絡｜無任何新聞題材支撐，純技術突破，缺乏基本面催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 20.4%，遠超 5% 上限，嚴重過熱不宜追",
+        "TA｜外資單日賣超 11,286 張，法人合計賣超 10,237 張，籌碼明顯鬆散"
+      ]
+    },
+    {
+      "code": "2464",
+      "ts": 1780275686.9394019,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤加權與櫃買均呈多頭排列，系統性風險低，有利個股動能延續",
+        "脈絡｜當日無任何新聞題材支撐，突破純屬技術面，基本面驅動力不明"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 13.4%，遠超 5% 上限，追高風險極高",
+        "TA｜融資單日暴增 +891 張（餘額 14,387 張），籌碼鬆動訊號明確"
+      ]
+    },
+    {
+      "code": "6531",
+      "ts": 1780275685.140906,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
       "short_circuit": false,
       "head": "雙方觀望",
       "ctx_reasons": [
-        "脈絡｜context_agent 失敗: BadRequestError"
+        "脈絡｜大盤多頭且技術訊號強（slv=4、評分9.0），基礎環境有利",
+        "脈絡｜無任何新聞題材佐證，突破缺乏基本面催化劑，難判斷持續性"
       ],
       "ta_reasons": [
-        "TA｜ta_agent 失敗: BadRequestError"
+        "TA｜距 EMA10 延伸 5.7%，已達拒絕進場紅線（>5%），追高風險高",
+        "TA｜融資單日 +388 張，餘額 12,395 張，籌碼有鬆散跡象需觀察"
+      ]
+    },
+    {
+      "code": "3532",
+      "ts": 1780275684.421466,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤多頭且台勝科屬半導體/石英材料族群，環境有利",
+        "脈絡｜無任何新聞題材支撐，突破缺乏基本面催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 17.0%，遠超 5% 上限，已嚴重過熱不宜追價",
+        "TA｜三大法人合計賣超 558 張（外資 -580 張），籌碼面偏空壓制"
+      ]
+    },
+    {
+      "code": "8358",
+      "ts": 1780275674.329332,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "至少一方否決",
+      "ctx_reasons": [
+        "脈絡｜大盤維持多頭結構，系統性風險低，有利個股動能延續",
+        "脈絡｜無任何新聞題材支撐，純技術突破難判斷後續催化劑"
+      ],
+      "ta_reasons": [
+        "TA｜距 EMA10 延伸 12.5%，遠超 5% 上限，嚴重過熱不宜追價",
+        "TA｜現價 654 距突破點 578 已漲 13.1%，進場風報比極差"
       ]
     }
   ]
