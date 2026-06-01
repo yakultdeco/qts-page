@@ -1,63 +1,131 @@
 {
-  "ts": 1780296083.924856,
+  "ts": 1780296180.719761,
   "total": 17,
   "by_verdict": {
-    "go": 7,
-    "wait": 9,
+    "go": 5,
+    "wait": 11,
     "skip": 1
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 11896,
-  "input_tokens": 95206,
+  "cache_reads_tokens": 24160,
+  "input_tokens": 83849,
   "llm_calls": 10,
-  "cost_usd": 0.0598,
+  "cost_usd": 0.0568,
   "agents": {
     "conti": {
       "calls": 17,
-      "go": 9,
-      "wait": 8,
+      "go": 7,
+      "wait": 10,
       "skip": 0,
       "last": {
-        "code": "4760",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780295350.284847
+        "ts": 1780296176.841648
       }
     },
     "tai": {
       "calls": 17,
-      "go": 9,
-      "wait": 7,
+      "go": 7,
+      "wait": 9,
       "skip": 1,
       "last": {
-        "code": "4760",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780295350.284847
+        "ts": 1780296176.841648
       }
     },
     "combo": {
       "calls": 17,
-      "go": 7,
-      "wait": 9,
+      "go": 5,
+      "wait": 11,
       "skip": 1,
       "last": {
-        "code": "4760",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780295350.284847
+        "ts": 1780296176.841648
       }
     },
     "ortho": {
       "calls": 17,
-      "go": 7,
-      "wait": 9,
+      "go": 5,
+      "wait": 11,
       "skip": 1,
       "last": {
-        "code": "4760",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780295350.284847
+        "ts": 1780296176.841648
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780296176.841648,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭，RDDT ADR 5.94% 股性活潑，現價距 EMA10 延伸 9.4% 合理，具續漲潛力。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780296172.6803489,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "ALAB 具備高 ADR (9.04%) 及強勢 C 型態，大盤及費半皆多頭。雖然停損較遠，但考慮其動能強度，風險值得承受。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780296164.758519,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "AMD 雖動能強勁且大盤有利，但 Ext_pct 達 12.8%，乖離過大，潛在回測風險高，建議等待回檔。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780296164.10613,
+      "context": "wait",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "PANW 雖具突破潛力，但現價距進場價偏高 (257.77 vs 261.41)，且停損 241 距離 ADR 偏寬 (7.8% vs 4.52%)。等待回測 249.5-250 區間能提供更好風報比。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "HUT",
+      "ts": 1780296161.719976,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "TA agent 故障導致缺乏關鍵技術分析，無法確認 126.26 進場價的有效性，因此選擇等待。Context 面雖樂觀，但需技術面驗證。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA agent 故障導致缺乏關鍵技術分析，無法確認 126.26 進場價的有效性，因此選擇等待。Context 面雖樂觀，但需技術面驗證。"
+      ]
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780296161.378752,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "由於 Context agent 和 TA agent 失敗，市場資訊嚴重不足，無法建立完整交易劇本。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "4760",
       "ts": 1780295350.284847,
@@ -100,84 +168,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "大盤多頭強勁，東捷以訊號強度 4 帶量突破整理區間 153.5，Ext 6.2% 合理，具備動能上漲潛力。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780294348.289449,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤處於多頭，有利個股表現。",
-        "脈絡｜無負面新聞，脈絡中性偏多。"
-      ],
-      "ta_reasons": [
-        "TA｜現價 167.69 已突破進場點 167.72，顯示追價動能強勁。",
-        "TA｜VCP 等級 B 顯示股價經過良好整理，突破品質 C 尚可。"
-      ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780294347.057451,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤及費半皆為多頭，有利個股表現。",
-        "脈絡｜Astera Labs (ALAB) 作為AI晶片互連技術領導者，長期受惠AI趨勢。"
-      ],
-      "ta_reasons": [
-        "TA｜現價349.17靠近突破點354.53，動能訊號佳。",
-        "TA｜ADR高達9.04%，顯示此股波動性強，有快速拉升潛力。"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780294338.8858612,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭，PANW 技術面突破品質A、VCP等級B，且距離EMA10僅延伸3.4%，適合動能追蹤。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780294338.793015,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "CRWD 突破整理且訊號品質優異，距離 EMA10 延伸 5.5% 尚可追價。大盤多頭提供良好環境。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780294338.66634,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價距建議停損 96.2 達 22.6%，風險過大。TA 的 116.0 停損提供更好風報比，但仍需等待回踩。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780294337.815021,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "AMD 雖有突破企圖，但現價 518.09 仍低於進場價 527.2，且缺少 Bear 的有效風險評估，故先等待回檔。TA 的停損點 490 較原始停損 431.6 更為合理。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
