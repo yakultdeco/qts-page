@@ -1,5 +1,5 @@
 {
-  "ts": 1780299905.1901922,
+  "ts": 1780300177.0156128,
   "total": 26,
   "by_verdict": {
     "go": 10,
@@ -7,10 +7,10 @@
     "skip": 6
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 51628,
-  "input_tokens": 160546,
+  "cache_reads_tokens": 55702,
+  "input_tokens": 160496,
   "llm_calls": 21,
-  "cost_usd": 0.093,
+  "cost_usd": 0.0939,
   "agents": {
     "conti": {
       "calls": 26,
@@ -18,9 +18,9 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "4760",
+        "code": "PANW",
         "verdict": "go",
-        "ts": 1780299693.865713
+        "ts": 1780300174.8507788
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 20,
       "skip": 4,
       "last": {
-        "code": "4760",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780299693.865713
+        "ts": 1780300174.8507788
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 10,
       "skip": 6,
       "last": {
-        "code": "4760",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780299693.865713
+        "ts": 1780300174.8507788
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 10,
       "skip": 6,
       "last": {
-        "code": "4760",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780299693.865713
+        "ts": 1780300174.8507788
       }
     }
   },
   "recent": [
+    {
+      "code": "PANW",
+      "ts": 1780300174.8507788,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "大盤多頭環境下，PANW 結構緊密且 ADR 具動能。但目前 TA 顯示量能不足 (volume=0)，且停損 7.8% 高於 ADR 4.52%，故需等待帶量突破確認後再行進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "4760",
       "ts": 1780299693.865713,
@@ -314,17 +325,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "因 TA agent 無法提供有效技術分析，無法評估突破結構、量能與動能是否支持進場，故暫緩操作。同時考量 Bear advocate 指出的 6.55% 較寬停損距離。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780298160.669636,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價 257.77 仍低於突破點 261.41，且所有 Agent 均強調量能確認的重要性。需等待帶量突破才能降低假突破風險並提升成功率。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
