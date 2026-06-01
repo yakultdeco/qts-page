@@ -1,63 +1,141 @@
 {
-  "ts": 1780294259.0583081,
+  "ts": 1780294350.1804101,
   "total": 17,
   "by_verdict": {
-    "go": 0,
-    "wait": 16,
+    "go": 4,
+    "wait": 12,
     "skip": 1
   },
   "short_circuits": 0,
   "cache_reads_tokens": 11896,
-  "input_tokens": 2661,
-  "llm_calls": 1,
-  "cost_usd": 0.0066,
+  "input_tokens": 66009,
+  "llm_calls": 7,
+  "cost_usd": 0.0438,
   "agents": {
     "conti": {
       "calls": 17,
-      "go": 0,
-      "wait": 17,
+      "go": 6,
+      "wait": 11,
       "skip": 0,
       "last": {
-        "code": "6147",
-        "verdict": "wait",
-        "ts": 1780293475.790758
+        "code": "RDDT",
+        "verdict": "go",
+        "ts": 1780294348.289449
       }
     },
     "tai": {
       "calls": 17,
-      "go": 0,
-      "wait": 16,
+      "go": 6,
+      "wait": 10,
       "skip": 1,
       "last": {
-        "code": "6147",
-        "verdict": "wait",
-        "ts": 1780293475.790758
+        "code": "RDDT",
+        "verdict": "go",
+        "ts": 1780294348.289449
       }
     },
     "combo": {
       "calls": 17,
-      "go": 0,
-      "wait": 16,
+      "go": 4,
+      "wait": 12,
       "skip": 1,
       "last": {
-        "code": "6147",
-        "verdict": "wait",
-        "ts": 1780293475.790758
+        "code": "RDDT",
+        "verdict": "go",
+        "ts": 1780294348.289449
       }
     },
     "ortho": {
       "calls": 17,
-      "go": 0,
-      "wait": 16,
+      "go": 4,
+      "wait": 12,
       "skip": 1,
       "last": {
-        "code": "6147",
-        "verdict": "wait",
-        "ts": 1780293475.790758
+        "code": "RDDT",
+        "verdict": "go",
+        "ts": 1780294348.289449
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780294348.289449,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤處於多頭，有利個股表現。",
+        "脈絡｜無負面新聞，脈絡中性偏多。"
+      ],
+      "ta_reasons": [
+        "TA｜現價 167.69 已突破進場點 167.72，顯示追價動能強勁。",
+        "TA｜VCP 等級 B 顯示股價經過良好整理，突破品質 C 尚可。"
+      ]
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780294347.057451,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤及費半皆為多頭，有利個股表現。",
+        "脈絡｜Astera Labs (ALAB) 作為AI晶片互連技術領導者，長期受惠AI趨勢。"
+      ],
+      "ta_reasons": [
+        "TA｜現價349.17靠近突破點354.53，動能訊號佳。",
+        "TA｜ADR高達9.04%，顯示此股波動性強，有快速拉升潛力。"
+      ]
+    },
+    {
+      "code": "PANW",
+      "ts": 1780294338.8858612,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭，PANW 技術面突破品質A、VCP等級B，且距離EMA10僅延伸3.4%，適合動能追蹤。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780294338.793015,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "CRWD 突破整理且訊號品質優異，距離 EMA10 延伸 5.5% 尚可追價。大盤多頭提供良好環境。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "HUT",
+      "ts": 1780294338.66634,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價距建議停損 96.2 達 22.6%，風險過大。TA 的 116.0 停損提供更好風報比，但仍需等待回踩。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780294337.815021,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "AMD 雖有突破企圖，但現價 518.09 仍低於進場價 527.2，且缺少 Bear 的有效風險評估，故先等待回檔。TA 的停損點 490 較原始停損 431.6 更為合理。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6147",
       "ts": 1780293475.790758,
@@ -91,96 +169,6 @@
     {
       "code": "8064",
       "ts": 1780292635.036906,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780292493.030879,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780292493.030679,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780292493.029834,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780292493.0290298,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780292493.028498,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780292493.0281181,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
