@@ -1,16 +1,16 @@
 {
-  "ts": 1780370215.256543,
+  "ts": 1780370533.795347,
   "total": 12,
   "by_verdict": {
     "go": 6,
-    "wait": 3,
-    "skip": 3
+    "wait": 4,
+    "skip": 2
   },
   "short_circuits": 0,
   "cache_reads_tokens": 36666,
-  "input_tokens": 142999,
+  "input_tokens": 142947,
   "llm_calls": 12,
-  "cost_usd": 0.0879,
+  "cost_usd": 0.0882,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,46 +18,68 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "ALAB",
         "verdict": "go",
-        "ts": 1780370212.7636092
+        "ts": 1780370532.064245
       }
     },
     "tai": {
       "calls": 12,
       "go": 5,
-      "wait": 5,
-      "skip": 2,
+      "wait": 6,
+      "skip": 1,
       "last": {
-        "code": "HUT",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780370212.7636092
+        "ts": 1780370532.064245
       }
     },
     "combo": {
       "calls": 12,
       "go": 6,
-      "wait": 3,
-      "skip": 3,
+      "wait": 4,
+      "skip": 2,
       "last": {
-        "code": "HUT",
-        "verdict": "go",
-        "ts": 1780370212.7636092
+        "code": "ALAB",
+        "verdict": "wait",
+        "ts": 1780370532.064245
       }
     },
     "ortho": {
       "calls": 12,
       "go": 6,
-      "wait": 3,
-      "skip": 3,
+      "wait": 4,
+      "skip": 2,
       "last": {
-        "code": "HUT",
-        "verdict": "go",
-        "ts": 1780370212.7636092
+        "code": "ALAB",
+        "verdict": "wait",
+        "ts": 1780370532.064245
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780370532.064245,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "股價距 EMA10 延伸達 24.4%，且原始停損高達 20.5% 遠超 1.5xADR (13.5%)；風險過高，需等待回檔與更佳結構。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "RDDT",
+      "ts": 1780370480.512106,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "原始訊號停損幅度 16.78% 過大（高於 1.5 倍 ADR），且突破品質低。等待回測 155 改善風報比。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "HUT",
       "ts": 1780370212.7636092,
@@ -132,28 +154,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "大盤強多，法人大買998張，VCP突破動能強。追高延伸4.1%，守645.0停損(6.38%)防ADR高波動。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780368317.468301,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "股價距 EMA10 延伸 24.4% 過遠，且停損達 20.5% 遠超 1.5xADR 限制，導致風報比極差，故放棄此交易機會。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780368315.63951,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "候選股延伸 9.4% 距 EMA10，且系統預設停損高達 16.79% 遠超 1.5 倍 ADR (8.9%)，現價追高風報比過差，不適合立即進場。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
