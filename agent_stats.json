@@ -1,5 +1,5 @@
 {
-  "ts": 1780374058.3551202,
+  "ts": 1780374352.460163,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 8148,
-  "input_tokens": 143054,
+  "input_tokens": 143140,
   "llm_calls": 12,
-  "cost_usd": 0.0866,
+  "cost_usd": 0.0867,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,20 +18,20 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "AMD",
         "verdict": "go",
-        "ts": 1780373208.3415968
+        "ts": 1780374349.597095
       }
     },
     "tai": {
       "calls": 12,
       "go": 4,
-      "wait": 7,
-      "skip": 1,
+      "wait": 6,
+      "skip": 2,
       "last": {
-        "code": "8358",
-        "verdict": "wait",
-        "ts": 1780373208.3415968
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780374349.597095
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "8358",
-        "verdict": "wait",
-        "ts": 1780373208.3415968
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780374349.597095
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "8358",
-        "verdict": "wait",
-        "ts": 1780373208.3415968
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780374349.597095
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780374349.597095,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "該股 SLV 僅 1 顯示量能不足，且股價較 EMA10 延伸達 12.8% 已過度拉升。更關鍵的是，95.6 元的停損距離遠超 ADR 3 倍以上，風報比極差。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780373208.3415968,
@@ -132,17 +143,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "此訊號停損幅度 23.8% 遠超 ADR 1.5 倍上限 (11.73%)，且價格距 EMA10 延伸 16.8% 過熱，風報比與訊號品質極差，不符動能策略要求。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780372315.705821,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "該股停損距離進場點高達 18.13%，風險過高。同時，股價距 EMA10 延伸 12.8%，且訊號強度 SLV 僅 1，突破效益存疑。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
