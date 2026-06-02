@@ -1,5 +1,5 @@
 {
-  "ts": 1780398022.530627,
+  "ts": 1780405420.386038,
   "total": 12,
   "by_verdict": {
     "go": 2,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780398012.609378
+        "ts": 1780405419.047227
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780398012.609378
+        "ts": 1780405419.047227
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 10,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780398012.609378
+        "ts": 1780405419.047227
       }
     },
     "ortho": {
@@ -51,31 +51,16 @@
       "wait": 10,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780398012.609378
+        "ts": 1780405419.047227
       }
     }
   },
   "recent": [
     {
-      "code": "AMD",
-      "ts": 1780398012.609378,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
       "code": "RDDT",
-      "ts": 1780395399.6983922,
+      "ts": 1780405419.047227,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -90,7 +75,22 @@
     },
     {
       "code": "ALAB",
-      "ts": 1780395222.440618,
+      "ts": 1780405418.435393,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "AMD",
+      "ts": 1780404317.420634,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -105,7 +105,7 @@
     },
     {
       "code": "CRWD",
-      "ts": 1780395029.001309,
+      "ts": 1780404317.067568,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -120,7 +120,7 @@
     },
     {
       "code": "PANW",
-      "ts": 1780395028.1461482,
+      "ts": 1780404316.057152,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -135,7 +135,7 @@
     },
     {
       "code": "HUT",
-      "ts": 1780395026.260372,
+      "ts": 1780404314.029788,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
@@ -150,7 +150,7 @@
     },
     {
       "code": "8358",
-      "ts": 1780394940.685583,
+      "ts": 1780402744.695862,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
