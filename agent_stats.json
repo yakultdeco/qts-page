@@ -1,26 +1,26 @@
 {
-  "ts": 1780380723.923112,
+  "ts": 1780380882.924958,
   "total": 12,
   "by_verdict": {
     "go": 2,
-    "wait": 9,
-    "skip": 1
+    "wait": 10,
+    "skip": 0
   },
   "short_circuits": 0,
   "cache_reads_tokens": 8148,
-  "input_tokens": 59535,
-  "llm_calls": 5,
-  "cost_usd": 0.0355,
+  "input_tokens": 47730,
+  "llm_calls": 4,
+  "cost_usd": 0.0289,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 5,
-      "wait": 7,
+      "go": 4,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780379941.2780511
+        "ts": 1780380879.396553
       }
     },
     "tai": {
@@ -29,35 +29,50 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780379941.2780511
+        "ts": 1780380879.396553
       }
     },
     "combo": {
       "calls": 12,
       "go": 2,
-      "wait": 9,
-      "skip": 1,
+      "wait": 10,
+      "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780379941.2780511
+        "ts": 1780380879.396553
       }
     },
     "ortho": {
       "calls": 12,
       "go": 2,
-      "wait": 9,
-      "skip": 1,
+      "wait": 10,
+      "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780379941.2780511
+        "ts": 1780380879.396553
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780380879.396553,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "RDDT",
       "ts": 1780379941.2780511,
@@ -162,17 +177,6 @@
       "ta_reasons": [
         "TA｜ta_agent 失敗: RuntimeError"
       ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780378961.170028,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "原始停損 18.13% 過於寬鬆，TA 調整後仍達 8.38%，搭配 EMA10 延伸 12.8% 與 SLV=1 弱訊號，整體風報比極差。",
-      "ctx_reasons": [],
-      "ta_reasons": []
     },
     {
       "code": "6197",
