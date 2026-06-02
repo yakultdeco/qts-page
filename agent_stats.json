@@ -1,63 +1,93 @@
 {
-  "ts": 1780379336.2152221,
+  "ts": 1780379493.6589088,
   "total": 12,
   "by_verdict": {
-    "go": 3,
-    "wait": 6,
+    "go": 2,
+    "wait": 7,
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 14259,
-  "input_tokens": 107078,
-  "llm_calls": 9,
-  "cost_usd": 0.0629,
+  "cache_reads_tokens": 8148,
+  "input_tokens": 83353,
+  "llm_calls": 7,
+  "cost_usd": 0.0486,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 9,
-      "wait": 3,
+      "go": 7,
+      "wait": 5,
       "skip": 0,
       "last": {
-        "code": "CRWD",
+        "code": "6451",
         "verdict": "wait",
-        "ts": 1780379121.316
+        "ts": 1780379490.97958
       }
     },
     "tai": {
       "calls": 12,
-      "go": 5,
-      "wait": 5,
+      "go": 3,
+      "wait": 7,
       "skip": 2,
       "last": {
-        "code": "CRWD",
+        "code": "6451",
         "verdict": "wait",
-        "ts": 1780379121.316
+        "ts": 1780379490.97958
       }
     },
     "combo": {
       "calls": 12,
-      "go": 3,
-      "wait": 6,
+      "go": 2,
+      "wait": 7,
       "skip": 3,
       "last": {
-        "code": "CRWD",
+        "code": "6451",
         "verdict": "wait",
-        "ts": 1780379121.316
+        "ts": 1780379490.97958
       }
     },
     "ortho": {
       "calls": 12,
-      "go": 3,
-      "wait": 6,
+      "go": 2,
+      "wait": 7,
       "skip": 3,
       "last": {
-        "code": "CRWD",
+        "code": "6451",
         "verdict": "wait",
-        "ts": 1780379121.316
+        "ts": 1780379490.97958
       }
     }
   },
   "recent": [
+    {
+      "code": "6451",
+      "ts": 1780379490.97958,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "8358",
+      "ts": 1780379490.521186,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "CRWD",
       "ts": 1780379121.316,
@@ -133,28 +163,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "現價 349.17 已跌破原進場價 354.53，顯示突破訊號失敗；停損距離 20.48% 遠超動能策略要求。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780377588.009424,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價 625.0 較原始訊號點已延伸 12.5%，配合極緊的 1.92% 停損，潛在回檔風險高，不宜立即追價。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780377538.041793,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤 bull 環境極佳，6451 強量突破，三大法人買超 998 張，ADR 8.91% 動能充足。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
