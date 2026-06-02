@@ -1,21 +1,50 @@
 <!DOCTYPE html>
-<html lang="zh-Hant"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>題材池</title>
 <style>
   :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
   body { margin:0; background:#0b1220; color:#e2e8f0;
          font:14px/1.6 -apple-system,"PingFang TC","Microsoft JhengHei",sans-serif; }
-  .wrap { max-width:1100px; margin:0 auto; padding:18px 16px 60px; }
+  .wrap { max-width:1100px; margin:0 auto; padding:18px 16px 80px; }
   h1 { font-size:20px; margin:0 0 4px; }
   .sub { color:#94a3b8; font-size:12px; margin-bottom:14px; }
   .banner { background:#1e293b; border:1px solid #334155; border-radius:10px;
-            padding:10px 14px; margin-bottom:16px; font-size:13px; }
+            padding:10px 14px; margin-bottom:16px; font-size:13px; color:#cbd5e1; }
   .banner b { color:#38bdf8; }
-  .seed { background:#0f172a; border:1px solid #1e293b; border-left:3px solid #38bdf8;
-          border-radius:8px; padding:10px 14px; margin-bottom:16px;
-          white-space:pre-wrap; color:#cbd5e1; font-size:13px; max-height:160px; overflow:auto; }
-  .seed .lbl { color:#64748b; font-size:11px; display:block; margin-bottom:4px; }
+
+  /* 輸入介面 */
+  .composer { background:#0f172a; border:1px solid #1e293b; border-radius:12px;
+              padding:14px 16px; margin-bottom:20px; }
+  .composer label { display:block; color:#94a3b8; font-size:12px; margin-bottom:8px; }
+  textarea { width:100%; min-height:120px; resize:vertical; background:#0b1220;
+             color:#e2e8f0; border:1px solid #334155; border-radius:8px; padding:11px 13px;
+             font:14px/1.6 inherit; font-family:inherit; }
+  textarea:focus { outline:none; border-color:#38bdf8; }
+  .row { display:flex; align-items:center; gap:12px; margin-top:10px; flex-wrap:wrap; }
+  button { background:#38bdf8; color:#06202e; font-weight:700; border:0; border-radius:8px;
+           padding:9px 18px; font-size:14px; cursor:pointer; }
+  button:hover { background:#7dd3fc; }
+  button:disabled { background:#334155; color:#64748b; cursor:not-allowed; }
+  .ghost { background:transparent; color:#94a3b8; border:1px solid #334155; font-weight:500; }
+  .ghost:hover { background:#1e293b; color:#e2e8f0; }
+  .status { font-size:13px; color:#94a3b8; }
+  .status.busy { color:#fbbf24; }
+  .status.ok { color:#22c55e; }
+  .status.err { color:#ef4444; }
+  .spinner { display:inline-block; width:12px; height:12px; border:2px solid #fbbf24;
+             border-top-color:transparent; border-radius:50%; animation:spin .8s linear infinite;
+             vertical-align:-1px; margin-right:6px; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+
+  .meta { color:#94a3b8; font-size:12px; margin-bottom:14px; }
+  .seedbox { background:#0f172a; border:1px solid #1e293b; border-left:3px solid #38bdf8;
+             border-radius:8px; padding:10px 14px; margin-bottom:16px;
+             white-space:pre-wrap; color:#cbd5e1; font-size:13px; max-height:160px; overflow:auto; }
+  .seedbox .lbl { color:#64748b; font-size:11px; display:block; margin-bottom:4px; }
   .note { color:#fbbf24; font-size:13px; margin:0 0 16px; }
   .dropped { color:#94a3b8; font-size:12px; background:#1c1917; border:1px solid #292524;
              border-radius:8px; padding:8px 12px; margin-bottom:16px; }
@@ -23,7 +52,7 @@
            padding:14px 16px; margin-bottom:18px; overflow-x:auto; }
   .th-head { display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
   .th-name { font-size:17px; font-weight:700; color:#f1f5f9; }
-  .th-meta { color:#64748b; font-size:12px; }
+  .th-meta { color:#64748b; font-size:12px; white-space:nowrap; }
   .th-sum { color:#94a3b8; font-size:13px; margin:6px 0 12px; }
   table { width:100%; border-collapse:collapse; font-size:13px; }
   th { text-align:left; color:#64748b; font-weight:500; font-size:11px;
@@ -31,29 +60,226 @@
   td { padding:7px 8px; border-bottom:1px solid #131c2e; vertical-align:top; }
   td.code { font-weight:700; color:#f1f5f9; white-space:nowrap; }
   td.dim { color:#94a3b8; }
-  td:nth-child(2), td:nth-child(3) { white-space:nowrap; }  /* 名稱 / 位置 不逐字斷行 */
+  td.nm, td.role { white-space:nowrap; }
   td.thesis { color:#cbd5e1; min-width:220px; }
   td.risk { color:#94a3b8; min-width:180px; }
   .pill { display:inline-block; min-width:20px; text-align:center; color:#0b1220;
           font-weight:700; border-radius:5px; padding:1px 7px; font-size:12px; }
   .new { background:#38bdf8; color:#0b1220; font-size:9px; font-weight:700;
          border-radius:3px; padding:1px 4px; margin-left:5px; vertical-align:middle; }
-  a { color:#38bdf8; }
-</style></head><body>
+  .empty { color:#64748b; text-align:center; padding:40px 0; font-size:14px; }
+</style>
+</head>
+<body>
 <div class="wrap">
   <h1>🎯 題材池</h1>
-  <div class="sub">更新：2026-06-02 11:33　·　1 個題材／9 檔（NEW 9）</div>
-  <div class="banner"><b>Phase 1 — 檢視模式</b>：AI 依你的敲門磚圈出池子供你確認，
-    <b>尚未自動下單</b>。確認選股邏輯後再接上 auto_entry 全自動交易。
-    純度 <span class="pill" style="background:#22c55e">高</span>
-    <span class="pill" style="background:#eab308">中</span>
-    <span class="pill" style="background:#94a3b8">低</span>　RS 為全市場相對強度（0–99）。</div>
-  <div class="seed"><span class="lbl">我的敲門磚</span>矽光子（Silicon Photonics）。AI 資料中心算力暴增，傳統銅纜在高速傳輸的功耗與距離撐不住，
-光通訊滲透率往交換器、伺服器端推進。CPO（共封裝光學）是台積電、博通在推的方向，
-把光引擎跟交換晶片共同封裝。台廠在光收發模組、光被動元件、矽光子晶圓代工、
-連接器與精密陶瓷這幾段都有卡位。我想看的是真正本業押在這、訂單能見度高的，
-不要只是新聞蹭一下的。</div>
-  <div class="note">📌 本池著重於光通訊產業鏈中與矽光子、CPO直接相關的環節，排除了純粹的網通設備或伺服器廠商，以確保題材純度。</div>
-  
-  <div class="theme"><div class="th-head"><span class="th-name">矽光子/CPO</span><span class="th-meta">期程：中｜9 檔</span></div><div class="th-sum">AI資料中心算力需求推升光通訊滲透率，CPO（共封裝光學）技術將光引擎與交換晶片共封裝，台廠在光收發模組、光被動元件、矽光子晶圓代工等環節受惠。</div><table><thead><tr><th>代號</th><th>名稱</th><th>位置</th><th>純度</th><th>RS</th><th>日額億</th><th>受惠邏輯</th><th>風險</th><th>加入</th></tr></thead><tbody><tr><td class="code">4979<span class="new">NEW</span></td><td>華星光</td><td class="dim">中游零組件</td><td><span class="pill" style="background:#22c55e">高</span></td><td style="color:#eab308;font-weight:600">63</td><td class="dim">58.2</td><td class="thesis">高速光收發模組供應商，受惠AI資料中心800G/1.6T光模組需求增長。</td><td class="risk">市場競爭激烈，訂單能見度受客戶拉貨週期影響。</td><td class="dim">20260602</td></tr><tr><td class="code">3081<span class="new">NEW</span></td><td>聯亞</td><td class="dim">上游材料</td><td><span class="pill" style="background:#22c55e">高</span></td><td style="color:#22c55e;font-weight:600">80</td><td class="dim">40.2</td><td class="thesis">磷化銦(InP)磊晶片供應商，為高速光通訊主動元件關鍵材料。</td><td class="risk">主要客戶集中，新技術導入時程影響營收。</td><td class="dim">20260602</td></tr><tr><td class="code">4977<span class="new">NEW</span></td><td>眾達-KY</td><td class="dim">中游零組件</td><td><span class="pill" style="background:#22c55e">高</span></td><td style="color:#ef4444;font-weight:600">39</td><td class="dim">8.5</td><td class="thesis">高速光收發模組供應商，主要客戶為資料中心與企業網通。</td><td class="risk">產品迭代快速，新技術研發與量產進度是關鍵。</td><td class="dim">20260602</td></tr><tr><td class="code">3163<span class="new">NEW</span></td><td>波若威</td><td class="dim">中游零組件</td><td><span class="pill" style="background:#22c55e">高</span></td><td style="color:#ef4444;font-weight:600">49</td><td class="dim">29.5</td><td class="thesis">光纖被動元件供應商，受惠資料中心升級與光纖到戶基礎建設。</td><td class="risk">電信資本支出波動，產品毛利率受競爭影響。</td><td class="dim">20260602</td></tr><tr><td class="code">3363<span class="new">NEW</span></td><td>上詮</td><td class="dim">中游零組件</td><td><span class="pill" style="background:#eab308">中</span></td><td style="color:#ef4444;font-weight:600">37</td><td class="dim">20.8</td><td class="thesis">光纖連接器與光收發模組供應商，積極佈局CPO相關產品。</td><td class="risk">CPO產品仍在發展初期，營收貢獻尚待時間驗證。</td><td class="dim">20260602</td></tr><tr><td class="code">6442<span class="new">NEW</span></td><td>光聖</td><td class="dim">中游零組件</td><td><span class="pill" style="background:#eab308">中</span></td><td style="color:#ef4444;font-weight:600">8</td><td class="dim">36.7</td><td class="thesis">光被動元件及光纖連接器製造商，亦從事光收發模組組裝。</td><td class="risk">產品線較廣，矽光子純度相對較低，受整體光通訊市場影響。</td><td class="dim">20260602</td></tr><tr><td class="code">6451<span class="new">NEW</span></td><td>訊芯-KY</td><td class="dim">中游製造</td><td><span class="pill" style="background:#eab308">中</span></td><td style="color:#22c55e;font-weight:600">97</td><td class="dim">35.7</td><td class="thesis">IC封裝測試廠，具備先進封裝能力，切入CPO共同封裝領域。</td><td class="risk">CPO業務佔比仍低，主要營收來自其他封裝業務。</td><td class="dim">20260602</td></tr><tr><td class="code">3450<span class="new">NEW</span></td><td>聯鈞</td><td class="dim">中游製造</td><td><span class="pill" style="background:#eab308">中</span></td><td style="color:#eab308;font-weight:600">76</td><td class="dim">56.3</td><td class="thesis">光通訊元件封裝廠，提供雷射二極體封裝服務。</td><td class="risk">市場競爭激烈，新技術導入與客戶認證進度影響營收。</td><td class="dim">20260602</td></tr><tr><td class="code">2330<span class="new">NEW</span></td><td>台積電</td><td class="dim">上游製造</td><td><span class="pill" style="background:#94a3b8">低</span></td><td style="color:#ef4444;font-weight:600">31</td><td class="dim">1441.1</td><td class="thesis">全球領先晶圓代工廠，與博通合作推動CPO技術，提供矽光子晶圓代工服務。</td><td class="risk">矽光子業務佔總營收比重極低，主要營收來自其他先進製程。</td><td class="dim">20260602</td></tr></tbody></table></div>
-</div></body></html>
+  <div class="sub" id="subline">由上往下的題材選股 · 你貼敲門磚，AI 拆產業鏈圈標的</div>
+
+  <div class="banner">
+    <b>怎麼用</b>：把你對某個題材的看法 / 統整內容貼進下面，按「開始分析」。AI 會沿產業鏈
+    圈出受惠台股、標註純度與受惠邏輯。<b>Phase 1 僅圈池子供檢視，尚未自動下單</b>。<br>
+    分析搭在現有掃描排程上：<b>盤中時段約 5 分鐘內</b>出結果；非盤中於<b>下個交易日開盤後</b>。
+  </div>
+
+  <!-- 輸入介面 -->
+  <div class="composer">
+    <label for="seed">敲門磚（貼上純文字）</label>
+    <textarea id="seed" placeholder="例如：矽光子。AI 資料中心算力暴增，光通訊往交換器/伺服器端滲透，CPO 共封裝是台積電、博通在推的方向。台廠在光收發模組、光被動元件、矽光子代工、連接器卡位。我想看真正本業押在這、訂單能見度高的…"></textarea>
+    <div class="row">
+      <button id="go" onclick="submitSeed()">🔍 開始分析</button>
+      <button class="ghost" onclick="reanalyze()" title="不改題材，重新分析一次（換一批 / 刷新 RS）">↻ 重新分析</button>
+      <span class="status" id="status"></span>
+    </div>
+  </div>
+
+  <!-- 池子 -->
+  <div class="meta" id="meta"></div>
+  <div id="seedwrap"></div>
+  <div id="notewrap"></div>
+  <div id="dropwrap"></div>
+  <div id="pool"><div class="empty">載入中…</div></div>
+</div>
+
+<script>
+const GID = "7ef3b5e9504333701f2e525f4fbe10c2";
+const SEED_FILE = "qts_theme_seed.json";
+const POOL_URL  = "qts_theme_pool.json";   // 同源（qts-page），公開可讀、免 token
+const PEND_KEY  = "qts_theme_pending";     // 本機暫存：剛送出、等雲端產出的 seed
+const PURITY = { "高":"#22c55e", "中":"#eab308", "低":"#94a3b8" };
+
+let _poll = null;
+
+// ── gist token（只存本機 localStorage，與監控頁共用）──
+function ensureTok() {
+  let t = (localStorage.getItem('qts_gist_token') || '').trim();
+  if (!t) {
+    t = (prompt('輸入 GitHub Gist token（只需 gist 權限；只存在本機瀏覽器，不會上傳）') || '').trim();
+    if (t) localStorage.setItem('qts_gist_token', t);
+  }
+  return t;
+}
+
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function setStatus(msg, cls) {
+  const el = document.getElementById('status');
+  el.className = 'status' + (cls ? ' ' + cls : '');
+  el.innerHTML = (cls === 'busy' ? '<span class="spinner"></span>' : '') + esc(msg);
+}
+
+// ── 送出敲門磚 → 寫 Gist ──
+async function pushSeed(seed) {
+  const tok = ensureTok();
+  if (!tok) { setStatus('需要 gist token 才能送出', 'err'); return false; }
+  const body = { files: { [SEED_FILE]: { content: JSON.stringify({ seed, ts: Date.now() }) } } };
+  const r = await fetch(`https://api.github.com/gists/${GID}`, {
+    method: 'PATCH',
+    headers: { Authorization: `token ${tok}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) { setStatus('送出失敗（' + r.status + '）：token 權限或網路問題', 'err'); return false; }
+  return true;
+}
+
+async function submitSeed() {
+  const seed = document.getElementById('seed').value.trim();
+  if (seed.length < 8) { setStatus('請先貼上題材內容（至少幾句話）', 'err'); return; }
+  document.getElementById('go').disabled = true;
+  setStatus('送出中…', 'busy');
+  const ok = await pushSeed(seed);
+  document.getElementById('go').disabled = false;
+  if (!ok) return;
+  localStorage.setItem(PEND_KEY, seed);
+  setStatus('已送出！等雲端排程分析中…（盤中約 5 分鐘內，非盤中於下個交易日開盤後）', 'busy');
+  startPolling(seed);
+}
+
+// 不改題材、重新分析：清掉已發佈池子的 seed_hash 對不上即可——
+// 這裡用「在 seed 末端加一個隱形變更標記」會污染內容，故改用 force 機制：
+// 重送相同 seed 不會觸發（hash 相同），所以重新分析 = 在 gist 寫入帶 nonce 的相同 seed。
+async function reanalyze() {
+  const cur = (document.getElementById('seed').value.trim()) ||
+              (window._pool && window._pool.seed) || '';
+  if (cur.length < 8) { setStatus('沒有可重新分析的題材', 'err'); return; }
+  setStatus('重新分析送出中…', 'busy');
+  // 在 seed 後附一行不可見的時間註記，讓 hash 改變而內容語意不變
+  const tagged = cur.replace(/\n*\[refresh:[^\]]*\]\s*$/,'') + `\n[refresh:${Date.now()}]`;
+  const ok = await pushSeed(tagged);
+  if (!ok) return;
+  localStorage.setItem(PEND_KEY, tagged);
+  setStatus('已送出重新分析，等雲端排程…', 'busy');
+  startPolling(tagged);
+}
+
+// ── 輪詢已發佈池子，直到 seed 對上 ──
+function normalizeSeed(s) { return String(s||'').replace(/\n*\[refresh:[^\]]*\]\s*$/,'').trim(); }
+
+function startPolling(pendingSeed) {
+  if (_poll) clearInterval(_poll);
+  const want = String(pendingSeed||'').trim();
+  _poll = setInterval(async () => {
+    const p = await fetchPool();
+    if (p && String(p.seed||'').trim() === want) {
+      clearInterval(_poll); _poll = null;
+      localStorage.removeItem(PEND_KEY);
+      setStatus('分析完成 ✓', 'ok');
+      render(p);
+    }
+  }, 20000);
+}
+
+async function fetchPool() {
+  try {
+    const r = await fetch(POOL_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) return null;
+    return await r.json();
+  } catch (e) { return null; }
+}
+
+// ── 渲染池子 ──
+function rsColor(rs) {
+  if (rs == null) return '#64748b';
+  if (rs >= 80) return '#22c55e';
+  if (rs >= 50) return '#eab308';
+  return '#ef4444';
+}
+
+function render(pool) {
+  window._pool = pool;
+  const themes = (pool && pool.themes) || [];
+  const nStock = themes.reduce((a,t)=>a+(t.stocks||[]).length,0);
+  const nNew = themes.reduce((a,t)=>a+(t.stocks||[]).filter(s=>s.is_new).length,0);
+
+  document.getElementById('meta').textContent = pool && pool.updated
+    ? `更新：${pool.updated}　·　${themes.length} 個題材／${nStock} 檔（NEW ${nNew}）` : '';
+
+  document.getElementById('seedwrap').innerHTML = (pool && pool.seed)
+    ? `<div class="seedbox"><span class="lbl">本次敲門磚</span>${esc(normalizeSeed(pool.seed))}</div>` : '';
+
+  document.getElementById('notewrap').innerHTML = (pool && pool.note)
+    ? `<div class="note">📌 ${esc(pool.note)}</div>` : '';
+
+  const dropped = (pool && pool.dropped) || [];
+  document.getElementById('dropwrap').innerHTML = dropped.length
+    ? `<div class="dropped">⚠️ 已剔除 ${dropped.length} 個無法驗證的代號（不在全市場清單，疑似幻覺）：` +
+      dropped.slice(0,30).map(d=>esc(d.code)+esc(d.name)).join('、') + `</div>` : '';
+
+  if (!themes.length) {
+    document.getElementById('pool').innerHTML =
+      '<div class="empty">尚無題材池。在上方貼一段題材看法，按「開始分析」。</div>';
+    return;
+  }
+
+  let html = '';
+  for (const th of themes) {
+    const stocks = th.stocks || [];
+    html += `<div class="theme"><div class="th-head">
+        <span class="th-name">${esc(th.theme)}</span>
+        <span class="th-meta">期程：${esc(th.horizon||'—')}｜${stocks.length} 檔</span></div>
+      <div class="th-sum">${esc(th.summary)}</div>
+      <table><thead><tr>
+        <th>代號</th><th>名稱</th><th>位置</th><th>純度</th><th>RS</th><th>日額億</th>
+        <th>受惠邏輯</th><th>風險</th><th>加入</th></tr></thead><tbody>`;
+    for (const s of stocks) {
+      const pc = PURITY[s.purity] || '#94a3b8';
+      const rsTxt = (s.rs_rating == null) ? '—' : s.rs_rating;
+      const vm = s.value_m || 0;
+      const valTxt = vm > 0 ? (vm/100).toFixed(1) : '—';
+      const newB = s.is_new ? '<span class="new">NEW</span>' : '';
+      html += `<tr>
+        <td class="code">${esc(s.code)}${newB}</td>
+        <td class="nm">${esc(s.name)}</td>
+        <td class="role dim">${esc(s.role)}</td>
+        <td><span class="pill" style="background:${pc}">${esc(s.purity)}</span></td>
+        <td style="color:${rsColor(s.rs_rating)};font-weight:600">${rsTxt}</td>
+        <td class="dim">${valTxt}</td>
+        <td class="thesis">${esc(s.thesis)}</td>
+        <td class="risk">${esc(s.risk)}</td>
+        <td class="dim">${esc(s.added)}</td></tr>`;
+    }
+    html += '</tbody></table></div>';
+  }
+  document.getElementById('pool').innerHTML = html;
+}
+
+// ── 啟動：載入現有池子；若有 pending 且尚未產出，顯示分析中並輪詢 ──
+(async function init() {
+  const pool = await fetchPool();
+  render(pool);
+  const pending = (localStorage.getItem(PEND_KEY) || '').trim();
+  if (pending) {
+    if (pool && String(pool.seed||'').trim() === pending) {
+      localStorage.removeItem(PEND_KEY);   // 已產出
+    } else {
+      // 把 pending 內容回填到輸入框，並繼續等
+      document.getElementById('seed').value = normalizeSeed(pending);
+      setStatus('上次送出的題材分析中…', 'busy');
+      startPolling(pending);
+    }
+  }
+})();
+</script>
+</body>
+</html>
