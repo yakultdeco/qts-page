@@ -1,5 +1,5 @@
 {
-  "ts": 1780375071.212394,
+  "ts": 1780375314.402455,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 20370,
-  "input_tokens": 143307,
+  "input_tokens": 143257,
   "llm_calls": 12,
-  "cost_usd": 0.0869,
+  "cost_usd": 0.0867,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "6451",
         "verdict": "go",
-        "ts": 1780375068.858861
+        "ts": 1780375312.510323
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780375068.858861
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780375312.510323
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780375068.858861
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780375312.510323
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780375068.858861
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780375312.510323
       }
     }
   },
   "recent": [
+    {
+      "code": "6451",
+      "ts": 1780375312.510323,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤與個股動能皆強勁（SLV 4, ext 4.1%），CPO題材具長線支撐。雖ADR高，但調整停損至640以兼顧波動與結構，風報比仍佳。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780375068.858861,
@@ -132,17 +143,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "該股 SLV 僅 1 顯示量能不足，且股價較 EMA10 延伸達 12.8% 已過度拉升。更關鍵的是，95.6 元的停損距離遠超 ADR 3 倍以上，風報比極差。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780373193.912416,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭助攻，個股強勢突破且獲法人買超。儘管股價相對 EMA10 已延伸 4.1%，但考量 ADR 8.91% 波動度足夠，且止損距離 3.87% 風險可控。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
