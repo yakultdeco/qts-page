@@ -1,5 +1,5 @@
 {
-  "ts": 1780390909.4217322,
+  "ts": 1780391159.450293,
   "total": 12,
   "by_verdict": {
     "go": 2,
@@ -18,9 +18,9 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780390554.2420428
+        "ts": 1780391155.833355
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 9,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780390554.2420428
+        "ts": 1780391155.833355
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 10,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780390554.2420428
+        "ts": 1780391155.833355
       }
     },
     "ortho": {
@@ -51,13 +51,73 @@
       "wait": 10,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780390554.2420428
+        "ts": 1780391155.833355
       }
     }
   },
   "recent": [
+    {
+      "code": "PANW",
+      "ts": 1780391155.833355,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "HUT",
+      "ts": 1780391155.257686,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780391155.042629,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "8358",
+      "ts": 1780391067.254588,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "AMD",
       "ts": 1780390554.2420428,
@@ -104,68 +164,8 @@
       ]
     },
     {
-      "code": "PANW",
-      "ts": 1780389260.879148,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780389260.8764968,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780389260.6499321,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
       "code": "6451",
       "ts": 1780389175.77507,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "8358",
-      "ts": 1780389174.136064,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
