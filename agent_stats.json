@@ -1,16 +1,16 @@
 {
-  "ts": 1780371822.987134,
+  "ts": 1780372401.782552,
   "total": 12,
   "by_verdict": {
-    "go": 6,
+    "go": 4,
     "wait": 5,
-    "skip": 1
+    "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 40740,
-  "input_tokens": 142774,
+  "cache_reads_tokens": 24444,
+  "input_tokens": 143105,
   "llm_calls": 12,
-  "cost_usd": 0.0891,
+  "cost_usd": 0.088,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,46 +18,101 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "6451",
+        "code": "PANW",
         "verdict": "go",
-        "ts": 1780370819.1886332
+        "ts": 1780372399.804786
       }
     },
     "tai": {
       "calls": 12,
-      "go": 5,
-      "wait": 6,
+      "go": 4,
+      "wait": 7,
       "skip": 1,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780370819.1886332
+        "code": "PANW",
+        "verdict": "wait",
+        "ts": 1780372399.804786
       }
     },
     "combo": {
       "calls": 12,
-      "go": 6,
+      "go": 4,
       "wait": 5,
-      "skip": 1,
+      "skip": 3,
       "last": {
-        "code": "6451",
+        "code": "PANW",
         "verdict": "go",
-        "ts": 1780370819.1886332
+        "ts": 1780372399.804786
       }
     },
     "ortho": {
       "calls": 12,
-      "go": 6,
+      "go": 4,
       "wait": 5,
-      "skip": 1,
+      "skip": 3,
       "last": {
-        "code": "6451",
+        "code": "PANW",
         "verdict": "go",
-        "ts": 1780370819.1886332
+        "ts": 1780372399.804786
       }
     }
   },
   "recent": [
+    {
+      "code": "PANW",
+      "ts": 1780372399.804786,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭與網安產業穩健為利多。標的具 VCP 整理結構、強訊號 (SLV 1, Type A)。儘管停損距達 7.8% 且待放量確認，仍以小部位 (25%) 試單，捕捉合理機會。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780372384.399841,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "主要基於 TA 指出突破量能存疑 (resonance volume=-2) 且股價已延伸 5.5% 過遠，導致假突破風險高，熊方也預警停損點易被掃。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "HUT",
+      "ts": 1780372377.6319501,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "此訊號停損幅度 23.8% 遠超 ADR 1.5 倍上限 (11.73%)，且價格距 EMA10 延伸 16.8% 過熱，風報比與訊號品質極差，不符動能策略要求。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780372315.705821,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "該股停損距離進場點高達 18.13%，風險過高。同時，股價距 EMA10 延伸 12.8%，且訊號強度 SLV 僅 1，突破效益存疑。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6197",
+      "ts": 1780372162.854635,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "大盤多頭且型態良好 (VCP 評分 9.0)，但股價已延伸 13.8%，動能指標為 0。尤其 1.62% 停損位 (303.5) 相較 ADR 5.96% 過窄，極易被日常波動掃出，不建議立即追高。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6451",
       "ts": 1780370819.1886332,
@@ -99,61 +154,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "原始訊號停損幅度 16.78% 過大（高於 1.5 倍 ADR），且突破品質低。等待回測 155 改善風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780370212.7636092,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "考量大盤與板塊利多，雖原始停損高達 23.8%，但採 TA 建議 114.5 新停損（風險 9.39%）使風報比合理，具出手價值。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780370179.74134,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "個股技術面優異（Type A, VCP B），大盤多頭順風。雖停損較寬（7.8%），但只要突破 261.41 時量能放大且未收爆量陰線回落 255.0 以下，風報比仍合理。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780370176.270299,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "AMD的建議停損18.1%遠超ADR的1.5倍（約8.37%）上限，風報比嚴重失衡。同時，距EMA10延伸12.8%易遭短線修正，追高風險極大。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780370118.415286,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "在多頭大盤下，CRWD 呈 VCP B 級突破結構，ADR 4.35% 動能強。雖成交量待確認，但風報比合理，以 50% 首批部位追蹤。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6197",
-      "ts": 1780370031.969354,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "儘管大盤與籌碼面俱佳，但現價距 EMA10 延伸 13.8%，且 TA 建議的 305.5 停損點 (距現價 0.97%) 相對於 ADR 5.96% 過於緊密，極易被正常波動掃出。需等待更優進場點與更合理停損。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
