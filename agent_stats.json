@@ -1,16 +1,16 @@
 {
-  "ts": 1780365476.49865,
+  "ts": 1780365717.4852421,
   "total": 12,
   "by_verdict": {
-    "go": 3,
-    "wait": 6,
+    "go": 2,
+    "wait": 7,
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 28518,
-  "input_tokens": 143282,
+  "cache_reads_tokens": 40703,
+  "input_tokens": 143397,
   "llm_calls": 12,
-  "cost_usd": 0.0865,
+  "cost_usd": 0.0871,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,46 +18,68 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "2399",
+        "code": "2464",
         "verdict": "go",
-        "ts": 1780365404.392852
+        "ts": 1780365715.809092
       }
     },
     "tai": {
       "calls": 12,
-      "go": 5,
-      "wait": 6,
+      "go": 4,
+      "wait": 7,
       "skip": 1,
       "last": {
-        "code": "2399",
+        "code": "2464",
         "verdict": "go",
-        "ts": 1780365404.392852
+        "ts": 1780365715.809092
       }
     },
     "combo": {
       "calls": 12,
-      "go": 3,
-      "wait": 6,
+      "go": 2,
+      "wait": 7,
       "skip": 3,
       "last": {
-        "code": "2399",
-        "verdict": "go",
-        "ts": 1780365404.392852
+        "code": "2464",
+        "verdict": "wait",
+        "ts": 1780365715.809092
       }
     },
     "ortho": {
       "calls": 12,
-      "go": 3,
-      "wait": 6,
+      "go": 2,
+      "wait": 7,
       "skip": 3,
       "last": {
-        "code": "2399",
-        "verdict": "go",
-        "ts": 1780365404.392852
+        "code": "2464",
+        "verdict": "wait",
+        "ts": 1780365715.809092
       }
     }
   },
   "recent": [
+    {
+      "code": "2464",
+      "ts": 1780365715.809092,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "該股訊號強勁且大盤多頭，但 Ext 13.4% 嚴重延伸，且 1.86% 停損點極窄，遠小於 ADR 7.67%，極易被盤中噪音掃出。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6197",
+      "ts": 1780365696.52672,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "股價距 EMA10 已延伸 13.8%，現價 307.0 距離原始停損 305.5 僅 0.49%，停損點過於緊湊，應等待股價回檔至合理進場區間再評估。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "2399",
       "ts": 1780365404.392852,
@@ -165,28 +187,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "現價 328.5 距 EMA10 達 17% 嚴重過熱。若此進場，324.5 停損極易因 7% ADR 遭隨機掃出，故採 wait 等待回踩 316.5 元。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "2464",
-      "ts": 1780363700.376073,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "突破B類訊號量價健康，外資大買772張，修正停損至180.0元（風控約3.2%）後具高風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6197",
-      "ts": 1780363674.69281,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價310相較均線延伸13.8%過高，且TA建議309停損僅0.3%空間，極易被5.96%的ADR波動掃出場。應等待回檔。",
       "ctx_reasons": [],
       "ta_reasons": []
     }
