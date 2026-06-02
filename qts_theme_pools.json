@@ -1,0 +1,159 @@
+{
+  "pools": [
+    {
+      "id": "9c9e3037d56018cc4895c9902b512485",
+      "name": "機器人與人形機器人",
+      "updated": "2026-06-02 13:41",
+      "req_ts": 2000,
+      "phase": 1,
+      "seed": "機器人。輝達 Isaac、特斯拉 Optimus 帶動人形機器人供應鏈，台廠在減速機、伺服馬達、諧波減速器、力覺感測、機構件有題材。",
+      "seed_hash": "9c9e3037d56018cc4895c9902b512485",
+      "note": "本池刻意排除了部分僅具備短線題材、無實質出貨或研發能力的電機股。人形機器人目前仍處於導入期與規格制定階段，台廠多數以提供關節（減速器、伺服馬達）與視覺方案為主，實際營收貢獻仍需 1-2 年的時間發酵，投資時需注意估值過高的風險。",
+      "dropped": [],
+      "themes": [
+        {
+          "theme": "機器人與人形機器人",
+          "summary": "輝達（NVIDIA）推出 Isaac 機器人平台，加上特斯拉（Tesla）積極推進 Optimus 人形機器人量產，催化全球機器人供應鏈。台廠憑藉在精密機械、伺服馬達、工業電腦及 AI 視覺的既有優勢，成為關鍵零組件與系統整合的重要夥伴。",
+          "horizon": "長",
+          "stocks": [
+            {
+              "code": "2359",
+              "name": "所羅門",
+              "market": "TWSE",
+              "role": "下游品牌|應用",
+              "thesis": "以 3D 視覺與 AI 演算法為核心，成為輝達 Isaac 平台合作夥伴，主攻機器人視覺辨識與感知系統。",
+              "purity": "高",
+              "risk": "AI 視覺營收佔比仍低，短期股價波動大且估值偏高。",
+              "rs_rating": 31,
+              "mom_trend": "維持",
+              "value_m": 2343.1,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "6188",
+              "name": "廣明",
+              "market": "TPEx",
+              "role": "下游品牌|應用",
+              "thesis": "旗下達明機器人為全球協作型機器人先驅，深度導入輝達 Isaac 進行路徑規劃與 AI 模擬訓練。",
+              "purity": "高",
+              "risk": "協作機器人市場競爭加劇，且硬體毛利率易受原物料成本波動影響。",
+              "rs_rating": 7,
+              "mom_trend": "維持",
+              "value_m": 434.5,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "2049",
+              "name": "上銀",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "全球滾珠螺桿與線性滑軌大廠，並已自主研發出機器人關鍵的旋轉關節與諧波減速器。",
+              "purity": "高",
+              "risk": "全球製造業資本支出復甦慢於預期，影響傳統自動化元件拉貨。",
+              "rs_rating": 62,
+              "mom_trend": "轉弱",
+              "value_m": 2184.9,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "4583",
+              "name": "台灣精銳",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "專攻高階伺服馬達、驅動器與精密定位轉台，為人形機器人關節驅動的核心元件供應商。",
+              "purity": "高",
+              "risk": "半導體與自動化客戶去化庫存速度將影響短期營收動能。",
+              "rs_rating": null,
+              "mom_trend": "",
+              "value_m": 81.2,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "2308",
+              "name": "台達電",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "提供完整的工業自動化解決方案，包含伺服驅動器、控制器及自主研發的工業機器人手臂。",
+              "purity": "中",
+              "risk": "機器人業務佔整體營收比重仍低，易受電源與車用業務波動稀釋。",
+              "rs_rating": 74,
+              "mom_trend": "轉弱",
+              "value_m": 24040.8,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "8374",
+              "name": "羅昇",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "代理全球知名自動化零組件，並切入智慧製造與機器人手臂整合方案，具輝達概念題材。",
+              "purity": "中",
+              "risk": "通路代理商毛利率較低，且營收受單一大型專案時程影響大。",
+              "rs_rating": null,
+              "mom_trend": "",
+              "value_m": 508.1,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "4566",
+              "name": "時碩工業",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "精密機械加工能力強，已切入全球大廠之諧波減速器齒輪與機器人關節機構件。",
+              "purity": "中",
+              "risk": "傳統汽車與工業應用營收佔比仍高，機器人貢獻尚處起步階段。",
+              "rs_rating": 35,
+              "mom_trend": "加速",
+              "value_m": 429.7,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "2395",
+              "name": "研華",
+              "market": "TWSE",
+              "role": "下游品牌|應用",
+              "thesis": "工業電腦龍頭，提供邊緣 AI 控制器與機器人作業系統（ROS）整合硬體平台。",
+              "purity": "中",
+              "risk": "傳統工業自動化市場復甦力道疲弱，影響整體出貨動能。",
+              "rs_rating": 53,
+              "mom_trend": "轉弱",
+              "value_m": 1970.7,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "1597",
+              "name": "直得",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "專攻微型線性滑軌與直驅馬達，適用於人形機器人手指等微型精密關節。",
+              "purity": "中",
+              "risk": "公司規模較小，易受同業價格競爭與匯率波動影響。",
+              "rs_rating": 90,
+              "mom_trend": "轉弱",
+              "value_m": 918.8,
+              "added": "20260602",
+              "is_new": true,
+              "status": "watch"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -16,11 +16,10 @@
             padding:10px 14px; margin-bottom:16px; font-size:13px; color:#cbd5e1; }
   .banner b { color:#38bdf8; }
 
-  /* 輸入介面 */
   .composer { background:#0f172a; border:1px solid #1e293b; border-radius:12px;
-              padding:14px 16px; margin-bottom:20px; }
+              padding:14px 16px; margin-bottom:22px; }
   .composer label { display:block; color:#94a3b8; font-size:12px; margin-bottom:8px; }
-  textarea { width:100%; min-height:120px; resize:vertical; background:#0b1220;
+  textarea { width:100%; min-height:110px; resize:vertical; background:#0b1220;
              color:#e2e8f0; border:1px solid #334155; border-radius:8px; padding:11px 13px;
              font:14px/1.6 inherit; font-family:inherit; }
   textarea:focus { outline:none; border-color:#38bdf8; }
@@ -29,31 +28,47 @@
            padding:9px 18px; font-size:14px; cursor:pointer; }
   button:hover { background:#7dd3fc; }
   button:disabled { background:#334155; color:#64748b; cursor:not-allowed; }
-  .ghost { background:transparent; color:#94a3b8; border:1px solid #334155; font-weight:500; }
-  .ghost:hover { background:#1e293b; color:#e2e8f0; }
   .status { font-size:13px; color:#94a3b8; }
   .status.busy { color:#fbbf24; }
   .status.ok { color:#22c55e; }
   .status.err { color:#ef4444; }
-  .spinner { display:inline-block; width:12px; height:12px; border:2px solid #fbbf24;
+  .spinner { display:inline-block; width:12px; height:12px; border:2px solid currentColor;
              border-top-color:transparent; border-radius:50%; animation:spin .8s linear infinite;
              vertical-align:-1px; margin-right:6px; }
   @keyframes spin { to { transform:rotate(360deg); } }
 
-  .meta { color:#94a3b8; font-size:12px; margin-bottom:14px; }
-  .seedbox { background:#0f172a; border:1px solid #1e293b; border-left:3px solid #38bdf8;
-             border-radius:8px; padding:10px 14px; margin-bottom:16px;
-             white-space:pre-wrap; color:#cbd5e1; font-size:13px; max-height:160px; overflow:auto; }
-  .seedbox .lbl { color:#64748b; font-size:11px; display:block; margin-bottom:4px; }
-  .note { color:#fbbf24; font-size:13px; margin:0 0 16px; }
-  .dropped { color:#94a3b8; font-size:12px; background:#1c1917; border:1px solid #292524;
-             border-radius:8px; padding:8px 12px; margin-bottom:16px; }
-  .theme { background:#0f172a; border:1px solid #1e293b; border-radius:10px;
-           padding:14px 16px; margin-bottom:18px; overflow-x:auto; }
-  .th-head { display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
-  .th-name { font-size:17px; font-weight:700; color:#f1f5f9; }
-  .th-meta { color:#64748b; font-size:12px; white-space:nowrap; }
-  .th-sum { color:#94a3b8; font-size:13px; margin:6px 0 12px; }
+  .listhead { color:#64748b; font-size:12px; margin:0 0 10px; display:flex;
+              justify-content:space-between; align-items:baseline; }
+
+  /* 題材卡（手風琴） */
+  .card { background:#0f172a; border:1px solid #1e293b; border-radius:10px;
+          margin-bottom:12px; overflow:hidden; }
+  .card.pending { border-color:#3f3a1a; }
+  .card-h { display:flex; align-items:center; gap:10px; padding:12px 14px; cursor:pointer; }
+  .card-h:hover { background:#131c2e; }
+  .card-h .arrow { color:#64748b; transition:transform .15s; font-size:12px; }
+  .card.open .card-h .arrow { transform:rotate(90deg); }
+  .card-h .name { font-size:16px; font-weight:700; color:#f1f5f9; flex:1;
+                  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .card-h .cnt { color:#94a3b8; font-size:12px; white-space:nowrap; }
+  .card-h .date { color:#475569; font-size:11px; white-space:nowrap; }
+  .card-b { display:none; padding:0 14px 14px; }
+  .card.open .card-b { display:block; }
+  .card .reanalyze { background:transparent; color:#64748b; border:1px solid #334155;
+                     font-weight:500; font-size:11px; padding:3px 9px; }
+  .card .reanalyze:hover { background:#1e293b; color:#e2e8f0; }
+
+  .seedbox { background:#0b1220; border:1px solid #1e293b; border-left:3px solid #38bdf8;
+             border-radius:8px; padding:9px 13px; margin:4px 0 12px;
+             white-space:pre-wrap; color:#cbd5e1; font-size:12.5px; }
+  .note { color:#fbbf24; font-size:12.5px; margin:0 0 12px; }
+  .dropped { color:#94a3b8; font-size:11.5px; background:#1c1917; border:1px solid #292524;
+             border-radius:8px; padding:7px 11px; margin-bottom:12px; }
+  .theme { margin-bottom:14px; }
+  .th-name { font-size:15px; font-weight:700; color:#f1f5f9; }
+  .th-meta { color:#64748b; font-size:12px; margin-left:8px; }
+  .th-sum { color:#94a3b8; font-size:12.5px; margin:5px 0 9px; }
+  .tablewrap { overflow-x:auto; }
   table { width:100%; border-collapse:collapse; font-size:13px; }
   th { text-align:left; color:#64748b; font-weight:500; font-size:11px;
        border-bottom:1px solid #1e293b; padding:6px 8px; white-space:nowrap; }
@@ -62,54 +77,50 @@
   td.dim { color:#94a3b8; }
   td.nm, td.role { white-space:nowrap; }
   td.thesis { color:#cbd5e1; min-width:220px; }
-  td.risk { color:#94a3b8; min-width:180px; }
+  td.risk { color:#94a3b8; min-width:170px; }
   .pill { display:inline-block; min-width:20px; text-align:center; color:#0b1220;
           font-weight:700; border-radius:5px; padding:1px 7px; font-size:12px; }
   .new { background:#38bdf8; color:#0b1220; font-size:9px; font-weight:700;
          border-radius:3px; padding:1px 4px; margin-left:5px; vertical-align:middle; }
-  .empty { color:#64748b; text-align:center; padding:40px 0; font-size:14px; }
+  .empty { color:#64748b; text-align:center; padding:36px 0; font-size:14px; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>🎯 題材池</h1>
-  <div class="sub" id="subline">由上往下的題材選股 · 你貼敲門磚，AI 拆產業鏈圈標的</div>
+  <div class="sub">由上往下的題材選股 · 每個題材各自獨立保存，可隨時回看</div>
 
   <div class="banner">
-    <b>怎麼用</b>：把你對某個題材的看法 / 統整內容貼進下面，按「開始分析」。AI 會沿產業鏈
-    圈出受惠台股、標註純度與受惠邏輯。<b>Phase 1 僅圈池子供檢視，尚未自動下單</b>。<br>
-    分析搭在現有掃描排程上：<b>盤中時段約 5 分鐘內</b>出結果；非盤中於<b>下個交易日開盤後</b>。
+    把你對某個題材的看法 / 統整內容貼進下面 → 按「新增分析」。AI 會沿產業鏈圈出受惠台股、
+    標註純度與受惠邏輯，<b>每個題材存成獨立池子</b>列在下方。<b>Phase 1 僅圈池子供檢視，尚未自動下單</b>。<br>
+    分析由雲端排程處理：<b>盤中約 5 分鐘內</b>、其餘時段約 15 分鐘內自動出結果。
   </div>
 
-  <!-- 輸入介面 -->
   <div class="composer">
-    <label for="seed">敲門磚（貼上純文字）</label>
+    <label for="seed">新題材敲門磚（貼上純文字，寫越具體池子越準）</label>
     <textarea id="seed" placeholder="例如：矽光子。AI 資料中心算力暴增，光通訊往交換器/伺服器端滲透，CPO 共封裝是台積電、博通在推的方向。台廠在光收發模組、光被動元件、矽光子代工、連接器卡位。我想看真正本業押在這、訂單能見度高的…"></textarea>
     <div class="row">
-      <button id="go" onclick="submitSeed()">🔍 開始分析</button>
-      <button class="ghost" onclick="reanalyze()" title="不改題材，重新分析一次（換一批 / 刷新 RS）">↻ 重新分析</button>
+      <button id="go" onclick="submitSeed()">＋ 新增分析</button>
       <span class="status" id="status"></span>
     </div>
   </div>
 
-  <!-- 池子 -->
-  <div class="meta" id="meta"></div>
-  <div id="seedwrap"></div>
-  <div id="notewrap"></div>
-  <div id="dropwrap"></div>
-  <div id="pool"><div class="empty">載入中…</div></div>
+  <div class="listhead"><span id="counthint">題材清單</span><span id="refreshhint"></span></div>
+  <div id="list"><div class="empty">載入中…</div></div>
 </div>
 
 <script>
 const GID = "7ef3b5e9504333701f2e525f4fbe10c2";
-const SEED_FILE = "qts_theme_seed.json";
-const POOL_URL  = "qts_theme_pool.json";   // 同源（qts-page），公開可讀、免 token
-const PEND_KEY  = "qts_theme_pending";     // 本機暫存：剛送出、等雲端產出的 seed
+const QUEUE_FILE = "qts_theme_queue.json";
+const POOLS_URL  = "qts_theme_pools.json";   // 同源（qts-page），公開可讀
+const PEND_KEY   = "qts_theme_pending_v2";   // 本機暫存：送出待產出的清單
+const QCAP = 30;                              // 佇列上限（介面端 append 時裁切）
 const PURITY = { "高":"#22c55e", "中":"#eab308", "低":"#94a3b8" };
 
+let _pools = [];
+let _open = {};        // 展開狀態 by seed_hash-ish key
 let _poll = null;
 
-// ── gist token（只存本機 localStorage，與監控頁共用）──
 function ensureTok() {
   let t = (localStorage.getItem('qts_gist_token') || '').trim();
   if (!t) {
@@ -118,167 +129,164 @@ function ensureTok() {
   }
   return t;
 }
-
-function esc(s) {
-  return String(s == null ? '' : s)
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function norm(s){return String(s||'').replace(/\n*\[refresh:[^\]]*\]\s*$/,'').trim();}
+function setStatus(msg, cls){
+  const el=document.getElementById('status');
+  el.className='status'+(cls?' '+cls:'');
+  el.innerHTML=(cls==='busy'?'<span class="spinner"></span>':'')+esc(msg);
 }
-function setStatus(msg, cls) {
-  const el = document.getElementById('status');
-  el.className = 'status' + (cls ? ' ' + cls : '');
-  el.innerHTML = (cls === 'busy' ? '<span class="spinner"></span>' : '') + esc(msg);
-}
+function getPending(){ try{return JSON.parse(localStorage.getItem(PEND_KEY)||'[]');}catch(e){return [];} }
+function setPending(p){ localStorage.setItem(PEND_KEY, JSON.stringify(p)); }
 
-// ── 送出敲門磚 → 寫 Gist ──
-async function pushSeed(seed) {
+// ── 送出：read-modify-write Gist 佇列 ──
+async function appendQueue(seed, force){
   const tok = ensureTok();
-  if (!tok) { setStatus('需要 gist token 才能送出', 'err'); return false; }
-  const body = { files: { [SEED_FILE]: { content: JSON.stringify({ seed, ts: Date.now() }) } } };
-  const r = await fetch(`https://api.github.com/gists/${GID}`, {
-    method: 'PATCH',
-    headers: { Authorization: `token ${tok}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
+  if(!tok){ setStatus('需要 gist token 才能送出','err'); return false; }
+  let q=[];
+  try{
+    const r=await fetch(`https://api.github.com/gists/${GID}`,{headers:{Authorization:`token ${tok}`,Accept:'application/vnd.github.v3+json'}});
+    if(r.ok){ const d=await r.json(); const f=d.files[QUEUE_FILE]; if(f) q=JSON.parse(f.content).queue||[]; }
+  }catch(e){}
+  const ts=Date.now();
+  q.push({ seed, ts, force: !!force });
+  if(q.length>QCAP) q=q.slice(q.length-QCAP);
+  const r2=await fetch(`https://api.github.com/gists/${GID}`,{
+    method:'PATCH',
+    headers:{Authorization:`token ${tok}`,'Content-Type':'application/json'},
+    body:JSON.stringify({files:{[QUEUE_FILE]:{content:JSON.stringify({queue:q})}}})
   });
-  if (!r.ok) { setStatus('送出失敗（' + r.status + '）：token 權限或網路問題', 'err'); return false; }
-  return true;
+  if(!r2.ok){ setStatus('送出失敗（'+r2.status+'）：token 權限或網路問題','err'); return false; }
+  // 記到本機 pending
+  const pend=getPending(); pend.push({seed, ts, force:!!force}); setPending(pend);
+  return ts;
 }
 
-async function submitSeed() {
-  const seed = document.getElementById('seed').value.trim();
-  if (seed.length < 8) { setStatus('請先貼上題材內容（至少幾句話）', 'err'); return; }
-  document.getElementById('go').disabled = true;
-  setStatus('送出中…', 'busy');
-  const ok = await pushSeed(seed);
-  document.getElementById('go').disabled = false;
-  if (!ok) return;
-  localStorage.setItem(PEND_KEY, seed);
-  setStatus('已送出！等雲端排程分析中…（盤中約 5 分鐘內，非盤中於下個交易日開盤後）', 'busy');
-  startPolling(seed);
+async function submitSeed(){
+  const seed=document.getElementById('seed').value.trim();
+  if(seed.length<8){ setStatus('請先貼上題材內容（至少幾句話）','err'); return; }
+  document.getElementById('go').disabled=true;
+  setStatus('送出中…','busy');
+  const ts=await appendQueue(seed,false);
+  document.getElementById('go').disabled=false;
+  if(!ts) return;
+  document.getElementById('seed').value='';
+  setStatus('已送出！等雲端排程分析…（盤中約 5 分鐘、其餘約 15 分鐘內）','busy');
+  render();
+  startPolling();
 }
 
-// 不改題材、重新分析：清掉已發佈池子的 seed_hash 對不上即可——
-// 這裡用「在 seed 末端加一個隱形變更標記」會污染內容，故改用 force 機制：
-// 重送相同 seed 不會觸發（hash 相同），所以重新分析 = 在 gist 寫入帶 nonce 的相同 seed。
-async function reanalyze() {
-  const cur = (document.getElementById('seed').value.trim()) ||
-              (window._pool && window._pool.seed) || '';
-  if (cur.length < 8) { setStatus('沒有可重新分析的題材', 'err'); return; }
-  setStatus('重新分析送出中…', 'busy');
-  // 在 seed 後附一行不可見的時間註記，讓 hash 改變而內容語意不變
-  const tagged = cur.replace(/\n*\[refresh:[^\]]*\]\s*$/,'') + `\n[refresh:${Date.now()}]`;
-  const ok = await pushSeed(tagged);
-  if (!ok) return;
-  localStorage.setItem(PEND_KEY, tagged);
-  setStatus('已送出重新分析，等雲端排程…', 'busy');
-  startPolling(tagged);
+async function reanalyze(seed, ev){
+  if(ev) ev.stopPropagation();
+  setStatus('重新分析送出中…','busy');
+  const tagged = norm(seed) + `\n[refresh:${Date.now()}]`;
+  const ts=await appendQueue(tagged,true);
+  if(!ts) return;
+  setStatus('已送出重新分析，等雲端排程…','busy');
+  render();
+  startPolling();
 }
 
-// ── 輪詢已發佈池子，直到 seed 對上 ──
-function normalizeSeed(s) { return String(s||'').replace(/\n*\[refresh:[^\]]*\]\s*$/,'').trim(); }
-
-function startPolling(pendingSeed) {
-  if (_poll) clearInterval(_poll);
-  const want = String(pendingSeed||'').trim();
-  _poll = setInterval(async () => {
-    const p = await fetchPool();
-    if (p && String(p.seed||'').trim() === want) {
-      clearInterval(_poll); _poll = null;
-      localStorage.removeItem(PEND_KEY);
-      setStatus('分析完成 ✓', 'ok');
-      render(p);
-    }
+// ── 輪詢集合，直到所有 pending 都產出 ──
+function pendingResolved(p, pools){
+  const want=norm(p.seed);
+  return pools.some(pool => norm(pool.seed)===want && (!p.force || (pool.req_ts||0) >= p.ts));
+}
+function startPolling(){
+  if(_poll) clearInterval(_poll);
+  _poll=setInterval(async ()=>{
+    await loadPools();
+    let pend=getPending().filter(p => !pendingResolved(p, _pools));
+    setPending(pend);
+    render();
+    if(!pend.length){ clearInterval(_poll); _poll=null; setStatus('分析完成 ✓','ok'); }
   }, 20000);
 }
 
-async function fetchPool() {
-  try {
-    const r = await fetch(POOL_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) return null;
-    return await r.json();
-  } catch (e) { return null; }
+async function loadPools(){
+  try{
+    const r=await fetch(POOLS_URL+'?t='+Date.now(),{cache:'no-store'});
+    _pools = r.ok ? ((await r.json()).pools||[]) : [];
+  }catch(e){ _pools=[]; }
 }
 
-// ── 渲染池子 ──
-function rsColor(rs) {
-  if (rs == null) return '#64748b';
-  if (rs >= 80) return '#22c55e';
-  if (rs >= 50) return '#eab308';
-  return '#ef4444';
-}
+// ── 渲染 ──
+function rsColor(rs){ if(rs==null)return '#64748b'; if(rs>=80)return '#22c55e'; if(rs>=50)return '#eab308'; return '#ef4444'; }
 
-function render(pool) {
-  window._pool = pool;
-  const themes = (pool && pool.themes) || [];
-  const nStock = themes.reduce((a,t)=>a+(t.stocks||[]).length,0);
-  const nNew = themes.reduce((a,t)=>a+(t.stocks||[]).filter(s=>s.is_new).length,0);
-
-  document.getElementById('meta').textContent = pool && pool.updated
-    ? `更新：${pool.updated}　·　${themes.length} 個題材／${nStock} 檔（NEW ${nNew}）` : '';
-
-  document.getElementById('seedwrap').innerHTML = (pool && pool.seed)
-    ? `<div class="seedbox"><span class="lbl">本次敲門磚</span>${esc(normalizeSeed(pool.seed))}</div>` : '';
-
-  document.getElementById('notewrap').innerHTML = (pool && pool.note)
-    ? `<div class="note">📌 ${esc(pool.note)}</div>` : '';
-
-  const dropped = (pool && pool.dropped) || [];
-  document.getElementById('dropwrap').innerHTML = dropped.length
-    ? `<div class="dropped">⚠️ 已剔除 ${dropped.length} 個無法驗證的代號（不在全市場清單，疑似幻覺）：` +
-      dropped.slice(0,30).map(d=>esc(d.code)+esc(d.name)).join('、') + `</div>` : '';
-
-  if (!themes.length) {
-    document.getElementById('pool').innerHTML =
-      '<div class="empty">尚無題材池。在上方貼一段題材看法，按「開始分析」。</div>';
-    return;
-  }
-
-  let html = '';
-  for (const th of themes) {
-    const stocks = th.stocks || [];
-    html += `<div class="theme"><div class="th-head">
-        <span class="th-name">${esc(th.theme)}</span>
+function poolBody(pool){
+  let h='';
+  if(pool.seed) h+=`<div class="seedbox">${esc(norm(pool.seed))}</div>`;
+  if(pool.note) h+=`<div class="note">📌 ${esc(pool.note)}</div>`;
+  const dropped=pool.dropped||[];
+  if(dropped.length) h+=`<div class="dropped">⚠️ 已剔除 ${dropped.length} 個無法驗證的代號：`+
+      dropped.slice(0,30).map(d=>esc(d.code)+esc(d.name)).join('、')+`</div>`;
+  for(const th of (pool.themes||[])){
+    const stocks=th.stocks||[];
+    h+=`<div class="theme"><div><span class="th-name">${esc(th.theme)}</span>
         <span class="th-meta">期程：${esc(th.horizon||'—')}｜${stocks.length} 檔</span></div>
-      <div class="th-sum">${esc(th.summary)}</div>
-      <table><thead><tr>
-        <th>代號</th><th>名稱</th><th>位置</th><th>純度</th><th>RS</th><th>日額億</th>
+        <div class="th-sum">${esc(th.summary)}</div><div class="tablewrap">
+        <table><thead><tr><th>代號</th><th>名稱</th><th>位置</th><th>純度</th><th>RS</th><th>日額億</th>
         <th>受惠邏輯</th><th>風險</th><th>加入</th></tr></thead><tbody>`;
-    for (const s of stocks) {
-      const pc = PURITY[s.purity] || '#94a3b8';
-      const rsTxt = (s.rs_rating == null) ? '—' : s.rs_rating;
-      const vm = s.value_m || 0;
-      const valTxt = vm > 0 ? (vm/100).toFixed(1) : '—';
-      const newB = s.is_new ? '<span class="new">NEW</span>' : '';
-      html += `<tr>
-        <td class="code">${esc(s.code)}${newB}</td>
-        <td class="nm">${esc(s.name)}</td>
+    for(const s of stocks){
+      const pc=PURITY[s.purity]||'#94a3b8';
+      const rsTxt=(s.rs_rating==null)?'—':s.rs_rating;
+      const vm=s.value_m||0; const valTxt=vm>0?(vm/100).toFixed(1):'—';
+      const nb=s.is_new?'<span class="new">NEW</span>':'';
+      h+=`<tr><td class="code">${esc(s.code)}${nb}</td><td class="nm">${esc(s.name)}</td>
         <td class="role dim">${esc(s.role)}</td>
         <td><span class="pill" style="background:${pc}">${esc(s.purity)}</span></td>
         <td style="color:${rsColor(s.rs_rating)};font-weight:600">${rsTxt}</td>
-        <td class="dim">${valTxt}</td>
-        <td class="thesis">${esc(s.thesis)}</td>
-        <td class="risk">${esc(s.risk)}</td>
-        <td class="dim">${esc(s.added)}</td></tr>`;
+        <td class="dim">${valTxt}</td><td class="thesis">${esc(s.thesis)}</td>
+        <td class="risk">${esc(s.risk)}</td><td class="dim">${esc(s.added)}</td></tr>`;
     }
-    html += '</tbody></table></div>';
+    h+='</tbody></table></div></div>';
   }
-  document.getElementById('pool').innerHTML = html;
+  return h;
 }
 
-// ── 啟動：載入現有池子；若有 pending 且尚未產出，顯示分析中並輪詢 ──
-(async function init() {
-  const pool = await fetchPool();
-  render(pool);
-  const pending = (localStorage.getItem(PEND_KEY) || '').trim();
-  if (pending) {
-    if (pool && String(pool.seed||'').trim() === pending) {
-      localStorage.removeItem(PEND_KEY);   // 已產出
-    } else {
-      // 把 pending 內容回填到輸入框，並繼續等
-      document.getElementById('seed').value = normalizeSeed(pending);
-      setStatus('上次送出的題材分析中…', 'busy');
-      startPolling(pending);
-    }
+function toggle(key){ _open[key]=!_open[key]; render(); }
+
+function render(){
+  const pend=getPending().filter(p=>!pendingResolved(p,_pools));
+  const list=document.getElementById('list');
+  document.getElementById('counthint').textContent =
+    `題材清單（${_pools.length}${pend.length?` ＋分析中 ${pend.length}`:''}）`;
+
+  let html='';
+  // 分析中（pending）卡，置頂
+  for(const p of pend){
+    html+=`<div class="card pending"><div class="card-h">
+      <span class="arrow" style="visibility:hidden">▶</span>
+      <span class="name"><span class="spinner" style="color:#fbbf24"></span>${esc(norm(p.seed).slice(0,40))}…</span>
+      <span class="cnt" style="color:#fbbf24">分析中</span></div></div>`;
   }
+  // 已產出
+  for(let i=0;i<_pools.length;i++){
+    const pool=_pools[i]; const key=pool.seed_hash||('i'+i); const open=!!_open[key];
+    const nStock=(pool.themes||[]).reduce((a,t)=>a+(t.stocks||[]).length,0);
+    html+=`<div class="card${open?' open':''}">
+      <div class="card-h" onclick="toggle('${key}')">
+        <span class="arrow">▶</span>
+        <span class="name">${esc(pool.name||'題材')}</span>
+        <span class="cnt">${nStock} 檔</span>
+        <button class="reanalyze" onclick="reanalyze(${JSON.stringify(pool.seed).replace(/"/g,'&quot;')}, event)">↻ 重新分析</button>
+        <span class="date">${esc((pool.updated||'').slice(5))}</span>
+      </div>
+      <div class="card-b">${open?poolBody(pool):''}</div></div>`;
+  }
+  if(!pend.length && !_pools.length)
+    html='<div class="empty">還沒有題材池。在上方貼一段題材看法，按「新增分析」。</div>';
+  list.innerHTML=html;
+}
+
+(async function init(){
+  await loadPools();
+  // 預設展開第一個
+  if(_pools.length){ _open[_pools[0].seed_hash||'i0']=true; }
+  render();
+  const pend=getPending().filter(p=>!pendingResolved(p,_pools));
+  setPending(pend);
+  if(pend.length){ setStatus('上次送出的題材分析中…','busy'); startPolling(); }
 })();
 </script>
 </body>
