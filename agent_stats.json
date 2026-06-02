@@ -1,63 +1,131 @@
 {
-  "ts": 1780367496.7001832,
+  "ts": 1780367996.932698,
   "total": 12,
   "by_verdict": {
-    "go": 4,
-    "wait": 8,
-    "skip": 0
+    "go": 6,
+    "wait": 4,
+    "skip": 2
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 52925,
-  "input_tokens": 143012,
+  "cache_reads_tokens": 32592,
+  "input_tokens": 143022,
   "llm_calls": 12,
-  "cost_usd": 0.0882,
+  "cost_usd": 0.086,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 9,
-      "wait": 3,
+      "go": 10,
+      "wait": 2,
       "skip": 0,
       "last": {
-        "code": "6451",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780366788.979587
+        "ts": 1780367993.400909
       }
     },
     "tai": {
       "calls": 12,
-      "go": 4,
-      "wait": 8,
-      "skip": 0,
+      "go": 6,
+      "wait": 5,
+      "skip": 1,
       "last": {
-        "code": "6451",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780366788.979587
+        "ts": 1780367993.400909
       }
     },
     "combo": {
       "calls": 12,
-      "go": 4,
-      "wait": 8,
-      "skip": 0,
+      "go": 6,
+      "wait": 4,
+      "skip": 2,
       "last": {
-        "code": "6451",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780366788.979587
+        "ts": 1780367993.400909
       }
     },
     "ortho": {
       "calls": 12,
-      "go": 4,
-      "wait": 8,
-      "skip": 0,
+      "go": 6,
+      "wait": 4,
+      "skip": 2,
       "last": {
-        "code": "6451",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780366788.979587
+        "ts": 1780367993.400909
       }
     }
   },
   "recent": [
+    {
+      "code": "CRWD",
+      "ts": 1780367993.400909,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭環境下 VCP 型態良好，但訊號本身 SLV 較低且 TA 數據顯示缺乏量能共振 (volume=0)，故需嚴格確認帶量突破 677.5 並配合足夠量能才進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "HUT",
+      "ts": 1780367978.37958,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "TA與Bear明確指出量能不足(slv=1)、股價延伸過高(16.8%)且停損過大(24%)，嚴重違反動能突破策略風控原則，故不執行。",
+      "ctx_reasons": [],
+      "ta_reasons": [
+        "TA與Bear明確指出量能不足(slv=1)、股價延伸過高(16.8%)且停損過大(24%)，嚴重違反動能突破策略風控原則，故不執行。"
+      ]
+    },
+    {
+      "code": "AMD",
+      "ts": 1780367931.394895,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損點距離進場價達 18.13%，嚴重不符風報比原則。且股價已從 EMA10 延伸 12.8%，進場時機不佳，動能訊號強度 (slv=1) 偏弱。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780367908.249263,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭且個股VCP結構優異，但需確認突破時帶量以避免假突破風險，並注意較寬的停損距離(7.8%)。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6197",
+      "ts": 1780367768.247423,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤 Bull 環境，slv=3 確立。雖 ext 達 13.8% 偏高，但 1.61% 窄停損風報比極佳，值得以 50% 部位嘗試。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "2464",
+      "ts": 1780367687.3954291,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭，2464 突破 184.0 結構完整。雖延伸 13.4%，但停損設 183.8 僅 2.2% 風險，風報比極佳。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6451",
       "ts": 1780366788.979587,
@@ -99,72 +167,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "大盤極佳但個股延伸 12.5% 過高。現價停損 1.69% 遠低於 ADR 6.88% 易被掃，宜待回踩 615 元。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780365908.727225,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "儘管技術結構優異 (A/B級)，但當前量能共振為 0 且已延伸 5.5%。等待放量突破或回檔，以提高風報比並減少假突破風險。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780365900.3588579,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭助攻，PANW具備VCP突破結構，儘管停損7.8%偏寬，但風報比合理，等待放量突破261.41入場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780365877.422076,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雖然股價極度延伸 (16.8%) 且結構鬆散，但大盤多頭強勁，且使用 115.0 元停損可將單筆曝險降至 8.9% (約 1.44 倍 ADR)，風報比合理。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780365870.401935,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價距 EMA10 延伸達 12.8%，且 VCP 結構鬆散 (C級)，追高風險極高。雖大盤多頭，仍建議等待更佳進場時機。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "2464",
-      "ts": 1780365715.809092,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "該股訊號強勁且大盤多頭，但 Ext 13.4% 嚴重延伸，且 1.86% 停損點極窄，遠小於 ADR 7.67%，極易被盤中噪音掃出。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6197",
-      "ts": 1780365696.52672,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "股價距 EMA10 已延伸 13.8%，現價 307.0 距離原始停損 305.5 僅 0.49%，停損點過於緊湊，應等待股價回檔至合理進場區間再評估。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
