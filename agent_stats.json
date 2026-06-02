@@ -1,14 +1,14 @@
 {
-  "ts": 1780364514.366855,
+  "ts": 1780364856.9172192,
   "total": 11,
   "by_verdict": {
-    "go": 3,
-    "wait": 4,
+    "go": 2,
+    "wait": 5,
     "skip": 4
   },
   "short_circuits": 0,
   "cache_reads_tokens": 20370,
-  "input_tokens": 131207,
+  "input_tokens": 131191,
   "llm_calls": 11,
   "cost_usd": 0.0784,
   "agents": {
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "6451",
         "verdict": "go",
-        "ts": 1780364149.725576
+        "ts": 1780364854.6695738
       }
     },
     "tai": {
@@ -29,35 +29,46 @@
       "wait": 5,
       "skip": 1,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780364149.725576
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780364854.6695738
       }
     },
     "combo": {
       "calls": 11,
-      "go": 3,
-      "wait": 4,
+      "go": 2,
+      "wait": 5,
       "skip": 4,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780364149.725576
+        "code": "6451",
+        "verdict": "wait",
+        "ts": 1780364854.6695738
       }
     },
     "ortho": {
       "calls": 11,
-      "go": 3,
-      "wait": 4,
+      "go": 2,
+      "wait": 5,
       "skip": 4,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780364149.725576
+        "code": "6451",
+        "verdict": "wait",
+        "ts": 1780364854.6695738
       }
     }
   },
   "recent": [
+    {
+      "code": "6451",
+      "ts": 1780364854.6695738,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價 689 已較訊號進場價 653 溢價 5.5%，且停損 645 距現價 6.38%，風報比不佳，故等待更佳入場點。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "ALAB",
       "ts": 1780364149.725576,
@@ -165,17 +176,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "現價310相較均線延伸13.8%過高，且TA建議309停損僅0.3%空間，極易被5.96%的ADR波動掃出場。應等待回檔。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780363638.917908,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤極佳，個股強量突破且籌碼轉佳（法人買、融資減），雖停損稍窄（3.6%），但整體風報比極佳。",
       "ctx_reasons": [],
       "ta_reasons": []
     }
