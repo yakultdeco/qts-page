@@ -1,26 +1,26 @@
 {
-  "ts": 1780365717.4852421,
+  "ts": 1780365912.7706041,
   "total": 12,
   "by_verdict": {
-    "go": 2,
+    "go": 3,
     "wait": 7,
-    "skip": 3
+    "skip": 2
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 40703,
-  "input_tokens": 143397,
+  "cache_reads_tokens": 44777,
+  "input_tokens": 143223,
   "llm_calls": 12,
-  "cost_usd": 0.0871,
+  "cost_usd": 0.0876,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 12,
-      "wait": 0,
+      "go": 11,
+      "wait": 1,
       "skip": 0,
       "last": {
-        "code": "2464",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780365715.809092
+        "ts": 1780365908.727225
       }
     },
     "tai": {
@@ -29,35 +29,79 @@
       "wait": 7,
       "skip": 1,
       "last": {
-        "code": "2464",
+        "code": "CRWD",
         "verdict": "go",
-        "ts": 1780365715.809092
+        "ts": 1780365908.727225
       }
     },
     "combo": {
       "calls": 12,
-      "go": 2,
+      "go": 3,
       "wait": 7,
-      "skip": 3,
+      "skip": 2,
       "last": {
-        "code": "2464",
+        "code": "CRWD",
         "verdict": "wait",
-        "ts": 1780365715.809092
+        "ts": 1780365908.727225
       }
     },
     "ortho": {
       "calls": 12,
-      "go": 2,
+      "go": 3,
       "wait": 7,
-      "skip": 3,
+      "skip": 2,
       "last": {
-        "code": "2464",
+        "code": "CRWD",
         "verdict": "wait",
-        "ts": 1780365715.809092
+        "ts": 1780365908.727225
       }
     }
   },
   "recent": [
+    {
+      "code": "CRWD",
+      "ts": 1780365908.727225,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "儘管技術結構優異 (A/B級)，但當前量能共振為 0 且已延伸 5.5%。等待放量突破或回檔，以提高風報比並減少假突破風險。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780365900.3588579,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭助攻，PANW具備VCP突破結構，儘管停損7.8%偏寬，但風報比合理，等待放量突破261.41入場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "HUT",
+      "ts": 1780365877.422076,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雖然股價極度延伸 (16.8%) 且結構鬆散，但大盤多頭強勁，且使用 115.0 元停損可將單筆曝險降至 8.9% (約 1.44 倍 ADR)，風報比合理。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780365870.401935,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價距 EMA10 延伸達 12.8%，且 VCP 結構鬆散 (C級)，追高風險極高。雖大盤多頭，仍建議等待更佳進場時機。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "2464",
       "ts": 1780365715.809092,
@@ -132,50 +176,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "突破訊號距 EMA10 延伸 9.4% 偏高，且停損 (16.7%) 遠超 ADR (5.94%) 近 2.8 倍，風報比極差不符進場標準。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780363986.6236942,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "儘管大盤多頭，但訊號量能 (slv=1) 偏低且停損 (7.81%) 高於 1.5 倍 ADR (6.78%)，風報比不佳，故等待量能確認。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780363976.660974,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤強勢，CRWD呈高質量VCP收縮，突破677.5確立動能，6.5%停損對4.35%ADR極具風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780363956.957304,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雖然大盤多頭強勁，但HUT距EMA10延伸達16.8%，且訊號強度僅為1，突破結構鬆散，追高風險高。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780363939.633124,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "候選股AMD距EMA10過度延伸(12.8%)，且停損點(431.6)距進場點(527.2)達18.1%，遠超1.5x ADR的8.37%上限，風險報酬不符風控原則。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
