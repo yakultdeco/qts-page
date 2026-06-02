@@ -1,16 +1,16 @@
 {
-  "ts": 1780366624.0118852,
+  "ts": 1780366791.472668,
   "total": 12,
   "by_verdict": {
-    "go": 3,
-    "wait": 9,
+    "go": 4,
+    "wait": 8,
     "skip": 0
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 48851,
-  "input_tokens": 143038,
+  "cache_reads_tokens": 52925,
+  "input_tokens": 143012,
   "llm_calls": 12,
-  "cost_usd": 0.0884,
+  "cost_usd": 0.0882,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 3,
       "skip": 0,
       "last": {
-        "code": "RDDT",
-        "verdict": "wait",
-        "ts": 1780366198.695843
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780366788.979587
       }
     },
     "tai": {
@@ -29,35 +29,46 @@
       "wait": 8,
       "skip": 0,
       "last": {
-        "code": "RDDT",
-        "verdict": "wait",
-        "ts": 1780366198.695843
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780366788.979587
       }
     },
     "combo": {
       "calls": 12,
-      "go": 3,
-      "wait": 9,
+      "go": 4,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "RDDT",
-        "verdict": "wait",
-        "ts": 1780366198.695843
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780366788.979587
       }
     },
     "ortho": {
       "calls": 12,
-      "go": 3,
-      "wait": 9,
+      "go": 4,
+      "wait": 8,
       "skip": 0,
       "last": {
-        "code": "RDDT",
-        "verdict": "wait",
-        "ts": 1780366198.695843
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780366788.979587
       }
     }
   },
   "recent": [
+    {
+      "code": "6451",
+      "ts": 1780366788.979587,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "多頭環境下強量突破，法人大買998張且融資減265張，曝險6.4%低於ADR 8.91%風險合理。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780366198.695843,
@@ -165,17 +176,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "大盤強多，個股籌碼佳（外資買4863張），距EMA10僅3.8%，風控比佳。Bear所提窄損雖易掃，但符合系統窄損試單原則。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780364854.6695738,
-      "context": "go",
-      "ta": "go",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價 689 已較訊號進場價 653 溢價 5.5%，且停損 645 距現價 6.38%，風報比不佳，故等待更佳入場點。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
