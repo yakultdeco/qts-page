@@ -1,63 +1,96 @@
 {
-  "ts": 1780365912.7706041,
+  "ts": 1780366200.560698,
   "total": 12,
   "by_verdict": {
     "go": 3,
-    "wait": 7,
-    "skip": 2
+    "wait": 9,
+    "skip": 0
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 44777,
-  "input_tokens": 143223,
+  "cache_reads_tokens": 48851,
+  "input_tokens": 143038,
   "llm_calls": 12,
-  "cost_usd": 0.0876,
+  "cost_usd": 0.0884,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 11,
-      "wait": 1,
+      "go": 9,
+      "wait": 3,
       "skip": 0,
       "last": {
-        "code": "CRWD",
-        "verdict": "go",
-        "ts": 1780365908.727225
+        "code": "RDDT",
+        "verdict": "wait",
+        "ts": 1780366198.695843
       }
     },
     "tai": {
       "calls": 12,
       "go": 4,
-      "wait": 7,
-      "skip": 1,
+      "wait": 8,
+      "skip": 0,
       "last": {
-        "code": "CRWD",
-        "verdict": "go",
-        "ts": 1780365908.727225
+        "code": "RDDT",
+        "verdict": "wait",
+        "ts": 1780366198.695843
       }
     },
     "combo": {
       "calls": 12,
       "go": 3,
-      "wait": 7,
-      "skip": 2,
+      "wait": 9,
+      "skip": 0,
       "last": {
-        "code": "CRWD",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780365908.727225
+        "ts": 1780366198.695843
       }
     },
     "ortho": {
       "calls": 12,
       "go": 3,
-      "wait": 7,
-      "skip": 2,
+      "wait": 9,
+      "skip": 0,
       "last": {
-        "code": "CRWD",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780365908.727225
+        "ts": 1780366198.695843
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780366198.695843,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "所有代理一致指出股價過度延伸(9.4%偏離EMA10)且原停損過寬(16.8%)。等待回檔至10MA附近(約153元)可大幅改善風險報酬。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780366155.8140512,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "偏離10MA達24.4%且原始停損20.4%為關鍵硬傷。雖費半強勢，仍需等回踩以優化風報比。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "8358",
+      "ts": 1780366050.948457,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "大盤極佳但個股延伸 12.5% 過高。現價停損 1.69% 遠低於 ADR 6.88% 易被掃，宜待回踩 615 元。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "CRWD",
       "ts": 1780365908.727225,
@@ -136,17 +169,6 @@
       "ta_reasons": []
     },
     {
-      "code": "8358",
-      "ts": 1780365071.909287,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "大盤極佳且題材強，但現價667離EMA10達12.5%(2倍ADR)，4%窄幅停損易被洗，故等待回試645。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
       "code": "6451",
       "ts": 1780364854.6695738,
       "context": "go",
@@ -154,28 +176,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "現價 689 已較訊號進場價 653 溢價 5.5%，且停損 645 距現價 6.38%，風報比不佳，故等待更佳入場點。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780364149.725576,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損距離達 20.5% 遠超 ADR 9.04%，風報比極差。股價較 EMA10 延伸 24.4%，過度追高風險高。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780364123.987555,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "突破訊號距 EMA10 延伸 9.4% 偏高，且停損 (16.7%) 遠超 ADR (5.94%) 近 2.8 倍，風報比極差不符進場標準。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
