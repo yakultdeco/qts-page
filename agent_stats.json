@@ -1,16 +1,16 @@
 {
-  "ts": 1780370533.795347,
+  "ts": 1780370822.459472,
   "total": 12,
   "by_verdict": {
     "go": 6,
-    "wait": 4,
-    "skip": 2
+    "wait": 5,
+    "skip": 1
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 36666,
-  "input_tokens": 142947,
+  "cache_reads_tokens": 40740,
+  "input_tokens": 142774,
   "llm_calls": 12,
-  "cost_usd": 0.0882,
+  "cost_usd": 0.0891,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "6451",
         "verdict": "go",
-        "ts": 1780370532.064245
+        "ts": 1780370819.1886332
       }
     },
     "tai": {
@@ -29,35 +29,57 @@
       "wait": 6,
       "skip": 1,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780370532.064245
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780370819.1886332
       }
     },
     "combo": {
       "calls": 12,
       "go": 6,
-      "wait": 4,
-      "skip": 2,
+      "wait": 5,
+      "skip": 1,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780370532.064245
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780370819.1886332
       }
     },
     "ortho": {
       "calls": 12,
       "go": 6,
-      "wait": 4,
-      "skip": 2,
+      "wait": 5,
+      "skip": 1,
       "last": {
-        "code": "ALAB",
-        "verdict": "wait",
-        "ts": 1780370532.064245
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780370819.1886332
       }
     }
   },
   "recent": [
+    {
+      "code": "6451",
+      "ts": 1780370819.1886332,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭，6451 以 SLV=4 強量突破，法人大買近千張，籌碼集中。儘管停損範圍 4.44% 相較 ADR 8.91% 較窄，仍可有效過濾假突破，捕捉短線動能。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "8358",
+      "ts": 1780370727.992905,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "股價已較進場價延伸12.5%，追高風報比不佳，高ADR易洗盤。綜合考量待回測590或10MA支撐再承接為佳。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "ALAB",
       "ts": 1780370532.064245,
@@ -132,28 +154,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "儘管大盤與籌碼面俱佳，但現價距 EMA10 延伸 13.8%，且 TA 建議的 305.5 停損點 (距現價 0.97%) 相對於 ADR 5.96% 過於緊密，極易被正常波動掃出。需等待更優進場點與更合理停損。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780369395.961238,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "股價已較原始進場價位大幅上漲，目前高於EMA10達12.5%，過度延伸極易拉回。原始停損價639元距現價641元僅0.3%，遠小於ADR 6.88%，毫無意義。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780368754.9489121,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤強多，法人大買998張，VCP突破動能強。追高延伸4.1%，守645.0停損(6.38%)防ADR高波動。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
