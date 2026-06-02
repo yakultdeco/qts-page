@@ -1,63 +1,78 @@
 {
-  "ts": 1780379632.5839329,
+  "ts": 1780379787.979404,
   "total": 12,
   "by_verdict": {
     "go": 2,
-    "wait": 7,
-    "skip": 3
+    "wait": 8,
+    "skip": 2
   },
   "short_circuits": 0,
   "cache_reads_tokens": 8148,
-  "input_tokens": 83353,
-  "llm_calls": 7,
-  "cost_usd": 0.0486,
+  "input_tokens": 71362,
+  "llm_calls": 6,
+  "cost_usd": 0.042,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 7,
-      "wait": 5,
+      "go": 6,
+      "wait": 6,
       "skip": 0,
       "last": {
-        "code": "6451",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780379490.97958
+        "ts": 1780379785.50487
       }
     },
     "tai": {
       "calls": 12,
       "go": 3,
-      "wait": 7,
-      "skip": 2,
+      "wait": 8,
+      "skip": 1,
       "last": {
-        "code": "6451",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780379490.97958
+        "ts": 1780379785.50487
       }
     },
     "combo": {
       "calls": 12,
       "go": 2,
-      "wait": 7,
-      "skip": 3,
+      "wait": 8,
+      "skip": 2,
       "last": {
-        "code": "6451",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780379490.97958
+        "ts": 1780379785.50487
       }
     },
     "ortho": {
       "calls": 12,
       "go": 2,
-      "wait": 7,
-      "skip": 3,
+      "wait": 8,
+      "skip": 2,
       "last": {
-        "code": "6451",
+        "code": "ALAB",
         "verdict": "wait",
-        "ts": 1780379490.97958
+        "ts": 1780379785.50487
       }
     }
   },
   "recent": [
+    {
+      "code": "ALAB",
+      "ts": 1780379785.50487,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "6451",
       "ts": 1780379490.97958,
@@ -152,17 +167,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "停損達16.78%(超2.8倍ADR)，且已延伸9.4%，slv=1品質C不值冒此風險。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780377861.2248058,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "現價 349.17 已跌破原進場價 354.53，顯示突破訊號失敗；停損距離 20.48% 遠超動能策略要求。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
