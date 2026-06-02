@@ -1,5 +1,5 @@
 {
-  "ts": 1780376088.50449,
+  "ts": 1780376497.3111339,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 20370,
-  "input_tokens": 143257,
+  "input_tokens": 143241,
   "llm_calls": 12,
-  "cost_usd": 0.0867,
+  "cost_usd": 0.0866,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "6451",
+        "code": "AMD",
         "verdict": "go",
-        "ts": 1780375312.510323
+        "ts": 1780376495.6287382
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780375312.510323
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780376495.6287382
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780375312.510323
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780376495.6287382
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780375312.510323
+        "code": "AMD",
+        "verdict": "skip",
+        "ts": 1780376495.6287382
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780376495.6287382,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損 431.6 距離進場 527.2 達 18.1%，遠超 1.5x ADR (8.37%)，風險報酬比嚴重不合理，且價格已距 EMA10 延伸 12.8%。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6451",
       "ts": 1780375312.510323,
@@ -132,17 +143,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "股價 257.77 尚未突破進場點 261.41，且 TA 與 Bear 均指出「動能/量能不足」是關鍵風險。需等待放量突破確認。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780374349.597095,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "該股 SLV 僅 1 顯示量能不足，且股價較 EMA10 延伸達 12.8% 已過度拉升。更關鍵的是，95.6 元的停損距離遠超 ADR 3 倍以上，風報比極差。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
