@@ -1,16 +1,16 @@
 {
-  "ts": 1780376497.3111339,
+  "ts": 1780377053.201786,
   "total": 12,
   "by_verdict": {
     "go": 4,
-    "wait": 5,
-    "skip": 3
+    "wait": 3,
+    "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 20370,
-  "input_tokens": 143241,
+  "cache_reads_tokens": 20353,
+  "input_tokens": 143370,
   "llm_calls": 12,
-  "cost_usd": 0.0866,
+  "cost_usd": 0.086,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "go",
-        "ts": 1780376495.6287382
+        "ts": 1780377051.338892
       }
     },
     "tai": {
@@ -29,35 +29,68 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "AMD",
-        "verdict": "skip",
-        "ts": 1780376495.6287382
+        "code": "PANW",
+        "verdict": "wait",
+        "ts": 1780377051.338892
       }
     },
     "combo": {
       "calls": 12,
       "go": 4,
-      "wait": 5,
-      "skip": 3,
+      "wait": 3,
+      "skip": 5,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "skip",
-        "ts": 1780376495.6287382
+        "ts": 1780377051.338892
       }
     },
     "ortho": {
       "calls": 12,
       "go": 4,
-      "wait": 5,
-      "skip": 3,
+      "wait": 3,
+      "skip": 5,
       "last": {
-        "code": "AMD",
+        "code": "PANW",
         "verdict": "skip",
-        "ts": 1780376495.6287382
+        "ts": 1780377051.338892
       }
     }
   },
   "recent": [
+    {
+      "code": "PANW",
+      "ts": 1780377051.338892,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "現價 257.77 尚未有效站上 261.41 突破點，且停損點 241.0 距離過遠（20.41 點，超過 1.5x ADR 的 17.73 點），導致風報比極差，故不考慮進場。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780377020.206933,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤極強，雖 TA 指出縮量與 5.5% 延伸，但龍頭突破勝率高，以 50% 輕倉嘗試 677.5 突破。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "HUT",
+      "ts": 1780376931.6786392,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "突破訊號SLV=1，動能與量能共振差(TA: Momentum=-2, Volume=-2)。最關鍵是停損達23.8%，遠超風控上限，風報比不可接受。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "AMD",
       "ts": 1780376495.6287382,
@@ -110,39 +143,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "現價626已延伸12.5%，且ADR達6.88%，若用613停損僅2.07%極易被洗，應等回踩595支撐。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780374601.2118652,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "股價已較EMA10延伸16.8%，技術結構（VCP C, resonance 0）不佳，貿然進場追高風險大。需等待回檔或更強勢盤整。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780374570.276468,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭強勢，CRWD 初現突破訊號且整理結構良好。雖停損較寬 (6.55%)，但將以帶量站上 677.5 為進場依據，並控管首批部位 50%。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780374537.076074,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "股價 257.77 尚未突破進場點 261.41，且 TA 與 Bear 均指出「動能/量能不足」是關鍵風險。需等待放量突破確認。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
