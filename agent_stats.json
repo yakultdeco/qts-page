@@ -1,5 +1,5 @@
 {
-  "ts": 1780378233.5509849,
+  "ts": 1780378966.803246,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -8,9 +8,9 @@
   },
   "short_circuits": 0,
   "cache_reads_tokens": 22390,
-  "input_tokens": 143103,
+  "input_tokens": 142900,
   "llm_calls": 12,
-  "cost_usd": 0.0847,
+  "cost_usd": 0.0843,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,20 +18,20 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "go",
-        "ts": 1780377953.4780889
+        "ts": 1780378961.170028
       }
     },
     "tai": {
       "calls": 12,
       "go": 5,
-      "wait": 4,
-      "skip": 3,
+      "wait": 5,
+      "skip": 2,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780377953.4780889
+        "code": "AMD",
+        "verdict": "wait",
+        "ts": 1780378961.170028
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "skip",
-        "ts": 1780377953.4780889
+        "ts": 1780378961.170028
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "RDDT",
+        "code": "AMD",
         "verdict": "skip",
-        "ts": 1780377953.4780889
+        "ts": 1780378961.170028
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780378961.170028,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "原始停損 18.13% 過於寬鬆，TA 調整後仍達 8.38%，搭配 EMA10 延伸 12.8% 與 SLV=1 弱訊號，整體風報比極差。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780377953.4780889,
@@ -132,17 +143,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "突破訊號SLV=1，動能與量能共振差(TA: Momentum=-2, Volume=-2)。最關鍵是停損達23.8%，遠超風控上限，風報比不可接受。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "AMD",
-      "ts": 1780376495.6287382,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損 431.6 距離進場 527.2 達 18.1%，遠超 1.5x ADR (8.37%)，風險報酬比嚴重不合理，且價格已距 EMA10 延伸 12.8%。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
