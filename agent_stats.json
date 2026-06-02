@@ -1,14 +1,14 @@
 {
-  "ts": 1780374352.460163,
+  "ts": 1780374603.456393,
   "total": 12,
   "by_verdict": {
     "go": 4,
-    "wait": 3,
-    "skip": 5
+    "wait": 5,
+    "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 8148,
-  "input_tokens": 143140,
+  "cache_reads_tokens": 16296,
+  "input_tokens": 143066,
   "llm_calls": 12,
   "cost_usd": 0.0867,
   "agents": {
@@ -18,46 +18,79 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "AMD",
+        "code": "HUT",
         "verdict": "go",
-        "ts": 1780374349.597095
+        "ts": 1780374601.2118652
       }
     },
     "tai": {
       "calls": 12,
       "go": 4,
-      "wait": 6,
-      "skip": 2,
+      "wait": 7,
+      "skip": 1,
       "last": {
-        "code": "AMD",
-        "verdict": "skip",
-        "ts": 1780374349.597095
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780374601.2118652
       }
     },
     "combo": {
       "calls": 12,
       "go": 4,
-      "wait": 3,
-      "skip": 5,
+      "wait": 5,
+      "skip": 3,
       "last": {
-        "code": "AMD",
-        "verdict": "skip",
-        "ts": 1780374349.597095
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780374601.2118652
       }
     },
     "ortho": {
       "calls": 12,
       "go": 4,
-      "wait": 3,
-      "skip": 5,
+      "wait": 5,
+      "skip": 3,
       "last": {
-        "code": "AMD",
-        "verdict": "skip",
-        "ts": 1780374349.597095
+        "code": "HUT",
+        "verdict": "wait",
+        "ts": 1780374601.2118652
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780374601.2118652,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "股價已較EMA10延伸16.8%，技術結構（VCP C, resonance 0）不佳，貿然進場追高風險大。需等待回檔或更強勢盤整。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780374570.276468,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭強勢，CRWD 初現突破訊號且整理結構良好。雖停損較寬 (6.55%)，但將以帶量站上 677.5 為進場依據，並控管首批部位 50%。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780374537.076074,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "股價 257.77 尚未突破進場點 261.41，且 TA 與 Bear 均指出「動能/量能不足」是關鍵風險。需等待放量突破確認。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "AMD",
       "ts": 1780374349.597095,
@@ -110,39 +143,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "進場停損幅度達 20.5%，且距 EMA10 延伸 24.4%，風險遠超合理範圍。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780372399.804786,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭與網安產業穩健為利多。標的具 VCP 整理結構、強訊號 (SLV 1, Type A)。儘管停損距達 7.8% 且待放量確認，仍以小部位 (25%) 試單，捕捉合理機會。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780372384.399841,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "主要基於 TA 指出突破量能存疑 (resonance volume=-2) 且股價已延伸 5.5% 過遠，導致假突破風險高，熊方也預警停損點易被掃。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780372377.6319501,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "此訊號停損幅度 23.8% 遠超 ADR 1.5 倍上限 (11.73%)，且價格距 EMA10 延伸 16.8% 過熱，風報比與訊號品質極差，不符動能策略要求。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
