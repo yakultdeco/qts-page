@@ -1,16 +1,16 @@
 {
-  "ts": 1780369542.784532,
+  "ts": 1780370215.256543,
   "total": 12,
   "by_verdict": {
     "go": 6,
-    "wait": 2,
-    "skip": 4
+    "wait": 3,
+    "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 28518,
-  "input_tokens": 143285,
+  "cache_reads_tokens": 36666,
+  "input_tokens": 142999,
   "llm_calls": 12,
-  "cost_usd": 0.0862,
+  "cost_usd": 0.0879,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,46 +18,101 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "8358",
+        "code": "HUT",
         "verdict": "go",
-        "ts": 1780369395.961238
+        "ts": 1780370212.7636092
       }
     },
     "tai": {
       "calls": 12,
-      "go": 6,
-      "wait": 4,
+      "go": 5,
+      "wait": 5,
       "skip": 2,
       "last": {
-        "code": "8358",
+        "code": "HUT",
         "verdict": "wait",
-        "ts": 1780369395.961238
+        "ts": 1780370212.7636092
       }
     },
     "combo": {
       "calls": 12,
       "go": 6,
-      "wait": 2,
-      "skip": 4,
+      "wait": 3,
+      "skip": 3,
       "last": {
-        "code": "8358",
-        "verdict": "skip",
-        "ts": 1780369395.961238
+        "code": "HUT",
+        "verdict": "go",
+        "ts": 1780370212.7636092
       }
     },
     "ortho": {
       "calls": 12,
       "go": 6,
-      "wait": 2,
-      "skip": 4,
+      "wait": 3,
+      "skip": 3,
       "last": {
-        "code": "8358",
-        "verdict": "skip",
-        "ts": 1780369395.961238
+        "code": "HUT",
+        "verdict": "go",
+        "ts": 1780370212.7636092
       }
     }
   },
   "recent": [
+    {
+      "code": "HUT",
+      "ts": 1780370212.7636092,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "考量大盤與板塊利多，雖原始停損高達 23.8%，但採 TA 建議 114.5 新停損（風險 9.39%）使風報比合理，具出手價值。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "PANW",
+      "ts": 1780370179.74134,
+      "context": "go",
+      "ta": "wait",
+      "final": "go",
+      "short_circuit": false,
+      "head": "個股技術面優異（Type A, VCP B），大盤多頭順風。雖停損較寬（7.8%），但只要突破 261.41 時量能放大且未收爆量陰線回落 255.0 以下，風報比仍合理。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "AMD",
+      "ts": 1780370176.270299,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "AMD的建議停損18.1%遠超ADR的1.5倍（約8.37%）上限，風報比嚴重失衡。同時，距EMA10延伸12.8%易遭短線修正，追高風險極大。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780370118.415286,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "在多頭大盤下，CRWD 呈 VCP B 級突破結構，ADR 4.35% 動能強。雖成交量待確認，但風報比合理，以 50% 首批部位追蹤。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6197",
+      "ts": 1780370031.969354,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "儘管大盤與籌碼面俱佳，但現價距 EMA10 延伸 13.8%，且 TA 建議的 305.5 停損點 (距現價 0.97%) 相對於 ADR 5.96% 過於緊密，極易被正常波動掃出。需等待更優進場點與更合理停損。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "8358",
       "ts": 1780369395.961238,
@@ -99,63 +154,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "候選股延伸 9.4% 距 EMA10，且系統預設停損高達 16.79% 遠超 1.5 倍 ADR (8.9%)，現價追高風報比過差，不適合立即進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780367993.400909,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭環境下 VCP 型態良好，但訊號本身 SLV 較低且 TA 數據顯示缺乏量能共振 (volume=0)，故需嚴格確認帶量突破 677.5 並配合足夠量能才進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "HUT",
-      "ts": 1780367978.37958,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "TA與Bear明確指出量能不足(slv=1)、股價延伸過高(16.8%)且停損過大(24%)，嚴重違反動能突破策略風控原則，故不執行。",
-      "ctx_reasons": [],
-      "ta_reasons": [
-        "TA與Bear明確指出量能不足(slv=1)、股價延伸過高(16.8%)且停損過大(24%)，嚴重違反動能突破策略風控原則，故不執行。"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780367931.394895,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損點距離進場價達 18.13%，嚴重不符風報比原則。且股價已從 EMA10 延伸 12.8%，進場時機不佳，動能訊號強度 (slv=1) 偏弱。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "PANW",
-      "ts": 1780367908.249263,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭且個股VCP結構優異，但需確認突破時帶量以避免假突破風險，並注意較寬的停損距離(7.8%)。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6197",
-      "ts": 1780367768.247423,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤 Bull 環境，slv=3 確立。雖 ext 達 13.8% 偏高，但 1.61% 窄停損風報比極佳，值得以 50% 部位嘗試。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
