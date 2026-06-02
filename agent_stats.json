@@ -1,63 +1,78 @@
 {
-  "ts": 1780379787.979404,
+  "ts": 1780379942.6283462,
   "total": 12,
   "by_verdict": {
     "go": 2,
-    "wait": 8,
-    "skip": 2
+    "wait": 9,
+    "skip": 1
   },
   "short_circuits": 0,
   "cache_reads_tokens": 8148,
-  "input_tokens": 71362,
-  "llm_calls": 6,
-  "cost_usd": 0.042,
+  "input_tokens": 59535,
+  "llm_calls": 5,
+  "cost_usd": 0.0355,
   "agents": {
     "conti": {
       "calls": 12,
-      "go": 6,
-      "wait": 6,
+      "go": 5,
+      "wait": 7,
       "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780379785.50487
+        "ts": 1780379941.2780511
       }
     },
     "tai": {
       "calls": 12,
       "go": 3,
-      "wait": 8,
-      "skip": 1,
+      "wait": 9,
+      "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780379785.50487
+        "ts": 1780379941.2780511
       }
     },
     "combo": {
       "calls": 12,
       "go": 2,
-      "wait": 8,
-      "skip": 2,
+      "wait": 9,
+      "skip": 1,
       "last": {
-        "code": "ALAB",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780379785.50487
+        "ts": 1780379941.2780511
       }
     },
     "ortho": {
       "calls": 12,
       "go": 2,
-      "wait": 8,
-      "skip": 2,
+      "wait": 9,
+      "skip": 1,
       "last": {
-        "code": "ALAB",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780379785.50487
+        "ts": 1780379941.2780511
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780379941.2780511,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "ALAB",
       "ts": 1780379785.50487,
@@ -156,17 +171,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "原始停損 18.13% 過於寬鬆，TA 調整後仍達 8.38%，搭配 EMA10 延伸 12.8% 與 SLV=1 弱訊號，整體風報比極差。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780377953.4780889,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損達16.78%(超2.8倍ADR)，且已延伸9.4%，slv=1品質C不值冒此風險。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
