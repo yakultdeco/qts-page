@@ -1,5 +1,5 @@
 {
-  "ts": 1780372889.625233,
+  "ts": 1780373210.164583,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -7,10 +7,10 @@
     "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 16296,
-  "input_tokens": 143038,
+  "cache_reads_tokens": 8148,
+  "input_tokens": 143054,
   "llm_calls": 12,
-  "cost_usd": 0.0864,
+  "cost_usd": 0.0866,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "RDDT",
+        "code": "8358",
         "verdict": "go",
-        "ts": 1780372886.9868212
+        "ts": 1780373208.3415968
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 7,
       "skip": 1,
       "last": {
-        "code": "RDDT",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780372886.9868212
+        "ts": 1780373208.3415968
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780372886.9868212
+        "code": "8358",
+        "verdict": "wait",
+        "ts": 1780373208.3415968
       }
     },
     "ortho": {
@@ -51,13 +51,35 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "RDDT",
-        "verdict": "skip",
-        "ts": 1780372886.9868212
+        "code": "8358",
+        "verdict": "wait",
+        "ts": 1780373208.3415968
       }
     }
   },
   "recent": [
+    {
+      "code": "8358",
+      "ts": 1780373208.3415968,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "大盤雖多頭且訊號強勁，但股價已較 EMA10 延伸 12.5% 且法人賣超 525 張，追高風險高；等待回檔至 578-550 區間可提供更佳風報比。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6451",
+      "ts": 1780373193.912416,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤多頭助攻，個股強勢突破且獲法人買超。儘管股價相對 EMA10 已延伸 4.1%，但考量 ADR 8.91% 波動度足夠，且止損距離 3.87% 風險可控。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "RDDT",
       "ts": 1780372886.9868212,
@@ -132,28 +154,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "大盤多頭且型態良好 (VCP 評分 9.0)，但股價已延伸 13.8%，動能指標為 0。尤其 1.62% 停損位 (303.5) 相較 ADR 5.96% 過窄，極易被日常波動掃出，不建議立即追高。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780370819.1886332,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤多頭，6451 以 SLV=4 強量突破，法人大買近千張，籌碼集中。儘管停損範圍 4.44% 相較 ADR 8.91% 較窄，仍可有效過濾假突破，捕捉短線動能。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780370727.992905,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "股價已較進場價延伸12.5%，追高風報比不佳，高ADR易洗盤。綜合考量待回測590或10MA支撐再承接為佳。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
