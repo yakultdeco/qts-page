@@ -1,16 +1,16 @@
 {
-  "ts": 1780372401.782552,
+  "ts": 1780372889.625233,
   "total": 12,
   "by_verdict": {
     "go": 4,
-    "wait": 5,
-    "skip": 3
+    "wait": 3,
+    "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 24444,
-  "input_tokens": 143105,
+  "cache_reads_tokens": 16296,
+  "input_tokens": 143038,
   "llm_calls": 12,
-  "cost_usd": 0.088,
+  "cost_usd": 0.0864,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780372399.804786
+        "ts": 1780372886.9868212
       }
     },
     "tai": {
@@ -29,35 +29,57 @@
       "wait": 7,
       "skip": 1,
       "last": {
-        "code": "PANW",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780372399.804786
+        "ts": 1780372886.9868212
       }
     },
     "combo": {
       "calls": 12,
       "go": 4,
-      "wait": 5,
-      "skip": 3,
+      "wait": 3,
+      "skip": 5,
       "last": {
-        "code": "PANW",
-        "verdict": "go",
-        "ts": 1780372399.804786
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780372886.9868212
       }
     },
     "ortho": {
       "calls": 12,
       "go": 4,
-      "wait": 5,
-      "skip": 3,
+      "wait": 3,
+      "skip": 5,
       "last": {
-        "code": "PANW",
-        "verdict": "go",
-        "ts": 1780372399.804786
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780372886.9868212
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780372886.9868212,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "候選股 RDDT 突破訊號品質 slv 僅 1 且 type C，動能疲弱。現價 167.69 距建議停損 139.55 達 16.7%，風報比嚴重失衡，不符交易原則。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780372735.705761,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "進場停損幅度達 20.5%，且距 EMA10 延伸 24.4%，風險遠超合理範圍。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "PANW",
       "ts": 1780372399.804786,
@@ -132,28 +154,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "股價已較進場價延伸12.5%，追高風報比不佳，高ADR易洗盤。綜合考量待回測590或10MA支撐再承接為佳。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780370532.064245,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "股價距 EMA10 延伸達 24.4%，且原始停損高達 20.5% 遠超 1.5xADR (13.5%)；風險過高，需等待回檔與更佳結構。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780370480.512106,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "原始訊號停損幅度 16.78% 過大（高於 1.5 倍 ADR），且突破品質低。等待回測 155 改善風報比。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
