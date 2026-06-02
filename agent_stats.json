@@ -1,5 +1,5 @@
 {
-  "ts": 1780374603.456393,
+  "ts": 1780375071.212394,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -7,10 +7,10 @@
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 16296,
-  "input_tokens": 143066,
+  "cache_reads_tokens": 20370,
+  "input_tokens": 143307,
   "llm_calls": 12,
-  "cost_usd": 0.0867,
+  "cost_usd": 0.0869,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,20 +18,20 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780374601.2118652
+        "ts": 1780375068.858861
       }
     },
     "tai": {
       "calls": 12,
       "go": 4,
-      "wait": 7,
-      "skip": 1,
+      "wait": 5,
+      "skip": 3,
       "last": {
-        "code": "HUT",
-        "verdict": "wait",
-        "ts": 1780374601.2118652
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780375068.858861
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "HUT",
-        "verdict": "wait",
-        "ts": 1780374601.2118652
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780375068.858861
       }
     },
     "ortho": {
@@ -51,13 +51,46 @@
       "wait": 5,
       "skip": 3,
       "last": {
-        "code": "HUT",
-        "verdict": "wait",
-        "ts": 1780374601.2118652
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780375068.858861
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780375068.858861,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "候選股停損距 (16.79%) 遠高於 ADR (5.94%) 顯示風報比不佳，加上 C 級突破與距 EMA10 延伸 9.4%，不符動能追擊要求。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780374933.660046,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損風險 20.48% 過高，且股價延伸 24.4% 過熱，加上動能訊號 SLV=1 弱，綜合判斷風報比差，應跳過。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "8358",
+      "ts": 1780374805.240171,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價626已延伸12.5%，且ADR達6.88%，若用613停損僅2.07%極易被洗，應等回踩595支撐。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "HUT",
       "ts": 1780374601.2118652,
@@ -103,17 +136,6 @@
       "ta_reasons": []
     },
     {
-      "code": "8358",
-      "ts": 1780373208.3415968,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "大盤雖多頭且訊號強勁，但股價已較 EMA10 延伸 12.5% 且法人賣超 525 張，追高風險高；等待回檔至 578-550 區間可提供更佳風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
       "code": "6451",
       "ts": 1780373193.912416,
       "context": "go",
@@ -121,28 +143,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "大盤多頭助攻，個股強勢突破且獲法人買超。儘管股價相對 EMA10 已延伸 4.1%，但考量 ADR 8.91% 波動度足夠，且止損距離 3.87% 風險可控。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780372886.9868212,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "候選股 RDDT 突破訊號品質 slv 僅 1 且 type C，動能疲弱。現價 167.69 距建議停損 139.55 達 16.7%，風報比嚴重失衡，不符交易原則。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780372735.705761,
-      "context": "go",
-      "ta": "wait",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "進場停損幅度達 20.5%，且距 EMA10 延伸 24.4%，風險遠超合理範圍。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
