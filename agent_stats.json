@@ -1,5 +1,5 @@
 {
-  "ts": 1780377053.201786,
+  "ts": 1780377955.772894,
   "total": 12,
   "by_verdict": {
     "go": 4,
@@ -7,10 +7,10 @@
     "skip": 5
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 20353,
-  "input_tokens": 143370,
+  "cache_reads_tokens": 22390,
+  "input_tokens": 143103,
   "llm_calls": 12,
-  "cost_usd": 0.086,
+  "cost_usd": 0.0847,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,20 +18,20 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "RDDT",
         "verdict": "go",
-        "ts": 1780377051.338892
+        "ts": 1780377953.4780889
       }
     },
     "tai": {
       "calls": 12,
-      "go": 4,
-      "wait": 5,
+      "go": 5,
+      "wait": 4,
       "skip": 3,
       "last": {
-        "code": "PANW",
-        "verdict": "wait",
-        "ts": 1780377051.338892
+        "code": "RDDT",
+        "verdict": "skip",
+        "ts": 1780377953.4780889
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "PANW",
+        "code": "RDDT",
         "verdict": "skip",
-        "ts": 1780377051.338892
+        "ts": 1780377953.4780889
       }
     },
     "ortho": {
@@ -51,13 +51,57 @@
       "wait": 3,
       "skip": 5,
       "last": {
-        "code": "PANW",
+        "code": "RDDT",
         "verdict": "skip",
-        "ts": 1780377051.338892
+        "ts": 1780377953.4780889
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780377953.4780889,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "停損達16.78%(超2.8倍ADR)，且已延伸9.4%，slv=1品質C不值冒此風險。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780377861.2248058,
+      "context": "go",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "現價 349.17 已跌破原進場價 354.53，顯示突破訊號失敗；停損距離 20.48% 遠超動能策略要求。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "8358",
+      "ts": 1780377588.009424,
+      "context": "go",
+      "ta": "go",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "現價 625.0 較原始訊號點已延伸 12.5%，配合極緊的 1.92% 停損，潛在回檔風險高，不宜立即追價。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "6451",
+      "ts": 1780377538.041793,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤 bull 環境極佳，6451 強量突破，三大法人買超 998 張，ADR 8.91% 動能充足。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "PANW",
       "ts": 1780377051.338892,
@@ -99,50 +143,6 @@
       "final": "skip",
       "short_circuit": false,
       "head": "停損 431.6 距離進場 527.2 達 18.1%，遠超 1.5x ADR (8.37%)，風險報酬比嚴重不合理，且價格已距 EMA10 延伸 12.8%。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780375312.510323,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "大盤與個股動能皆強勁（SLV 4, ext 4.1%），CPO題材具長線支撐。雖ADR高，但調整停損至640以兼顧波動與結構，風報比仍佳。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780375068.858861,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "候選股停損距 (16.79%) 遠高於 ADR (5.94%) 顯示風報比不佳，加上 C 級突破與距 EMA10 延伸 9.4%，不符動能追擊要求。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780374933.660046,
-      "context": "go",
-      "ta": "skip",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "停損風險 20.48% 過高，且股價延伸 24.4% 過熱，加上動能訊號 SLV=1 弱，綜合判斷風報比差，應跳過。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780374805.240171,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "現價626已延伸12.5%，且ADR達6.88%，若用613停損僅2.07%極易被洗，應等回踩595支撐。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
