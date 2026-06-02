@@ -1,16 +1,16 @@
 {
-  "ts": 1780364856.9172192,
+  "ts": 1780365073.31693,
   "total": 11,
   "by_verdict": {
     "go": 2,
-    "wait": 5,
-    "skip": 4
+    "wait": 6,
+    "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 20370,
-  "input_tokens": 131191,
+  "cache_reads_tokens": 24444,
+  "input_tokens": 131334,
   "llm_calls": 11,
-  "cost_usd": 0.0784,
+  "cost_usd": 0.0791,
   "agents": {
     "conti": {
       "calls": 11,
@@ -18,46 +18,57 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "6451",
+        "code": "8358",
         "verdict": "go",
-        "ts": 1780364854.6695738
+        "ts": 1780365071.909287
       }
     },
     "tai": {
       "calls": 11,
-      "go": 5,
-      "wait": 5,
+      "go": 4,
+      "wait": 6,
       "skip": 1,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780364854.6695738
+        "code": "8358",
+        "verdict": "wait",
+        "ts": 1780365071.909287
       }
     },
     "combo": {
       "calls": 11,
       "go": 2,
-      "wait": 5,
-      "skip": 4,
+      "wait": 6,
+      "skip": 3,
       "last": {
-        "code": "6451",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780364854.6695738
+        "ts": 1780365071.909287
       }
     },
     "ortho": {
       "calls": 11,
       "go": 2,
-      "wait": 5,
-      "skip": 4,
+      "wait": 6,
+      "skip": 3,
       "last": {
-        "code": "6451",
+        "code": "8358",
         "verdict": "wait",
-        "ts": 1780364854.6695738
+        "ts": 1780365071.909287
       }
     }
   },
   "recent": [
+    {
+      "code": "8358",
+      "ts": 1780365071.909287,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "大盤極佳且題材強，但現價667離EMA10達12.5%(2倍ADR)，4%窄幅停損易被洗，故等待回試645。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6451",
       "ts": 1780364854.6695738,
@@ -154,17 +165,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "突破B類訊號量價健康，外資大買772張，修正停損至180.0元（風控約3.2%）後具高風報比。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780363683.607177,
-      "context": "go",
-      "ta": "go",
-      "final": "skip",
-      "short_circuit": false,
-      "head": "個股 ext_pct 達 12.5%，已嚴重延伸。建議停損 640.0 (1.23%) 遠小於 ADR 6.88%，極易被日內波動掃出場，風報比極差。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
