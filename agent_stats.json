@@ -1,16 +1,16 @@
 {
-  "ts": 1780369181.8004649,
+  "ts": 1780369399.530679,
   "total": 12,
   "by_verdict": {
     "go": 6,
-    "wait": 3,
-    "skip": 3
+    "wait": 2,
+    "skip": 4
   },
   "short_circuits": 0,
   "cache_reads_tokens": 28518,
-  "input_tokens": 143225,
+  "input_tokens": 143285,
   "llm_calls": 12,
-  "cost_usd": 0.086,
+  "cost_usd": 0.0862,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "6451",
+        "code": "8358",
         "verdict": "go",
-        "ts": 1780368754.9489121
+        "ts": 1780369395.961238
       }
     },
     "tai": {
@@ -29,35 +29,46 @@
       "wait": 4,
       "skip": 2,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780368754.9489121
+        "code": "8358",
+        "verdict": "wait",
+        "ts": 1780369395.961238
       }
     },
     "combo": {
       "calls": 12,
       "go": 6,
-      "wait": 3,
-      "skip": 3,
+      "wait": 2,
+      "skip": 4,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780368754.9489121
+        "code": "8358",
+        "verdict": "skip",
+        "ts": 1780369395.961238
       }
     },
     "ortho": {
       "calls": 12,
       "go": 6,
-      "wait": 3,
-      "skip": 3,
+      "wait": 2,
+      "skip": 4,
       "last": {
-        "code": "6451",
-        "verdict": "go",
-        "ts": 1780368754.9489121
+        "code": "8358",
+        "verdict": "skip",
+        "ts": 1780369395.961238
       }
     }
   },
   "recent": [
+    {
+      "code": "8358",
+      "ts": 1780369395.961238,
+      "context": "go",
+      "ta": "wait",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "股價已較原始進場價位大幅上漲，目前高於EMA10達12.5%，過度延伸極易拉回。原始停損價639元距現價641元僅0.3%，遠小於ADR 6.88%，毫無意義。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "6451",
       "ts": 1780368754.9489121,
@@ -88,17 +99,6 @@
       "final": "wait",
       "short_circuit": false,
       "head": "候選股延伸 9.4% 距 EMA10，且系統預設停損高達 16.79% 遠超 1.5 倍 ADR (8.9%)，現價追高風報比過差，不適合立即進場。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "8358",
-      "ts": 1780368192.006597,
-      "context": "go",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "強量突破動能無虞，惟偏離EMA10達12.5%偏高，待回檔至645元（風險僅0.9%）進場風報比更佳。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
