@@ -1,5 +1,5 @@
 {
-  "ts": 1780368530.1320388,
+  "ts": 1780368756.866505,
   "total": 12,
   "by_verdict": {
     "go": 6,
@@ -7,10 +7,10 @@
     "skip": 3
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 32592,
-  "input_tokens": 143131,
+  "cache_reads_tokens": 28518,
+  "input_tokens": 143225,
   "llm_calls": 12,
-  "cost_usd": 0.0858,
+  "cost_usd": 0.086,
   "agents": {
     "conti": {
       "calls": 12,
@@ -18,9 +18,9 @@
       "wait": 0,
       "skip": 0,
       "last": {
-        "code": "ALAB",
+        "code": "6451",
         "verdict": "go",
-        "ts": 1780368317.468301
+        "ts": 1780368754.9489121
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 4,
       "skip": 2,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780368317.468301
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780368754.9489121
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 3,
       "skip": 3,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780368317.468301
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780368754.9489121
       }
     },
     "ortho": {
@@ -51,13 +51,24 @@
       "wait": 3,
       "skip": 3,
       "last": {
-        "code": "ALAB",
-        "verdict": "skip",
-        "ts": 1780368317.468301
+        "code": "6451",
+        "verdict": "go",
+        "ts": 1780368754.9489121
       }
     }
   },
   "recent": [
+    {
+      "code": "6451",
+      "ts": 1780368754.9489121,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "大盤強多，法人大買998張，VCP突破動能強。追高延伸4.1%，守645.0停損(6.38%)防ADR高波動。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "ALAB",
       "ts": 1780368317.468301,
@@ -156,17 +167,6 @@
       "final": "go",
       "short_circuit": false,
       "head": "大盤多頭，2464 突破 184.0 結構完整。雖延伸 13.4%，但停損設 183.8 僅 2.2% 風險，風報比極佳。",
-      "ctx_reasons": [],
-      "ta_reasons": []
-    },
-    {
-      "code": "6451",
-      "ts": 1780366788.979587,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "多頭環境下強量突破，法人大買998張且融資減265張，曝險6.4%低於ADR 8.91%風險合理。",
       "ctx_reasons": [],
       "ta_reasons": []
     },
