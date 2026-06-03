@@ -1,9 +1,9 @@
 {
-  "ts": 1780454625.96868,
-  "total": 14,
+  "ts": 1780454810.727967,
+  "total": 15,
   "by_verdict": {
     "go": 0,
-    "wait": 14,
+    "wait": 15,
     "skip": 0
   },
   "short_circuits": 0,
@@ -13,51 +13,66 @@
   "cost_usd": 0.0,
   "agents": {
     "conti": {
-      "calls": 14,
+      "calls": 15,
       "go": 0,
-      "wait": 14,
+      "wait": 15,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "3481",
         "verdict": "wait",
-        "ts": 1780454623.480215
+        "ts": 1780454809.132981
       }
     },
     "tai": {
-      "calls": 14,
+      "calls": 15,
       "go": 0,
-      "wait": 14,
+      "wait": 15,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "3481",
         "verdict": "wait",
-        "ts": 1780454623.480215
+        "ts": 1780454809.132981
       }
     },
     "combo": {
-      "calls": 14,
+      "calls": 15,
       "go": 0,
-      "wait": 14,
+      "wait": 15,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "3481",
         "verdict": "wait",
-        "ts": 1780454623.480215
+        "ts": 1780454809.132981
       }
     },
     "ortho": {
-      "calls": 14,
+      "calls": 15,
       "go": 0,
-      "wait": 14,
+      "wait": 15,
       "skip": 0,
       "last": {
-        "code": "PANW",
+        "code": "3481",
         "verdict": "wait",
-        "ts": 1780454623.480215
+        "ts": 1780454809.132981
       }
     }
   },
   "recent": [
+    {
+      "code": "3481",
+      "ts": 1780454809.132981,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "PANW",
       "ts": 1780454623.480215,
