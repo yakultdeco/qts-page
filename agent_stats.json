@@ -1,5 +1,5 @@
 {
-  "ts": 1780454441.984971,
+  "ts": 1780454625.96868,
   "total": 14,
   "by_verdict": {
     "go": 0,
@@ -18,9 +18,9 @@
       "wait": 14,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780454439.814283
+        "ts": 1780454623.480215
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 14,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780454439.814283
+        "ts": 1780454623.480215
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 14,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780454439.814283
+        "ts": 1780454623.480215
       }
     },
     "ortho": {
@@ -51,13 +51,28 @@
       "wait": 14,
       "skip": 0,
       "last": {
-        "code": "HUT",
+        "code": "PANW",
         "verdict": "wait",
-        "ts": 1780454439.814283
+        "ts": 1780454623.480215
       }
     }
   },
   "recent": [
+    {
+      "code": "PANW",
+      "ts": 1780454623.480215,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "HUT",
       "ts": 1780454439.814283,
@@ -226,21 +241,6 @@
     {
       "code": "RDDT",
       "ts": 1780453236.25888,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780452559.668001,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
