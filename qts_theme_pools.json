@@ -154,6 +154,161 @@
           ]
         }
       ]
+    },
+    {
+      "id": "74121b1a835f0edf3016367d55c6b414",
+      "name": "矽光子與CPO",
+      "updated": "2026-06-03 10:51",
+      "req_ts": 1000,
+      "phase": 1,
+      "seed": "矽光子。AI 資料中心光通訊滲透，CPO 共封裝，台廠在光收發模組、光被動元件、矽光子代工卡位。想看本業押在這的。",
+      "seed_hash": "74121b1a835f0edf3016367d55c6b414",
+      "note": "本池刻意排除了部分僅具備「光通訊工程」或「傳統電信光纜」概念的低純度標的（如台通、冠德等），聚焦於技術難度較高、能實質切入 AI 資料中心與 CPO 供應鏈的晶圓代工、封測、磊晶及光收發模組廠。矽光子技術目前多處於研發與小量試產階段，實際爆發期預計在 2025 年底至 2026 年，投資時需留意高本益比與營收尚未兌現的修正風險。",
+      "dropped": [],
+      "themes": [
+        {
+          "theme": "矽光子與CPO",
+          "summary": "AI資料中心對高速傳輸需求激增，傳統可插拔光模組面臨功耗與散熱瓶頸。CPO（共封裝光學）將光電轉換晶片與交換晶片共同封裝，成為突破傳輸極限的關鍵技術，帶動台廠光通訊與封測供應鏈轉型。",
+          "horizon": "長",
+          "stocks": [
+            {
+              "code": "3081",
+              "name": "聯亞",
+              "market": "TPEx",
+              "role": "上游材料",
+              "thesis": "供應矽光子雷射磊晶片，為美系晶片與網通大廠不可或缺的光源材料源頭。",
+              "purity": "高",
+              "risk": "客戶新產品驗證時程與中國光通訊市場復甦力道不及預期。",
+              "rs_rating": 70,
+              "mom_trend": "維持",
+              "value_m": 7145.1,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "3363",
+              "name": "上詮",
+              "market": "TPEx",
+              "role": "中游零組件",
+              "thesis": "開發光纖陣列（FA）與共同封裝光學連接技術，與台積電合作切入 CPO 封裝領域。",
+              "purity": "高",
+              "risk": "CPO 實際量產時程較晚，短期營收仍受傳統光纖產品波動影響。",
+              "rs_rating": 42,
+              "mom_trend": "維持",
+              "value_m": 3489.4,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "4979",
+              "name": "華星光",
+              "market": "TPEx",
+              "role": "製造",
+              "thesis": "深度綁定美系晶片大廠，提供 400G/800G 高速光收發模組代工與研發。",
+              "purity": "高",
+              "risk": "單一美系大客戶營收集中度過高，且代工毛利率易受價格談判影響。",
+              "rs_rating": 67,
+              "mom_trend": "維持",
+              "value_m": 10533.4,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "6451",
+              "name": "訊芯-KY",
+              "market": "TWSE",
+              "role": "製造",
+              "thesis": "掌握美系網通大廠 CPO 模組封測訂單，為鴻海集團旗下先進封裝關鍵要角。",
+              "purity": "高",
+              "risk": "新產能爬坡速度與集團內部資源分配之不確定性。",
+              "rs_rating": 98,
+              "mom_trend": "加速",
+              "value_m": 7274.1,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "3450",
+              "name": "聯鈞",
+              "market": "TWSE",
+              "role": "製造",
+              "thesis": "具備雷射二極體封測實力，積極轉型切入矽光子模組與 CPO 封裝平台。",
+              "purity": "高",
+              "risk": "傳統光通訊與消費性光電業務景氣波動，拖累整體獲利表現。",
+              "rs_rating": 81,
+              "mom_trend": "加速",
+              "value_m": 16677.6,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "4977",
+              "name": "眾達-KY",
+              "market": "TWSE",
+              "role": "製造",
+              "thesis": "與美系大廠共同開發外部光源（ELS）模組，為 CPO 架構下的關鍵發光元件。",
+              "purity": "高",
+              "risk": "新舊產品交替期導致營收動能暫時放緩。",
+              "rs_rating": 32,
+              "mom_trend": "維持",
+              "value_m": 1537.7,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "6442",
+              "name": "光聖",
+              "market": "TWSE",
+              "role": "中游零組件",
+              "thesis": "受惠美系資料中心客戶對光主被動元件與光纖連接器需求大增，獲利結構改善。",
+              "purity": "中",
+              "risk": "北美資料中心建置進度若放緩，將直接衝擊出貨動能。",
+              "rs_rating": 9,
+              "mom_trend": "維持",
+              "value_m": 4727.1,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "2330",
+              "name": "台積電",
+              "market": "TWSE",
+              "role": "製造",
+              "thesis": "主導 COUPE 矽光子平台研發，為未來 CPO 晶圓代工與系統級封裝的絕對龍頭。",
+              "purity": "中",
+              "risk": "矽光子業務佔其龐大營收比重極低，短期內無法顯著貢獻獲利。",
+              "rs_rating": 32,
+              "mom_trend": "加速",
+              "value_m": 98885.0,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            },
+            {
+              "code": "3163",
+              "name": "波若威",
+              "market": "TPEx",
+              "role": "中游零組件",
+              "thesis": "提供光分路器、波分複用器等光被動元件，受惠資料中心內部光纖化趨勢。",
+              "purity": "中",
+              "risk": "光被動元件市場競爭激烈，產品平均單價面臨下滑壓力。",
+              "rs_rating": 43,
+              "mom_trend": "維持",
+              "value_m": 4943.2,
+              "added": "20260603",
+              "is_new": true,
+              "status": "watch"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
