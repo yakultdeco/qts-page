@@ -1,63 +1,74 @@
 {
-  "ts": 1780455372.394515,
-  "total": 15,
+  "ts": 1780455477.636291,
+  "total": 16,
   "by_verdict": {
-    "go": 0,
+    "go": 1,
     "wait": 14,
     "skip": 1
   },
   "short_circuits": 0,
-  "cache_reads_tokens": 4074,
-  "input_tokens": 35646,
-  "llm_calls": 3,
-  "cost_usd": 0.0202,
+  "cache_reads_tokens": 8148,
+  "input_tokens": 47539,
+  "llm_calls": 4,
+  "cost_usd": 0.0273,
   "agents": {
     "conti": {
-      "calls": 15,
-      "go": 2,
+      "calls": 16,
+      "go": 3,
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "1809",
+        "code": "5289",
         "verdict": "go",
-        "ts": 1780455369.298327
+        "ts": 1780455476.0708401
       }
     },
     "tai": {
-      "calls": 15,
-      "go": 0,
+      "calls": 16,
+      "go": 1,
       "wait": 14,
       "skip": 1,
       "last": {
-        "code": "1809",
-        "verdict": "wait",
-        "ts": 1780455369.298327
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780455476.0708401
       }
     },
     "combo": {
-      "calls": 15,
-      "go": 0,
+      "calls": 16,
+      "go": 1,
       "wait": 14,
       "skip": 1,
       "last": {
-        "code": "1809",
-        "verdict": "wait",
-        "ts": 1780455369.298327
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780455476.0708401
       }
     },
     "ortho": {
-      "calls": 15,
-      "go": 0,
+      "calls": 16,
+      "go": 1,
       "wait": 14,
       "skip": 1,
       "last": {
-        "code": "1809",
-        "verdict": "wait",
-        "ts": 1780455369.298327
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780455476.0708401
       }
     }
   },
   "recent": [
+    {
+      "code": "5289",
+      "ts": 1780455476.0708401,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "VCP突破確認且有投信買超，停損5.8%低於ADR，大盤多頭環境下風報比極佳。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "1809",
       "ts": 1780455369.298327,
