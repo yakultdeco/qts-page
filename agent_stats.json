@@ -1,63 +1,80 @@
 {
-  "ts": 1780456361.1083436,
-  "total": 13,
+  "ts": 1780456835.3708534,
+  "total": 14,
   "by_verdict": {
-    "go": 8,
+    "go": 9,
     "wait": 5,
     "skip": 0
   },
   "short_circuits": 0,
   "cache_reads_tokens": 0,
-  "input_tokens": 30207,
-  "llm_calls": 9,
-  "cost_usd": 0.0215,
+  "input_tokens": 33585,
+  "llm_calls": 10,
+  "cost_usd": 0.024,
   "agents": {
     "conti": {
-      "calls": 13,
-      "go": 8,
+      "calls": 14,
+      "go": 9,
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "1809",
+        "code": "3673",
         "verdict": "go",
-        "ts": 1780456217.6814044
+        "ts": 1780456605.7225313
       }
     },
     "tai": {
-      "calls": 13,
-      "go": 2,
+      "calls": 14,
+      "go": 3,
       "wait": 11,
       "skip": 0,
       "last": {
-        "code": "1809",
-        "verdict": "wait",
-        "ts": 1780456217.6814044
+        "code": "3673",
+        "verdict": "go",
+        "ts": 1780456605.7225313
       }
     },
     "combo": {
-      "calls": 13,
-      "go": 8,
+      "calls": 14,
+      "go": 9,
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "1809",
+        "code": "3673",
         "verdict": "go",
-        "ts": 1780456217.6814044
+        "ts": 1780456605.7225313
       }
     },
     "ortho": {
-      "calls": 13,
-      "go": 8,
+      "calls": 14,
+      "go": 9,
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "1809",
+        "code": "3673",
         "verdict": "go",
-        "ts": 1780456217.6814044
+        "ts": 1780456605.7225313
       }
     }
   },
   "recent": [
+    {
+      "code": "3673",
+      "ts": 1780456605.7225313,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤環境極佳，雙指數呈多頭排列，提供強大保護傘",
+        "脈絡｜個股強量突破訊號明確，雖無即時新聞但亦無實質利空"
+      ],
+      "ta_reasons": [
+        "TA｜強量突破(slv=4)且突破品質A，現價95.3剛過突破點",
+        "TA｜停損設於整理低點91.8，風險僅約3.7%，風報比極佳"
+      ]
+    },
     {
       "code": "1809",
       "ts": 1780456217.6814044,
