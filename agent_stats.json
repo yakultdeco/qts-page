@@ -1,5 +1,5 @@
 {
-  "ts": 1780451117.29544,
+  "ts": 1780451274.8839948,
   "total": 13,
   "by_verdict": {
     "go": 0,
@@ -18,9 +18,9 @@
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "6197",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780451015.6141481
+        "ts": 1780451273.4680698
       }
     },
     "tai": {
@@ -29,9 +29,9 @@
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "6197",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780451015.6141481
+        "ts": 1780451273.4680698
       }
     },
     "combo": {
@@ -40,9 +40,9 @@
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "6197",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780451015.6141481
+        "ts": 1780451273.4680698
       }
     },
     "ortho": {
@@ -51,13 +51,43 @@
       "wait": 13,
       "skip": 0,
       "last": {
-        "code": "6197",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780451015.6141481
+        "ts": 1780451273.4680698
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780451273.4680698,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780451272.292178,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "6197",
       "ts": 1780451015.6141481,
@@ -211,36 +241,6 @@
     {
       "code": "3673",
       "ts": 1780449993.429593,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780449379.935704,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780449379.6098828,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
