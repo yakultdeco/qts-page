@@ -835,8 +835,8 @@
       "cr": 0
     },
     "_short_circuit": false,
-    "ts": 1780291873.917038,
-    "last_at_vote": 309.0
+    "ts": 1780454986.0340087,
+    "last_at_vote": 325.5
   },
   "6274": {
     "verdict": "wait",
@@ -1017,5 +1017,656 @@
     "_short_circuit": false,
     "ts": 1780281501.1829271,
     "last_at_vote": 151.5
+  },
+  "8064": {
+    "verdict": "wait",
+    "score": 0,
+    "strategy": "",
+    "thesis": "",
+    "context": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜context_agent 失敗: RuntimeError",
+      "TA｜ta_agent 失敗: RuntimeError"
+    ],
+    "resonance": {},
+    "triggers": [],
+    "_usage": {
+      "in": 0,
+      "out": 0,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780454979.1014602,
+    "last_at_vote": 172.5
+  },
+  "3481": {
+    "verdict": "wait",
+    "score": 0,
+    "strategy": "",
+    "thesis": "",
+    "context": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜context_agent 失敗: RuntimeError",
+      "TA｜ta_agent 失敗: RuntimeError"
+    ],
+    "resonance": {},
+    "triggers": [],
+    "_usage": {
+      "in": 0,
+      "out": 0,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780454985.355875,
+    "last_at_vote": 59.2
+  },
+  "2399": {
+    "verdict": "wait",
+    "score": 0,
+    "strategy": "",
+    "thesis": "",
+    "context": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 0,
+      "verdict": "wait"
+    },
+    "entry_plan": {},
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜context_agent 失敗: RuntimeError",
+      "TA｜ta_agent 失敗: RuntimeError"
+    ],
+    "resonance": {},
+    "triggers": [],
+    "_usage": {
+      "in": 0,
+      "out": 0,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780454987.4097311,
+    "last_at_vote": 52.6
+  },
+  "1809": {
+    "verdict": "go",
+    "score": 71,
+    "strategy": "回檔承接",
+    "thesis": "強量突破但已延伸，等待回測52.6突破口或EMA10獲支撐時承接。",
+    "context": {
+      "score": 85,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 58,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 53.5,
+      "stop": 49.85,
+      "stop_basis": "前波整理平台低點與突破口支撐"
+    },
+    "reasons": [
+      "脈絡力推（TA 觀望，不反對）",
+      "脈絡｜大盤處於多頭環境",
+      "脈絡｜個股無當日負面新聞",
+      "TA｜強量突破且法人買融資減，動能與量價結構極佳。",
+      "TA｜距EMA10延伸達18.4%，現價追高風報比差。"
+    ],
+    "resonance": {
+      "trend": 2,
+      "momentum": 1,
+      "volume": 2,
+      "structure": 1,
+      "total": 6
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "盤中爆量且維持在EMA10之上",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T2",
+        "for": "abort",
+        "desc": "跌破EMA20關鍵均線支撐",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3369,
+      "out": 321,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455015.6110215,
+    "last_at_vote": 55.6
+  },
+  "6451": {
+    "verdict": "go",
+    "score": 79,
+    "strategy": "動能追擊",
+    "thesis": "利用突破轉強動能進場，守住整理低點 702，賺取突破後的波段拉升。",
+    "context": {
+      "score": 80,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 78,
+      "verdict": "go"
+    },
+    "entry_plan": {
+      "entry": 724.0,
+      "stop": 702.0,
+      "stop_basis": "整理區間低點與掃描停損位"
+    },
+    "reasons": [
+      "雙方放行",
+      "脈絡｜大盤處於多頭環境，有利個股表現。",
+      "脈絡｜當日無負面新聞報導，脈絡中性偏多。",
+      "TA｜外資單日大買 1125 張，籌碼面呈現良性支持。",
+      "TA｜突破已確認，且停損點 702 距現價僅 3%，風報比極佳。"
+    ],
+    "resonance": {
+      "trend": 2,
+      "momentum": 1,
+      "volume": 1,
+      "structure": 1,
+      "total": 5
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "股價持續站穩 EMA10 之上",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "盤中量能步調達 120% 以上維持熱度",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 120.0
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "跌破 EMA20 宣告動能熄火",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3383,
+      "out": 570,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455019.3177066,
+    "last_at_vote": 724.0
+  },
+  "HUT": {
+    "verdict": "go",
+    "score": 57,
+    "strategy": "突破整理",
+    "thesis": "短線偏離均線過遠，靜待股價回檔守住EMA10或重新收縮後再行突破。",
+    "context": {
+      "score": 70,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 45,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 134.38,
+      "stop": 109.64,
+      "stop_basis": "前波整理區間低點"
+    },
+    "reasons": [
+      "脈絡力推（TA 觀望，不反對）",
+      "脈絡｜大盤處於強勢多頭，提供良好風險偏好環境",
+      "脈絡｜無任何個股利空，技術突破訊號預設可行",
+      "TA｜股價距EMA10達19.4%，短線過度延伸，追高易遭修正。",
+      "TA｜訊號強度僅為1，現價低於突破點134.38，未見強勢表態。"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": -1,
+      "volume": 0,
+      "structure": -1,
+      "total": -1
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "突破134.38且量能步調達150%以上",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "abort",
+        "desc": "收盤價跌破 EMA10 則放棄此計畫",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3353,
+      "out": 490,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455039.0550473,
+    "last_at_vote": 132.38
+  },
+  "HUM": {
+    "verdict": "wait",
+    "score": 55,
+    "strategy": "突破整理",
+    "thesis": "待帶量突破333.31關鍵阻力，賺取VCP整理後的突破段。",
+    "context": {
+      "score": 55,
+      "verdict": "wait"
+    },
+    "ta": {
+      "score": 55,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 333.5,
+      "stop": 312.0,
+      "stop_basis": "前低平台與EMA20附近防守"
+    },
+    "reasons": [
+      "雙方觀望",
+      "脈絡｜大盤處於強勁多頭，提供基本環境支撐。",
+      "脈絡｜無新聞題材催化，動能延續性仍待觀察。",
+      "TA｜距突破點333.31僅1.5%，VCP結構B級基本面完整。",
+      "TA｜延伸EMA10達6.5%，slv僅1，尚未確認突破。"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": 0,
+      "volume": 0,
+      "structure": 1,
+      "total": 2
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "盤中成交量能步調達 150% 以上",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "價格站穩在 EMA10 之上",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "收盤跌破 EMA20 則放棄",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3345,
+      "out": 545,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455039.8567479,
+    "last_at_vote": 328.31
+  },
+  "AKAM": {
+    "verdict": "go",
+    "score": 63,
+    "strategy": "突破整理",
+    "thesis": "標的具備 A 級 VCP 結構，等放量突破 156.31 確立漲勢後順勢進場。",
+    "context": {
+      "score": 68,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 58,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 156.31,
+      "stop": 148.5,
+      "stop_basis": "回測跌破 EMA10 支撐"
+    },
+    "reasons": [
+      "脈絡力推（TA 觀望，不反對）",
+      "脈絡｜大盤（納指與費半）呈強勢多頭排列，提供良好交易環境",
+      "脈絡｜個股無實質利空或負面消息，脈絡安全無虞",
+      "TA｜VCP 結構評級為 A，收縮型態完整，具備強大爆發潛力。",
+      "TA｜日均量達 750 萬股，流動性極佳，突破時易吸引機構資金。"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": 0,
+      "volume": 0,
+      "structure": 2,
+      "total": 3
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "量能步調 ≥ 150% 展現強勁動能",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "價格站穩於 EMA10 之上",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "價格跌破 EMA20 宣告轉弱",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3347,
+      "out": 567,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455035.5729513,
+    "last_at_vote": 154.01
+  },
+  "PANW": {
+    "verdict": "go",
+    "score": 61,
+    "strategy": "回檔承接",
+    "thesis": "股價偏離EMA10過遠且停損過寬，等拉回均線或強量確認再進。",
+    "context": {
+      "score": 78,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 45,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 302.95,
+      "stop": 285.0,
+      "stop_basis": "回檔均線支撐或前日低點"
+    },
+    "reasons": [
+      "脈絡力推（TA 觀望，不反對）",
+      "脈絡｜大盤處於明確多頭，提供極佳的背景支撐",
+      "脈絡｜資安產業無利空消息，維持既有長線多頭氛圍",
+      "TA｜距EMA10達15.9%極度延伸，追高風險極大。",
+      "TA｜原設定停損達19%，現價風報比極差。"
+    ],
+    "resonance": {
+      "trend": 2,
+      "momentum": -1,
+      "volume": 0,
+      "structure": -1,
+      "total": 0
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "成交量步調達 150% 以上強勢突破",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "股價拉回並守住 EMA10 均線",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "跌破 EMA20 均線則放棄此計畫",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3355,
+      "out": 538,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455036.8004324,
+    "last_at_vote": 300.48
+  },
+  "FTNT": {
+    "verdict": "go",
+    "score": 61,
+    "strategy": "回檔承接",
+    "thesis": "股價遠離EMA10且停損過寬，等回測均線或收斂再介入",
+    "context": {
+      "score": 75,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 48,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 147.49,
+      "stop": 126.61,
+      "stop_basis": "整理區間低點 126.61 實體破位"
+    },
+    "reasons": [
+      "脈絡力推（TA 觀望，不反對）",
+      "脈絡｜大盤處於強勢多頭，提供極佳環境支撐",
+      "脈絡｜無利空消息阻礙，資安題材長線穩健",
+      "TA｜距EMA10達11.1%，短線過度延伸易震盪",
+      "TA｜停損距現價近14%，風報比不具吸引力"
+    ],
+    "resonance": {
+      "trend": 2,
+      "momentum": 0,
+      "volume": -1,
+      "structure": 1,
+      "total": 2
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "突破日放量，量能步調達 150% 以上",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "股價拉回整理並守穩在 EMA10 之上",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "跌破 EMA20 均線，多頭結構轉弱",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3351,
+      "out": 548,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455055.0564535,
+    "last_at_vote": 147.14
+  },
+  "WAT": {
+    "verdict": "go",
+    "score": 65,
+    "strategy": "突破整理",
+    "thesis": "等突破385.29，但因已延伸且停損寬，需控倉或等縮量回踩。",
+    "context": {
+      "score": 75,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 55,
+      "verdict": "wait"
+    },
+    "entry_plan": {
+      "entry": 385.29,
+      "stop": 334.18,
+      "stop_basis": "前波整理區間低點"
+    },
+    "reasons": [
+      "脈絡力推（TA 觀望，不反對）",
+      "脈絡｜美股大盤強勢多頭（NDX及SOX均多頭排列），提供良好環境。",
+      "脈絡｜個股無任何實質利空新聞，題材與基本面無拖累之虞。",
+      "TA｜尚未突破385.29進場點，現價仍處於區間內整理。",
+      "TA｜已距EMA10達8.1%，屬偏高延伸，追高易遭逢拉回。"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": 0,
+      "volume": 0,
+      "structure": 0,
+      "total": 1
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "突破時量能步調達 150% 以上",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 150.0
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "突破當日總量達均量 1.5 倍",
+        "cond": {
+          "type": "vol_ratio",
+          "op": ">=",
+          "value": 1.5
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "跌破 EMA10 宣告整理失敗",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3343,
+      "out": 590,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455059.109571,
+    "last_at_vote": 378.16
   }
 }
