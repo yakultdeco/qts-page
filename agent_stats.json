@@ -1,9 +1,9 @@
 {
-  "ts": 1780450316.6171541,
-  "total": 12,
+  "ts": 1780450588.4171069,
+  "total": 13,
   "by_verdict": {
     "go": 0,
-    "wait": 12,
+    "wait": 13,
     "skip": 0
   },
   "short_circuits": 0,
@@ -13,51 +13,126 @@
   "cost_usd": 0.0,
   "agents": {
     "conti": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 12,
+      "wait": 13,
       "skip": 0,
       "last": {
-        "code": "3042",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780450081.993763
+        "ts": 1780450586.3668532
       }
     },
     "tai": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 12,
+      "wait": 13,
       "skip": 0,
       "last": {
-        "code": "3042",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780450081.993763
+        "ts": 1780450586.3668532
       }
     },
     "combo": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 12,
+      "wait": 13,
       "skip": 0,
       "last": {
-        "code": "3042",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780450081.993763
+        "ts": 1780450586.3668532
       }
     },
     "ortho": {
-      "calls": 12,
+      "calls": 13,
       "go": 0,
-      "wait": 12,
+      "wait": 13,
       "skip": 0,
       "last": {
-        "code": "3042",
+        "code": "AMD",
         "verdict": "wait",
-        "ts": 1780450081.993763
+        "ts": 1780450586.3668532
       }
     }
   },
   "recent": [
+    {
+      "code": "AMD",
+      "ts": 1780450586.3668532,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "CRWD",
+      "ts": 1780450585.842029,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "PANW",
+      "ts": 1780450584.608202,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "HUT",
+      "ts": 1780450584.16692,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
+    {
+      "code": "6207",
+      "ts": 1780450499.4087381,
+      "context": "wait",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "雙方觀望",
+      "ctx_reasons": [
+        "脈絡｜context_agent 失敗: RuntimeError"
+      ],
+      "ta_reasons": [
+        "TA｜ta_agent 失敗: RuntimeError"
+      ]
+    },
     {
       "code": "3042",
       "ts": 1780450081.993763,
@@ -166,66 +241,6 @@
     {
       "code": "ALAB",
       "ts": 1780449379.6098828,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "AMD",
-      "ts": 1780448526.1746922,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780448524.75136,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780448524.7484748,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "CRWD",
-      "ts": 1780448524.464885,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
