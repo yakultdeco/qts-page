@@ -1,63 +1,85 @@
 {
-  "ts": 1780454974.728106,
+  "ts": 1780455091.573963,
   "total": 15,
   "by_verdict": {
     "go": 0,
-    "wait": 15,
-    "skip": 0
+    "wait": 14,
+    "skip": 1
   },
   "short_circuits": 0,
   "cache_reads_tokens": 0,
-  "input_tokens": 0,
-  "llm_calls": 0,
-  "cost_usd": 0.0,
+  "input_tokens": 23741,
+  "llm_calls": 2,
+  "cost_usd": 0.0133,
   "agents": {
     "conti": {
       "calls": 15,
-      "go": 0,
-      "wait": 15,
+      "go": 1,
+      "wait": 14,
       "skip": 0,
       "last": {
-        "code": "3481",
-        "verdict": "wait",
-        "ts": 1780454809.132981
+        "code": "RDDT",
+        "verdict": "go",
+        "ts": 1780455086.0171351
       }
     },
     "tai": {
       "calls": 15,
       "go": 0,
-      "wait": 15,
-      "skip": 0,
+      "wait": 14,
+      "skip": 1,
       "last": {
-        "code": "3481",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780454809.132981
+        "ts": 1780455086.0171351
       }
     },
     "combo": {
       "calls": 15,
       "go": 0,
-      "wait": 15,
-      "skip": 0,
+      "wait": 14,
+      "skip": 1,
       "last": {
-        "code": "3481",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780454809.132981
+        "ts": 1780455086.0171351
       }
     },
     "ortho": {
       "calls": 15,
       "go": 0,
-      "wait": 15,
-      "skip": 0,
+      "wait": 14,
+      "skip": 1,
       "last": {
-        "code": "3481",
+        "code": "RDDT",
         "verdict": "wait",
-        "ts": 1780454809.132981
+        "ts": 1780455086.0171351
       }
     }
   },
   "recent": [
+    {
+      "code": "RDDT",
+      "ts": 1780455086.0171351,
+      "context": "go",
+      "ta": "wait",
+      "final": "wait",
+      "short_circuit": false,
+      "head": "延伸9.4%且slv=1(C級)，16.8%原始停損過寬。大盤雖強，仍須等回踩10MA(約153)縮小風控再進。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
+    {
+      "code": "ALAB",
+      "ts": 1780455077.5875058,
+      "context": "wait",
+      "ta": "skip",
+      "final": "skip",
+      "short_circuit": false,
+      "head": "偏離10MA達24.4%極度延伸，且20.48%的停損寬度遠超1.5x ADR(13.56%)硬性限制，風報比極差。",
+      "ctx_reasons": [],
+      "ta_reasons": []
+    },
     {
       "code": "3481",
       "ts": 1780454809.132981,
@@ -226,36 +248,6 @@
     {
       "code": "8064",
       "ts": 1780453904.2521222,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "ALAB",
-      "ts": 1780453240.5295749,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "RDDT",
-      "ts": 1780453236.25888,
       "context": "wait",
       "ta": "wait",
       "final": "wait",
