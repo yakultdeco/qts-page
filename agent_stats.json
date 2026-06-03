@@ -1,63 +1,80 @@
 {
-  "ts": 1780455498.758063,
-  "total": 12,
+  "ts": 1780455980.1304688,
+  "total": 13,
   "by_verdict": {
-    "go": 7,
+    "go": 8,
     "wait": 5,
     "skip": 0
   },
   "short_circuits": 0,
   "cache_reads_tokens": 0,
-  "input_tokens": 26846,
-  "llm_calls": 8,
-  "cost_usd": 0.0185,
+  "input_tokens": 30207,
+  "llm_calls": 9,
+  "cost_usd": 0.0209,
   "agents": {
     "conti": {
-      "calls": 12,
-      "go": 7,
+      "calls": 13,
+      "go": 8,
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "WAT",
+        "code": "5289",
         "verdict": "go",
-        "ts": 1780455059.109571
+        "ts": 1780455761.235089
       }
     },
     "tai": {
-      "calls": 12,
-      "go": 1,
+      "calls": 13,
+      "go": 2,
       "wait": 11,
       "skip": 0,
       "last": {
-        "code": "WAT",
-        "verdict": "wait",
-        "ts": 1780455059.109571
+        "code": "5289",
+        "verdict": "go",
+        "ts": 1780455761.235089
       }
     },
     "combo": {
-      "calls": 12,
-      "go": 7,
+      "calls": 13,
+      "go": 8,
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "WAT",
+        "code": "5289",
         "verdict": "go",
-        "ts": 1780455059.109571
+        "ts": 1780455761.235089
       }
     },
     "ortho": {
-      "calls": 12,
-      "go": 7,
+      "calls": 13,
+      "go": 8,
       "wait": 5,
       "skip": 0,
       "last": {
-        "code": "WAT",
+        "code": "5289",
         "verdict": "go",
-        "ts": 1780455059.109571
+        "ts": 1780455761.235089
       }
     }
   },
   "recent": [
+    {
+      "code": "5289",
+      "ts": 1780455761.235089,
+      "context": "go",
+      "ta": "go",
+      "final": "go",
+      "short_circuit": false,
+      "head": "雙方放行",
+      "ctx_reasons": [
+        "脈絡｜大盤呈強勢多頭格局，有利於突破個股續航",
+        "脈絡｜無任何利空消息，技術面突破確認，應順勢操作"
+      ],
+      "ta_reasons": [
+        "TA｜突破1950元關鍵價位，突破信號slv=3確認成立",
+        "TA｜ADR達6.35%，股性波動大有利動能突破發揮"
+      ]
+    },
     {
       "code": "WAT",
       "ts": 1780455059.109571,

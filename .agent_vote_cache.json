@@ -1668,5 +1668,77 @@
     "_short_circuit": false,
     "ts": 1780455059.109571,
     "last_at_vote": 378.16
+  },
+  "5289": {
+    "verdict": "go",
+    "score": 79,
+    "strategy": "突破整理",
+    "thesis": "股價突破1950元關鍵平台，防守1850元，賺取突破後的波段動能。",
+    "context": {
+      "score": 80,
+      "verdict": "go"
+    },
+    "ta": {
+      "score": 78,
+      "verdict": "go"
+    },
+    "entry_plan": {
+      "entry": 1975.0,
+      "stop": 1850.0,
+      "stop_basis": "前波整理區間低點1850元"
+    },
+    "reasons": [
+      "雙方放行",
+      "脈絡｜大盤呈強勢多頭格局，有利於突破個股續航",
+      "脈絡｜無任何利空消息，技術面突破確認，應順勢操作",
+      "TA｜突破1950元關鍵價位，突破信號slv=3確認成立",
+      "TA｜ADR達6.35%，股性波動大有利動能突破發揮"
+    ],
+    "resonance": {
+      "trend": 1,
+      "momentum": 1,
+      "volume": 1,
+      "structure": 1,
+      "total": 4
+    },
+    "triggers": [
+      {
+        "id": "T1",
+        "for": "entry",
+        "desc": "現價站穩 EMA10 之上維持強勢",
+        "cond": {
+          "type": "price_vs_ema10",
+          "op": ">="
+        }
+      },
+      {
+        "id": "T2",
+        "for": "entry",
+        "desc": "量能步調大於 120% 具備續航力",
+        "cond": {
+          "type": "vol_pace",
+          "op": ">=",
+          "value": 120.0
+        }
+      },
+      {
+        "id": "T3",
+        "for": "abort",
+        "desc": "跌破 EMA20 結構破壞取消計畫",
+        "cond": {
+          "type": "price_vs_ema20",
+          "op": "<"
+        }
+      }
+    ],
+    "_usage": {
+      "in": 3361,
+      "out": 571,
+      "cw": 0,
+      "cr": 0
+    },
+    "_short_circuit": false,
+    "ts": 1780455761.235089,
+    "last_at_vote": 1975.0
   }
 }
