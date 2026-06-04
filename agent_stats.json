@@ -1,298 +1,45 @@
 {
-  "ts": 1780456835.3708534,
-  "total": 14,
+  "ts": 1780556192.3923697,
+  "total": 0,
   "by_verdict": {
-    "go": 9,
-    "wait": 5,
+    "go": 0,
+    "wait": 0,
     "skip": 0
   },
   "short_circuits": 0,
   "cache_reads_tokens": 0,
-  "input_tokens": 33585,
-  "llm_calls": 10,
-  "cost_usd": 0.024,
+  "input_tokens": 0,
+  "llm_calls": 0,
+  "cost_usd": 0.0,
   "agents": {
     "conti": {
-      "calls": 14,
-      "go": 9,
-      "wait": 5,
+      "calls": 0,
+      "go": 0,
+      "wait": 0,
       "skip": 0,
-      "last": {
-        "code": "3673",
-        "verdict": "go",
-        "ts": 1780456605.7225313
-      }
+      "last": null
     },
     "tai": {
-      "calls": 14,
-      "go": 3,
-      "wait": 11,
+      "calls": 0,
+      "go": 0,
+      "wait": 0,
       "skip": 0,
-      "last": {
-        "code": "3673",
-        "verdict": "go",
-        "ts": 1780456605.7225313
-      }
+      "last": null
     },
     "combo": {
-      "calls": 14,
-      "go": 9,
-      "wait": 5,
+      "calls": 0,
+      "go": 0,
+      "wait": 0,
       "skip": 0,
-      "last": {
-        "code": "3673",
-        "verdict": "go",
-        "ts": 1780456605.7225313
-      }
+      "last": null
     },
     "ortho": {
-      "calls": 14,
-      "go": 9,
-      "wait": 5,
+      "calls": 0,
+      "go": 0,
+      "wait": 0,
       "skip": 0,
-      "last": {
-        "code": "3673",
-        "verdict": "go",
-        "ts": 1780456605.7225313
-      }
+      "last": null
     }
   },
-  "recent": [
-    {
-      "code": "3673",
-      "ts": 1780456605.7225313,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤環境極佳，雙指數呈多頭排列，提供強大保護傘",
-        "脈絡｜個股強量突破訊號明確，雖無即時新聞但亦無實質利空"
-      ],
-      "ta_reasons": [
-        "TA｜強量突破(slv=4)且突破品質A，現價95.3剛過突破點",
-        "TA｜停損設於整理低點91.8，風險僅約3.7%，風報比極佳"
-      ]
-    },
-    {
-      "code": "1809",
-      "ts": 1780456217.6814044,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤處於極強多頭環境，有利於多頭突破續航",
-        "脈絡｜無任何負面消息或實質利空干擾"
-      ],
-      "ta_reasons": [
-        "TA｜強量突破(slv=4)，三大法人買超1901張具支撐。",
-        "TA｜距離EMA10延伸達18.4%，現價追高風報比不佳。"
-      ]
-    },
-    {
-      "code": "5289",
-      "ts": 1780455761.235089,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤呈強勢多頭格局，有利於突破個股續航",
-        "脈絡｜無任何利空消息，技術面突破確認，應順勢操作"
-      ],
-      "ta_reasons": [
-        "TA｜突破1950元關鍵價位，突破信號slv=3確認成立",
-        "TA｜ADR達6.35%，股性波動大有利動能突破發揮"
-      ]
-    },
-    {
-      "code": "WAT",
-      "ts": 1780455059.109571,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜美股大盤強勢多頭（NDX及SOX均多頭排列），提供良好環境。",
-        "脈絡｜個股無任何實質利空新聞，題材與基本面無拖累之虞。"
-      ],
-      "ta_reasons": [
-        "TA｜尚未突破385.29進場點，現價仍處於區間內整理。",
-        "TA｜已距EMA10達8.1%，屬偏高延伸，追高易遭逢拉回。"
-      ]
-    },
-    {
-      "code": "FTNT",
-      "ts": 1780455055.0564535,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤處於強勢多頭，提供極佳環境支撐",
-        "脈絡｜無利空消息阻礙，資安題材長線穩健"
-      ],
-      "ta_reasons": [
-        "TA｜距EMA10達11.1%，短線過度延伸易震盪",
-        "TA｜停損距現價近14%，風報比不具吸引力"
-      ]
-    },
-    {
-      "code": "HUM",
-      "ts": 1780455039.8567479,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜大盤處於強勁多頭，提供基本環境支撐。",
-        "脈絡｜無新聞題材催化，動能延續性仍待觀察。"
-      ],
-      "ta_reasons": [
-        "TA｜距突破點333.31僅1.5%，VCP結構B級基本面完整。",
-        "TA｜延伸EMA10達6.5%，slv僅1，尚未確認突破。"
-      ]
-    },
-    {
-      "code": "HUT",
-      "ts": 1780455039.0550473,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤處於強勢多頭，提供良好風險偏好環境",
-        "脈絡｜無任何個股利空，技術突破訊號預設可行"
-      ],
-      "ta_reasons": [
-        "TA｜股價距EMA10達19.4%，短線過度延伸，追高易遭修正。",
-        "TA｜訊號強度僅為1，現價低於突破點134.38，未見強勢表態。"
-      ]
-    },
-    {
-      "code": "PANW",
-      "ts": 1780455036.8004324,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤處於明確多頭，提供極佳的背景支撐",
-        "脈絡｜資安產業無利空消息，維持既有長線多頭氛圍"
-      ],
-      "ta_reasons": [
-        "TA｜距EMA10達15.9%極度延伸，追高風險極大。",
-        "TA｜原設定停損達19%，現價風報比極差。"
-      ]
-    },
-    {
-      "code": "AKAM",
-      "ts": 1780455035.5729513,
-      "context": "go",
-      "ta": "wait",
-      "final": "go",
-      "short_circuit": false,
-      "head": "脈絡力推（TA 觀望，不反對）",
-      "ctx_reasons": [
-        "脈絡力推（TA 觀望，不反對）",
-        "脈絡｜大盤（納指與費半）呈強勢多頭排列，提供良好交易環境",
-        "脈絡｜個股無實質利空或負面消息，脈絡安全無虞"
-      ],
-      "ta_reasons": [
-        "TA｜VCP 結構評級為 A，收縮型態完整，具備強大爆發潛力。",
-        "TA｜日均量達 750 萬股，流動性極佳，突破時易吸引機構資金。"
-      ]
-    },
-    {
-      "code": "6451",
-      "ts": 1780455019.3177066,
-      "context": "go",
-      "ta": "go",
-      "final": "go",
-      "short_circuit": false,
-      "head": "雙方放行",
-      "ctx_reasons": [
-        "脈絡｜大盤處於多頭環境，有利個股表現。",
-        "脈絡｜當日無負面新聞報導，脈絡中性偏多。"
-      ],
-      "ta_reasons": [
-        "TA｜外資單日大買 1125 張，籌碼面呈現良性支持。",
-        "TA｜突破已確認，且停損點 702 距現價僅 3%，風報比極佳。"
-      ]
-    },
-    {
-      "code": "2399",
-      "ts": 1780454987.4097311,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "6197",
-      "ts": 1780454986.0340087,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "3481",
-      "ts": 1780454985.355875,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    },
-    {
-      "code": "8064",
-      "ts": 1780454979.1014602,
-      "context": "wait",
-      "ta": "wait",
-      "final": "wait",
-      "short_circuit": false,
-      "head": "雙方觀望",
-      "ctx_reasons": [
-        "脈絡｜context_agent 失敗: RuntimeError"
-      ],
-      "ta_reasons": [
-        "TA｜ta_agent 失敗: RuntimeError"
-      ]
-    }
-  ]
+  "recent": []
 }
